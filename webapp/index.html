@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Einbürgerungstest Pro - Bereite dich optimal auf den deutschen Einbürgerungstest vor. 460 Fragen, Quiz-Modus, Lernmodus, Statistiken.">
+  <meta name="theme-color" content="#FF6B00">
+  <title>Einbürgerungstest Pro - Leben in Deutschland</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div id="app">
+    <!-- Loading Screen -->
+    <section id="loading-screen" class="screen">
+      <div class="loading-container">
+        <div class="loading-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="64" rx="16" fill="#FF6B00"/>
+              <path d="M32 16L36.5 28.5H49L39 36.5L43 49L32 41L21 49L25 36.5L15 28.5H27.5L32 16Z" fill="white"/>
+            </svg>
+          </div>
+          <h1 class="loading-title">Einbürgerungstest Pro</h1>
+          <p class="loading-subtitle">Leben in Deutschland</p>
+        </div>
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Fragen werden geladen...</p>
+      </div>
+    </section>
+
+    <!-- ===== SCREEN 1: HOME/DASHBOARD ===== -->
+    <section id="screen-home" class="screen">
+      <header class="app-header">
+        <div class="header-content">
+          <div class="header-logo">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="header-icon">
+              <rect width="40" height="40" rx="10" fill="#FF6B00"/>
+              <path d="M20 10L22.5 19H32L24.5 24.5L27 34L20 28.5L13 34L15.5 24.5L8 19H17.5L20 10Z" fill="white"/>
+            </svg>
+            <div class="header-text">
+              <h1 class="header-title">Einbürgerungstest Pro</h1>
+              <p class="header-subtitle">Leben in Deutschland</p>
+            </div>
+          </div>
+          <button id="btn-dark-mode" class="icon-btn" aria-label="Dark Mode umschalten">
+            <span class="dark-icon">🌙</span>
+            <span class="light-icon">☀️</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- Bundesland Selector -->
+        <div class="bundesland-bar">
+          <label for="bundesland-select">Dein Bundesland:</label>
+          <select id="bundesland-select" class="bundesland-select">
+            <option value="Baden-Württemberg">Baden-Württemberg</option>
+            <option value="Bayern" selected>Bayern</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Brandenburg">Brandenburg</option>
+            <option value="Bremen">Bremen</option>
+            <option value="Hamburg">Hamburg</option>
+            <option value="Hessen">Hessen</option>
+            <option value="Mecklenburg-Vorpommern">Mecklenburg-Vorpommern</option>
+            <option value="Niedersachsen">Niedersachsen</option>
+            <option value="Nordrhein-Westfalen">Nordrhein-Westfalen</option>
+            <option value="Rheinland-Pfalz">Rheinland-Pfalz</option>
+            <option value="Saarland">Saarland</option>
+            <option value="Sachsen">Sachsen</option>
+            <option value="Sachsen-Anhalt">Sachsen-Anhalt</option>
+            <option value="Schleswig-Holstein">Schleswig-Holstein</option>
+            <option value="Thüringen">Thüringen</option>
+          </select>
+        </div>
+
+        <!-- Quiz Start Card -->
+        <div class="quiz-start-card card" id="btn-start-quiz">
+          <div class="quiz-start-content">
+            <div class="quiz-start-info">
+              <h2 class="quiz-start-title">Quiz starten</h2>
+              <p class="quiz-start-desc">
+                <span class="quiz-start-detail">33 Fragen</span>
+                <span class="dot">•</span>
+                <span class="quiz-start-detail">60 Minuten</span>
+                <span class="dot">•</span>
+                <span class="quiz-start-detail" id="quiz-state-display">Bayern</span>
+              </p>
+            </div>
+            <div class="quiz-start-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </div>
+          </div>
+          <div class="quiz-start-progress">
+            <div class="progress-line"></div>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-card card">
+            <div class="stat-icon icon-questions">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+              </svg>
+            </div>
+            <div class="stat-number" id="stat-total">460</div>
+            <div class="stat-label">Fragen</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon icon-learned">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div class="stat-number" id="stat-learned">0</div>
+            <div class="stat-label">Gelernt</div>
+          </div>
+          <div class="stat-card card">
+            <div class="stat-icon icon-quizzes">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div class="stat-number" id="stat-quizzes">0</div>
+            <div class="stat-label">Quizze</div>
+          </div>
+        </div>
+
+        <!-- Menu List -->
+        <nav class="menu-list">
+          <button class="menu-item" data-screen="learn">
+            <div class="menu-icon icon-learn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <span class="menu-text">Lernen</span>
+            <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <button class="menu-item" data-screen="quiz">
+            <div class="menu-icon icon-quiz">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <span class="menu-text">Quiz</span>
+            <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <button class="menu-item" data-screen="statistics">
+            <div class="menu-icon icon-stats">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </div>
+            <span class="menu-text">Statistiken</span>
+            <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <button class="menu-item" data-screen="bookmarks">
+            <div class="menu-icon icon-bookmarks">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+              </svg>
+            </div>
+            <span class="menu-text">Bookmarks</span>
+            <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <button class="menu-item" data-screen="settings">
+            <div class="menu-icon icon-settings">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v4m0 14v4m4.22-17.22l-2.83 2.83m-2.78 2.78l-2.83 2.83M23 12h-4M5 12H1m17.22 4.22l-2.83-2.83m-2.78-2.78l-2.83-2.83"/>
+              </svg>
+            </div>
+            <span class="menu-text">Einstellungen</span>
+            <svg class="menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </nav>
+
+        <!-- Motivation -->
+        <div class="motivation-card">
+          <p class="motivation-text">Du schaffst das! 🇩🇪</p>
+          <p class="motivation-sub">Mit regelmäßigem Üben bist du bestens vorbereitet.</p>
+        </div>
+      </main>
+    </section>
+
+    <!-- ===== SCREEN 2: QUIZ ===== -->
+    <section id="screen-quiz" class="screen">
+      <header class="quiz-header">
+        <button id="btn-quit-quiz" class="icon-btn" aria-label="Quiz beenden">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5m7-7l-7 7 7 7"/>
+          </svg>
+        </button>
+        <div class="quiz-header-center">
+          <div class="quiz-timer" id="quiz-timer">60:00</div>
+          <div class="quiz-progress-text" id="quiz-progress-text">Frage 1 von 33</div>
+        </div>
+        <div class="quiz-placeholder"></div>
+      </header>
+
+      <!-- Timer Bar -->
+      <div class="timer-bar-container">
+        <div class="timer-bar" id="timer-bar"></div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="quiz-progress-bar-container">
+        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+      </div>
+
+      <!-- Question Number Circles -->
+      <div class="question-circles-container">
+        <div class="question-circles" id="question-circles"></div>
+      </div>
+
+      <main class="quiz-main" id="quiz-main">
+        <!-- Question Card -->
+        <div class="quiz-question-card card" id="quiz-question-card">
+          <div class="quiz-question-number" id="quiz-question-number">Frage 1</div>
+          <h2 class="quiz-question-text" id="quiz-question-text"></h2>
+        </div>
+
+        <!-- Answer Buttons -->
+        <div class="quiz-answers" id="quiz-answers"></div>
+      </main>
+
+      <!-- Quiz Navigation -->
+      <footer class="quiz-footer">
+        <button id="btn-quiz-prev" class="btn btn-secondary" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          Zurück
+        </button>
+        <button id="btn-quiz-end" class="btn btn-danger">Test beenden</button>
+        <button id="btn-quiz-next" class="btn btn-primary">
+          Weiter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ===== SCREEN 3: QUIZ RESULT ===== -->
+    <section id="screen-result" class="screen">
+      <header class="result-header">
+        <button class="icon-btn" id="btn-result-home" aria-label="Zurück zur Startseite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0v-4a1 1 0 011-1h2a1 1 0 011 1v4"/>
+          </svg>
+        </button>
+        <h1 class="result-header-title">Ergebnis</h1>
+        <div class="placeholder"></div>
+      </header>
+
+      <main class="result-main">
+        <!-- Result Status -->
+        <div class="result-status" id="result-status">
+          <div class="result-icon" id="result-icon"></div>
+          <h2 class="result-title" id="result-title"></h2>
+          <p class="result-subtitle" id="result-subtitle"></p>
+        </div>
+
+        <!-- Score Circle -->
+        <div class="score-circle-container">
+          <div class="score-circle" id="score-circle">
+            <svg viewBox="0 0 120 120" class="score-circle-svg">
+              <circle cx="60" cy="60" r="54" fill="none" stroke="var(--surface)" stroke-width="8"/>
+              <circle cx="60" cy="60" r="54" fill="none" stroke="var(--primary)" stroke-width="8" 
+                      stroke-dasharray="339.292" stroke-dashoffset="339.292" 
+                      stroke-linecap="round" class="score-progress" id="score-progress"/>
+            </svg>
+            <div class="score-text">
+              <span class="score-number" id="score-number">0</span>
+              <span class="score-total">/33</span>
+            </div>
+          </div>
+          <p class="score-needed">Benötigt: 17/33</p>
+        </div>
+
+        <!-- Answer List -->
+        <div class="result-answers card">
+          <h3 class="result-answers-title">Übersicht</h3>
+          <div class="result-answers-list" id="result-answers-list"></div>
+        </div>
+      </main>
+
+      <!-- Result Buttons -->
+      <footer class="result-footer">
+        <button class="btn btn-primary" id="btn-retry">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          Nochmal versuchen
+        </button>
+        <button class="btn btn-secondary" id="btn-result-home-2">Zurück zur Startseite</button>
+      </footer>
+
+      <!-- Confetti Canvas -->
+      <canvas id="confetti-canvas"></canvas>
+    </section>
+
+    <!-- ===== SCREEN 4: LEARN ===== -->
+    <section id="screen-learn" class="screen">
+      <header class="sub-header">
+        <button class="icon-btn btn-back" data-screen="home" aria-label="Zurück">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5m7-7l-7 7 7 7"/>
+          </svg>
+        </button>
+        <h1 class="sub-header-title">Lernen</h1>
+        <div class="placeholder"></div>
+      </header>
+
+      <main class="learn-main" id="learn-main">
+        <!-- Search -->
+        <div class="search-bar">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text" id="learn-search" class="search-input" placeholder="Fragen durchsuchen...">
+        </div>
+
+        <!-- Filter Tags -->
+        <div class="filter-tags" id="filter-tags">
+          <button class="filter-tag active" data-category="all">Alle</button>
+          <button class="filter-tag" data-category="Allgemein">Allgemein</button>
+          <button class="filter-tag" data-category="Bundesland">Bundesland</button>
+          <button class="filter-tag" data-category="Europa">Europa</button>
+          <button class="filter-tag" data-category="Geschichte">Geschichte</button>
+          <button class="filter-tag" data-category="Politik">Politik</button>
+          <button class="filter-tag" data-category="Verfassung">Verfassung</button>
+          <button class="filter-tag" data-category="Recht">Recht</button>
+          <button class="filter-tag" data-category="Gesellschaft">Gesellschaft</button>
+          <button class="filter-tag" data-category="Wahl">Wahl</button>
+        </div>
+
+        <!-- Questions List -->
+        <div class="learn-questions-list" id="learn-questions-list"></div>
+      </main>
+    </section>
+
+    <!-- ===== SCREEN 5: STATISTICS ===== -->
+    <section id="screen-statistics" class="screen">
+      <header class="sub-header">
+        <button class="icon-btn btn-back" data-screen="home" aria-label="Zurück">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5m7-7l-7 7 7 7"/>
+          </svg>
+        </button>
+        <h1 class="sub-header-title">Statistiken</h1>
+        <div class="placeholder"></div>
+      </header>
+
+      <main class="stats-main">
+        <!-- Overall Progress Circle -->
+        <div class="stats-progress-card card">
+          <h3 class="stats-card-title">Gesamtfortschritt</h3>
+          <div class="stats-circle-container">
+            <div class="stats-circle">
+              <svg viewBox="0 0 120 120" class="stats-circle-svg">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="var(--surface)" stroke-width="8"/>
+                <circle cx="60" cy="60" r="54" fill="none" stroke="var(--primary)" stroke-width="8" 
+                        stroke-dasharray="339.292" stroke-dashoffset="339.292" 
+                        stroke-linecap="round" class="stats-progress-circle" id="stats-progress-circle"/>
+              </svg>
+              <div class="stats-circle-text">
+                <span class="stats-circle-number" id="stats-circle-number">0</span>
+                <span class="stats-circle-percent" id="stats-circle-percent">%</span>
+              </div>
+            </div>
+            <p class="stats-circle-label">
+              <span id="stats-learned-count">0</span> / <span id="stats-total-count">460</span> Fragen gelernt
+            </p>
+          </div>
+        </div>
+
+        <!-- Category Bars -->
+        <div class="stats-categories-card card">
+          <h3 class="stats-card-title">Kategorien</h3>
+          <div class="stats-category-bars" id="stats-category-bars"></div>
+        </div>
+
+        <!-- Quiz History -->
+        <div class="stats-history-card card">
+          <h3 class="stats-card-title">Letzte Quiz-Ergebnisse</h3>
+          <div class="stats-history-list" id="stats-history-list"></div>
+        </div>
+
+        <!-- Success Rate -->
+        <div class="stats-rate-card card">
+          <h3 class="stats-card-title">Erfolgsrate</h3>
+          <div class="rate-display">
+            <div class="rate-number" id="rate-number">0%</div>
+            <div class="rate-bar-container">
+              <div class="rate-bar" id="rate-bar"></div>
+            </div>
+            <p class="rate-detail" id="rate-detail">0 von 0 Quizzen bestanden</p>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ===== SCREEN 6: BOOKMARKS ===== -->
+    <section id="screen-bookmarks" class="screen">
+      <header class="sub-header">
+        <button class="icon-btn btn-back" data-screen="home" aria-label="Zurück">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5m7-7l-7 7 7 7"/>
+          </svg>
+        </button>
+        <h1 class="sub-header-title">Bookmarks</h1>
+        <div class="placeholder"></div>
+      </header>
+
+      <main class="bookmarks-main">
+        <div class="bookmarks-list" id="bookmarks-list"></div>
+        <div class="bookmarks-empty" id="bookmarks-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="empty-icon">
+            <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+          </svg>
+          <p>Noch keine Bookmarks</p>
+          <p class="empty-sub">Markiere Fragen im Lernmodus mit dem Stern.</p>
+        </div>
+      </main>
+    </section>
+
+    <!-- ===== SCREEN 7: SETTINGS ===== -->
+    <section id="screen-settings" class="screen">
+      <header class="sub-header">
+        <button class="icon-btn btn-back" data-screen="home" aria-label="Zurück">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5m7-7l-7 7 7 7"/>
+          </svg>
+        </button>
+        <h1 class="sub-header-title">Einstellungen</h1>
+        <div class="placeholder"></div>
+      </header>
+
+      <main class="settings-main">
+        <!-- Bundesland Setting -->
+        <div class="settings-section card">
+          <h3 class="settings-section-title">Bundesland</h3>
+          <div class="settings-item">
+            <label for="settings-bundesland" class="settings-label">Dein Bundesland für den Test</label>
+            <select id="settings-bundesland" class="settings-select">
+              <option value="Baden-Württemberg">Baden-Württemberg</option>
+              <option value="Bayern" selected>Bayern</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Brandenburg">Brandenburg</option>
+              <option value="Bremen">Bremen</option>
+              <option value="Hamburg">Hamburg</option>
+              <option value="Hessen">Hessen</option>
+              <option value="Mecklenburg-Vorpommern">Mecklenburg-Vorpommern</option>
+              <option value="Niedersachsen">Niedersachsen</option>
+              <option value="Nordrhein-Westfalen">Nordrhein-Westfalen</option>
+              <option value="Rheinland-Pfalz">Rheinland-Pfalz</option>
+              <option value="Saarland">Saarland</option>
+              <option value="Sachsen">Sachsen</option>
+              <option value="Sachsen-Anhalt">Sachsen-Anhalt</option>
+              <option value="Schleswig-Holstein">Schleswig-Holstein</option>
+              <option value="Thüringen">Thüringen</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Appearance -->
+        <div class="settings-section card">
+          <h3 class="settings-section-title">Erscheinungsbild</h3>
+          <div class="settings-item toggle-item">
+            <div class="settings-toggle-info">
+              <span class="settings-label">Dark Mode</span>
+              <span class="settings-desc">Dunkles Design verwenden</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="settings-dark-mode">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Language -->
+        <div class="settings-section card">
+          <h3 class="settings-section-title">Sprache</h3>
+          <div class="settings-item">
+            <label for="settings-language" class="settings-label">App-Sprache</label>
+            <select id="settings-language" class="settings-select">
+              <option value="de" selected>Deutsch</option>
+              <option value="en">English</option>
+              <option value="tr">Türkçe</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Data -->
+        <div class="settings-section card">
+          <h3 class="settings-section-title">Daten</h3>
+          <div class="settings-item">
+            <div class="settings-reset-info">
+              <span class="settings-label">Fortschritt zurücksetzen</span>
+              <span class="settings-desc">Alle Lernfortschritte und Statistiken löschen</span>
+            </div>
+            <button class="btn btn-danger" id="btn-reset-progress">Zurücksetzen</button>
+          </div>
+        </div>
+
+        <!-- About -->
+        <div class="settings-about">
+          <p class="about-text">Einbürgerungstest Pro v1.0</p>
+          <p class="about-sub">Vorbereitung auf den deutschen Einbürgerungstest "Leben in Deutschland"</p>
+        </div>
+      </main>
+    </section>
+
+    <!-- Confirm Dialog -->
+    <div class="dialog-overlay" id="dialog-overlay">
+      <div class="dialog card">
+        <h3 class="dialog-title" id="dialog-title">Bestätigen</h3>
+        <p class="dialog-message" id="dialog-message">Möchtest du fortfahren?</p>
+        <div class="dialog-buttons">
+          <button class="btn btn-secondary" id="dialog-cancel">Abbrechen</button>
+          <button class="btn btn-primary" id="dialog-confirm">Bestätigen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+      <span class="toast-message" id="toast-message"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

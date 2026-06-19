@@ -1,0 +1,34 @@
+name: einbuergerungstest
+description: "Einbuergerungstest Pro - Leben in Deutschland"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  shared_preferences: ^2.3.2
+  flutter_timer_countdown: ^1.0.7
+  confetti: ^0.8.0
+  fl_chart: ^0.69.0
+  google_fonts: ^6.2.1
+  shimmer: ^3.0.0
+  percent_indicator: ^4.2.4
+  flutter_svg: ^2.0.10+1
+  share_plus: ^10.1.2
+  url_launcher: ^6.3.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/questions.json

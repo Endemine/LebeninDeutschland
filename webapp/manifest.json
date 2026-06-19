@@ -1,0 +1,22 @@
+{
+  "name": "Einbuergerungstest Pro - Leben in Deutschland",
+  "short_name": "Einbuergerungstest",
+  "description": "Bereite dich optimal auf den deutschen Einbuergerungstest vor. 460 Fragen, Quiz-Modus, Lernmodus.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF6B00",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF6B00'/%3E%3Cpath d='M32 16L36.5 28.5H49L39 36.5L43 49L32 41L21 49L25 36.5L15 28.5H27.5L32 16Z' fill='white'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF6B00'/%3E%3Cpath d='M32 16L36.5 28.5H49L39 36.5L43 49L32 41L21 49L25 36.5L15 28.5H27.5L32 16Z' fill='white'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

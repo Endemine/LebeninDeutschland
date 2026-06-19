@@ -1,0 +1,1383 @@
+[
+  {
+    "id": 116,
+    "question": "Wenn Sie bei einer Bundestagswahl in Deutschland wählen dürfen, heißt das …",
+    "answers": [
+      "aktive Wahlkampagne.",
+      "aktives Wahlverfahren.",
+      "aktiver Wahlkampf.",
+      "aktives Wahlrecht."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 117,
+    "question": "Wie viel Prozent der Zweitstimmen müssen Parteien mindestens bekommen, um in den Deutschen Bundestag gewählt zu werden?",
+    "answers": [
+      "3 %",
+      "4 %",
+      "5 %",
+      "6 %"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 118,
+    "question": "Was regelt das Wahlrecht in Deutschland?",
+    "answers": [
+      "Wer wählen darf, muss wählen.",
+      "Alle die wollen, können wählen.",
+      "Wer nicht wählt, verliert das Recht zu wählen.",
+      "Wer wählen darf, kann wählen."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 119,
+    "question": "Wahlen in Deutschland sind frei. Was bedeutet das?",
+    "answers": [
+      "Alle verurteilten Straftäter / Straftäterinnen dürfen nicht wählen.",
+      "Wenn ich wählen gehen möchte, muss mein Arbeitgeber / meine Arbeitgeberin mir frei geben.",
+      "Jede Person kann ohne Zwang entscheiden, ob sie wählen möchte und wen sie wählen möchte.",
+      "Ich kann frei entscheiden, wo ich wählen gehen möchte."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 120,
+    "question": "Das Wahlsystem in Deutschland ist ein …",
+    "answers": [
+      "Zensuswahlrecht.",
+      "Dreiklassenwahlrecht.",
+      "Mehrheits- und Verhältniswahlrecht.",
+      "allgemeines Männerwahlrecht."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 121,
+    "question": "Eine Partei möchte in den Deutschen Bundestag. Sie muss aber einen Mindestanteil an Wählerstimmen haben. Das heißt …",
+    "answers": [
+      "5 %-Hürde.",
+      "Zulassungsgrenze.",
+      "Basiswert.",
+      "Richtlinie."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 122,
+    "question": "Welchem Grundsatz unterliegen Wahlen in Deutschland? Wahlen in Deutschland sind …",
+    "answers": [
+      "frei, gleich, geheim.",
+      "offen, sicher, frei.",
+      "geschlossen, gleich, sicher.",
+      "sicher, offen, freiwillig."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 123,
+    "question": "Was ist in Deutschland die „5 %-Hürde“?",
+    "answers": [
+      "Abstimmungsregelung im Bundestag für kleine Parteien",
+      "Anwesenheitskontrolle im Bundestag für Abstimmungen",
+      "Mindestanteil an Wählerstimmen, um ins Parlament zu kommen",
+      "Anwesenheitskontrolle im Bundesrat für Abstimmungen"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 124,
+    "question": "Die Bundestagswahl in Deutschland ist die Wahl …",
+    "answers": [
+      "des Bundeskanzlers / der Bundeskanzlerin.",
+      "der Parlamente der Länder.",
+      "des Parlaments für Deutschland.",
+      "des Bundespräsidenten / der Bundespräsidentin."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 125,
+    "question": "In einer Demokratie ist eine Funktion von regelmäßigen Wahlen, …",
+    "answers": [
+      "die Bürger und Bürgerinnen zu zwingen, ihre Stimme abzugeben.",
+      "nach dem Willen der Wählermehrheit den Wechsel der Regierung zu ermöglichen.",
+      "im Land bestehende Gesetze beizubehalten.",
+      "den Armen mehr Macht zu geben."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 126,
+    "question": "Was bekommen wahlberechtigte Bürger und Bürgerinnen in Deutschland vor einer Wahl?",
+    "answers": [
+      "eine Wahlbenachrichtigung von der Gemeinde",
+      "eine Wahlerlaubnis vom Bundespräsidenten / von der Bundespräsidentin",
+      "eine Benachrichtigung von der Bundesversammlung",
+      "eine Benachrichtigung vom Pfarramt"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 127,
+    "question": "Warum gibt es die 5 %-Hürde im Wahlgesetz der Bundesrepublik Deutschland? Es gibt sie, weil …",
+    "answers": [
+      "die Programme von vielen kleinen Parteien viele Gemeinsamkeiten haben.",
+      "die Bürger und Bürgerinnen bei vielen kleinen Parteien die Orientierung verlieren können.",
+      "viele kleine Parteien die Regierungsbildung erschweren.",
+      "die kleinen Parteien nicht so viel Geld haben, um die Politiker und Politikerinnen zu bezahlen."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 128,
+    "question": "Parlamentsmitglieder, die von den Bürgern und Bürgerinnen gewählt werden, nennt man …",
+    "answers": [
+      "Abgeordnete.",
+      "Kanzler / Kanzlerinnen.",
+      "Botschafter / Botschafterinnen.",
+      "Ministerpräsidenten / Ministerpräsidentinnen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 129,
+    "question": "Vom Volk gewählt wird in Deutschland …",
+    "answers": [
+      "der Bundeskanzler / die Bundeskanzlerin.",
+      "der Ministerpräsident / die Ministerpräsidentin eines Bundeslandes.",
+      "der Bundestag.",
+      "der Bundespräsident / die Bundespräsidentin."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 130,
+    "question": "Welcher Stimmzettel wäre bei einer Bundestagswahl gültig?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 131,
+    "question": "In Deutschland ist ein Bürgermeister / eine Bürgermeisterin …",
+    "answers": [
+      "der Leiter / die Leiterin einer Schule.",
+      "der Chef / die Chefin einer Bank.",
+      "das Oberhaupt einer Gemeinde.",
+      "der / die Vorsitzende einer Partei."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 132,
+    "question": "Viele Menschen in Deutschland arbeiten in ihrer Freizeit ehrenamtlich. Was bedeutet das?",
+    "answers": [
+      "Sie arbeiten als Soldaten / Soldatinnen.",
+      "Sie arbeiten freiwillig und unbezahlt in Vereinen und Verbänden.",
+      "Sie arbeiten in der Bundesregierung.",
+      "Sie arbeiten in einem Krankenhaus und verdienen dabei Geld."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 133,
+    "question": "Was ist bei Bundestags- und Landtagswahlen in Deutschland erlaubt?",
+    "answers": [
+      "Der Ehemann wählt für seine Frau mit.",
+      "Man kann durch Briefwahl seine Stimme abgeben.",
+      "Man kann am Wahltag telefonisch seine Stimme abgeben.",
+      "Kinder ab dem Alter von 14 Jahren dürfen wählen."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 134,
+    "question": "Man will die Buslinie abschaffen, mit der Sie immer zur Arbeit fahren. Was können Sie machen, um die Buslinie zu erhalten?",
+    "answers": [
+      "Ich beteilige mich an einer Bürgerinitiative für die Erhaltung der Buslinie oder gründe selber eine Initiative.",
+      "Ich werde Mitglied in einem Sportverein und trainiere Radfahren.",
+      "Ich wende mich an das Finanzamt, weil ich als Steuerzahler / Steuerzahlerin ein Recht auf die Buslinie habe.",
+      "Ich schreibe einen Brief an das Forstamt der Gemeinde."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 135,
+    "question": "Wen vertreten die Gewerkschaften in Deutschland?",
+    "answers": [
+      "große Unternehmen",
+      "kleine Unternehmen",
+      "Selbständige",
+      "Arbeitnehmer und Arbeitnehmerinnen"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 136,
+    "question": "Sie gehen in Deutschland zum Arbeitsgericht bei …",
+    "answers": [
+      "falscher Nebenkostenabrechnung.",
+      "ungerechtfertigter Kündigung durch Ihren Chef / Ihre Chefin.",
+      "Problemen mit den Nachbarn / Nachbarinnen.",
+      "Schwierigkeiten nach einem Verkehrsunfall."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 137,
+    "question": "Welches Gericht ist in Deutschland bei Konflikten in der Arbeitswelt zuständig?",
+    "answers": [
+      "das Familiengericht",
+      "das Strafgericht",
+      "das Arbeitsgericht",
+      "das Amtsgericht"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 138,
+    "question": "Was kann ich in Deutschland machen, wenn mir mein Arbeitgeber / meine Arbeitgeberin zu Unrecht gekündigt hat?",
+    "answers": [
+      "weiter arbeiten und freundlich zum Chef / zur Chefin sein",
+      "ein Mahnverfahren gegen den Arbeitgeber / die Arbeitgeberin führen",
+      "Kündigungsschutzklage erheben",
+      "den Arbeitgeber / die Arbeitgeberin bei der Polizei anzeigen"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 139,
+    "question": "Wann kommt es in Deutschland zu einem Prozess vor Gericht? Wenn jemand …",
+    "answers": [
+      "zu einer anderen Religion übertritt.",
+      "eine Straftat begangen hat und angeklagt wird.",
+      "eine andere Meinung als die der Regierung vertritt.",
+      "sein Auto falsch geparkt hat und es abgeschleppt wird."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 140,
+    "question": "Was macht ein Schöffe / eine Schöffin in Deutschland? Er / Sie …",
+    "answers": [
+      "entscheidet mit Richtern / Richterinnen über Schuld und Strafe.",
+      "gibt Bürgern / Bürgerinnen rechtlichen Rat.",
+      "stellt Urkunden aus.",
+      "verteidigt den Angeklagten / die Angeklagte."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 141,
+    "question": "Wer berät in Deutschland Personen bei Rechtsfragen und vertritt sie vor Gericht?",
+    "answers": [
+      "ein Rechtsanwalt / eine Rechtsanwältin",
+      "ein Richter / eine Richterin",
+      "ein Schöffe / eine Schöffin",
+      "ein Staatsanwalt / eine Staatsanwältin"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 142,
+    "question": "Was ist die Hauptaufgabe eines Richters / einer Richterin in Deutschland? Ein Richter / eine Richterin …",
+    "answers": [
+      "vertritt Bürger und Bürgerinnen vor einem Gericht.",
+      "arbeitet an einem Gericht und spricht Urteile.",
+      "ändert Gesetze.",
+      "betreut Jugendliche vor Gericht."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 143,
+    "question": "Ein Richter / eine Richterin in Deutschland gehört zur …",
+    "answers": [
+      "Judikative.",
+      "Exekutive.",
+      "Operative.",
+      "Legislative."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 144,
+    "question": "Ein Richter / eine Richterin gehört in Deutschland zur …",
+    "answers": [
+      "vollziehenden Gewalt.",
+      "rechtsprechenden Gewalt.",
+      "planenden Gewalt.",
+      "gesetzgebenden Gewalt."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 145,
+    "question": "In Deutschland wird die Staatsgewalt geteilt. Für welche Staatsgewalt arbeitet ein Richter / eine Richterin? Für die …",
+    "answers": [
+      "Judikative.",
+      "Exekutive.",
+      "Presse.",
+      "Legislative."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 146,
+    "question": "Wie nennt man in Deutschland ein Verfahren vor einem Gericht?",
+    "answers": [
+      "Programm",
+      "Prozedur",
+      "Protokoll",
+      "Prozess"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 147,
+    "question": "Was ist die Arbeit eines Richters / einer Richterin in Deutschland?",
+    "answers": [
+      "Deutschland regieren",
+      "Recht sprechen",
+      "Pläne erstellen",
+      "Gesetze erlassen"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 148,
+    "question": "Was ist eine Aufgabe der Polizei in Deutschland?",
+    "answers": [
+      "das Land zu verteidigen",
+      "die Bürgerinnen und Bürger abzuhören",
+      "die Gesetze zu beschließen",
+      "die Einhaltung von Gesetzen zu überwachen"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 149,
+    "question": "Wer kann Gerichtsschöffe / Gerichtsschöffin in Deutschland werden?",
+    "answers": [
+      "alle in Deutschland geborenen Einwohner / Einwohnerinnen über 18 Jahre",
+      "alle deutschen Staatsangehörigen älter als 24 und jünger als 70 Jahre",
+      "alle Personen, die seit mindestens 5 Jahren in Deutschland leben",
+      "nur Personen mit einem abgeschlossenen Jurastudium"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 150,
+    "question": "Ein Gerichtsschöffe / eine Gerichtsschöffin in Deutschland ist …",
+    "answers": [
+      "der Stellvertreter / die Stellvertreterin des Stadtoberhaupts.",
+      "ein ehrenamtlicher Richter / eine ehrenamtliche Richterin.",
+      "ein Mitglied eines Gemeinderats.",
+      "eine Person, die Jura studiert hat."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 151,
+    "question": "Wer baute die Mauer in Berlin?",
+    "answers": [
+      "Großbritannien",
+      "die Bundesrepublik Deutschland",
+      "die DDR",
+      "die USA"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 152,
+    "question": "Wann waren die Nationalsozialisten mit Adolf Hitler in Deutschland an der Macht?",
+    "answers": [
+      "1918 bis 1923",
+      "1932 bis 1950",
+      "1933 bis 1945",
+      "1945 bis 1989"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 153,
+    "question": "Was war am 8. Mai 1945?",
+    "answers": [
+      "Tod Adolf Hitlers",
+      "Beginn des Berliner Mauerbaus",
+      "Wahl von Konrad Adenauer zum Bundeskanzler",
+      "Ende des Zweiten Weltkriegs in Europa"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 154,
+    "question": "Wann war der Zweite Weltkrieg zu Ende?",
+    "answers": [
+      "1933",
+      "1945",
+      "1949",
+      "1961"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 155,
+    "question": "Wann waren die Nationalsozialisten in Deutschland an der Macht?",
+    "answers": [
+      "1888 bis 1918",
+      "1921 bis 1934",
+      "1933 bis 1945",
+      "1949 bis 1963"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 156,
+    "question": "In welchem Jahr wurde Hitler Reichskanzler?",
+    "answers": [
+      "1923",
+      "1927",
+      "1933",
+      "1936"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 157,
+    "question": "Die Nationalsozialisten mit Adolf Hitler errichteten 1933 in Deutschland …",
+    "answers": [
+      "eine Diktatur.",
+      "einen demokratischen Staat.",
+      "eine Monarchie.",
+      "ein Fürstentum."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 158,
+    "question": "Das „Dritte Reich“ war eine …",
+    "answers": [
+      "Diktatur.",
+      "Demokratie.",
+      "Monarchie.",
+      "Räterepublik."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 159,
+    "question": "Was gab es in Deutschland nicht während der Zeit des Nationalsozialismus?",
+    "answers": [
+      "freie Wahlen",
+      "Pressezensur",
+      "willkürliche Verhaftungen",
+      "Verfolgung der Juden"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 160,
+    "question": "Welcher Krieg dauerte von 1939 bis 1945?",
+    "answers": [
+      "der Erste Weltkrieg",
+      "der Zweite Weltkrieg",
+      "der Vietnamkrieg",
+      "der Golfkrieg"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 161,
+    "question": "Was kennzeichnete den NS-Staat? Eine Politik …",
+    "answers": [
+      "des staatlichen Rassismus",
+      "der Meinungsfreiheit",
+      "der allgemeinen Religionsfreiheit",
+      "der Entwicklung der Demokratie"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 162,
+    "question": "Claus Schenk Graf von Stauffenberg wurde bekannt durch …",
+    "answers": [
+      "eine Goldmedaille bei den Olympischen Spielen 1936.",
+      "den Bau des Reichstagsgebäudes.",
+      "den Aufbau der Wehrmacht.",
+      "das Attentat auf Hitler am 20. Juli 1944."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 163,
+    "question": "In welchem Jahr zerstörten die Nationalsozialisten Synagogen und jüdische Geschäfte in Deutschland?",
+    "answers": [
+      "1925",
+      "1930",
+      "1938",
+      "1945"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 164,
+    "question": "Was passierte am 9. November 1938 in Deutschland?",
+    "answers": [
+      "Mit dem Angriff auf Polen beginnt der Zweite Weltkrieg.",
+      "Die Nationalsozialisten verlieren eine Wahl und lösen den Reichstag auf.",
+      "Jüdische Geschäfte und Synagogen werden durch Nationalsozialisten und ihre Anhänger zerstört.",
+      "Hitler wird Reichspräsident und lässt alle Parteien verbieten."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 165,
+    "question": "Wie hieß der erste Bundeskanzler der Bundesrepublik Deutschland?",
+    "answers": [
+      "Konrad Adenauer",
+      "Kurt Georg Kiesinger",
+      "Helmut Schmidt",
+      "Willy Brandt"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 166,
+    "question": "Bei welchen Demonstrationen in Deutschland riefen die Menschen „Wir sind das Volk“?",
+    "answers": [
+      "bei den Montagsdemonstrationen 1989 in der DDR",
+      "beim Arbeiteraufstand 1953 in der DDR",
+      "bei den Demonstrationen 1968 in der Bundesrepublik Deutschland",
+      "bei den Anti-Atomkraft-Demonstrationen 1985 in der Bundesrepublik Deutschland"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 167,
+    "question": "Welche Länder wurden nach dem Zweiten Weltkrieg in Deutschland als „Alliierte Besatzungsmächte“ bezeichnet?",
+    "answers": [
+      "Sowjetunion, Großbritannien, Polen, Schweden",
+      "Frankreich, Sowjetunion, Italien, Japan",
+      "USA, Sowjetunion, Spanien, Portugal",
+      "USA, Sowjetunion, Großbritannien, Frankreich"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 168,
+    "question": "Welches Land war keine „Alliierte Besatzungsmacht“ in Deutschland?",
+    "answers": [
+      "USA",
+      "Sowjetunion",
+      "Frankreich",
+      "Japan"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 169,
+    "question": "Wann wurde die Bundesrepublik Deutschland gegründet?",
+    "answers": [
+      "1939",
+      "1945",
+      "1949",
+      "1951"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 170,
+    "question": "Was gab es während der Zeit des Nationalsozialismus in Deutschland?",
+    "answers": [
+      "das Recht zur freien Entfaltung der Persönlichkeit",
+      "Pressefreiheit",
+      "das Verbot von Parteien",
+      "den Schutz der Menschenwürde"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 171,
+    "question": "Soziale Marktwirtschaft bedeutet, die Wirtschaft …",
+    "answers": [
+      "steuert sich allein nach Angebot und Nachfrage.",
+      "wird vom Staat geplant und gesteuert, Angebot und Nachfrage werden nicht berücksichtigt.",
+      "richtet sich nach der Nachfrage im Ausland.",
+      "richtet sich nach Angebot und Nachfrage, aber der Staat sorgt für einen sozialen Ausgleich."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 172,
+    "question": "In welcher Besatzungszone wurde die DDR gegründet? In der …",
+    "answers": [
+      "amerikanischen Besatzungszone.",
+      "französischen Besatzungszone.",
+      "britischen Besatzungszone.",
+      "sowjetischen Besatzungszone."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 173,
+    "question": "Die Bundesrepublik Deutschland ist ein Gründungsmitglied …",
+    "answers": [
+      "des Nordatlantikpakts (NATO).",
+      "der Vereinten Nationen (VN).",
+      "der Europäischen Union (EU).",
+      "des Warschauer Pakts."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 174,
+    "question": "Wann wurde die DDR gegründet?",
+    "answers": [
+      "1947",
+      "1949",
+      "1953",
+      "1956"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 175,
+    "question": "Wie viele Besatzungszonen gab es in Deutschland nach dem Zweiten Weltkrieg?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 176,
+    "question": "Wie waren die Besatzungszonen Deutschlands nach 1945 verteilt?",
+    "answers": [
+      "1=Großbritannien, 2=Sowjetunion, 3=Frankreich, 4=USA",
+      "1=Sowjetunion, 2=Großbritannien, 3=USA, 4=Frankreich",
+      "1=Großbritannien, 2=Sowjetunion, 3=USA, 4=Frankreich",
+      "1=Großbritannien, 2=USA, 3=Sowjetunion, 4=Frankreich"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 177,
+    "question": "Welche deutsche Stadt wurde nach dem Zweiten Weltkrieg in vier Sektoren aufgeteilt?",
+    "answers": [
+      "München",
+      "Berlin",
+      "Dresden",
+      "Frankfurt/Oder"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 178,
+    "question": "Vom Juni 1948 bis zum Mai 1949 wurden die Bürger und Bürgerinnen von West-Berlin durch eine Luftbrücke versorgt. Welcher Umstand war dafür verantwortlich?",
+    "answers": [
+      "Für Frankreich war eine Versorgung der West-Berliner Bevölkerung mit dem Flugzeug kostengünstiger.",
+      "Die amerikanischen Soldaten / Soldatinnen hatten beim Landtransport Angst vor Überfällen.",
+      "Für Großbritannien war die Versorgung über die Luftbrücke schneller.",
+      "Die Sowjetunion unterbrach den gesamten Verkehr auf dem Landwege."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 179,
+    "question": "Wie endete der Zweite Weltkrieg in Europa offiziell?",
+    "answers": [
+      "mit dem Tod Adolf Hitlers",
+      "durch die bedingungslose Kapitulation Deutschlands",
+      "mit dem Rückzug der Deutschen aus den besetzten Gebieten",
+      "durch eine Revolution in Deutschland"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 180,
+    "question": "Der erste Bundeskanzler der Bundesrepublik Deutschland war …",
+    "answers": [
+      "Ludwig Erhard.",
+      "Willy Brandt.",
+      "Konrad Adenauer.",
+      "Gerhard Schröder."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 181,
+    "question": "Was wollte Willy Brandt mit seinem Kniefall 1970 im ehemaligen jüdischen Ghetto in Warschau ausdrücken?",
+    "answers": [
+      "Er hat sich den ehemaligen Alliierten unterworfen.",
+      "Er bat Polen und die polnischen Juden um Vergebung.",
+      "Er zeigte seine Demut vor dem Warschauer Pakt.",
+      "Er sprach ein Gebet am Grab des Unbekannten Soldaten."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 182,
+    "question": "Welche Parteien wurden 1946 zwangsweise zur SED vereint, der Einheitspartei der späteren DDR?",
+    "answers": [
+      "KPD und SPD",
+      "SPD und CDU",
+      "CDU und FDP",
+      "KPD und CSU"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 183,
+    "question": "Wann war in der Bundesrepublik Deutschland das „Wirtschaftswunder“?",
+    "answers": [
+      "40er Jahre",
+      "50er Jahre",
+      "70er Jahre",
+      "80er Jahre"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 184,
+    "question": "Was nannten die Menschen in Deutschland sehr lange „Die Stunde Null“?",
+    "answers": [
+      "Damit wird die Zeit nach der Wende im Jahr 1989 bezeichnet.",
+      "Damit wurde der Beginn des Zweiten Weltkrieges bezeichnet.",
+      "Darunter verstand man das Ende des Zweiten Weltkrieges und den Beginn des Wiederaufbaus.",
+      "Damit ist die Stunde gemeint, in der die Uhr von der Sommerzeit auf die Winterzeit umgestellt wird."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 185,
+    "question": "Wofür stand der Ausdruck „Eiserner Vorhang“? Für die Abschottung …",
+    "answers": [
+      "des Warschauer Pakts gegen den Westen.",
+      "Norddeutschlands gegen Süddeutschland.",
+      "Nazi-Deutschlands gegen die Alliierten.",
+      "Europas gegen die USA."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 186,
+    "question": "Im Jahr 1953 gab es in der DDR einen Aufstand, an den lange Zeit in der Bundesrepublik Deutschland ein Feiertag erinnerte. Wann war das?",
+    "answers": [
+      "1. Mai",
+      "17. Juni",
+      "20. Juli",
+      "9. November"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 187,
+    "question": "Welcher deutsche Staat hatte eine schwarz-rot-goldene Flagge mit Hammer, Zirkel und Ährenkranz?",
+    "answers": [
+      "Preußen",
+      "Bundesrepublik Deutschland",
+      "DDR",
+      "„Drittes Reich“"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 188,
+    "question": "In welchem Jahr wurde die Mauer in Berlin gebaut?",
+    "answers": [
+      "1953",
+      "1956",
+      "1959",
+      "1961"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 189,
+    "question": "Wann baute die DDR die Mauer in Berlin?",
+    "answers": [
+      "1919",
+      "1933",
+      "1961",
+      "1990"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 190,
+    "question": "Was bedeutet die Abkürzung DDR?",
+    "answers": [
+      "Dritter Deutscher Rundfunk",
+      "Die Deutsche Republik",
+      "Dritte Deutsche Republik",
+      "Deutsche Demokratische Republik"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 191,
+    "question": "Wann wurde die Mauer in Berlin für alle geöffnet?",
+    "answers": [
+      "1987",
+      "1989",
+      "1992",
+      "1995"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 192,
+    "question": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Brandenburg",
+      "Bayern",
+      "Saarland",
+      "Hessen"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 193,
+    "question": "Von 1961 bis 1989 war Berlin …",
+    "answers": [
+      "ohne Bürgermeister.",
+      "ein eigener Staat.",
+      "durch eine Mauer geteilt.",
+      "nur mit dem Flugzeug erreichbar."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 194,
+    "question": "Am 3. Oktober feiert man in Deutschland den Tag der Deutschen …",
+    "answers": [
+      "Einheit.",
+      "Nation.",
+      "Bundesländer.",
+      "Städte."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 195,
+    "question": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Hessen",
+      "Sachsen-Anhalt",
+      "Nordrhein-Westfalen",
+      "Saarland"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 196,
+    "question": "Warum nennt man die Zeit im Herbst 1989 in der DDR „Die Wende“? In dieser Zeit veränderte sich die DDR politisch …",
+    "answers": [
+      "von einer Diktatur zur Demokratie.",
+      "von einer liberalen Marktwirtschaft zum Sozialismus.",
+      "von einer Monarchie zur Sozialdemokratie.",
+      "von einem religiösen Staat zu einem kommunistischen Staat."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 197,
+    "question": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Thüringen",
+      "Hessen",
+      "Bayern",
+      "Bremen"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 198,
+    "question": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Bayern",
+      "Niedersachsen",
+      "Sachsen",
+      "Baden-Württemberg"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 199,
+    "question": "Mit der Abkürzung „Stasi“ meinte man in der DDR …",
+    "answers": [
+      "das Parlament.",
+      "das Ministerium für Staatssicherheit.",
+      "eine regierende Partei.",
+      "das Ministerium für Volksbildung."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 200,
+    "question": "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?",
+    "answers": [
+      "Hessen",
+      "Schleswig-Holstein",
+      "Mecklenburg-Vorpommern",
+      "Saarland"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 201,
+    "question": "Welche der folgenden Auflistungen enthält nur Bundesländer, die zum Gebiet der früheren DDR gehörten?",
+    "answers": [
+      "Niedersachsen, Nordrhein-Westfalen, Hessen, Schleswig-Holstein, Brandenburg",
+      "Mecklenburg-Vorpommern, Brandenburg, Sachsen, Sachsen-Anhalt, Thüringen",
+      "Bayern, Baden-Württemberg, Rheinland-Pfalz, Thüringen, Sachsen",
+      "Sachsen, Thüringen, Hessen, Niedersachsen, Brandenburg"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 202,
+    "question": "Zu wem gehörte die DDR im „Kalten Krieg“?",
+    "answers": [
+      "zu den Westmächten",
+      "zum Warschauer Pakt",
+      "zur NATO",
+      "zu den blockfreien Staaten"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 203,
+    "question": "Wie hieß das Wirtschaftssystem der DDR?",
+    "answers": [
+      "Marktwirtschaft",
+      "Planwirtschaft",
+      "Angebot und Nachfrage",
+      "Kapitalismus"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 204,
+    "question": "Wie wurden die Bundesrepublik Deutschland und die DDR zu einem Staat?",
+    "answers": [
+      "Die Bundesrepublik Deutschland hat die DDR besetzt.",
+      "Die heutigen fünf östlichen Bundesländer sind der Bundesrepublik Deutschland beigetreten.",
+      "Die westlichen Bundesländer sind der DDR beigetreten.",
+      "Die DDR hat die Bundesrepublik Deutschland besetzt."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 205,
+    "question": "Mit dem Beitritt der DDR zur Bundesrepublik Deutschland gehören die neuen Bundesländer nun auch …",
+    "answers": [
+      "zur Europäischen Union.",
+      "zum Warschauer Pakt.",
+      "zur OPEC.",
+      "zur Europäischen Verteidigungsgemeinschaft."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 206,
+    "question": "Was bedeutete im Jahr 1989 in Deutschland das Wort „Montagsdemonstration“?",
+    "answers": [
+      "In der Bundesrepublik waren Demonstrationen nur am Montag erlaubt.",
+      "Montags waren Demonstrationen gegen das DDR-Regime.",
+      "Am ersten Montag im Monat trafen sich in der Bundesrepublik Deutschland Demonstranten.",
+      "Montags demonstrierte man in der DDR gegen den Westen."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 207,
+    "question": "In welchem Militärbündnis war die DDR Mitglied?",
+    "answers": [
+      "in der NATO",
+      "im Rheinbund",
+      "im Warschauer Pakt",
+      "im Europabündnis"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 208,
+    "question": "Was war die „Stasi“?",
+    "answers": [
+      "der Geheimdienst im „Dritten Reich“",
+      "eine berühmte deutsche Gedenkstätte",
+      "der Geheimdienst der DDR",
+      "ein deutscher Sportverein während des Zweiten Weltkrieges"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 209,
+    "question": "Welches war das Wappen der Deutschen Demokratischen Republik?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 210,
+    "question": "Was ereignete sich am 17. Juni 1953 in der DDR?",
+    "answers": [
+      "der feierliche Beitritt zum Warschauer Pakt",
+      "landesweite Streiks und ein Volksaufstand",
+      "der 1. SED-Parteitag",
+      "der erste Besuch Fidel Castros"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 211,
+    "question": "Welcher Politiker steht für die „Ostverträge“?",
+    "answers": [
+      "Helmut Kohl",
+      "Willy Brandt",
+      "Michail Gorbatschow",
+      "Ludwig Erhard"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 212,
+    "question": "Wie heißt Deutschland mit vollem Namen?",
+    "answers": [
+      "Bundesstaat Deutschland",
+      "Bundesländer Deutschland",
+      "Bundesrepublik Deutschland",
+      "Bundesbezirk Deutschland"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 213,
+    "question": "Wie viele Einwohner hat Deutschland?",
+    "answers": [
+      "70 Millionen",
+      "78 Millionen",
+      "83 Millionen",
+      "90 Millionen"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 214,
+    "question": "Welche Farben hat die deutsche Flagge?",
+    "answers": [
+      "schwarz-rot-gold",
+      "rot-weiß-schwarz",
+      "schwarz-rot-grün",
+      "schwarz-gelb-rot"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 215,
+    "question": "Wer wird als „Kanzler der Deutschen Einheit“ bezeichnet?",
+    "answers": [
+      "Gerhard Schröder",
+      "Helmut Kohl",
+      "Konrad Adenauer",
+      "Helmut Schmidt"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 216,
+    "question": "Welches Symbol ist im Plenarsaal des Deutschen Bundestages zu sehen?",
+    "answers": [
+      "Eine Aufnahme im Plenarsaal des Deutschen Bundestages. Im Hintergrund sieht man das hier gefragte Symbol.",
+      "die Fahne der Stadt Berlin",
+      "der Bundesadler",
+      "der Reichsadler",
+      "die Reichskrone"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 217,
+    "question": "In welchem Zeitraum gab es die Deutsche Demokratische Republik (DDR)?",
+    "answers": [
+      "1919 bis 1927",
+      "1933 bis 1945",
+      "1949 bis 1990",
+      "1945 bis 1961"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 218,
+    "question": "Wie viele Bundesländer kamen bei der Wiedervereinigung 1990 zur Bundesrepublik Deutschland hinzu?",
+    "answers": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 219,
+    "question": "Die Bundesrepublik Deutschland hat die Grenzen von heute seit …",
+    "answers": [
+      "1933.",
+      "1949.",
+      "1971.",
+      "1990."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 220,
+    "question": "Der 27. Januar ist in Deutschland ein offizieller Gedenktag. Woran erinnert dieser Tag?",
+    "answers": [
+      "an das Ende des Zweiten Weltkrieges",
+      "an die Verabschiedung des Grundgesetzes",
+      "an die Wiedervereinigung Deutschlands",
+      "an die Opfer des Nationalsozialismus"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 221,
+    "question": "Deutschland ist Mitglied des Schengener Abkommens. Was bedeutet das?",
+    "answers": [
+      "Deutsche können in viele Länder Europas ohne Passkontrolle reisen.",
+      "Alle Menschen können ohne Personenkontrolle in Deutschland einreisen.",
+      "Deutsche können ohne Passkontrolle in jedes Land reisen.",
+      "Deutsche können in jedem Land mit dem Euro bezahlen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 222,
+    "question": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Ungarn",
+      "Portugal",
+      "Spanien",
+      "Schweiz"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 223,
+    "question": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Rumänien",
+      "Bulgarien",
+      "Polen",
+      "Griechenland"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 224,
+    "question": "Was bedeutet die Abkürzung EU?",
+    "answers": [
+      "Europäische Unternehmen",
+      "Europäische Union",
+      "Einheitliche Union",
+      "Euro Union"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 225,
+    "question": "In welchem anderen Land gibt es eine große deutschsprachige Bevölkerung?",
+    "answers": [
+      "Tschechien",
+      "Norwegen",
+      "Spanien",
+      "Österreich"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 226,
+    "question": "Welche ist die Flagge der Europäischen Union?",
+    "answers": [
+      "2",
+      "1",
+      "4",
+      "3"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 227,
+    "question": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Finnland",
+      "Dänemark",
+      "Norwegen",
+      "Schweden"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 228,
+    "question": "Wie wird der Beitritt der DDR zur Bundesrepublik Deutschland im Jahr 1990 allgemein genannt?",
+    "answers": [
+      "NATO-Osterweiterung",
+      "EU-Osterweiterung",
+      "Europäische Gemeinschaft",
+      "Deutsche Wiedervereinigung"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 229,
+    "question": "Welches Land ist ein Nachbarland von Deutschland?",
+    "answers": [
+      "Spanien",
+      "Bulgarien",
+      "Norwegen",
+      "Luxemburg"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 230,
+    "question": "Das Europäische Parlament wird regelmäßig gewählt, nämlich alle …",
+    "answers": [
+      "5 Jahre.",
+      "6 Jahre.",
+      "7 Jahre.",
+      "8 Jahre."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  }
+]

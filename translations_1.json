@@ -1,0 +1,1842 @@
+{
+  "1": {
+    "question_en": "In Germany, people are allowed to openly say something against the government because …",
+    "question_ar": "فألمانيا، الإنسان يقدر يهضر علنا ضد الحكومة حيت …",
+    "answers_en": [
+      "freedom of religion applies here.",
+      "people pay taxes.",
+      "people have the right to vote.",
+      "freedom of opinion applies here."
+    ],
+    "answers_ar": [
+      "الحرية الدينية كاتطبق هنا.",
+      "الناس كيدفعو الضرائب.",
+      "الناس عندهم حق التصويت.",
+      "الحرية ديال الرأي كاتطبق هنا."
+    ]
+  },
+  "2": {
+    "question_en": "In Germany, parents can decide until their child is 14 years old whether they participate in school in …",
+    "question_ar": "فألمانيا، الوالدين يقدرو يقررو حتى الولد يوصل لـ 14 عام إلا كان غادي يشارك ف…",
+    "answers_en": [
+      "history class.",
+      "religion class.",
+      "politics class.",
+      "language class."
+    ],
+    "answers_ar": [
+      "درس التاريخ.",
+      "درس الدين.",
+      "درس السياسة.",
+      "درس اللغة."
+    ]
+  },
+  "3": {
+    "question_en": "Germany is a constitutional state. What does that mean?",
+    "question_ar": "ألمانيا دولة قانونية. شنو كيعني هادشي؟",
+    "answers_en": [
+      "All residents and the state must obey the laws.",
+      "The state does not have to obey the laws.",
+      "Only Germans have to follow the laws.",
+      "The courts make the laws."
+    ],
+    "answers_ar": [
+      "جميع السكان والدولة خاصهم يحتارمو القوانين.",
+      "الدولة مخصهاش تحتارم القوانين.",
+      "غير الألمان خاصهم يتبعو القوانين.",
+      "المحاكم هي لي كاتصنع القوانين."
+    ]
+  },
+  "4": {
+    "question_en": "Which right is one of the fundamental rights in Germany?",
+    "question_ar": "شنو من حق كيعتبر من الحقوق الأساسية فألمانيا؟",
+    "answers_en": [
+      "Possession of weapons",
+      "The right of the fist",
+      "Freedom of opinion",
+      "Vigilantism"
+    ],
+    "answers_ar": [
+      "حيازة السلاح",
+      "حق القوة (العنف)",
+      "الحرية ديال الرأي",
+      "العدالة الذاتية"
+    ]
+  },
+  "5": {
+    "question_en": "Elections in Germany are free. What does that mean?",
+    "question_ar": "الانتخابات فألمانيا حرة. شنو كيعني هادشي؟",
+    "answers_en": [
+      "You may accept money if you vote for a certain candidate.",
+      "The voter may not be influenced or forced to vote a certain way and must not suffer any disadvantages from the vote.",
+      "Only people who have never been in prison may vote.",
+      "All eligible persons must vote."
+    ],
+    "answers_ar": [
+      "يمكنك تقبل الفلوس إلا صوتيت على مرشح معين.",
+      "الناخب مايمكنش يتأثر أو يتكره باش يصوت بشكل معين وما خاصوش يتضرر من التصويت.",
+      "غير الناس لي مامشيوش للحبس يقدرو يصوتو.",
+      "جميع الناس المؤهلين خاصهم يصوتو."
+    ]
+  },
+  "6": {
+    "question_en": "What is the German constitution called?",
+    "question_ar": "شنو كيسميو الدستور ديال ألمانيا؟",
+    "answers_en": [
+      "People's Law",
+      "Federal Law",
+      "German Law",
+      "Basic Law"
+    ],
+    "answers_ar": [
+      "قانون الشعب",
+      "القانون الاتحادي",
+      "القانون الألماني",
+      "القانون الأساسي"
+    ]
+  },
+  "7": {
+    "question_en": "Which right is one of the fundamental rights guaranteed by the German constitution? The right to …",
+    "question_ar": "شنو من حق كيعتبر من الحقوق الأساسية لي كيضمنها القانون الأساسي ديال ألمانيا؟ الحق ف…",
+    "answers_en": [
+      "freedom of belief and conscience.",
+      "entertainment.",
+      "work.",
+      "housing."
+    ],
+    "answers_ar": [
+      "الحرية ديال المعتقد والضمير.",
+      "الترفيه.",
+      "الشغل.",
+      "السكن."
+    ]
+  },
+  "8": {
+    "question_en": "What is NOT in the German Basic Law?",
+    "question_ar": "شنو ماموجودش فالقانون الأساسي ديال ألمانيا؟",
+    "answers_en": [
+      "Human dignity is inviolable.",
+      "Everyone should have the same amount of money.",
+      "Every person may express their opinion.",
+      "All are equal before the law."
+    ],
+    "answers_ar": [
+      "الكرامة الإنسانية غير قابلة للانتهاك.",
+      "الجميع خاصهم يكون عندهم نفس المبلغ ديال الفلوس.",
+      "كل إنسان يقدر يعبر على رأيه.",
+      "الجميع سواسية أمام القانون."
+    ]
+  },
+  "9": {
+    "question_en": "Which fundamental right in Germany applies only to foreigners? The fundamental right to …",
+    "question_ar": "شنو من حق أساسي فألمانيا كاين غير للأجانب؟ الحق الأساسي ف…",
+    "answers_en": [
+      "protection of the family",
+      "human dignity",
+      "asylum",
+      "freedom of opinion"
+    ],
+    "answers_ar": [
+      "حماية العائلة",
+      "الكرامة الإنسانية",
+      "اللجوء",
+      "الحرية ديال الرأي"
+    ]
+  },
+  "10": {
+    "question_en": "What is compatible with the German Basic Law?",
+    "question_ar": "شنو متوافق مع القانون الأساسي ديال ألمانيا؟",
+    "answers_en": [
+      "corporal punishment",
+      "torture",
+      "the death penalty",
+      "a fine"
+    ],
+    "answers_ar": [
+      "العقوبة الجسدية (الضرب)",
+      "التعذيب",
+      "عقوبة الإعدام",
+      "غرامة مالية"
+    ]
+  },
+  "11": {
+    "question_en": "What is the constitution of the Federal Republic of Germany called?",
+    "question_ar": "شنو كيسميو الدستور ديال جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "Basic Law",
+      "Federal Constitution",
+      "Code of Laws",
+      "Constitutional Treaty"
+    ],
+    "answers_ar": [
+      "القانون الأساسي",
+      "الدستور الاتحادي",
+      "مجموعة القوانين",
+      "معاهدة دستورية"
+    ]
+  },
+  "12": {
+    "question_en": "A party in the German Bundestag wants to abolish freedom of the press. Is that possible?",
+    "question_ar": "حزب فالبرلمان الألماني (البوندستاغ) باغي يلغي حرية الصحافة. واش هادشي ممكن؟",
+    "answers_en": [
+      "Yes, if more than half of the members of the Bundestag are in favor.",
+      "Yes, but two-thirds of the members of the Bundestag must be in favor.",
+      "No, because freedom of the press is a fundamental right. It cannot be abolished.",
+      "No, because only the Bundesrat can abolish freedom of the press."
+    ],
+    "answers_ar": [
+      "أييه، إلا أكثر من نصف أعضاء البوندستاغ وافقو.",
+      "أييه، ولكن خاص ثلثي أعضاء البوندستاغ يوافقو.",
+      "لا، حيت حرية الصحافة حق أساسي. مايمكنش تتلغى.",
+      "لا، حيت غير المجلس الاتحادي (البوندسرات) يقدر يلغي حرية الصحافة."
+    ]
+  },
+  "13": {
+    "question_en": "In parliament, the term 'Opposition' stands for…",
+    "question_ar": "فالبرلمان، مصطلح \"المعارضة\" كيعني…",
+    "answers_en": [
+      "the governing parties.",
+      "all members of parliament who do not belong to the governing party/parties.",
+      "the parliamentary group with the most members.",
+      "all parties that were able to reach the 5% threshold in the last election."
+    ],
+    "answers_ar": [
+      "الأحزاب لي كتحكم.",
+      "جميع النواب لي مابينش للحزب/الأحزاب الحاكمة.",
+      "الكتلة النيابية لي عندها أكبر عدد ديال النواب.",
+      "جميع الأحزاب لي قدرو يوصلو لنسبة 5% فالانتخابات الأخيرة."
+    ]
+  },
+  "14": {
+    "question_en": "Freedom of opinion in Germany means that I …",
+    "question_ar": "الحرية ديال الرأي فألمانيا كتعني أنني …",
+    "answers_en": [
+      "may insult passers-by on the street.",
+      "can express my opinion in letters to the editor.",
+      "may wear Nazi symbols.",
+      "may express my opinion as long as I do not disagree with the government."
+    ],
+    "answers_ar": [
+      "نقدر نسب المارة فالشارع.",
+      "نقدر نعبر على رأيي فرسايل القراء.",
+      "نقدر نلبس رموز نازية.",
+      "نقدر نهضر على رأيي مالم نعارضش الحكومة."
+    ]
+  },
+  "15": {
+    "question_en": "What does the German Basic Law prohibit?",
+    "question_ar": "شنو كيمنع القانون الأساسي ديال ألمانيا؟",
+    "answers_en": [
+      "Military service",
+      "Forced labor",
+      "Free choice of profession",
+      "Work abroad"
+    ],
+    "answers_ar": [
+      "الخدمة العسكرية",
+      "العمل القسري",
+      "الاختيار الحر للمهنة",
+      "الشغل فالخارج"
+    ]
+  },
+  "16": {
+    "question_en": "When is freedom of opinion restricted in Germany?",
+    "question_ar": "فنوقاتاش كتكون الحرية ديال الرأي محدودة فألمانيا؟",
+    "answers_en": [
+      "when false claims about individual persons are publicly spread",
+      "when expressing opinions about the federal government",
+      "when discussing religions",
+      "when criticizing the state"
+    ],
+    "answers_ar": [
+      "فلوقت لي كينتشروا ادعاءات كاذبة على أشخاص معينين علنا",
+      "فلوقت لي كيعبرو على آراء حول الحكومة الاتحادية",
+      "فلوقت لي كيهضرو على الأديان",
+      "فلوقت لي كينتقدو الدولة"
+    ]
+  },
+  "17": {
+    "question_en": "German laws prohibit …",
+    "question_ar": "القوانين الألمانية كتمنع …",
+    "answers_en": [
+      "freedom of opinion of the residents.",
+      "petitions from citizens.",
+      "freedom of assembly of the residents.",
+      "unequal treatment of citizens by the state."
+    ],
+    "answers_ar": [
+      "الحرية ديال الرأي للسكان.",
+      "العريضات (الطلبات) ديال المواطنين.",
+      "الحرية ديال التجمع للسكان.",
+      "المعاملة غير المتساوية للمواطنين من طرف الدولة."
+    ]
+  },
+  "18": {
+    "question_en": "Which fundamental right is guaranteed in Article 1 of the Basic Law of the Federal Republic of Germany?",
+    "question_ar": "شنو من حق أساسي مضمون فالمادة 1 ديال القانون الأساسي ديال جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "the inviolability of human dignity",
+      "the right to life",
+      "freedom of religion",
+      "freedom of opinion"
+    ],
+    "answers_ar": [
+      "عدم جواز انتهاك الكرامة الإنسانية",
+      "الحق فالحياة",
+      "الحرية الدينية",
+      "الحرية ديال الرأي"
+    ]
+  },
+  "19": {
+    "question_en": "What is meant by the right of 'freedom of movement' in Germany?",
+    "question_ar": "شنو كيعني حق \"الحرية ديال التنقل\" فألمانيا؟",
+    "answers_en": [
+      "You may choose your own place of residence.",
+      "You can change your profession.",
+      "You may choose a different religion.",
+      "You may move around in public only lightly dressed."
+    ],
+    "answers_ar": [
+      "تقدر تختار بلاصة سكناك بنفسك.",
+      "تقدر تبدل المهنة ديالك.",
+      "تقدر تختار دين آخر.",
+      "تقدر تتحرك فالأماكن العامة غير بلباس خفيف."
+    ]
+  },
+  "20": {
+    "question_en": "A party in Germany pursues the goal of establishing a dictatorship. It is then …",
+    "question_ar": "حزب فألمانيا كيسعى باش ينصب ديكتاتورية. فهاد الحالة هو …",
+    "answers_en": [
+      "tolerant.",
+      "oriented towards the rule of law.",
+      "law-abiding.",
+      "unconstitutional."
+    ],
+    "answers_ar": [
+      "متسامح.",
+      "متجه نحو دولة القانون.",
+      "يحتارم القانون.",
+      "مخالف للدستور."
+    ]
+  },
+  "21": {
+    "question_en": "Which is the coat of arms of the Federal Republic of Germany?",
+    "question_ar": "شنو هو شعار ديال جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answers_ar": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  "22": {
+    "question_en": "What form of government does Germany have?",
+    "question_ar": "شنو هو شكل الحكم فألمانيا؟",
+    "answers_en": [
+      "Monarchy",
+      "Dictatorship",
+      "Republic",
+      "Principality"
+    ],
+    "answers_ar": [
+      "ملكية",
+      "ديكتاتورية",
+      "جمهورية",
+      "إمارة"
+    ]
+  },
+  "23": {
+    "question_en": "In Germany, most employed people are …",
+    "question_ar": "فألمانيا، أغلبية الناس لي خدامين هم …",
+    "answers_en": [
+      "employed at a company or government authority.",
+      "employed in small family businesses.",
+      "working voluntarily for a federal state.",
+      "self-employed with their own company."
+    ],
+    "answers_ar": [
+      "خدامين فشركة أو إدارة حكومية.",
+      "خدامين فمشاريع عائلية صغيرة.",
+      "كيخدمو تطوعيا لصالح ولاية فدرالية.",
+      "كيخدمو لراسهم فشركة خاصة بهم."
+    ]
+  },
+  "24": {
+    "question_en": "How many federal states does the Federal Republic of Germany have?",
+    "question_ar": "شحال من ولاية فدرالية عند جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "14",
+      "15",
+      "16",
+      "17"
+    ],
+    "answers_ar": [
+      "14",
+      "15",
+      "16",
+      "17"
+    ]
+  },
+  "25": {
+    "question_en": "What is NOT a federal state of the Federal Republic of Germany?",
+    "question_ar": "شنو ماشي ولاية فدرالية ديال جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "North Rhine-Westphalia",
+      "Alsace-Lorraine",
+      "Mecklenburg-Western Pomerania",
+      "Saxony-Anhalt"
+    ],
+    "answers_ar": [
+      "شمال الراين-وستفاليا",
+      "الألزاس-لورين",
+      "مكلنبورغ-فوربومرن",
+      "ساكسونيا-أنهالت"
+    ]
+  },
+  "26": {
+    "question_en": "Germany is …",
+    "question_ar": "ألمانيا هي …",
+    "answers_en": [
+      "a communist republic.",
+      "a democratic and social federal state.",
+      "a capitalist and social monarchy.",
+      "a social and socialist federal state."
+    ],
+    "answers_ar": [
+      "جمهورية شيوعية.",
+      "دولة اتحادية ديموقراطية واجتماعية.",
+      "ملكية رأسمالية واجتماعية.",
+      "دولة اتحادية اشتراكية واجتماعية."
+    ]
+  },
+  "27": {
+    "question_en": "Germany is …",
+    "question_ar": "ألمانيا هي …",
+    "answers_en": [
+      "a socialist state.",
+      "a federal state.",
+      "a dictatorship.",
+      "a monarchy."
+    ],
+    "answers_ar": [
+      "دولة اشتراكية.",
+      "دولة اتحادية.",
+      "ديكتاتورية.",
+      "ملكية."
+    ]
+  },
+  "28": {
+    "question_en": "Who elects the members of the Bundestag in Germany?",
+    "question_ar": "شكون كيختار أعضاء البوندستاغ فألمانيا؟",
+    "answers_en": [
+      "the military",
+      "the economy",
+      "the eligible voters",
+      "the administration"
+    ],
+    "answers_ar": [
+      "الجيش",
+      "الاقتصاد",
+      "الناس لي عندهم حق التصويت",
+      "الإدارة"
+    ]
+  },
+  "29": {
+    "question_en": "Which animal is the heraldic animal of the Federal Republic of Germany?",
+    "question_ar": "شنو هو الحيوان الشعار ديال جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "Lion",
+      "Eagle",
+      "Bear",
+      "Horse"
+    ],
+    "answers_ar": [
+      "الأسد",
+      "النسر",
+      "الدب",
+      "الحصان"
+    ]
+  },
+  "30": {
+    "question_en": "What is NOT a characteristic of our democracy?",
+    "question_ar": "شنو ماشي من خاصيات الديموقراطية ديالنا؟",
+    "answers_en": [
+      "regular elections",
+      "press censorship",
+      "freedom of opinion",
+      "different parties"
+    ],
+    "answers_ar": [
+      "انتخابات منتظمة",
+      "رقابة على الصحافة",
+      "الحرية ديال الرأي",
+      "أحزاب مختلفة"
+    ]
+  },
+  "31": {
+    "question_en": "The cooperation of parties to form a government is called in Germany …",
+    "question_ar": "التعاون بين الأحزاب باش يشكلوا حكومة كيسميوه فألمانيا …",
+    "answers_en": [
+      "Unity.",
+      "Coalition.",
+      "Ministry.",
+      "Parliamentary group."
+    ],
+    "answers_ar": [
+      "وحدة.",
+      "تحالف.",
+      "وزارة.",
+      "كتلة نيابية."
+    ]
+  },
+  "32": {
+    "question_en": "What is NOT a branch of state power in Germany?",
+    "question_ar": "شنو ماشي من السلطات ديال الدولة فألمانيا؟",
+    "answers_en": [
+      "Legislation",
+      "Government",
+      "Press",
+      "Judiciary"
+    ],
+    "answers_ar": [
+      "التشريع",
+      "الحكومة",
+      "الصحافة",
+      "القضاء"
+    ]
+  },
+  "33": {
+    "question_en": "Which statement is correct? In Germany …",
+    "question_ar": "شنو من عبارة صحيحة؟ فألمانيا …",
+    "answers_en": [
+      "state and religious communities are separate from each other.",
+      "religious communities form the state.",
+      "the state is dependent on religious communities.",
+      "state and religious communities form a unit."
+    ],
+    "answers_ar": [
+      "الدولة والجماعات الدينية منفصلين على بعضياتهم.",
+      "الجماعات الدينية كتشكل الدولة.",
+      "الدولة معتمدة على الجماعات الدينية.",
+      "الدولة والجماعات الدينية كتشكل وحدة."
+    ]
+  },
+  "34": {
+    "question_en": "What is Germany NOT?",
+    "question_ar": "ألمانيا ما هي …؟",
+    "answers_en": [
+      "a democracy",
+      "a constitutional state",
+      "a monarchy",
+      "a welfare state"
+    ],
+    "answers_ar": [
+      "ديموقراطية",
+      "دولة قانونية",
+      "ملكية",
+      "دولة اجتماعية"
+    ]
+  },
+  "35": {
+    "question_en": "How does the German state finance social insurance?",
+    "question_ar": "كيفاش الدولة الألمانية كتمول الضمان الاجتماعي؟",
+    "answers_en": [
+      "Church taxes",
+      "Social security contributions",
+      "Donations",
+      "Association fees"
+    ],
+    "answers_ar": [
+      "ضرائب الكنيسة",
+      "الاشتراكات الاجتماعية",
+      "التبرعات",
+      "رسوم الجمعيات"
+    ]
+  },
+  "36": {
+    "question_en": "Which measure creates social security in Germany?",
+    "question_ar": "شنو من إجراء كيطلق الأمان الاجتماعي فألمانيا؟",
+    "answers_en": [
+      "health insurance",
+      "car insurance",
+      "building insurance",
+      "liability insurance"
+    ],
+    "answers_ar": [
+      "التأمين الصحي",
+      "التأمين على السيارة",
+      "التأمين على البناء",
+      "التأمين على المسؤولية"
+    ]
+  },
+  "37": {
+    "question_en": "What are the heads of government of most German federal states called?",
+    "question_ar": "شنو كيسميو رؤساء الحكومة ديال أغلبية الولايات الألمانية؟",
+    "answers_en": [
+      "First Minister",
+      "Prime Minister",
+      "Senator",
+      "Minister President"
+    ],
+    "answers_ar": [
+      "الوزير الأول",
+      "رئيس الوزراء",
+      "سيناتور",
+      "رئيس الوزراء (مينيستر-برازيدنت)"
+    ]
+  },
+  "38": {
+    "question_en": "The Federal Republic of Germany is a democratic and social …",
+    "question_ar": "جمهورية ألمانيا الاتحادية هي دولة ديموقراطية واجتماعية …",
+    "answers_en": [
+      "association of states.",
+      "federal state.",
+      "confederation.",
+      "centralized state."
+    ],
+    "answers_ar": [
+      "جمعية دول.",
+      "دولة اتحادية.",
+      "كونفدرالية.",
+      "دولة مركزية."
+    ]
+  },
+  "39": {
+    "question_en": "What does every German federal state have?",
+    "question_ar": "شنو عند كل ولاية ألمانية؟",
+    "answers_en": [
+      "its own foreign minister",
+      "its own currency",
+      "its own army",
+      "its own government"
+    ],
+    "answers_ar": [
+      "وزير خارجية خاص بيها",
+      "عملة خاصة بيها",
+      "جيش خاص بيها",
+      "حكومة خاصة بيها"
+    ]
+  },
+  "40": {
+    "question_en": "What words does the German national anthem begin with?",
+    "question_ar": "بشنو كتبدأ النشيد الوطني الألماني؟",
+    "answers_en": [
+      "Peoples, hear the signals …",
+      "Unity and justice and freedom …",
+      "Joy, beautiful spark of the gods …",
+      "Germany, united fatherland …"
+    ],
+    "answers_ar": [
+      "\"يا الشعوب، سمعو الإشارات…\"",
+      "\"الوحدة والعدالة والحرية…\"",
+      "\"يا فرحة، شرارة الآلاهة الجميلة…\"",
+      "\"ألمانيا، الوطن الموحد…\""
+    ]
+  },
+  "41": {
+    "question_en": "Why are there more than one party in a democracy?",
+    "question_ar": "علاش كاين أكتر من حزب فالديموقراطية؟",
+    "answers_en": [
+      "because the different opinions of citizens are represented that way",
+      "to limit bribery in politics",
+      "to prevent political demonstrations",
+      "to encourage economic competition"
+    ],
+    "answers_ar": [
+      "حيت بهالطريقة كتمثل الآراء المختلفة ديال المواطنين",
+      "باش تحد من الرشوة فالسياسة",
+      "باش تمنع المظاهرات السياسية",
+      "باش تشجع المنافسة الاقتصادية"
+    ]
+  },
+  "42": {
+    "question_en": "Who passes a new law in Germany?",
+    "question_ar": "شكون كيقرر قانون جديد فألمانيا؟",
+    "answers_en": [
+      "the government",
+      "the parliament",
+      "the courts",
+      "the police"
+    ],
+    "answers_ar": [
+      "الحكومة",
+      "البرلمان",
+      "المحاكم",
+      "البوليس"
+    ]
+  },
+  "43": {
+    "question_en": "When can a party be banned in Germany?",
+    "question_ar": "فنوقاتاش يقدرو يمنعوا حزب فألمانيا؟",
+    "answers_en": [
+      "when its election campaign is too expensive",
+      "when it fights against the constitution",
+      "when it criticizes the head of state",
+      "when its program proposes a new direction"
+    ],
+    "answers_ar": [
+      "فلوقت لي حملتو الانتخابية غالية بزاف",
+      "فلوقت لي كيحارب ضد الدستور",
+      "فلوقت لي ينتقد رئيس الدولة",
+      "فلوقت لي برنامجو يقترح اتجاه جديد"
+    ]
+  },
+  "44": {
+    "question_en": "Who can citizens in Germany NOT directly elect?",
+    "question_ar": "شكون ماقدرش المواطن فألمانيا يختارو مباشرة؟",
+    "answers_en": [
+      "Members of the EU Parliament",
+      "the Federal President",
+      "State parliament members",
+      "Members of the Bundestag"
+    ],
+    "answers_ar": [
+      "أعضاء البرلمان الأوروبي",
+      "الرئيس الاتحادي",
+      "أعضاء برلمان الولاية",
+      "أعضاء البوندستاغ"
+    ]
+  },
+  "45": {
+    "question_en": "Which insurance does long-term care insurance belong to?",
+    "question_ar": "شنو من تأمين كتنتمي ليه التأمين على الرعاية الطبية (التمريض)؟",
+    "answers_en": [
+      "Social insurance",
+      "Accident insurance",
+      "Household contents insurance",
+      "Liability and fire insurance"
+    ],
+    "answers_ar": [
+      "التأمين الاجتماعي",
+      "التأمين على الحوادث",
+      "التأمين على محتويات الدار",
+      "التأمين على المسؤولية والحريق"
+    ]
+  },
+  "46": {
+    "question_en": "The German state has many tasks. Which task is part of that?",
+    "question_ar": "الدولة الألمانية عندها بزاف ديال المهام. شنو من مهام كتعتبر منهم؟",
+    "answers_en": [
+      "It builds roads and schools.",
+      "It sells food and clothing.",
+      "It provides all residents with newspapers for free.",
+      "It produces cars and buses."
+    ],
+    "answers_ar": [
+      "كتبني الطرقات والمدارس.",
+      "كتبيع الماكلة واللباس.",
+      "كتزود جميع السكان بالجرايد بلا فلوس.",
+      "كتصنع السيارات والحافلات."
+    ]
+  },
+  "47": {
+    "question_en": "The German state has many tasks. Which task is NOT part of that?",
+    "question_ar": "الدولة الألمانية عندها بزاف ديال المهام. شنو من مهام ماعندها علاقة؟",
+    "answers_en": [
+      "It pays for vacation trips for all citizens.",
+      "It pays child benefit.",
+      "It supports museums.",
+      "It promotes athletes."
+    ],
+    "answers_ar": [
+      "كتدفع ثمن رحلات العطلات لجميع المواطنين.",
+      "كتدفع تعويضات الأطفال (كيندرجيلد).",
+      "كتدعم المتاحف.",
+      "كتدعم الرياضيين."
+    ]
+  },
+  "48": {
+    "question_en": "Which body is NOT a constitutional body of Germany?",
+    "question_ar": "شنو من هيئة ماهياش من هيئات الدستور ديال ألمانيا؟",
+    "answers_en": [
+      "the Bundesrat",
+      "the Federal President",
+      "the Citizens' Assembly",
+      "the Government"
+    ],
+    "answers_ar": [
+      "المجلس الاتحادي (البوندسرات)",
+      "الرئيس الاتحادي",
+      "جمعية المواطنين",
+      "الحكومة"
+    ]
+  },
+  "49": {
+    "question_en": "Who determines school policy in Germany?",
+    "question_ar": "شكون كيحدد سياسة المدارس فألمانيا؟",
+    "answers_en": [
+      "the teachers",
+      "the federal states",
+      "the Ministry of Family Affairs",
+      "the universities"
+    ],
+    "answers_ar": [
+      "الأساتذة",
+      "الولايات الفدرالية",
+      "وزارة الشؤون العائلية",
+      "الجامعات"
+    ]
+  },
+  "50": {
+    "question_en": "The economic system in Germany is called …",
+    "question_ar": "نظام الاقتصاد فألمانيا كيسمى …",
+    "answers_en": [
+      "free centralized economy.",
+      "social market economy.",
+      "directed centralized economy.",
+      "planned economy."
+    ],
+    "answers_ar": [
+      "اقتصاد مركزي حر.",
+      "اقتصاد السوق الاجتماعي.",
+      "اقتصاد مركزي موجه.",
+      "اقتصاد مخطط."
+    ]
+  },
+  "51": {
+    "question_en": "A democratic constitutional state does not include …",
+    "question_ar": "دولة القانون الديموقراطية ماكاتشملش …",
+    "answers_en": [
+      "people being able to express themselves critically about the government.",
+      "citizens being allowed to demonstrate peacefully.",
+      "people being arrested by a private police without reason.",
+      "someone committing a crime and therefore being arrested."
+    ],
+    "answers_ar": [
+      "أن الناس يقدرو يعبروا بانتقاد على الحكومة.",
+      "أن المواطنين يقدرو يمشيو يتظاهرو بسلام.",
+      "أن الناس يتقادو من بوليس خاص بلا سبب.",
+      "أن شي واحد يرتكب جريمة وبالتالي يتقاد."
+    ]
+  },
+  "52": {
+    "question_en": "What does 'popular sovereignty' mean? All state power emanates from the …",
+    "question_ar": "شنو كيعني \"سيادة الشعب\"؟ جميع السلطات ديال الدولة كاتجي من …",
+    "answers_en": [
+      "people.",
+      "Bundestag.",
+      "Prussian King.",
+      "Federal Constitutional Court."
+    ],
+    "answers_ar": [
+      "الشعب.",
+      "البوندستاغ.",
+      "الملك البروسي.",
+      "المحكمة الدستورية الاتحادية."
+    ]
+  },
+  "53": {
+    "question_en": "What does 'constitutional state' mean in Germany?",
+    "question_ar": "شنو كيعني \"دولة القانون\" فألمانيا؟",
+    "answers_en": [
+      "The state has rights.",
+      "There are only right-wing parties.",
+      "The citizens decide on laws.",
+      "The state must obey the laws."
+    ],
+    "answers_ar": [
+      "الدولة عندها الحق.",
+      "كاينين غير أحزاب يمينية.",
+      "المواطنين كيقررو على القوانين.",
+      "الدولة خاصها تحتارم القوانين."
+    ]
+  },
+  "54": {
+    "question_en": "What is NOT a branch of state power in Germany?",
+    "question_ar": "شنو ماشي من سلطات الدولة فألمانيا؟",
+    "answers_en": [
+      "Legislative",
+      "Judiciary",
+      "Executive",
+      "Directive"
+    ],
+    "answers_ar": [
+      "السلطة التشريعية",
+      "السلطة القضائية",
+      "السلطة التنفيذية",
+      "سلطة توجيهية"
+    ]
+  },
+  "55": {
+    "question_en": "What does this picture show?",
+    "question_ar": "شنو كتوري هاد الصورة؟",
+    "answers_en": [
+      "the Bundestag building in Berlin",
+      "the Federal Constitutional Court in Karlsruhe",
+      "the Bundesrat building in Berlin",
+      "the Federal Chancellery in Berlin"
+    ],
+    "answers_ar": [
+      "مبنى البوندستاغ فبرلين",
+      "المحكمة الدستورية الاتحادية فكارلسروهه",
+      "مبنى البوندسرات فبرلين",
+      "مكتب المستشار الاتحادي فبرلين"
+    ]
+  },
+  "56": {
+    "question_en": "Which office belongs to the municipal administration in Germany?",
+    "question_ar": "شنو من مكتب كينتمي للإدارة البلدية فألمانيا؟",
+    "answers_en": [
+      "Parish office",
+      "Public order office",
+      "Tax office",
+      "Foreign Office"
+    ],
+    "answers_ar": [
+      "مكتب الرعية (الكنيسة)",
+      "مكتب النظام العام",
+      "مكتب الضرائب",
+      "وزارة الخارجية"
+    ]
+  },
+  "57": {
+    "question_en": "Who is usually elected President of the German Bundestag?",
+    "question_ar": "شكون عادة كيتختار رئيس/رئيسة البوندستاغ الألماني؟",
+    "answers_en": [
+      "the oldest member of parliament",
+      "the Minister President of the largest federal state",
+      "a member of the strongest parliamentary group",
+      "a former Federal Chancellor"
+    ],
+    "answers_ar": [
+      "أقدم عضو فالبرلمان",
+      "رئيس وزراء أكبر ولاية فدرالية",
+      "عضو من أقوى كتلة نيابية",
+      "مستشار اتحادي سابق"
+    ]
+  },
+  "58": {
+    "question_en": "Who appoints the ministers of the federal government in Germany?",
+    "question_ar": "شكون كيعين الوزراء ديال الحكومة الاتحادية فألمانيا؟",
+    "answers_en": [
+      "the President of the Federal Constitutional Court",
+      "the Federal President",
+      "the President of the Bundesrat",
+      "the President of the Bundestag"
+    ],
+    "answers_ar": [
+      "رئيس المحكمة الدستورية الاتحادية",
+      "الرئيس الاتحادي",
+      "رئيس المجلس الاتحادي",
+      "رئيس البوندستاغ"
+    ]
+  },
+  "59": {
+    "question_en": "Which parties merged in Germany in 2007 to form the party 'Die Linke'?",
+    "question_ar": "شنو من الأحزاب اندمجت فألمانيا ف2007 باش تشكل حزب \"دي لينكه\" (اليسار)؟",
+    "answers_en": [
+      "CDU and SSW",
+      "PDS and WASG",
+      "CSU and FDP",
+      "Bündnis 90/The Greens and SPD"
+    ],
+    "answers_ar": [
+      "الاتحاد الديموقراطي المسيحي (CDU) و SSW",
+      "PDS و WASG",
+      "الاتحاد الاجتماعي المسيحي (CSU) والحزب الديموقراطي الحر (FDP)",
+      "تحالف 90/الخضر والحزب الاشتراكي الديموقراطي (SPD)"
+    ]
+  },
+  "60": {
+    "question_en": "In Germany, the Bundestag and the Bundesrat belong to the …",
+    "question_ar": "فألمانيا، البوندستاغ والبوندسرات كاينتموا لـ …",
+    "answers_en": [
+      "Executive.",
+      "Legislative.",
+      "Directive.",
+      "Judiciary."
+    ],
+    "answers_ar": [
+      "السلطة التنفيذية.",
+      "السلطة التشريعية.",
+      "سلطة توجيهية.",
+      "السلطة القضائية."
+    ]
+  },
+  "61": {
+    "question_en": "What does 'popular sovereignty' mean?",
+    "question_ar": "شنو كيعني \"سيادة الشعب\"؟",
+    "answers_en": [
+      "The King/Queen rules over the people.",
+      "The Federal Constitutional Court stands above the Constitution.",
+      "The interest groups exercise sovereignty together with the government.",
+      "State power emanates from the people."
+    ],
+    "answers_ar": [
+      "الملك/الملكة كيحكمو على الشعب.",
+      "المحكمة الدستورية الاتحادية فوق الدستور.",
+      "جماعات المصالح كتمارس السيادة مع الحكومة.",
+      "سلطة الدولة كاتجي من الشعب."
+    ]
+  },
+  "62": {
+    "question_en": "When the parliament of a German federal state is elected, it is called …",
+    "question_ar": "فلوقت لي كيختاروا برلمان ولاية ألمانية، كيسميوه …",
+    "answers_en": [
+      "municipal election.",
+      "state parliament election.",
+      "European election.",
+      "Bundestag election."
+    ],
+    "answers_ar": [
+      "انتخابات بلدية.",
+      "انتخابات برلمان الولاية (لاندتاغ).",
+      "انتخابات أوروبية.",
+      "انتخابات البوندستاغ."
+    ]
+  },
+  "63": {
+    "question_en": "What does NOT belong to the executive branch in Germany?",
+    "question_ar": "شنو ماعندوش علاقة بالسلطة التنفيذية فألمانيا؟",
+    "answers_en": [
+      "the police",
+      "the courts",
+      "the tax office",
+      "the ministries"
+    ],
+    "answers_ar": [
+      "البوليس",
+      "المحاكم",
+      "مكتب الضرائب",
+      "الوزارات"
+    ]
+  },
+  "64": {
+    "question_en": "The Federal Republic of Germany is today divided into …",
+    "question_ar": "جمهورية ألمانيا الاتحادية اليوم مقسمة لـ …",
+    "answers_en": [
+      "four occupation zones.",
+      "an East state and a West state.",
+      "16 cantons.",
+      "federal government, states and municipalities."
+    ],
+    "answers_ar": [
+      "أربع مناطق احتلال.",
+      "دولة شرقية ودولة غربية.",
+      "16 كانتون.",
+      "الاتحاد، الولايات والبلديات."
+    ]
+  },
+  "65": {
+    "question_en": "It is not the task of the German Bundestag to …",
+    "question_ar": "ماكتعتبرش من مهام البوندستاغ الألماني …",
+    "answers_en": [
+      "draft laws.",
+      "control the federal government.",
+      "elect the Federal Chancellor.",
+      "form the federal cabinet."
+    ],
+    "answers_ar": [
+      "صياغة القوانين.",
+      "مراقبة الحكومة الاتحادية.",
+      "انتخاب المستشار الاتحادي.",
+      "تشكيل مجلس الوزراء الاتحادي."
+    ]
+  },
+  "66": {
+    "question_en": "Who wrote the text for the German national anthem?",
+    "question_ar": "شكون كتب النص ديال النشيد الوطني الألماني؟",
+    "answers_en": [
+      "Friedrich von Schiller",
+      "Clemens Brentano",
+      "Johann Wolfgang von Goethe",
+      "Heinrich Hoffmann von Fallersleben"
+    ],
+    "answers_ar": [
+      "فريدريش فون شيلر",
+      "كليمنس برنتانو",
+      "يوهان فولفغانغ فون غوته",
+      "هاينريش هوفمان فون فالرسلبن"
+    ]
+  },
+  "67": {
+    "question_en": "What is primarily a task of the German federal states?",
+    "question_ar": "شنو من مهمة هي بالأساس ديال الولايات الألمانية؟",
+    "answers_en": [
+      "Defense policy",
+      "Foreign policy",
+      "Economic policy",
+      "School policy"
+    ],
+    "answers_ar": [
+      "سياسة الدفاع",
+      "سياسة الخارجية",
+      "سياسة الاقتصاد",
+      "سياسة المدارس"
+    ]
+  },
+  "68": {
+    "question_en": "Why does the state in Germany control the school system?",
+    "question_ar": "علاش الدولة فألمانيا كتراقب النظام المدرسي؟",
+    "answers_en": [
+      "because there are only state schools in Germany",
+      "because all students must have a school leaving certificate",
+      "because there are different schools in the federal states",
+      "because it is its task according to the Basic Law"
+    ],
+    "answers_ar": [
+      "حيت فألمانيا كاينين غير مدارس حكومية",
+      "حيت جميع التلاميذ خاصهم يكون عندهم شهادة مدرسية",
+      "حيت الولايات الفدرالية كاينين فيها مدارس مختلفة",
+      "حيت حسب القانون الأساسي هادي مهمة ديالها"
+    ]
+  },
+  "69": {
+    "question_en": "The Federal Republic of Germany has a three-level administrative structure. What is the lowest political level called?",
+    "question_ar": "جمهورية ألمانيا الاتحادية عندها هيكل إداري من ثلاث مستويات. شنو كيسميو أدنى مستوى سياسي؟",
+    "answers_en": [
+      "City councils",
+      "District administrators",
+      "Municipalities",
+      "District offices"
+    ],
+    "answers_ar": [
+      "مجالس المدينة",
+      "مشرفو المقاطعة",
+      "البلديات",
+      "مكاتب المقاطعة"
+    ]
+  },
+  "70": {
+    "question_en": "What is one of the tasks of the German Federal President?",
+    "question_ar": "شنو من مهمة من مهام الرئيس الاتحادي الألماني؟",
+    "answers_en": [
+      "He/She conducts government business.",
+      "He/She controls the governing party.",
+      "He/She selects the ministers.",
+      "He/She proposes the Chancellor for election."
+    ],
+    "answers_ar": [
+      "هو/هي كيدير شؤون الحكومة.",
+      "هو/هي كيراقب الحزب الحاكم.",
+      "هو/هي كيختار الوزراء.",
+      "هو/هي كيقترح المستشار باش يتنتخب."
+    ]
+  },
+  "71": {
+    "question_en": "Where does the German Federal Chancellor spend most of their time? Most often he/she is …",
+    "question_ar": "فين كيبقى المستشار الاتحادي الألماني أغلبية الوقت؟ أغلب الأحيان هو/هي …",
+    "answers_en": [
+      "in Bonn, because the Federal Chancellery and the Bundestag are located there.",
+      "in Berlin, because the Federal Chancellery and the Bundestag are located there.",
+      "at Meseberg Castle, the guest house of the federal government, to receive state guests.",
+      "at Bellevue Palace, the official residence of the Federal President, to receive state guests."
+    ],
+    "answers_ar": [
+      "فبون، حيت المستشارية الاتحادية والبوندستاغ كاينين هناك.",
+      "فبرلين، حيت المستشارية الاتحادية والبوندستاغ كاينين هناك.",
+      "فقصر ميزبرغ، دار الضيافة ديال الحكومة الاتحادية، باش يستقبلوا ضيوف الدولة.",
+      "فقصر بلفو، مقر إقامة الرئيس الاتحادي، باش يستقبلوا ضيوف الدولة."
+    ]
+  },
+  "72": {
+    "question_en": "What is the name of the current Federal Chancellor of Germany?",
+    "question_ar": "شنو سمية المستشار الاتحادي ديال ألمانيا دابا؟",
+    "answers_en": [
+      "Gerhard Schröder",
+      "Angela Merkel",
+      "Franziska Giffey",
+      "Olaf Scholz"
+    ],
+    "answers_ar": [
+      "غيهارد شرودر",
+      "أنغيلا ميركل",
+      "فرانتسيسكا غيفاي",
+      "أولاف شولتز"
+    ]
+  },
+  "73": {
+    "question_en": "The two largest parliamentary groups in the German Bundestag are currently called …",
+    "question_ar": "أكبر كتلتين نيابيتين فالبوندستاغ الألماني دابا هوما …",
+    "answers_en": [
+      "CDU/CSU and SPD.",
+      "The Left and Bündnis 90/The Greens.",
+      "FDP and SPD.",
+      "The Left and FDP."
+    ],
+    "answers_ar": [
+      "الاتحاد الديموقراطي المسيحي/الاتحاد الاجتماعي المسيحي (CDU/CSU) والحزب الاشتراكي الديموقراطي (SPD).",
+      "حزب اليسار وتحالف 90/الخضر.",
+      "الحزب الديموقراطي الحر (FDP) والحزب الاشتراكي الديموقراطي (SPD).",
+      "حزب اليسار والحزب الديموقراطي الحر (FDP)."
+    ]
+  },
+  "74": {
+    "question_en": "What is the parliament for all of Germany called?",
+    "question_ar": "شنو كيسميو البرلمان ديال كامل ألمانيا؟",
+    "answers_en": [
+      "Federal Assembly",
+      "People's Chamber",
+      "Bundestag",
+      "Federal Court of Justice"
+    ],
+    "answers_ar": [
+      "المجلس الاتحادي (البوندسفرسامبلونغ)",
+      "غرفة الشعب",
+      "البوندستاغ",
+      "المحكمة الاتحادية العليا"
+    ]
+  },
+  "75": {
+    "question_en": "What is the name of Germany's current head of state?",
+    "question_ar": "شنو سمية رئيس دولة ألمانيا دابا؟",
+    "answers_en": [
+      "Frank-Walter Steinmeier",
+      "Bärbel Bas",
+      "Bodo Ramelow",
+      "Joachim Gauck"
+    ],
+    "answers_ar": [
+      "فرانك-فالتر شتاينماير",
+      "بيربيل باس",
+      "بودو راميلو",
+      "يواكيم غاوك"
+    ]
+  },
+  "76": {
+    "question_en": "What does the abbreviation CDU mean in Germany?",
+    "question_ar": "شنو كتعني اختصار CDU فألمانيا؟",
+    "answers_en": [
+      "Christian German Union",
+      "Club of German Entrepreneurs",
+      "Christian German Environmental Protection",
+      "Christian Democratic Union"
+    ],
+    "answers_ar": [
+      "الاتحاد الألماني المسيحي",
+      "نادي رجال الأعمال الألمان",
+      "الحماية البيئية الألمانية المسيحية",
+      "الاتحاد الديموقراطي المسيحي"
+    ]
+  },
+  "77": {
+    "question_en": "What is the Bundeswehr?",
+    "question_ar": "شنو هي البوندسفير (القوات المسلحة)؟",
+    "answers_en": [
+      "the German police",
+      "a German port",
+      "a German citizens' initiative",
+      "the German army"
+    ],
+    "answers_ar": [
+      "البوليس الألماني",
+      "ميناء ألماني",
+      "مبادرة مواطنين ألمان",
+      "الجيش الألماني"
+    ]
+  },
+  "78": {
+    "question_en": "What does the abbreviation SPD mean?",
+    "question_ar": "شنو كتعني اختصار SPD؟",
+    "answers_en": [
+      "Socialist Party of Germany",
+      "Social Political Party of Germany",
+      "Social Democratic Party of Germany",
+      "Socially Just Party of Germany"
+    ],
+    "answers_ar": [
+      "الحزب الاشتراكي لألمانيا",
+      "الحزب السياسي الاجتماعي لألمانيا",
+      "الحزب الاشتراكي الديموقراطي لألمانيا",
+      "الحزب الاجتماعي العادل لألمانيا"
+    ]
+  },
+  "79": {
+    "question_en": "What does the abbreviation FDP mean in Germany?",
+    "question_ar": "شنو كتعني اختصار FDP فألمانيا؟",
+    "answers_en": [
+      "Peaceful Demonstrative Party",
+      "Free Germany Party",
+      "Leading Democratic Party",
+      "Free Democratic Party"
+    ],
+    "answers_ar": [
+      "الحزب التظاهري السلمي",
+      "حزب ألمانيا الحرة",
+      "الحزب الديموقراطي الرائد",
+      "الحزب الديموقراطي الحر"
+    ]
+  },
+  "80": {
+    "question_en": "Which court in Germany is responsible for interpreting the Basic Law?",
+    "question_ar": "شنو من محكمة فألمانيا هي المسؤولة على تفسير القانون الأساسي؟",
+    "answers_en": [
+      "Higher Regional Court",
+      "Local Court",
+      "Federal Constitutional Court",
+      "Administrative Court"
+    ],
+    "answers_ar": [
+      "المحكمة العليا الإقليمية",
+      "المحكمة المحلية",
+      "المحكمة الدستورية الاتحادية",
+      "المحكمة الإدارية"
+    ]
+  },
+  "81": {
+    "question_en": "Who elects the Federal Chancellor in Germany?",
+    "question_ar": "شكون كيختار المستشار الاتحادي فألمانيا؟",
+    "answers_en": [
+      "the Bundesrat",
+      "the Federal Assembly",
+      "the people",
+      "the Bundestag"
+    ],
+    "answers_ar": [
+      "المجلس الاتحادي (البوندسرات)",
+      "المجلس الاتحادي (البوندسفرسامبلونغ)",
+      "الشعب",
+      "البوندستاغ"
+    ]
+  },
+  "82": {
+    "question_en": "Who leads the German federal cabinet?",
+    "question_ar": "شكون كيقود مجلس الوزراء الاتحادي الألماني؟",
+    "answers_en": [
+      "the President of the Bundestag",
+      "the Federal President",
+      "the Federal Chancellor",
+      "the President of the Bundesrat"
+    ],
+    "answers_ar": [
+      "رئيس البوندستاغ",
+      "الرئيس الاتحادي",
+      "المستشار الاتحادي",
+      "رئيس المجلس الاتحادي"
+    ]
+  },
+  "83": {
+    "question_en": "Who elects the German Federal Chancellor?",
+    "question_ar": "شكون كيختار المستشار الاتحادي الألماني؟",
+    "answers_en": [
+      "the people",
+      "the Federal Assembly",
+      "the Bundestag",
+      "the federal government"
+    ],
+    "answers_ar": [
+      "الشعب",
+      "المجلس الاتحادي (البوندسفرسامبلونغ)",
+      "البوندستاغ",
+      "الحكومة الاتحادية"
+    ]
+  },
+  "84": {
+    "question_en": "What is the main task of the German Federal President? He/She …",
+    "question_ar": "شنو هي المهمة الرئيسية ديال الرئيس الاتحادي الألماني؟ هو/هي …",
+    "answers_en": [
+      "governs the country.",
+      "drafts the laws.",
+      "represents the country.",
+      "monitors compliance with the laws."
+    ],
+    "answers_ar": [
+      "كيحكم البلاد.",
+      "كيصيغ القوانين.",
+      "كيمثل البلاد.",
+      "كيراقب الاحترام ديال القوانين."
+    ]
+  },
+  "85": {
+    "question_en": "Who forms the German Bundesrat?",
+    "question_ar": "شكون كيشكل المجلس الاتحادي (البوندسرات) الألماني؟",
+    "answers_en": [
+      "the members of the Bundestag",
+      "the ministers of the federal government",
+      "the government representatives of the federal states",
+      "the party members"
+    ],
+    "answers_ar": [
+      "أعضاء البوندستاغ",
+      "الوزراء ديال الحكومة الاتحادية",
+      "ممثلو حكومات الولايات الفدرالية",
+      "أعضاء الأحزاب"
+    ]
+  },
+  "86": {
+    "question_en": "Who elects the Federal President in Germany?",
+    "question_ar": "شكون كيختار الرئيس الاتحادي فألمانيا؟",
+    "answers_en": [
+      "the Federal Assembly",
+      "the Bundesrat",
+      "the Federal Parliament",
+      "the Federal Constitutional Court"
+    ],
+    "answers_ar": [
+      "المجلس الاتحادي (البوندسفرسامبلونغ)",
+      "المجلس الاتحادي (البوندسرات)",
+      "البرلمان الاتحادي",
+      "المحكمة الدستورية الاتحادية"
+    ]
+  },
+  "87": {
+    "question_en": "Who is the head of state of the Federal Republic of Germany?",
+    "question_ar": "شنو هو رئيس دولة جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "the Federal Chancellor",
+      "the Federal President",
+      "the President of the Bundesrat",
+      "the President of the Bundestag"
+    ],
+    "answers_ar": [
+      "المستشار الاتحادي",
+      "الرئيس الاتحادي",
+      "رئيس المجلس الاتحادي",
+      "رئيس البوندستاغ"
+    ]
+  },
+  "88": {
+    "question_en": "The parliamentary opposition in the German Bundestag …",
+    "question_ar": "المعارضة البرلمانية فالبوندستاغ الألماني …",
+    "answers_en": [
+      "monitors the government.",
+      "decides who becomes a federal minister.",
+      "determines who sits in the Bundesrat.",
+      "proposes the heads of government of the states."
+    ],
+    "answers_ar": [
+      "كتراقب الحكومة.",
+      "كتقرر شكون غادي يولي وزير اتحادي.",
+      "كتحدد شكون غادي يكون فالبوندسرات.",
+      "كتقترح رؤساء حكومات الولايات."
+    ]
+  },
+  "89": {
+    "question_en": "What is the association of members of parliament of one party called in Germany?",
+    "question_ar": "شنو كيسميو تجمع أعضاء البرلمان ديال حزب واحد فألمانيا؟",
+    "answers_en": [
+      "Association",
+      "Council of Elders",
+      "Parliamentary group",
+      "Opposition"
+    ],
+    "answers_ar": [
+      "جمعية",
+      "مجلس الكبار",
+      "الكتلة النيابية (فراكسيون)",
+      "المعارضة"
+    ]
+  },
+  "90": {
+    "question_en": "The German federal states participate in federal legislation through …",
+    "question_ar": "الولايات الألمانية كيشاركو فالتشريع الاتحادي من خلال …",
+    "answers_en": [
+      "the Bundesrat.",
+      "the Federal Assembly.",
+      "the Bundestag.",
+      "the federal government."
+    ],
+    "answers_ar": [
+      "المجلس الاتحادي (البوندسرات).",
+      "المجلس الاتحادي (البوندسفرسامبلونغ).",
+      "البوندستاغ.",
+      "الحكومة الاتحادية."
+    ]
+  },
+  "91": {
+    "question_en": "A change of government in a German federal state can have an impact on federal politics. Governing becomes …",
+    "question_ar": "تبديل الحكومة فولاية ألمانية يقدر يأثر على السياسة الاتحادية. الحكم كيولات …",
+    "answers_en": [
+      "more difficult if this changes the majority in the Bundestag.",
+      "easier if new parties enter the Bundesrat.",
+      "more difficult if this changes the majority in the Bundesrat.",
+      "easier if it is a wealthy federal state."
+    ],
+    "answers_ar": [
+      "أصعب، إلا تبدلات بها الأغلبية فالبوندستاغ.",
+      "أسهل، إلا دخلو أحزاب جداد للبوندسرات.",
+      "أصعب، إلا تبدلات بها الأغلبية فالبوندسرات.",
+      "أسهل، إلا كانت ولاية غنية."
+    ]
+  },
+  "92": {
+    "question_en": "What does the abbreviation CSU mean in Germany?",
+    "question_ar": "شنو كتعني اختصار CSU فألمانيا؟",
+    "answers_en": [
+      "Christian Safe Union",
+      "Christian South German Union",
+      "Christian Social Entrepreneurs Association",
+      "Christian Social Union"
+    ],
+    "answers_ar": [
+      "الاتحاد الأمن المسيحي",
+      "الاتحاد المسيحي الألماني الجنوبي",
+      "جمعية رجال الأعمال الاجتماعيين المسيحيين",
+      "الاتحاد الاجتماعي المسيحي"
+    ]
+  },
+  "93": {
+    "question_en": "The more 'second votes' a party gets in a Bundestag election, the …",
+    "question_ar": "كلما حصل حزب على أكثر \"أصوات ثانية\" فانتخابات البوندستاغ، …",
+    "answers_en": [
+      "more seats the party receives in parliament.",
+      "fewer first votes it can have.",
+      "more direct candidates from the party enter parliament.",
+      "greater the risk of having to form a coalition."
+    ],
+    "answers_ar": [
+      "المقاعد لي غادي يحصل عليها الحزب فالبرلمان كتر بزاف.",
+      "الأصوات الأولى لي يقدر يكون عندهم قل fewer.",
+      "المرشحين المباشرين ديال الحزب لي غادي يدخلو للبرلمان كتر بزاف.",
+      "الخطر ديال ضرورة تشكيل تحالف كيكبر."
+    ]
+  },
+  "94": {
+    "question_en": "From what age may one participate in the election to the German Bundestag?",
+    "question_ar": "من سنيناش يقدر الإنسان يشارك فانتخابات البوندستاغ الألماني؟",
+    "answers_en": [
+      "16",
+      "18",
+      "21",
+      "23"
+    ],
+    "answers_ar": [
+      "16",
+      "18",
+      "21",
+      "23"
+    ]
+  },
+  "95": {
+    "question_en": "What applies to most children in Germany?",
+    "question_ar": "شنو كاين على أغلبية الأطفال فألمانيا؟",
+    "answers_en": [
+      "Voting obligation",
+      "School attendance obligation",
+      "Obligation of silence",
+      "Religious obligation"
+    ],
+    "answers_ar": [
+      "الإلزام بالتصويت",
+      "الإلزام بالمدرسة",
+      "الإلزام بالصمت",
+      "الإلزام بالدين"
+    ]
+  },
+  "96": {
+    "question_en": "What must every German citizen have from the age of 16?",
+    "question_ar": "شنو خاص كل مواطن ألماني يكون عنده من سن 16 عام؟",
+    "answers_en": [
+      "a passport",
+      "an identity card",
+      "a social security card",
+      "a driver's license"
+    ],
+    "answers_ar": [
+      "جواز سفر",
+      "بطاقة هوية",
+      "بطاقة الضمان الاجتماعي",
+      "رخصة سياقة"
+    ]
+  },
+  "97": {
+    "question_en": "What do you automatically pay in Germany if you are permanently employed?",
+    "question_ar": "شنو كتدفع تلقائيا فألمانيا إلا كنتي موظف بشكل دائم؟",
+    "answers_en": [
+      "Social insurance",
+      "Social welfare",
+      "Child benefit",
+      "Housing benefit"
+    ],
+    "answers_ar": [
+      "التأمين الاجتماعي",
+      "المساعدة الاجتماعية",
+      "تعويضات الأطفال",
+      "مساعدة السكن"
+    ]
+  },
+  "98": {
+    "question_en": "When members of the German Bundestag change their parliamentary group, ...",
+    "question_ar": "فلوقت لي أعضاء البوندستاغ الألماني يبدلو الكتلة النيابية ديالهم، ...",
+    "answers_en": [
+      "the government may lose its majority.",
+      "they may no longer participate in parliamentary sessions.",
+      "the Federal President must first give his/her consent.",
+      "the voters of these members may vote again."
+    ],
+    "answers_ar": [
+      "الحكومة يقدر تفقد أغلبيتها.",
+      "ميمكنش ليهم يشاركو فجلسات البرلمان.",
+      "الرئيس الاتحادي خاصو يوافق الأول.",
+      "الناخبين ديال هاد النواب يقدرو يصوتو مرة أخرى."
+    ]
+  },
+  "99": {
+    "question_en": "Who pays for social security in Germany?",
+    "question_ar": "شكون كيدفع التأمينات الاجتماعية فألمانيا؟",
+    "answers_en": [
+      "Employers and employees",
+      "only employees",
+      "all citizens",
+      "only employers"
+    ],
+    "answers_ar": [
+      "أصحاب العمل والموظفين",
+      "غير الموظفين",
+      "جميع المواطنين",
+      "غير أصحاب العمل"
+    ]
+  },
+  "100": {
+    "question_en": "What does NOT belong to statutory social insurance?",
+    "question_ar": "شنو ماعندوش علاقة بالتأمين الاجتماعي الإلزامي؟",
+    "answers_en": [
+      "statutory pension insurance",
+      "life insurance",
+      "unemployment insurance",
+      "long-term care insurance"
+    ],
+    "answers_ar": [
+      "التأمين الإلزامي على التقاعد",
+      "التأمين على الحياة",
+      "التأمين على البطالة",
+      "التأمين على الرعاية الطويلة الأمد"
+    ]
+  },
+  "101": {
+    "question_en": "Trade unions are interest groups of …",
+    "question_ar": "النقابات العمالية هي جمعيات مصالح ديال …",
+    "answers_en": [
+      "young people.",
+      "employees.",
+      "retirees.",
+      "employers."
+    ],
+    "answers_ar": [
+      "الشباب.",
+      "الموظفين.",
+      "المتقاعدين.",
+      "أصحاب العمل."
+    ]
+  },
+  "102": {
+    "question_en": "With what can one be honored in the Federal Republic of Germany if one has rendered a special achievement in political, economic, cultural, intellectual or social fields? With the …",
+    "question_ar": "بشنو يقدر الإنسان يتكرم فجمهورية ألمانيا الاتحادية إلا قدم إنجاز خاص فالمجال السياسي، الاقتصادي، الثقافي، الفكري أو الاجتماعي؟ بـ …",
+    "answers_en": [
+      "Federal Eagle.",
+      "Order of Merit of the Federal Republic of Germany.",
+      "Patriotic Order of Merit.",
+      "Honorary title 'Hero of the German Democratic Republic'."
+    ],
+    "answers_ar": [
+      "النسر الاتحادي.",
+      "وسام الاستحقاق لجمهورية ألمانيا الاتحادية.",
+      "وسام الاستحقاق الوطني.",
+      "لقب شرف \"بطل جمهورية ألمانيا الديموقراطية\"."
+    ]
+  },
+  "103": {
+    "question_en": "What is called a 'traffic light coalition' in Germany? The cooperation …",
+    "question_ar": "شنو كيسميو \"ائتلاف الإشارة (الكوكاير)\" فألمانيا؟ التعاون …",
+    "answers_en": [
+      "of the Bundestag parliamentary groups of CDU and CSU",
+      "of SPD, FDP and Bündnis 90/The Greens in a government",
+      "of CSU, The Left and Bündnis 90/The Greens in a government",
+      "of the Bundestag parliamentary groups of CDU and SPD"
+    ],
+    "answers_ar": [
+      "كتلات البوندستاغ ديال CDU و CSU",
+      "ديال SPD و FDP وتحالف 90/الخضر فحكومة",
+      "ديال CSU وحزب اليسار وتحالف 90/الخضر فحكومة",
+      "كتلات البوندستاغ ديال CDU و SPD"
+    ]
+  },
+  "104": {
+    "question_en": "A woman in Germany loses her job. What may NOT be the reason for this dismissal?",
+    "question_ar": "مرا فألمانيا خسرت خدمتها. شنو مايمكنش يكون سبب هاد الفصل؟",
+    "answers_en": [
+      "The woman has been sick for a long time and unable to work.",
+      "The woman often came to work late.",
+      "The woman did personal things during working hours.",
+      "The woman is having a baby and her boss knows that."
+    ],
+    "answers_ar": [
+      "المرا كانت مريضة بزاف وماقدراتش تخدم.",
+      "المرا كانت تجي متأخر بزاف للخدمة.",
+      "المرا كانت تدير حوايج خاصة فوقت العمل.",
+      "المرا غادي تجيب وليد ورئيسها كيعرف هادشي."
+    ]
+  },
+  "105": {
+    "question_en": "What is a task of election helpers in Germany?",
+    "question_ar": "شنو من مهمة ديال مساعدي الانتخابات فألمانيا؟",
+    "answers_en": [
+      "They help elderly people vote in the voting booth.",
+      "They write the election notifications before the election.",
+      "They give intermediate results to the media.",
+      "They count the votes after the election ends."
+    ],
+    "answers_ar": [
+      "كيساعدو الناس الكبار فالتصويت فكابينة الاقتراع.",
+      "كيكتبو إشعارات الانتخابات قبل الانتخابات.",
+      "كيعطو النتائج الوسيطة للإعلام.",
+      "كيحسبو الأصوات من بعد مايسالي التصويت."
+    ]
+  },
+  "106": {
+    "question_en": "In Germany, volunteer election helpers assist with elections. What is a task of election helpers?",
+    "question_ar": "فألمانيا، مساعدو الانتخاب المتطوعين كيساعدو فالانتخابات. شنو من مهمة ديال مساعدي الانتخابات؟",
+    "answers_en": [
+      "They help children and elderly people vote.",
+      "They write cards and letters with the polling station information.",
+      "They give intermediate results to journalists.",
+      "They count the votes after the election ends."
+    ],
+    "answers_ar": [
+      "كيساعدو الأطفال والناس الكبار باش يصوتو.",
+      "كيكتبو البطايق والرسايل مع معلومات مكتب الاقتراع.",
+      "كيعطو النتائج الوسيطة للصحافيين.",
+      "كيحسبو الأصوات من بعد مايسالي التصويت."
+    ]
+  },
+  "107": {
+    "question_en": "For how many years is the Bundestag elected in Germany?",
+    "question_ar": "بشحال من العام كيتنتخب البوندستاغ فألمانيا؟",
+    "answers_en": [
+      "2 years",
+      "4 years",
+      "6 years",
+      "8 years"
+    ],
+    "answers_ar": [
+      "2 عام",
+      "4 سنين",
+      "6 سنين",
+      "8 سنين"
+    ]
+  },
+  "108": {
+    "question_en": "In a Bundestag election in Germany, anyone may vote who …",
+    "question_ar": "فانتخابات البوندستاغ فألمانيا، أي واحد يقدر يصوت إلا …",
+    "answers_en": [
+      "lives in the Federal Republic of Germany and wants to vote.",
+      "is a citizen of the Federal Republic of Germany and is at least 18 years old.",
+      "has lived in the Federal Republic of Germany for at least 3 years.",
+      "is a citizen of the Federal Republic of Germany and is at least 21 years old."
+    ],
+    "answers_ar": [
+      "ساكن فجمهورية ألمانيا الاتحادية وباغي يصوت.",
+      "مواطن ديال جمهورية ألمانيا الاتحادية وعندو 18 عام على الأقل.",
+      "عايش فجمهورية ألمانيا الاتحادية 3 سنين على الأقل.",
+      "مواطن ديال جمهورية ألمانيا الاتحادية وعندو 21 عام على الأقل."
+    ]
+  },
+  "109": {
+    "question_en": "How often are there normally Bundestag elections in Germany?",
+    "question_ar": "عادة بشحال من مرة كاينين انتخابات البوندستاغ فألمانيا؟",
+    "answers_en": [
+      "every three years",
+      "every four years",
+      "every five years",
+      "every six years"
+    ],
+    "answers_ar": [
+      "كل 3 سنين",
+      "كل 4 سنين",
+      "كل 5 سنين",
+      "كل 6 سنين"
+    ]
+  },
+  "110": {
+    "question_en": "For how many years is the Bundestag elected in Germany?",
+    "question_ar": "بشحال من العام كيتنتخب البوندستاغ فألمانيا؟",
+    "answers_en": [
+      "2 years",
+      "3 years",
+      "4 years",
+      "5 years"
+    ],
+    "answers_ar": [
+      "2 عام",
+      "3 سنين",
+      "4 سنين",
+      "5 سنين"
+    ]
+  },
+  "111": {
+    "question_en": "In Germany, one is allowed to vote. What does that mean?",
+    "question_ar": "فألمانيا، الإنسان يقدر يصوت. شنو كيعني هادشي؟",
+    "answers_en": [
+      "All German citizens may vote if they have reached the minimum age.",
+      "Only married people may vote.",
+      "Only people with a permanent job may vote.",
+      "All residents in Germany must vote."
+    ],
+    "answers_ar": [
+      "جميع المواطنين الألمان يقدرو يصوتو إلا وصلو للعمر الأدنى.",
+      "غير الناس المتزوجين يقدرو يصوتو.",
+      "غير الناس لي عندهم خدمة دائمة يقدرو يصوتو.",
+      "جميع السكان فألمانيا خاصهم يصوتو."
+    ]
+  },
+  "112": {
+    "question_en": "Elections in Germany are …",
+    "question_ar": "الانتخابات فألمانيا هي …",
+    "answers_en": [
+      "special.",
+      "secret.",
+      "job-related.",
+      "gender-dependent."
+    ],
+    "answers_ar": [
+      "خاصة.",
+      "سرية.",
+      "مرتبطة بالمهنة.",
+      "معتمدة على الجنس."
+    ]
+  },
+  "113": {
+    "question_en": "In Germany, elections are won by the party that …",
+    "question_ar": "فألمانيا، الحزب لي كيربح فالانتخابات هو لي …",
+    "answers_en": [
+      "gets the most votes.",
+      "the most men have voted for.",
+      "got the most votes from workers.",
+      "got the most first votes for their chancellor candidate."
+    ],
+    "answers_ar": [
+      "يحصل على أكبر عدد ديال الأصوات.",
+      "أكثر عدد ديال الرجال صوتو عليه.",
+      "يحصل على أكبر عدد ديال أصوات العمال.",
+      "يحصل على أكبر عدد ديال الأصوات الأولى لمرشح المستشار ديالهم."
+    ]
+  },
+  "114": {
+    "question_en": "Participating in democratic elections in Germany is …",
+    "question_ar": "المشاركة فالانتخابات الديموقراطية فألمانيا هي …",
+    "answers_en": [
+      "a duty.",
+      "a right.",
+      "a compulsion.",
+      "a burden."
+    ],
+    "answers_ar": [
+      "واجب.",
+      "حق.",
+      "إكراه.",
+      "عبء."
+    ]
+  },
+  "115": {
+    "question_en": "What does 'active voting right' mean in Germany?",
+    "question_ar": "شنو كيعني \"حق التصويت النشط\" فألمانيا؟",
+    "answers_en": [
+      "You can be elected.",
+      "You must go vote.",
+      "You can vote.",
+      "You must go count the votes."
+    ],
+    "answers_ar": [
+      "تقدر تنتخب (يتنتخبوك).",
+      "خاصك تمشي تصوت.",
+      "تقدر تصوت.",
+      "خاصك تمشي تحسب الأصوات."
+    ]
+  }
+}

@@ -1,0 +1,1382 @@
+[
+  {
+    "id": 1,
+    "question": "In Deutschland dürfen Menschen offen etwas gegen die Regierung sagen, weil …",
+    "answers": [
+      "hier Religionsfreiheit gilt.",
+      "die Menschen Steuern zahlen.",
+      "die Menschen das Wahlrecht haben.",
+      "hier Meinungsfreiheit gilt."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 2,
+    "question": "In Deutschland können Eltern bis zum 14. Lebensjahr ihres Kindes entscheiden, ob es in der Schule am …",
+    "answers": [
+      "Geschichtsunterricht teilnimmt.",
+      "Religionsunterricht teilnimmt.",
+      "Politikunterricht teilnimmt.",
+      "Sprachunterricht teilnimmt."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 3,
+    "question": "Deutschland ist ein Rechtsstaat. Was ist damit gemeint?",
+    "answers": [
+      "Alle Einwohner / Einwohnerinnen und der Staat müssen sich an die Gesetze halten.",
+      "Der Staat muss sich nicht an die Gesetze halten.",
+      "Nur Deutsche müssen die Gesetze befolgen.",
+      "Die Gerichte machen die Gesetze."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 4,
+    "question": "Welches Recht gehört zu den Grundrechten in Deutschland?",
+    "answers": [
+      "Waffenbesitz",
+      "Faustrecht",
+      "Meinungsfreiheit",
+      "Selbstjustiz"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 5,
+    "question": "Wahlen in Deutschland sind frei. Was bedeutet das?",
+    "answers": [
+      "Man darf Geld annehmen, wenn man dafür einen bestimmten Kandidaten / eine bestimmte Kandidatin wählt.",
+      "Der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben.",
+      "Nur Personen, die noch nie im Gefängnis waren, dürfen wählen.",
+      "Alle wahlberechtigten Personen müssen wählen."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 6,
+    "question": "Wie heißt die deutsche Verfassung?",
+    "answers": [
+      "Volksgesetz",
+      "Bundesgesetz",
+      "Deutsches Gesetz",
+      "Grundgesetz"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 7,
+    "question": "Welches Recht gehört zu den Grundrechten, die nach der deutschen Verfassung garantiert werden? Das Recht auf …",
+    "answers": [
+      "Glaubens- und Gewissensfreiheit.",
+      "Unterhaltung.",
+      "Arbeit.",
+      "Wohnung."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 8,
+    "question": "Was steht nicht im Grundgesetz von Deutschland?",
+    "answers": [
+      "Die Würde des Menschen ist unantastbar.",
+      "Alle sollen gleich viel Geld haben.",
+      "Jeder Mensch darf seine Meinung sagen.",
+      "Alle sind vor dem Gesetz gleich."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 9,
+    "question": "Welches Grundrecht gilt in Deutschland nur für Ausländer / Ausländerinnen? Das Grundrecht auf …",
+    "answers": [
+      "Schutz der Familie",
+      "Menschenwürde",
+      "Asyl",
+      "Meinungsfreiheit"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 10,
+    "question": "Was ist mit dem deutschen Grundgesetz vereinbar?",
+    "answers": [
+      "die Prügelstrafe",
+      "die Folter",
+      "die Todesstrafe",
+      "die Geldstrafe"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 11,
+    "question": "Wie wird die Verfassung der Bundesrepublik Deutschland genannt?",
+    "answers": [
+      "Grundgesetz",
+      "Bundesverfassung",
+      "Gesetzbuch",
+      "Verfassungsvertrag"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 12,
+    "question": "Eine Partei im Deutschen Bundestag will die Pressefreiheit abschaffen. Ist das möglich?",
+    "answers": [
+      "Ja, wenn mehr als die Hälfte der Abgeordneten im Bundestag dafür sind.",
+      "Ja, aber dazu müssen zwei Drittel der Abgeordneten im Bundestag dafür sein.",
+      "Nein, denn die Pressefreiheit ist ein Grundrecht. Sie kann nicht abgeschafft werden.",
+      "Nein, denn nur der Bundesrat kann die Pressefreiheit abschaffen."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 13,
+    "question": "Im Parlament steht der Begriff „Opposition“ für…",
+    "answers": [
+      "die regierenden Parteien.",
+      "alle Abgeordneten, die nicht zu der Regierungspartei/den Regierungsparteien gehören.",
+      "die Fraktion mit den meisten Abgeordneten.",
+      "alle Parteien, die bei der letzten Wahl die 5%-Hürde erreichen konnten."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 14,
+    "question": "Meinungsfreiheit in Deutschland heißt, dass ich …",
+    "answers": [
+      "Passanten auf der Straße beschimpfen darf.",
+      "meine Meinung in Leserbriefen äußern kann.",
+      "Nazi-Symbole tragen darf.",
+      "meine Meinung sagen darf, solange ich der Regierung nicht widerspreche."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 15,
+    "question": "Was verbietet das deutsche Grundgesetz?",
+    "answers": [
+      "Militärdienst",
+      "Zwangsarbeit",
+      "freie Berufswahl",
+      "Arbeit im Ausland"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 16,
+    "question": "Wann ist die Meinungsfreiheit in Deutschland eingeschränkt?",
+    "answers": [
+      "bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen",
+      "bei Meinungsäußerungen über die Bundesregierung",
+      "bei Diskussionen über Religionen",
+      "bei Kritik am Staat"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 17,
+    "question": "Die deutschen Gesetze verbieten …",
+    "answers": [
+      "Meinungsfreiheit der Einwohner und Einwohnerinnen.",
+      "Petitionen der Bürger und Bürgerinnen.",
+      "Versammlungsfreiheit der Einwohner und Einwohnerinnen.",
+      "Ungleichbehandlung der Bürger und Bürgerinnen durch den Staat."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 18,
+    "question": "Welches Grundrecht ist in Artikel 1 des Grundgesetzes der Bundesrepublik Deutschland garantiert?",
+    "answers": [
+      "die Unantastbarkeit der Menschenwürde",
+      "das Recht auf Leben",
+      "Religionsfreiheit",
+      "Meinungsfreiheit"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 19,
+    "question": "Was versteht man unter dem Recht der „Freizügigkeit“ in Deutschland?",
+    "answers": [
+      "Man darf sich seinen Wohnort selbst aussuchen.",
+      "Man kann seinen Beruf wechseln.",
+      "Man darf sich für eine andere Religion entscheiden.",
+      "Man darf sich in der Öffentlichkeit nur leicht bekleidet bewegen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 20,
+    "question": "Eine Partei in Deutschland verfolgt das Ziel, eine Diktatur zu errichten. Sie ist dann …",
+    "answers": [
+      "tolerant.",
+      "rechtsstaatlich orientiert.",
+      "gesetzestreu.",
+      "verfassungswidrig."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 21,
+    "question": "Welches ist das Wappen der Bundesrepublik Deutschland?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 22,
+    "question": "Was für eine Staatsform hat Deutschland?",
+    "answers": [
+      "Monarchie",
+      "Diktatur",
+      "Republik",
+      "Fürstentum"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 23,
+    "question": "In Deutschland sind die meisten Erwerbstätigen …",
+    "answers": [
+      "bei einer Firma oder Behörde beschäftigt.",
+      "in kleinen Familienunternehmen beschäftigt.",
+      "ehrenamtlich für ein Bundesland tätig.",
+      "selbständig mit einer eigenen Firma tätig."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 24,
+    "question": "Wie viele Bundesländer hat die Bundesrepublik Deutschland?",
+    "answers": [
+      "14",
+      "15",
+      "16",
+      "17"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 25,
+    "question": "Was ist kein Bundesland der Bundesrepublik Deutschland?",
+    "answers": [
+      "Nordrhein-Westfalen",
+      "Elsass-Lothringen",
+      "Mecklenburg-Vorpommern",
+      "Sachsen-Anhalt"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 26,
+    "question": "Deutschland ist …",
+    "answers": [
+      "eine kommunistische Republik.",
+      "ein demokratischer und sozialer Bundesstaat.",
+      "eine kapitalistische und soziale Monarchie.",
+      "ein sozialer und sozialistischer Bundesstaat."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 27,
+    "question": "Deutschland ist …",
+    "answers": [
+      "ein sozialistischer Staat.",
+      "ein Bundesstaat.",
+      "eine Diktatur.",
+      "eine Monarchie."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 28,
+    "question": "Wer wählt in Deutschland die Abgeordneten zum Bundestag?",
+    "answers": [
+      "das Militär",
+      "die Wirtschaft",
+      "das wahlberechtigte Volk",
+      "die Verwaltung"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 29,
+    "question": "Welches Tier ist das Wappentier der Bundesrepublik Deutschland?",
+    "answers": [
+      "Löwe",
+      "Adler",
+      "Bär",
+      "Pferd"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 30,
+    "question": "Was ist kein Merkmal unserer Demokratie?",
+    "answers": [
+      "regelmäßige Wahlen",
+      "Pressezensur",
+      "Meinungsfreiheit",
+      "verschiedene Parteien"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 31,
+    "question": "Die Zusammenarbeit von Parteien zur Bildung einer Regierung nennt man in Deutschland …",
+    "answers": [
+      "Einheit.",
+      "Koalition.",
+      "Ministerium.",
+      "Fraktion."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 32,
+    "question": "Was ist keine staatliche Gewalt in Deutschland?",
+    "answers": [
+      "Gesetzgebung",
+      "Regierung",
+      "Presse",
+      "Rechtsprechung"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 33,
+    "question": "Welche Aussage ist richtig? In Deutschland …",
+    "answers": [
+      "sind Staat und Religionsgemeinschaften voneinander getrennt.",
+      "bilden die Religionsgemeinschaften den Staat.",
+      "ist der Staat abhängig von den Religionsgemeinschaften.",
+      "bilden Staat und Religionsgemeinschaften eine Einheit."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 34,
+    "question": "Was ist Deutschland nicht?",
+    "answers": [
+      "eine Demokratie",
+      "ein Rechtsstaat",
+      "eine Monarchie",
+      "ein Sozialstaat"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 35,
+    "question": "Womit finanziert der deutsche Staat die Sozialversicherung?",
+    "answers": [
+      "Kirchensteuern",
+      "Sozialabgaben",
+      "Spendengeldern",
+      "Vereinsbeiträgen"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 36,
+    "question": "Welche Maßnahme schafft in Deutschland soziale Sicherheit?",
+    "answers": [
+      "die Krankenversicherung",
+      "die Autoversicherung",
+      "die Gebäudeversicherung",
+      "die Haftpflichtversicherung"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 37,
+    "question": "Wie werden die Regierungschefs / Regierungschefinnen der meisten Bundesländer in Deutschland genannt?",
+    "answers": [
+      "Erster Minister / Erste Ministerin",
+      "Premierminister / Premierministerin",
+      "Senator / Senatorin",
+      "Ministerpräsident / Ministerpräsidentin"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 38,
+    "question": "Die Bundesrepublik Deutschland ist ein demokratischer und sozialer …",
+    "answers": [
+      "Staatenverbund.",
+      "Bundesstaat.",
+      "Staatenbund.",
+      "Zentralstaat."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 39,
+    "question": "Was hat jedes deutsche Bundesland?",
+    "answers": [
+      "einen eigenen Außenminister / eine eigene Außenministerin",
+      "eine eigene Währung",
+      "eine eigene Armee",
+      "eine eigene Regierung"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 40,
+    "question": "Mit welchen Worten beginnt die deutsche Nationalhymne?",
+    "answers": [
+      "Völker, hört die Signale …",
+      "Einigkeit und Recht und Freiheit …",
+      "Freude schöner Götterfunken …",
+      "Deutschland einig Vaterland …"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 41,
+    "question": "Warum gibt es in einer Demokratie mehr als eine Partei?",
+    "answers": [
+      "weil dadurch die unterschiedlichen Meinungen der Bürger und Bürgerinnen vertreten werden",
+      "damit Bestechung in der Politik begrenzt wird",
+      "um politische Demonstrationen zu verhindern",
+      "um wirtschaftlichen Wettbewerb anzuregen"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 42,
+    "question": "Wer beschließt in Deutschland ein neues Gesetz?",
+    "answers": [
+      "die Regierung",
+      "das Parlament",
+      "die Gerichte",
+      "die Polizei"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 43,
+    "question": "Wann kann in Deutschland eine Partei verboten werden?",
+    "answers": [
+      "wenn ihr Wahlkampf zu teuer ist",
+      "wenn sie gegen die Verfassung kämpft",
+      "wenn sie Kritik am Staatsoberhaupt äußert",
+      "wenn ihr Programm eine neue Richtung vorschlägt"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 44,
+    "question": "Wen kann man als Bürger / Bürgerin in Deutschland nicht direkt wählen?",
+    "answers": [
+      "Abgeordnete des EU-Parlaments",
+      "den Bundespräsidenten / die Bundespräsidentin",
+      "Landtagsabgeordnete",
+      "Bundestagsabgeordnete"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 45,
+    "question": "Zu welcher Versicherung gehört die Pflegeversicherung?",
+    "answers": [
+      "Sozialversicherung",
+      "Unfallversicherung",
+      "Hausratversicherung",
+      "Haftpflicht- und Feuerversicherung"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 46,
+    "question": "Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört dazu?",
+    "answers": [
+      "Er baut Straßen und Schulen.",
+      "Er verkauft Lebensmittel und Kleidung.",
+      "Er versorgt alle Einwohner und Einwohnerinnen kostenlos mit Zeitungen.",
+      "Er produziert Autos und Busse."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 47,
+    "question": "Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört nicht dazu?",
+    "answers": [
+      "Er bezahlt für alle Staatsangehörigen Urlaubsreisen.",
+      "Er zahlt Kindergeld.",
+      "Er unterstützt Museen.",
+      "Er fördert Sportler und Sportlerinnen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 48,
+    "question": "Welches Organ gehört nicht zu den Verfassungsorganen Deutschlands?",
+    "answers": [
+      "der Bundesrat",
+      "der Bundespräsident / die Bundespräsidentin",
+      "die Bürgerversammlung",
+      "die Regierung"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 49,
+    "question": "Wer bestimmt in Deutschland die Schulpolitik?",
+    "answers": [
+      "die Lehrer und Lehrerinnen",
+      "die Bundesländer",
+      "das Familienministerium",
+      "die Universitäten"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 50,
+    "question": "Die Wirtschaftsform in Deutschland nennt man …",
+    "answers": [
+      "freie Zentralwirtschaft.",
+      "soziale Marktwirtschaft.",
+      "gelenkte Zentralwirtschaft.",
+      "Planwirtschaft."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 51,
+    "question": "Zu einem demokratischen Rechtsstaat gehört es nicht, dass …",
+    "answers": [
+      "Menschen sich kritisch über die Regierung äußern können.",
+      "Bürger friedlich demonstrieren gehen dürfen.",
+      "Menschen von einer Privatpolizei ohne Grund verhaftet werden.",
+      "jemand ein Verbrechen begeht und deshalb verhaftet wird."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 52,
+    "question": "Was bedeutet „Volkssouveränität“? Alle Staatsgewalt geht vom …",
+    "answers": [
+      "Volke aus.",
+      "Bundestag aus.",
+      "preußischen König aus.",
+      "Bundesverfassungsgericht aus."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 53,
+    "question": "Was bedeutet „Rechtsstaat“ in Deutschland?",
+    "answers": [
+      "Der Staat hat Recht.",
+      "Es gibt nur rechte Parteien.",
+      "Die Bürger und Bürgerinnen entscheiden über Gesetze.",
+      "Der Staat muss die Gesetze einhalten."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 54,
+    "question": "Was ist keine staatliche Gewalt in Deutschland?",
+    "answers": [
+      "Legislative",
+      "Judikative",
+      "Exekutive",
+      "Direktive"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 55,
+    "question": "Was zeigt dieses Bild?",
+    "answers": [
+      "den Bundestagssitz in Berlin",
+      "das Bundesverfassungsgericht in Karlsruhe",
+      "das Bundesratsgebäude in Berlin",
+      "das Bundeskanzleramt in Berlin"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 56,
+    "question": "Welches Amt gehört in Deutschland zur Gemeindeverwaltung?",
+    "answers": [
+      "Pfarramt",
+      "Ordnungsamt",
+      "Finanzamt",
+      "Auswärtiges Amt"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 57,
+    "question": "Wer wird meistens zum Präsidenten / zur Präsidentin des Deutschen Bundestages gewählt?",
+    "answers": [
+      "der / die älteste Abgeordnete im Parlament",
+      "der Ministerpräsident / die Ministerpräsidentin des größten Bundeslandes",
+      "ein Abgeordneter / eine Abgeordnete der stärksten Fraktion",
+      "ein ehemaliger Bundeskanzler / eine ehemalige Bundeskanzlerin"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 58,
+    "question": "Wer ernennt in Deutschland die Minister / die Ministerinnen der Bundesregierung?",
+    "answers": [
+      "der Präsident / die Präsidentin des Bundesverfassungsgerichtes",
+      "der Bundespräsident / die Bundespräsidentin",
+      "der Bundesratspräsident / die Bundesratspräsidentin",
+      "der Bundestagspräsident / die Bundestagspräsidentin"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 59,
+    "question": "Welche Parteien wurden in Deutschland 2007 zur Partei „Die Linke“?",
+    "answers": [
+      "CDU und SSW",
+      "PDS und WASG",
+      "CSU und FDP",
+      "Bündnis 90/Die Grünen und SPD"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 60,
+    "question": "In Deutschland gehören der Bundestag und der Bundesrat zur …",
+    "answers": [
+      "Exekutive.",
+      "Legislative.",
+      "Direktive.",
+      "Judikative."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 61,
+    "question": "Was bedeutet „Volkssouveränität“?",
+    "answers": [
+      "Der König / die Königin herrscht über das Volk.",
+      "Das Bundesverfassungsgericht steht über der Verfassung.",
+      "Die Interessenverbände üben die Souveränität zusammen mit der Regierung aus.",
+      "Die Staatsgewalt geht vom Volke aus."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 62,
+    "question": "Wenn das Parlament eines deutschen Bundeslandes gewählt wird, nennt man das …",
+    "answers": [
+      "Kommunalwahl.",
+      "Landtagswahl.",
+      "Europawahl.",
+      "Bundestagswahl."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 63,
+    "question": "Was gehört in Deutschland nicht zur Exekutive?",
+    "answers": [
+      "die Polizei",
+      "die Gerichte",
+      "das Finanzamt",
+      "die Ministerien"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 64,
+    "question": "Die Bundesrepublik Deutschland ist heute gegliedert in …",
+    "answers": [
+      "vier Besatzungszonen.",
+      "einen Oststaat und einen Weststaat.",
+      "16 Kantone.",
+      "Bund, Länder und Kommunen."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 65,
+    "question": "Es gehört nicht zu den Aufgaben des Deutschen Bundestages, …",
+    "answers": [
+      "Gesetze zu entwerfen.",
+      "die Bundesregierung zu kontrollieren.",
+      "den Bundeskanzler / die Bundeskanzlerin zu wählen.",
+      "das Bundeskabinett zu bilden."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 66,
+    "question": "Wer schrieb den Text zur deutschen Nationalhymne?",
+    "answers": [
+      "Friedrich von Schiller",
+      "Clemens Brentano",
+      "Johann Wolfgang von Goethe",
+      "Heinrich Hoffmann von Fallersleben"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 67,
+    "question": "Was ist in Deutschland vor allem eine Aufgabe der Bundesländer?",
+    "answers": [
+      "Verteidigungspolitik",
+      "Außenpolitik",
+      "Wirtschaftspolitik",
+      "Schulpolitik"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 68,
+    "question": "Warum kontrolliert der Staat in Deutschland das Schulwesen?",
+    "answers": [
+      "weil es in Deutschland nur staatliche Schulen gibt",
+      "weil alle Schüler und Schülerinnen einen Schulabschluss haben müssen",
+      "weil es in den Bundesländern verschiedene Schulen gibt",
+      "weil es nach dem Grundgesetz seine Aufgabe ist"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 69,
+    "question": "Die Bundesrepublik Deutschland hat einen dreistufigen Verwaltungsaufbau. Wie heißt die unterste politische Stufe?",
+    "answers": [
+      "Stadträte",
+      "Landräte",
+      "Gemeinden",
+      "Bezirksämter"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 70,
+    "question": "Der deutsche Bundespräsident Gustav Heinemann gibt Helmut Schmidt 1974 die Ernennungsurkunde zum deutschen Bundeskanzler. Was gehört zu den Aufgaben des deutschen Bundespräsidenten / der deutschen Bundespräsidentin?",
+    "answers": [
+      "Er / Sie führt die Regierungsgeschäfte.",
+      "Er / Sie kontrolliert die Regierungspartei.",
+      "Er / Sie wählt die Minister / Ministerinnen aus.",
+      "Er / Sie schlägt den Kanzler / die Kanzlerin zur Wahl vor."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 71,
+    "question": "Wo hält sich der deutsche Bundeskanzler / die deutsche Bundeskanzlerin am häufigsten auf? Am häufigsten ist er / sie …",
+    "answers": [
+      "in Bonn, weil sich dort das Bundeskanzleramt und der Bundestag befinden.",
+      "in Berlin, weil sich dort das Bundeskanzleramt und der Bundestag befinden.",
+      "auf Schloss Meseberg, dem Gästehaus der Bundesregierung, um Staatsgäste zu empfangen.",
+      "auf Schloss Bellevue, dem Amtssitz des Bundespräsidenten / der Bundespräsidentin, um Staatsgäste zu empfangen."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 72,
+    "question": "Wie heißt der jetzige Bundeskanzler / die jetzige Bundeskanzlerin von Deutschland?",
+    "answers": [
+      "Gerhard Schröder",
+      "Angela Merkel",
+      "Franziska Giffey",
+      "Olaf Scholz"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 73,
+    "question": "Die beiden größten Fraktionen im Deutschen Bundestag heißen zurzeit …",
+    "answers": [
+      "CDU/CSU und SPD.",
+      "Die Linke und Bündnis 90/Die Grünen.",
+      "FDP und SPD.",
+      "Die Linke und FDP."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 74,
+    "question": "Wie heißt das Parlament für ganz Deutschland?",
+    "answers": [
+      "Bundesversammlung",
+      "Volkskammer",
+      "Bundestag",
+      "Bundesgerichtshof"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 75,
+    "question": "Wie heißt Deutschlands heutiges Staatsoberhaupt?",
+    "answers": [
+      "Frank-Walter Steinmeier",
+      "Bärbel Bas",
+      "Bodo Ramelow",
+      "Joachim Gauck"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 76,
+    "question": "Was bedeutet die Abkürzung CDU in Deutschland?",
+    "answers": [
+      "Christliche Deutsche Union",
+      "Club Deutscher Unternehmer",
+      "Christlicher Deutscher Umweltschutz",
+      "Christlich Demokratische Union"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 77,
+    "question": "Was ist die Bundeswehr?",
+    "answers": [
+      "die deutsche Polizei",
+      "ein deutscher Hafen",
+      "eine deutsche Bürgerinitiative",
+      "die deutsche Armee"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 78,
+    "question": "Was bedeutet die Abkürzung SPD?",
+    "answers": [
+      "Sozialistische Partei Deutschlands",
+      "Sozialpolitische Partei Deutschlands",
+      "Sozialdemokratische Partei Deutschlands",
+      "Sozialgerechte Partei Deutschlands"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 79,
+    "question": "Was bedeutet die Abkürzung FDP in Deutschland?",
+    "answers": [
+      "Friedliche Demonstrative Partei",
+      "Freie Deutschland Partei",
+      "Führende Demokratische Partei",
+      "Freie Demokratische Partei"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 80,
+    "question": "Welches Gericht in Deutschland ist zuständig für die Auslegung des Grundgesetzes?",
+    "answers": [
+      "Oberlandesgericht",
+      "Amtsgericht",
+      "Bundesverfassungsgericht",
+      "Verwaltungsgericht"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 81,
+    "question": "Wer wählt den Bundeskanzler / die Bundeskanzlerin in Deutschland?",
+    "answers": [
+      "der Bundesrat",
+      "die Bundesversammlung",
+      "das Volk",
+      "der Bundestag"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 82,
+    "question": "Wer leitet das deutsche Bundeskabinett?",
+    "answers": [
+      "der Bundestagspräsident / die Bundestagspräsidentin",
+      "der Bundespräsident / die Bundespräsidentin",
+      "der Bundeskanzler / die Bundeskanzlerin",
+      "der Bundesratspräsident / die Bundesratspräsidentin"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 83,
+    "question": "Wer wählt den deutschen Bundeskanzler / die deutsche Bundeskanzlerin?",
+    "answers": [
+      "das Volk",
+      "die Bundesversammlung",
+      "der Bundestag",
+      "die Bundesregierung"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 84,
+    "question": "Welche Hauptaufgabe hat der deutsche Bundespräsident / die deutsche Bundespräsidentin? Er / Sie …",
+    "answers": [
+      "regiert das Land.",
+      "entwirft die Gesetze.",
+      "repräsentiert das Land.",
+      "überwacht die Einhaltung der Gesetze."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 85,
+    "question": "Wer bildet den deutschen Bundesrat?",
+    "answers": [
+      "die Abgeordneten des Bundestages",
+      "die Minister und Ministerinnen der Bundesregierung",
+      "die Regierungsvertreter der Bundesländer",
+      "die Parteimitglieder"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 86,
+    "question": "Wer wählt in Deutschland den Bundespräsidenten / die Bundespräsidentin?",
+    "answers": [
+      "die Bundesversammlung",
+      "der Bundesrat",
+      "das Bundesparlament",
+      "das Bundesverfassungsgericht"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 87,
+    "question": "Wer ist das Staatsoberhaupt der Bundesrepublik Deutschland?",
+    "answers": [
+      "der Bundeskanzler / die Bundeskanzlerin",
+      "der Bundespräsident / die Bundespräsidentin",
+      "der Bundesratspräsident / die Bundesratspräsidentin",
+      "der Bundestagspräsident / die Bundestagspräsidentin"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 88,
+    "question": "Die parlamentarische Opposition im Deutschen Bundestag …",
+    "answers": [
+      "kontrolliert die Regierung.",
+      "entscheidet, wer Bundesminister / Bundesministerin wird.",
+      "bestimmt, wer im Bundesrat sitzt.",
+      "schlägt die Regierungschefs / Regierungschefinnen der Länder vor."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 89,
+    "question": "Wie nennt man in Deutschland die Vereinigung von Abgeordneten einer Partei im Parlament?",
+    "answers": [
+      "Verband",
+      "Ältestenrat",
+      "Fraktion",
+      "Opposition"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 90,
+    "question": "Die deutschen Bundesländer wirken an der Gesetzgebung des Bundes mit durch …",
+    "answers": [
+      "den Bundesrat.",
+      "die Bundesversammlung.",
+      "den Bundestag.",
+      "die Bundesregierung."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 91,
+    "question": "In Deutschland kann ein Regierungswechsel in einem Bundesland Auswirkungen auf die Bundespolitik haben. Das Regieren wird …",
+    "answers": [
+      "schwieriger, wenn sich dadurch die Mehrheit im Bundestag ändert.",
+      "leichter, wenn dadurch neue Parteien in den Bundesrat kommen.",
+      "schwieriger, wenn dadurch die Mehrheit im Bundesrat verändert wird.",
+      "leichter, wenn es sich um ein reiches Bundesland handelt."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 92,
+    "question": "Was bedeutet die Abkürzung CSU in Deutschland?",
+    "answers": [
+      "Christlich Sichere Union",
+      "Christlich Süddeutsche Union",
+      "Christlich Sozialer Unternehmerverband",
+      "Christlich Soziale Union"
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 93,
+    "question": "Je mehr „Zweitstimmen“ eine Partei bei einer Bundestagswahl bekommt, desto …",
+    "answers": [
+      "mehr Sitze erhält die Partei im Parlament.",
+      "weniger Erststimmen kann sie haben.",
+      "mehr Direktkandidaten der Partei ziehen ins Parlament ein.",
+      "größer ist das Risiko, eine Koalition bilden zu müssen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 94,
+    "question": "Ab welchem Alter darf man in Deutschland an der Wahl zum Deutschen Bundestag teilnehmen?",
+    "answers": [
+      "16",
+      "18",
+      "21",
+      "23"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 95,
+    "question": "Was gilt für die meisten Kinder in Deutschland?",
+    "answers": [
+      "Wahlpflicht",
+      "Schulpflicht",
+      "Schweigepflicht",
+      "Religionspflicht"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 96,
+    "question": "Was muss jeder deutsche Staatsbürger / jede deutsche Staatsbürgerin ab dem 16. Lebensjahr besitzen?",
+    "answers": [
+      "einen Reisepass",
+      "einen Personalausweis",
+      "einen Sozialversicherungsausweis",
+      "einen Führerschein"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 97,
+    "question": "Was bezahlt man in Deutschland automatisch, wenn man fest angestellt ist?",
+    "answers": [
+      "Sozialversicherung",
+      "Sozialhilfe",
+      "Kindergeld",
+      "Wohngeld"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 98,
+    "question": "Wenn Abgeordnete im Deutschen Bundestag ihre Fraktion wechseln, ...",
+    "answers": [
+      "kann die Regierung ihre Mehrheit verlieren.",
+      "dürfen sie nicht mehr an den Sitzungen des Parlaments teilnehmen.",
+      "muss der Bundespräsident / die Bundespräsidentin zuvor sein / ihr Einverständnis geben.",
+      "dürfen die Wähler / Wählerinnen dieser Abgeordneten noch einmal wählen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 99,
+    "question": "Wer bezahlt in Deutschland die Sozialversicherungen?",
+    "answers": [
+      "Arbeitgeber / Arbeitgeberinnen und Arbeitnehmer / Arbeitnehmerinnen",
+      "nur Arbeitnehmer / Arbeitnehmerinnen",
+      "alle Staatsangehörigen",
+      "nur Arbeitgeber / Arbeitgeberinnen"
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 100,
+    "question": "Was gehört nicht zur gesetzlichen Sozialversicherung?",
+    "answers": [
+      "die gesetzliche Rentenversicherung",
+      "die Lebensversicherung",
+      "die Arbeitslosenversicherung",
+      "die Pflegeversicherung"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 101,
+    "question": "Gewerkschaften sind Interessenverbände der …",
+    "answers": [
+      "Jugendlichen.",
+      "Arbeitnehmer und Arbeitnehmerinnen.",
+      "Rentner und Rentnerinnen.",
+      "Arbeitgeber und Arbeitgeberinnen."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 102,
+    "question": "Womit kann man in der Bundesrepublik Deutschland geehrt werden, wenn man auf politischem, wirtschaftlichem, kulturellem, geistigem oder sozialem Gebiet eine besondere Leistung erbracht hat? Mit dem …",
+    "answers": [
+      "Bundesadler.",
+      "Bundesverdienstkreuz.",
+      "Vaterländischen Verdienstorden.",
+      "Ehrentitel „Held der Deutschen Demokratischen Republik“."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 103,
+    "question": "Was wird in Deutschland als „Ampelkoalition“ bezeichnet? Die Zusammenarbeit …",
+    "answers": [
+      "der Bundestagsfraktionen von CDU und CSU",
+      "von SPD, FDP und Bündnis 90/Die Grünen in einer Regierung",
+      "von CSU, Die LINKE und Bündnis 90/Die Grünen in einer Regierung",
+      "der Bundestagsfraktionen von CDU und SPD"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 104,
+    "question": "Eine Frau in Deutschland verliert ihre Arbeit. Was darf nicht der Grund für diese Entlassung sein?",
+    "answers": [
+      "Die Frau ist lange krank und arbeitsunfähig.",
+      "Die Frau kam oft zu spät zur Arbeit.",
+      "Die Frau erledigt private Sachen während der Arbeitszeit.",
+      "Die Frau bekommt ein Kind und ihr Chef weiß das."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 105,
+    "question": "Was ist eine Aufgabe von Wahlhelfern / Wahlhelferinnen in Deutschland?",
+    "answers": [
+      "Sie helfen alten Menschen bei der Stimmabgabe in der Wahlkabine.",
+      "Sie schreiben die Wahlbenachrichtigungen vor der Wahl.",
+      "Sie geben Zwischenergebnisse an die Medien weiter.",
+      "Sie zählen die Stimmen nach dem Ende der Wahl."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 106,
+    "question": "In Deutschland helfen ehrenamtliche Wahlhelfer und Wahlhelferinnen bei den Wahlen. Was ist eine Aufgabe von Wahlhelfern / Wahlhelferinnen?",
+    "answers": [
+      "Sie helfen Kindern und alten Menschen beim Wählen.",
+      "Sie schreiben Karten und Briefe mit der Angabe des Wahllokals.",
+      "Sie geben Zwischenergebnisse an Journalisten weiter.",
+      "Sie zählen die Stimmen nach dem Ende der Wahl."
+    ],
+    "correct": 3,
+    "category": "Allgemein"
+  },
+  {
+    "id": 107,
+    "question": "Für wie viele Jahre wird der Bundestag in Deutschland gewählt?",
+    "answers": [
+      "2 Jahre",
+      "4 Jahre",
+      "6 Jahre",
+      "8 Jahre"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 108,
+    "question": "Bei einer Bundestagswahl in Deutschland darf jeder wählen, der …",
+    "answers": [
+      "in der Bundesrepublik Deutschland wohnt und wählen möchte.",
+      "Bürger / Bürgerin der Bundesrepublik Deutschland ist und mindestens 18 Jahre alt ist.",
+      "seit mindestens 3 Jahren in der Bundesrepublik Deutschland lebt.",
+      "Bürger / Bürgerin der Bundesrepublik Deutschland ist und mindestens 21 Jahre alt ist."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 109,
+    "question": "Wie oft gibt es normalerweise Bundestagswahlen in Deutschland?",
+    "answers": [
+      "alle drei Jahre",
+      "alle vier Jahre",
+      "alle fünf Jahre",
+      "alle sechs Jahre"
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 110,
+    "question": "Für wie viele Jahre wird der Bundestag in Deutschland gewählt?",
+    "answers": [
+      "2 Jahre",
+      "3 Jahre",
+      "4 Jahre",
+      "5 Jahre"
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  },
+  {
+    "id": 111,
+    "question": "In Deutschland darf man wählen. Was bedeutet das?",
+    "answers": [
+      "Alle deutschen Staatsangehörigen dürfen wählen, wenn sie das Mindestalter erreicht haben.",
+      "Nur verheiratete Personen dürfen wählen.",
+      "Nur Personen mit einem festen Arbeitsplatz dürfen wählen.",
+      "Alle Einwohner und Einwohnerinnen in Deutschland müssen wählen."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 112,
+    "question": "Die Wahlen in Deutschland sind …",
+    "answers": [
+      "speziell.",
+      "geheim.",
+      "berufsbezogen.",
+      "geschlechtsabhängig."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 113,
+    "question": "Wahlen in Deutschland gewinnt die Partei, die …",
+    "answers": [
+      "die meisten Stimmen bekommt.",
+      "die meisten Männer mehrheitlich gewählt haben.",
+      "die meisten Stimmen bei den Arbeitern / Arbeiterinnen bekommen hat.",
+      "die meisten Erststimmen für ihren Kanzlerkandidaten / ihre Kanzlerkandidatin erhalten hat."
+    ],
+    "correct": 0,
+    "category": "Allgemein"
+  },
+  {
+    "id": 114,
+    "question": "An demokratischen Wahlen in Deutschland teilzunehmen ist …",
+    "answers": [
+      "eine Pflicht.",
+      "ein Recht.",
+      "ein Zwang.",
+      "eine Last."
+    ],
+    "correct": 1,
+    "category": "Allgemein"
+  },
+  {
+    "id": 115,
+    "question": "Was bedeutet „aktives Wahlrecht“ in Deutschland?",
+    "answers": [
+      "Man kann gewählt werden.",
+      "Man muss wählen gehen.",
+      "Man kann wählen.",
+      "Man muss zur Auszählung der Stimmen gehen."
+    ],
+    "correct": 2,
+    "category": "Allgemein"
+  }
+]

@@ -1,0 +1,1842 @@
+{
+  "116": {
+    "question_en": "If you are allowed to vote in a German federal election, that means …",
+    "question_ar": "إذا كنت مسموح لك تصوت فالانتخابات ديال البرلمان الألماني، هادا كيعني …",
+    "answers_en": [
+      "active election campaign.",
+      "active voting procedure.",
+      "active election campaigning.",
+      "active right to vote."
+    ],
+    "answers_ar": [
+      "حملة انتخابية نشيطة.",
+      "إجراء انتخابي نشيط.",
+      "نشاط حملة انتخابية.",
+      "حق نشيط فالتصويت."
+    ]
+  },
+  "117": {
+    "question_en": "What percentage of second votes must parties receive at minimum to be elected to the German Bundestag?",
+    "question_ar": "شحال نسبة ديال الأصوات التانية خاص الأحزاب يحصلو عليها باش يدخلو للبرلمان الألماني؟",
+    "answers_en": [
+      "3 %",
+      "4 %",
+      "5 %",
+      "6 %"
+    ],
+    "answers_ar": [
+      "3 %",
+      "4 %",
+      "5 %",
+      "6 %"
+    ]
+  },
+  "118": {
+    "question_en": "What does the electoral law regulate in Germany?",
+    "question_ar": "شنو كينظم قانون الانتخابات فألمانيا؟",
+    "answers_en": [
+      "Who is allowed to vote must vote.",
+      "Everyone who wants to can vote.",
+      "Who does not vote loses the right to vote.",
+      "Who is allowed to vote may vote."
+    ],
+    "answers_ar": [
+      "اللي مسموح ليه يصوت خاصو يصوت.",
+      "كل شي بغا يقدر يصوت.",
+      "اللي ما صوتش كيفقد الحق ديال التصويت.",
+      "اللي مسموح ليه يصوت يقدر يصوت."
+    ]
+  },
+  "119": {
+    "question_en": "Elections in Germany are free. What does that mean?",
+    "question_ar": "الانتخابات فألمانيا حرة. شنو كيعني هادا؟",
+    "answers_en": [
+      "All convicted criminals are not allowed to vote.",
+      "If I want to go vote, my employer must give me time off.",
+      "Every person can decide without coercion whether they want to vote and whom they want to vote for.",
+      "I can freely decide where I want to go vote."
+    ],
+    "answers_ar": [
+      "كل المجرمين المحكومين ما يقدروش يصوتو.",
+      "إذا بغيت نمشي نصوت، خاص صاحب الشغل يعطيني إذن.",
+      "كل شخص يقدر يقرر بلا ما يتضطر إذا بغا يصوت ولاشنو بغا يصوت عليه.",
+      "نقدر نقرر بحرية فين بغيت نمشي نصوت."
+    ]
+  },
+  "120": {
+    "question_en": "The electoral system in Germany is a …",
+    "question_ar": "نظام الانتخابات فألمانيا هو …",
+    "answers_en": [
+      "census-based suffrage.",
+      "three-class suffrage.",
+      "majority and proportional representation system.",
+      "universal male suffrage."
+    ],
+    "answers_ar": [
+      "حق تصويت على حساب التعداد.",
+      "حق تصويت ديال ثلاث طبقات.",
+      "نظام الأغلبية والتمثيل النسبي.",
+      "حق تصويت عام للرجال فقط."
+    ]
+  },
+  "121": {
+    "question_en": "A party wants to enter the German Bundestag. But it must have a minimum share of votes. That means …",
+    "question_ar": "حزب باغي يدخل للبرلمان الألماني. ولكن خاصو يكون عندو نسبة صوتية دنيا. هادا كيعني …",
+    "answers_en": [
+      "5 % hurdle.",
+      "admission limit.",
+      "base value.",
+      "guideline."
+    ],
+    "answers_ar": [
+      "عتبة 5 %.",
+      "حد القبول.",
+      "القيمة الأساسية.",
+      "توجيه."
+    ]
+  },
+  "122": {
+    "question_en": "What principle do elections in Germany follow? Elections in Germany are …",
+    "question_ar": "شنو هي المبادئ اللي كاتبنيها الانتخابات فألمانيا؟ الانتخابات فألمانيا كاينين …",
+    "answers_en": [
+      "free, equal, secret.",
+      "open, secure, free.",
+      "closed, equal, secure.",
+      "secure, open, voluntary."
+    ],
+    "answers_ar": [
+      "حرة، متساوية، سرية.",
+      "مفتوحة، آمنة، حرة.",
+      "مغلقة، متساوية، آمنة.",
+      "آمنة، مفتوحة، تطوعية."
+    ]
+  },
+  "123": {
+    "question_en": "What is the „5 % hurdle“ in Germany?",
+    "question_ar": "شنو هي \"عتبة 5 %\" فألمانيا؟",
+    "answers_en": [
+      "Voting rule in the Bundestag for small parties",
+      "Attendance check in the Bundestag for votes",
+      "Minimum share of votes to enter parliament",
+      "Attendance check in the Bundesrat for votes"
+    ],
+    "answers_ar": [
+      "قاعدة تصويت فالبرلمان للأحزاب الصغيرة",
+      "مراقبة الحضور فالبرلمان للتصويت",
+      "النسبة الدنيا ديال الأصوات باش يدخلو للبرلمان",
+      "مراقبة الحضور فالمجلس الاتحادي للتصويت"
+    ]
+  },
+  "124": {
+    "question_en": "The Bundestag election in Germany is the election of …",
+    "question_ar": "انتخابات البرلمان الألماني هي انتخابات ديال …",
+    "answers_en": [
+      "the Federal Chancellor.",
+      "the parliaments of the federal states.",
+      "the parliament for Germany.",
+      "the Federal President."
+    ],
+    "answers_ar": [
+      "المستشار الفيدرالي.",
+      "البرلمانات ديال الولايات.",
+      "البرلمان ديال ألمانيا.",
+      "الرئيس الفيدرالي."
+    ]
+  },
+  "125": {
+    "question_en": "In a democracy, one function of regular elections is to …",
+    "question_ar": "فالديموقراطية، واحد من الوظايف ديال الانتخابات المنتظمة هو …",
+    "answers_en": [
+      "force citizens to cast their vote.",
+      "enable a change of government according to the will of the majority of voters.",
+      "maintain existing laws in the country.",
+      "give more power to the poor."
+    ],
+    "answers_ar": [
+      "يضطر المواطنين باش يصوتو.",
+      "يمكن تبديل الحكومة على حساب رغبة أغلبية الناخبين.",
+      "يبقى القوانين اللي كاينين فالبلاد.",
+      "يعطي قوة أكتر للمساكين."
+    ]
+  },
+  "126": {
+    "question_en": "What do eligible citizens in Germany receive before an election?",
+    "question_ar": "شنو كاياخدو المواطنين اللي عندهم حق التصويت فألمانيا قبل الانتخابات؟",
+    "answers_en": [
+      "a polling card from the municipality",
+      "a voting permit from the Federal President",
+      "a notification from the Federal Assembly",
+      "a notification from the parish office"
+    ],
+    "answers_ar": [
+      "بطاقة تصويت من البلدية",
+      "تصريح تصويت من الرئيس الفيدرالي",
+      "إشعار من المجلس الفيدرالي",
+      "إشعار من مكتب الرعية"
+    ]
+  },
+  "127": {
+    "question_en": "Why is there a 5 % hurdle in the electoral law of the Federal Republic of Germany? It exists because …",
+    "question_ar": "علاش كاينة عتبة 5 % فقانون الانتخابات ديال ألمانيا؟ كاينة حيت …",
+    "answers_en": [
+      "the programs of many small parties have many similarities.",
+      "citizens can lose orientation with many small parties.",
+      "many small parties make government formation more difficult.",
+      "small parties do not have enough money to pay the politicians."
+    ],
+    "answers_ar": [
+      "البرامج ديال بزاف ديال الأحزاب الصغيرة فيها تشابهات بزاف.",
+      "المواطنين يقدروا يضلو الطريق مع بزاف ديال الأحزاب الصغيرة.",
+      "بزاف ديال الأحزاب الصغيرة كتصعب تكوين الحكومة.",
+      "الأحزاب الصغيرة ما عندهومش فلوس بزاف باش يخلصو السياسيين."
+    ]
+  },
+  "128": {
+    "question_en": "Members of parliament who are elected by the citizens are called …",
+    "question_ar": "الأعضاء ديال البرلمان اللي كيتنتخبو من المواطنين كيسميوهم …",
+    "answers_en": [
+      "Members of Parliament / Representatives.",
+      "Chancellors.",
+      "Ambassadors.",
+      "Minister Presidents."
+    ],
+    "answers_ar": [
+      "نواب / أعضاء برلمان.",
+      "مستشارين.",
+      "سفراء.",
+      "رؤساء وزراء الولايات."
+    ]
+  },
+  "129": {
+    "question_en": "In Germany, the people elect …",
+    "question_ar": "فألمانيا، الشعب كينتخب …",
+    "answers_en": [
+      "the Federal Chancellor.",
+      "the Minister President of a federal state.",
+      "the Bundestag.",
+      "the Federal President."
+    ],
+    "answers_ar": [
+      "المستشار الفيدرالي.",
+      "رئيس وزراء واحد الولاية.",
+      "البرلمان (البوندستاغ).",
+      "الرئيس الفيدرالي."
+    ]
+  },
+  "130": {
+    "question_en": "Which ballot would be valid in a Bundestag election?",
+    "question_ar": "شنو هي الورقة ديال التصويت اللي كتكون صالحة فانتخابات البرلمان؟",
+    "answers_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answers_ar": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  "131": {
+    "question_en": "In Germany, a mayor is …",
+    "question_ar": "فألمانيا، العمدة (بürgermeister) هو …",
+    "answers_en": [
+      "the head of a school.",
+      "the head of a bank.",
+      "the head of a municipality.",
+      "the chairperson of a party."
+    ],
+    "answers_ar": [
+      "رئيس مدرسة.",
+      "رئيس بنك.",
+      "رئيس بلدية.",
+      "رئيس حزب."
+    ]
+  },
+  "132": {
+    "question_en": "Many people in Germany work voluntarily in their free time. What does that mean?",
+    "question_ar": "بزاف ديال الناس فألمانيا كيخدمو بشكل تطوعي فوقت الفراغ ديالهم. شنو كيعني هادا؟",
+    "answers_en": [
+      "They work as soldiers.",
+      "They work voluntarily and without pay in clubs and associations.",
+      "They work in the federal government.",
+      "They work in a hospital and earn money."
+    ],
+    "answers_ar": [
+      "كيخدمو كجنود.",
+      "كيخدمو تطوعيا وبلا أجر فالجمعيات والأندية.",
+      "كيخدمو فالحكومة الفيدرالية.",
+      "كيخدمو فمستشفى وكيكسبو فلوس."
+    ]
+  },
+  "133": {
+    "question_en": "What is allowed in Bundestag and state parliament elections in Germany?",
+    "question_ar": "شنو مسموح به فانتخابات البرلمان والبرلمانات الولائية فألمانيا؟",
+    "answers_en": [
+      "The husband votes for his wife.",
+      "You can cast your vote by postal ballot.",
+      "You can vote by telephone on election day.",
+      "Children from the age of 14 are allowed to vote."
+    ],
+    "answers_ar": [
+      "الراجل كيصوت فبلاصة مراتو.",
+      "تقدر تصوت بالبريد.",
+      "تقدر تصوت بالتلفون نهار الانتخابات.",
+      "الولاد من عمر 14 سنة يقدرو يصوتو."
+    ]
+  },
+  "134": {
+    "question_en": "The bus line you always take to work is to be discontinued. What can you do to keep the bus line?",
+    "question_ar": "باغين يوقفو خط الحافلة اللي كتمشي بيه للخدمة ديما. شنو تقدر تدير باش تحتفظ بخط الحافلة؟",
+    "answers_en": [
+      "I participate in a citizens' initiative to preserve the bus line or start one myself.",
+      "I join a sports club and practice cycling.",
+      "I contact the tax office because as a taxpayer I have a right to the bus line.",
+      "I write a letter to the municipal forestry office."
+    ],
+    "answers_ar": [
+      "نشارك فمبادرة مواطنين باش نحافظو على خط الحافلة ولا نأسس واحدة أنا.",
+      "ندخل فنادي رياضي ونمارس ركوب الدراجة.",
+      "نوصل لمصلحة الضرائب حيت كمساهم عندي الحق فخط الحافلة.",
+      "نكتب برية لمصلحة الغابات ديال البلدية."
+    ]
+  },
+  "135": {
+    "question_en": "Whom do trade unions represent in Germany?",
+    "question_ar": "شكون كتمثل النقابات العمالية فألمانيا؟",
+    "answers_en": [
+      "large companies",
+      "small companies",
+      "self-employed persons",
+      "employees"
+    ],
+    "answers_ar": [
+      "الشركات الكبار",
+      "الشركات الصغار",
+      "الناس اللي كيخدمو لراسهم",
+      "العمال والموظفين"
+    ]
+  },
+  "136": {
+    "question_en": "You go to a labor court in Germany in case of …",
+    "question_ar": "كتمشي لمحكمة الشغل فألمانيا فحالة ديال …",
+    "answers_en": [
+      "incorrect utility bill.",
+      "unjustified dismissal by your boss.",
+      "problems with neighbors.",
+      "difficulties after a traffic accident."
+    ],
+    "answers_ar": [
+      "فاتورة خدمات غالطة.",
+      "الفصل اللي ماشي مبرر من طرف الرئيس ديالك.",
+      "مشاكل مع الجيران.",
+      "صعوبات من بعد حادثة سير."
+    ]
+  },
+  "137": {
+    "question_en": "Which court in Germany is responsible for conflicts in the working world?",
+    "question_ar": "شنو هي المحكمة المسؤولة فألمانيا على النزاعات فعالم الشغل؟",
+    "answers_en": [
+      "the family court",
+      "the criminal court",
+      "the labor court",
+      "the local court"
+    ],
+    "answers_ar": [
+      "محكمة العائلة",
+      "المحكمة الجنائية",
+      "محكمة الشغل",
+      "المحكمة المحلية"
+    ]
+  },
+  "138": {
+    "question_en": "What can I do in Germany if my employer has unjustly dismissed me?",
+    "question_ar": "شنو نقدر ندير فألمانيا إذا صاحب الشغل ديالي فصلني بلا حق؟",
+    "answers_en": [
+      "continue working and be friendly to the boss",
+      "conduct a dunning procedure against the employer",
+      "file an unfair dismissal claim",
+      "report the employer to the police"
+    ],
+    "answers_ar": [
+      "نكمل الخدمة ونكون لطيف مع الرئيس",
+      "ندير إجراء تنبيه ضد صاحب الشغل",
+      "نرفع دعوى حماية من الفصل التعسفي",
+      "نشكي صاحب الشغل للبوليس"
+    ]
+  },
+  "139": {
+    "question_en": "When does a trial take place in court in Germany? When someone …",
+    "question_ar": "فين كتوقع المحاكمة فالمحكمة فألمانيا؟ فحالة اللي شي واحد …",
+    "answers_en": [
+      "converts to another religion.",
+      "has committed a crime and is charged.",
+      "holds a different opinion than the government.",
+      "has parked their car incorrectly and it is towed."
+    ],
+    "answers_ar": [
+      "بدل الديانة ديالو.",
+      "دار جريمة واتتهم.",
+      "عندو رأي مختلف على الحكومة.",
+      "ركن الطموبيل ديالو بشكل غالط وجراتلو."
+    ]
+  },
+  "140": {
+    "question_en": "What does a lay judge do in Germany? He / She …",
+    "question_ar": "شنو كيدير القاضي الشعبي (schöffe) فألمانيا؟ هو / هي …",
+    "answers_en": [
+      "decides with judges on guilt and punishment.",
+      "gives citizens legal advice.",
+      "issues documents.",
+      "defends the accused."
+    ],
+    "answers_ar": [
+      "كيقرر مع القضاة على الذنب والعقاب.",
+      "كيعطي نصايح قانونية للمواطنين.",
+      "كيخرج الوثائق.",
+      "كيدافع على المتهم."
+    ]
+  },
+  "141": {
+    "question_en": "Who advises people in Germany on legal questions and represents them in court?",
+    "question_ar": "شكون كينصح الناس فألمانيا فالمسائل القانونية وكيمثلهم قدام المحكمة؟",
+    "answers_en": [
+      "a lawyer",
+      "a judge",
+      "a lay judge",
+      "a public prosecutor"
+    ],
+    "answers_ar": [
+      "محامي / محامية",
+      "قاضي / قاضية",
+      "قاضي شعبي / قاضية شعبية",
+      "وكيل دولة / وكيلة دولة"
+    ]
+  },
+  "142": {
+    "question_en": "What is the main task of a judge in Germany? A judge …",
+    "question_ar": "شنو هي المهمة الرئيسية ديال القاضي فألمانيا؟ القاضي …",
+    "answers_en": [
+      "represents citizens before a court.",
+      "works at a court and passes judgments.",
+      "changes laws.",
+      "looks after young people in court."
+    ],
+    "answers_ar": [
+      "كيمثل المواطنين قدام المحكمة.",
+      "كيخدم فالمحكمة وكيطلق الأحكام.",
+      "كيبدل القوانين.",
+      "كيراعي الشباب فالمحكمة."
+    ]
+  },
+  "143": {
+    "question_en": "A judge in Germany belongs to the …",
+    "question_ar": "القاضي فألمانيا كينتمي لـ …",
+    "answers_en": [
+      "Judiciary.",
+      "Executive.",
+      "Operative.",
+      "Legislature."
+    ],
+    "answers_ar": [
+      "السلطة القضائية.",
+      "السلطة التنفيذية.",
+      "السلطة التشغيلية.",
+      "السلطة التشريعية."
+    ]
+  },
+  "144": {
+    "question_en": "A judge belongs to the … in Germany",
+    "question_ar": "القاضي كينتمي لـ … فألمانيا",
+    "answers_en": [
+      "executive branch.",
+      "judicial branch.",
+      "planning branch.",
+      "legislative branch."
+    ],
+    "answers_ar": [
+      "السلطة التنفيذية.",
+      "السلطة القضائية.",
+      "السلطة التخطيطية.",
+      "السلطة التشريعية."
+    ]
+  },
+  "145": {
+    "question_en": "In Germany, state power is divided. For which branch of state power does a judge work? For the …",
+    "question_ar": "فألمانيا، السلطة ديال الدولة مقسومة. فاش من سلطة كيخدم القاضي؟ فـ …",
+    "answers_en": [
+      "Judiciary.",
+      "Executive.",
+      "Press.",
+      "Legislature."
+    ],
+    "answers_ar": [
+      "السلطة القضائية.",
+      "السلطة التنفيذية.",
+      "الصحافة.",
+      "السلطة التشريعية."
+    ]
+  },
+  "146": {
+    "question_en": "What is a proceeding before a court called in Germany?",
+    "question_ar": "شنو كيسميو الإجراءات قدام المحكمة فألمانيا؟",
+    "answers_en": [
+      "Program",
+      "Procedure",
+      "Protocol",
+      "Trial / Lawsuit"
+    ],
+    "answers_ar": [
+      "برنامج",
+      "إجراء",
+      "محضر",
+      "محاكمة / دعوى قضائية"
+    ]
+  },
+  "147": {
+    "question_en": "What is the work of a judge in Germany?",
+    "question_ar": "شنو هي شغل القاضي فألمانيا؟",
+    "answers_en": [
+      "To govern Germany",
+      "To administer justice",
+      "To create plans",
+      "To enact laws"
+    ],
+    "answers_ar": [
+      "يحكم ألمانيا",
+      "يقول الكلمة ديال الحق",
+      "يدير المخططات",
+      "يسن القوانين"
+    ]
+  },
+  "148": {
+    "question_en": "What is a task of the police in Germany?",
+    "question_ar": "شنو هي واحد المهام ديال البوليس فألمانيا؟",
+    "answers_en": [
+      "to defend the country",
+      "to wiretap citizens",
+      "to pass laws",
+      "to monitor compliance with laws"
+    ],
+    "answers_ar": [
+      "يدافع على البلاد",
+      "يراقب المواطنين بالتنصت",
+      "يسن القوانين",
+      "يراقب التزام الناس بالقوانين"
+    ]
+  },
+  "149": {
+    "question_en": "Who can become a lay judge in Germany?",
+    "question_ar": "شكون يقدر يولي قاضي شعبي فألمانيا؟",
+    "answers_en": [
+      "all residents of Germany born there over 18 years",
+      "all German nationals older than 24 and younger than 70 years",
+      "all persons who have lived in Germany for at least 5 years",
+      "only persons with a completed law degree"
+    ],
+    "answers_ar": [
+      "كل السكان اللي تولدو فألمانيا فوق 18 سنة",
+      "كل المواطنين الألمان اللي عمرهم أكتر من 24 وأقل من 70 سنة",
+      "كل الناس اللي ساكنين فألمانيا من 5 سنين على الأقل",
+      "غير الناس اللي كاملين فالقانون"
+    ]
+  },
+  "150": {
+    "question_en": "A lay judge in Germany is …",
+    "question_ar": "القاضي الشعبي فألمانيا هو …",
+    "answers_en": [
+      "the deputy of the city mayor.",
+      "a voluntary judge.",
+      "a member of a municipal council.",
+      "a person who studied law."
+    ],
+    "answers_ar": [
+      "نائب رئيس البلدية.",
+      "قاضي متطوع.",
+      "عضو فالمجلس البلدي.",
+      "شخص دار القانون."
+    ]
+  },
+  "151": {
+    "question_en": "Who built the Wall in Berlin?",
+    "question_ar": "شكون بنا السور فبرلين؟",
+    "answers_en": [
+      "Great Britain",
+      "the Federal Republic of Germany",
+      "the GDR (East Germany)",
+      "the USA"
+    ],
+    "answers_ar": [
+      "بريطانيا العظمى",
+      "جمهورية ألمانيا الاتحادية",
+      "ألمانيا الشرقية (الدي دي آر)",
+      "أمريكا"
+    ]
+  },
+  "152": {
+    "question_en": "When were the Nazis with Adolf Hitler in power in Germany?",
+    "question_ar": "فين كان النازيين مع أدولف هتلر فالحكم فألمانيا؟",
+    "answers_en": [
+      "1918 to 1923",
+      "1932 to 1950",
+      "1933 to 1945",
+      "1945 to 1989"
+    ],
+    "answers_ar": [
+      "1918 حتى 1923",
+      "1932 حتى 1950",
+      "1933 حتى 1945",
+      "1945 حتى 1989"
+    ]
+  },
+  "153": {
+    "question_en": "What happened on May 8, 1945?",
+    "question_ar": "شنو وقع نهار 8 ماي 1945؟",
+    "answers_en": [
+      "Death of Adolf Hitler",
+      "Beginning of the Berlin Wall construction",
+      "Election of Konrad Adenauer as Federal Chancellor",
+      "End of World War II in Europe"
+    ],
+    "answers_ar": [
+      "وفاة أدولف هتلر",
+      "بداية بناء سور برلين",
+      "انتخاب كونراد أديناور مستشار",
+      "نهاية الحرب العالمية الثانية فأوروبا"
+    ]
+  },
+  "154": {
+    "question_en": "When was World War II over?",
+    "question_ar": "فين سالات الحرب العالمية الثانية؟",
+    "answers_en": [
+      "1933",
+      "1945",
+      "1949",
+      "1961"
+    ],
+    "answers_ar": [
+      "1933",
+      "1945",
+      "1949",
+      "1961"
+    ]
+  },
+  "155": {
+    "question_en": "When were the Nazis in power in Germany?",
+    "question_ar": "فين كان النازيين فالحكم فألمانيا؟",
+    "answers_en": [
+      "1888 to 1918",
+      "1921 to 1934",
+      "1933 to 1945",
+      "1949 to 1963"
+    ],
+    "answers_ar": [
+      "1888 حتى 1918",
+      "1921 حتى 1934",
+      "1933 حتى 1945",
+      "1949 حتى 1963"
+    ]
+  },
+  "156": {
+    "question_en": "In which year did Hitler become Reich Chancellor?",
+    "question_ar": "فاش ولّى هتلر مستشار للرايخ؟",
+    "answers_en": [
+      "1923",
+      "1927",
+      "1933",
+      "1936"
+    ],
+    "answers_ar": [
+      "1923",
+      "1927",
+      "1933",
+      "1936"
+    ]
+  },
+  "157": {
+    "question_en": "The Nazis with Adolf Hitler established in Germany in 1933 …",
+    "question_ar": "النازيين مع أدولف هتلر أسسو فألمانيا ف1933 …",
+    "answers_en": [
+      "a dictatorship.",
+      "a democratic state.",
+      "a monarchy.",
+      "a principality."
+    ],
+    "answers_ar": [
+      "ديكتاتورية.",
+      "دولة ديموقراطية.",
+      "ملكية.",
+      "إمارة."
+    ]
+  },
+  "158": {
+    "question_en": "The \"Third Reich\" was a …",
+    "question_ar": "\"الرايخ الثالث\" كان …",
+    "answers_en": [
+      "Dictatorship.",
+      "Democracy.",
+      "Monarchy.",
+      "Soviet Republic."
+    ],
+    "answers_ar": [
+      "ديكتاتورية.",
+      "ديموقراطية.",
+      "ملكية.",
+      "جمهورية سوفياتية."
+    ]
+  },
+  "159": {
+    "question_en": "What did NOT exist in Germany during the Nazi era?",
+    "question_ar": "شنو ما كانش كاين فألمانيا فوقت النازية؟",
+    "answers_en": [
+      "free elections",
+      "press censorship",
+      "arbitrary arrests",
+      "persecution of Jews"
+    ],
+    "answers_ar": [
+      "انتخابات حرة",
+      "رقابة على الصحافة",
+      "اعتقالات تعسفية",
+      "اضطهاد اليهود"
+    ]
+  },
+  "160": {
+    "question_en": "Which war lasted from 1939 to 1945?",
+    "question_ar": "شنو هي الحرب اللي دارت من 1939 حتى 1945؟",
+    "answers_en": [
+      "World War I",
+      "World War II",
+      "the Vietnam War",
+      "the Gulf War"
+    ],
+    "answers_ar": [
+      "الحرب العالمية الأولى",
+      "الحرب العالمية الثانية",
+      "حرب فييتنام",
+      "حرب الخليج"
+    ]
+  },
+  "161": {
+    "question_en": "What characterized the Nazi state? A policy of …",
+    "question_ar": "شنو كان كيميز الدولة النازية؟ سياسة ديال …",
+    "answers_en": [
+      "state racism",
+      "freedom of opinion",
+      "general religious freedom",
+      "development of democracy"
+    ],
+    "answers_ar": [
+      "العنصرية ديال الدولة",
+      "حرية الرأي",
+      "الحرية الدينية العامة",
+      "تطوير الديموقراطية"
+    ]
+  },
+  "162": {
+    "question_en": "Claus Schenk Graf von Stauffenberg became known for …",
+    "question_ar": "كلaus شينك غراف فون شتاوفنبيرك مشهور بـ …",
+    "answers_en": [
+      "a gold medal at the 1936 Olympic Games.",
+      "the construction of the Reichstag building.",
+      "the building up of the Wehrmacht.",
+      "the assassination attempt on Hitler on July 20, 1944."
+    ],
+    "answers_ar": [
+      "ميدالية ذهبية فألعاب الأولمبياد 1936.",
+      "بناء مبنى البرلمان (الرايخستاغ).",
+      "بناء الجيش (الفيرماخت).",
+      "محاولة الاغتيال ديال هتلر نهار 20 يوليوز 1944."
+    ]
+  },
+  "163": {
+    "question_en": "In which year did the Nazis destroy synagogues and Jewish shops in Germany?",
+    "question_ar": "فاش دمّر النازيين الكنس اليهودية والمحلات اليهودية فألمانيا؟",
+    "answers_en": [
+      "1925",
+      "1930",
+      "1938",
+      "1945"
+    ],
+    "answers_ar": [
+      "1925",
+      "1930",
+      "1938",
+      "1945"
+    ]
+  },
+  "164": {
+    "question_en": "What happened on November 9, 1938 in Germany?",
+    "question_ar": "شنو وقع نهار 9 نونبر 1938 فألمانيا؟",
+    "answers_en": [
+      "With the attack on Poland, World War II begins.",
+      "The Nazis lose an election and dissolve the Reichstag.",
+      "Jewish shops and synagogues are destroyed by Nazis and their supporters.",
+      "Hitler becomes Reich President and bans all parties."
+    ],
+    "answers_ar": [
+      "بغارة على بولونيا، بداية الحرب العالمية الثانية.",
+      "النازيين خسرو فانتخابات وحلو البرلمان.",
+      "المحلات اليهودية والكنس تدمرو من النازيين وأتباع ديالهم.",
+      "هتلر ولّى رئيس الرايخ وحضر جميع الأحزاب."
+    ]
+  },
+  "165": {
+    "question_en": "What was the name of the first Federal Chancellor of the Federal Republic of Germany?",
+    "question_ar": "شنو كان سمية أول مستشار للجمهورية الألمانية الاتحادية؟",
+    "answers_en": [
+      "Konrad Adenauer",
+      "Kurt Georg Kiesinger",
+      "Helmut Schmidt",
+      "Willy Brandt"
+    ],
+    "answers_ar": [
+      "كونراد أديناور",
+      "كورت غيورغ كيزينغر",
+      "هيلموت شميدت",
+      "فيلي برانت"
+    ]
+  },
+  "166": {
+    "question_en": "At which demonstrations in Germany did people shout \"We are the people\"?",
+    "question_ar": "فاش من المظاهرات فألمانيا كان الناس كيهتفو \"نحن الشعب\"؟",
+    "answers_en": [
+      "at the Monday demonstrations in 1989 in the GDR",
+      "at the workers' uprising in 1953 in the GDR",
+      "at the demonstrations in 1968 in the Federal Republic of Germany",
+      "at the anti-nuclear power demonstrations in 1985 in the Federal Republic of Germany"
+    ],
+    "answers_ar": [
+      "فمظاهرات الاثنين 1989 فألمانيا الشرقية",
+      "فانتفاضة العمال 1953 فألمانيا الشرقية",
+      "فالمظاهرات 1968 فجمهورية ألمانيا الاتحادية",
+      "فمظاهرات ضد الطاقة النووية 1985 فجمهورية ألمانيا الاتحادية"
+    ]
+  },
+  "167": {
+    "question_en": "Which countries were called the \"Allied Occupying Powers\" in Germany after World War II?",
+    "question_ar": "شنو هي الدول اللي تسموا \"قوات الاحتلال المتحالفة\" فألمانيا من بعد الحرب العالمية الثانية؟",
+    "answers_en": [
+      "Soviet Union, Great Britain, Poland, Sweden",
+      "France, Soviet Union, Italy, Japan",
+      "USA, Soviet Union, Spain, Portugal",
+      "USA, Soviet Union, Great Britain, France"
+    ],
+    "answers_ar": [
+      "الاتحاد السوفياتي، بريطانيا، بولونيا، السويد",
+      "فرنسا، الاتحاد السوفياتي، إيطاليا، اليابان",
+      "أمريكا، الاتحاد السوفياتي، إسبانيا، البرتغال",
+      "أمريكا، الاتحاد السوفياتي، بريطانيا، فرنسا"
+    ]
+  },
+  "168": {
+    "question_en": "Which country was NOT an \"Allied Occupying Power\" in Germany?",
+    "question_ar": "شنو هي الدولة اللي ما كانتش \"قوة احتلال متحالفة\" فألمانيا؟",
+    "answers_en": [
+      "USA",
+      "Soviet Union",
+      "France",
+      "Japan"
+    ],
+    "answers_ar": [
+      "أمريكا",
+      "الاتحاد السوفياتي",
+      "فرنسا",
+      "اليابان"
+    ]
+  },
+  "169": {
+    "question_en": "When was the Federal Republic of Germany founded?",
+    "question_ar": "فاش تأسست جمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "1939",
+      "1945",
+      "1949",
+      "1951"
+    ],
+    "answers_ar": [
+      "1939",
+      "1945",
+      "1949",
+      "1951"
+    ]
+  },
+  "170": {
+    "question_en": "What existed during the Nazi era in Germany?",
+    "question_ar": "شنو كان كاين فوقت النازية فألمانيا؟",
+    "answers_en": [
+      "the right to free development of personality",
+      "freedom of the press",
+      "the ban on parties",
+      "the protection of human dignity"
+    ],
+    "answers_ar": [
+      "الحق فالتطور الحر ديال الشخصية",
+      "حرية الصحافة",
+      "منع الأحزاب",
+      "حماية الكرامة الإنسانية"
+    ]
+  },
+  "171": {
+    "question_en": "Social market economy means the economy …",
+    "question_ar": "الاقتصاد الاجتماعي السوقي كيعني الاقتصاد …",
+    "answers_en": [
+      "is controlled solely by supply and demand.",
+      "is planned and controlled by the state; supply and demand are not considered.",
+      "follows foreign demand.",
+      "follows supply and demand, but the state ensures social balance."
+    ],
+    "answers_ar": [
+      "كيتوجه غير بالعرض والطلب.",
+      "الدولة كتخططلو وكتتحكم فيه، العرض والطلب ما كيحتسبوش.",
+      "كيتبع الطلب اللي من برا.",
+      "كيتبع العرض والطلب، ولكن الدولة كتوفر توازن اجتماعي."
+    ]
+  },
+  "172": {
+    "question_en": "In which occupation zone was the GDR founded? In the …",
+    "question_ar": "فاش من منطقة احتلال تأسست ألمانيا الشرقية (الدي دي آر)؟ فـ …",
+    "answers_en": [
+      "American occupation zone.",
+      "French occupation zone.",
+      "British occupation zone.",
+      "Soviet occupation zone."
+    ],
+    "answers_ar": [
+      "منطقة الاحتلال الأمريكية.",
+      "منطقة الاحتلال الفرنسية.",
+      "منطقة الاحتلال البريطانية.",
+      "منطقة الاحتلال السوفياتية."
+    ]
+  },
+  "173": {
+    "question_en": "The Federal Republic of Germany is a founding member of …",
+    "question_ar": "جمهورية ألمانيا الاتحادية هي عضو مؤسس فـ …",
+    "answers_en": [
+      "the North Atlantic Treaty (NATO).",
+      "the United Nations (UN).",
+      "the European Union (EU).",
+      "the Warsaw Pact."
+    ],
+    "answers_ar": [
+      "حلف شمال الأطلسي (الناتو).",
+      "الأمم المتحدة.",
+      "الاتحاد الأوروبي.",
+      "حلف وارسو."
+    ]
+  },
+  "174": {
+    "question_en": "When was the GDR founded?",
+    "question_ar": "فاش تأسست ألمانيا الشرقية (الدي دي آر)؟",
+    "answers_en": [
+      "1947",
+      "1949",
+      "1953",
+      "1956"
+    ],
+    "answers_ar": [
+      "1947",
+      "1949",
+      "1953",
+      "1956"
+    ]
+  },
+  "175": {
+    "question_en": "How many occupation zones were there in Germany after World War II?",
+    "question_ar": "شحال كان من منطقة احتلال فألمانيا من بعد الحرب العالمية الثانية؟",
+    "answers_en": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "answers_ar": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ]
+  },
+  "176": {
+    "question_en": "How were the occupation zones of Germany distributed after 1945?",
+    "question_ar": "كيفاش كانت مناطق الاحتلال ديال ألمانيا مقسمة من بعد 1945؟",
+    "answers_en": [
+      "1=Great Britain, 2=Soviet Union, 3=France, 4=USA",
+      "1=Soviet Union, 2=Great Britain, 3=USA, 4=France",
+      "1=Great Britain, 2=Soviet Union, 3=USA, 4=France",
+      "1=Great Britain, 2=USA, 3=Soviet Union, 4=France"
+    ],
+    "answers_ar": [
+      "1=بريطانيا، 2=الاتحاد السوفياتي، 3=فرنسا، 4=أمريكا",
+      "1=الاتحاد السوفياتي، 2=بريطانيا، 3=أمريكا، 4=فرنسا",
+      "1=بريطانيا، 2=الاتحاد السوفياتي، 3=أمريكا، 4=فرنسا",
+      "1=بريطانيا، 2=أمريكا، 3=الاتحاد السوفياتي، 4=فرنسا"
+    ]
+  },
+  "177": {
+    "question_en": "Which German city was divided into four sectors after World War II?",
+    "question_ar": "شنو هي المدينة الألمانية اللي تقسمت لأربع قطاعات من بعد الحرب العالمية الثانية؟",
+    "answers_en": [
+      "Munich",
+      "Berlin",
+      "Dresden",
+      "Frankfurt/Oder"
+    ],
+    "answers_ar": [
+      "ميونيخ",
+      "برلين",
+      "درسدن",
+      "فرانكفورت/أودر"
+    ]
+  },
+  "178": {
+    "question_en": "From June 1948 to May 1949, the citizens of West Berlin were supplied by an airlift. What circumstance was responsible for this?",
+    "question_ar": "من يونيو 1948 حتى ماي 1949، المواطنين ديال برلين الغربية تزودو بالجسر الجوي. شنو هو الظرف اللي كان سبب فهادا؟",
+    "answers_en": [
+      "For France, supplying the West Berlin population by plane was cheaper.",
+      "The American soldiers were afraid of attacks during land transport.",
+      "For Great Britain, supplying via the airlift was faster.",
+      "The Soviet Union cut off all traffic on land routes."
+    ],
+    "answers_ar": [
+      "فرنسا كان بالنسبة ليها تزويد سكان برلين الغربية بالطيارة أرخص.",
+      "الجنود الأمريكان كانوا خايفين من الهجمات فالنقل البري.",
+      "بالنسبة لبريطانيا، التزويد بالجسر الجوي كان أسرع.",
+      "الاتحاد السوفياتي قطع جميع حركة المرور فالطرق البرية."
+    ]
+  },
+  "179": {
+    "question_en": "How did World War II officially end in Europe?",
+    "question_ar": "كيفاش سالات الحرب العالمية الثانية فأوروبا بشكل رسمي؟",
+    "answers_en": [
+      "with the death of Adolf Hitler",
+      "through the unconditional surrender of Germany",
+      "with the withdrawal of the Germans from the occupied territories",
+      "through a revolution in Germany"
+    ],
+    "answers_ar": [
+      "بوفاة أدولف هتلر",
+      "باستسلام ألمانيا اللي ماشي مشروط",
+      "بانسحاب الألمان من الأراضي المحتلة",
+      "بثورة فألمانيا"
+    ]
+  },
+  "180": {
+    "question_en": "The first Federal Chancellor of the Federal Republic of Germany was …",
+    "question_ar": "أول مستشار للجمهورية الألمانية الاتحادية كان …",
+    "answers_en": [
+      "Ludwig Erhard.",
+      "Willy Brandt.",
+      "Konrad Adenauer.",
+      "Gerhard Schröder."
+    ],
+    "answers_ar": [
+      "لودفيغ إيرهارد.",
+      "فيلي برانت.",
+      "كونراد أديناور.",
+      "غيرهارد شرودر."
+    ]
+  },
+  "181": {
+    "question_en": "What did Willy Brandt want to express with his kneeling in 1970 in the former Jewish ghetto in Warsaw?",
+    "question_ar": "شنو بغا فيلي برانت يعبر بيه بركوعو ف1970 فالحي اليهودي السابق فوارسو؟",
+    "answers_en": [
+      "He submitted to the former Allies.",
+      "He asked Poland and the Polish Jews for forgiveness.",
+      "He showed his humility before the Warsaw Pact.",
+      "He said a prayer at the grave of the Unknown Soldier."
+    ],
+    "answers_ar": [
+      "خضع للحلفاء السابقين.",
+      "طلب السماح من بولونيا واليهود البولونيين.",
+      "بين تواضعو قدام حلف وارسو.",
+      "دار صلاة فضريح الجندي المجهول."
+    ]
+  },
+  "182": {
+    "question_en": "Which parties were forcibly united in 1946 to form the SED, the single party of the later GDR?",
+    "question_ar": "شنو هي الأحزاب اللي اضطروها ف1946 باش تندمج فحزب الوحدة (SED)؟",
+    "answers_en": [
+      "KPD and SPD",
+      "SPD and CDU",
+      "CDU and FDP",
+      "KPD and CSU"
+    ],
+    "answers_ar": [
+      "الحزب الشيوعي (KPD) والحزب الاشتراكي (SPD)",
+      "الحزب الاشتراكي (SPD) والحزب الديمقراطي المسيحي (CDU)",
+      "الحزب الديمقراطي المسيحي (CDU) والحزب الليبرالي (FDP)",
+      "الحزب الشيوعي (KPD) والاتحاد الاجتماعي المسيحي (CSU)"
+    ]
+  },
+  "183": {
+    "question_en": "When was the \"economic miracle\" in the Federal Republic of Germany?",
+    "question_ar": "فين كان \"المعجزة الاقتصادية\" فجمهورية ألمانيا الاتحادية؟",
+    "answers_en": [
+      "1940s",
+      "1950s",
+      "1970s",
+      "1980s"
+    ],
+    "answers_ar": [
+      "الأربعينيات",
+      "الخمسينيات",
+      "السبعينيات",
+      "الثمانينيات"
+    ]
+  },
+  "184": {
+    "question_en": "What did people in Germany long call \"Zero Hour\"?",
+    "question_ar": "شنو كان الناس فألمانيا كيسميوه بزاف \"الساعة الصفر\"؟",
+    "answers_en": [
+      "It refers to the time after the turning point in 1989.",
+      "It referred to the beginning of World War II.",
+      "It meant the end of World War II and the beginning of reconstruction.",
+      "It means the hour when the clock is changed from summer time to winter time."
+    ],
+    "answers_ar": [
+      "كيتقصد بيها الوقت من بعد التحول ف1989.",
+      "كيتقصد بيها بداية الحرب العالمية الثانية.",
+      "كيتقصد بيها نهاية الحرب العالمية الثانية وبداية إعادة البناء.",
+      "كيتقصد بيها الساعة اللي كيتبدلو فيها الساعة من التوقيت الصيفي للتوقيت الشتوي."
+    ]
+  },
+  "185": {
+    "question_en": "What did the term \"Iron Curtain\" stand for? For the isolation of …",
+    "question_ar": "شنو كان كيعني تعبير \"الستار الحديدي\"؟ العزلة ديال …",
+    "answers_en": [
+      "the Warsaw Pact against the West.",
+      "Northern Germany against Southern Germany.",
+      "Nazi Germany against the Allies.",
+      "Europe against the USA."
+    ],
+    "answers_ar": [
+      "حلف وارسو ضد الغرب.",
+      "شمال ألمانيا ضد جنوب ألمانيا.",
+      "ألمانيا النازية ضد الحلفاء.",
+      "أوروبا ضد أمريكا."
+    ]
+  },
+  "186": {
+    "question_en": "In 1953 there was an uprising in the GDR, which was long commemorated by a public holiday in the Federal Republic of Germany. When was it?",
+    "question_ar": "ف1953، كان واحد الانتفاضة فألمانيا الشرقية، اللي تذكرو بيها بعطلة رسمية فجمهورية ألمانيا الاتحادية فوقت طويل. فين كانت؟",
+    "answers_en": [
+      "May 1",
+      "June 17",
+      "July 20",
+      "November 9"
+    ],
+    "answers_ar": [
+      "1 ماي",
+      "17 يونيو",
+      "20 يوليوز",
+      "9 نونبر"
+    ]
+  },
+  "187": {
+    "question_en": "Which German state had a black-red-gold flag with hammer, compass and wreath of grain?",
+    "question_ar": "شنو هي الدولة الألمانية اللي كانت عندها علم أسود-أحمر-ذهبي بالمطرقة والبوصلة وإكليل الحبوب؟",
+    "answers_en": [
+      "Prussia",
+      "Federal Republic of Germany",
+      "GDR",
+      "\"Third Reich\""
+    ],
+    "answers_ar": [
+      "بروسيا",
+      "جمهورية ألمانيا الاتحادية",
+      "ألمانيا الشرقية (الدي دي آر)",
+      "\"الرايخ الثالث\""
+    ]
+  },
+  "188": {
+    "question_en": "In which year was the Wall built in Berlin?",
+    "question_ar": "فاش بناو السور فبرلين؟",
+    "answers_en": [
+      "1953",
+      "1956",
+      "1959",
+      "1961"
+    ],
+    "answers_ar": [
+      "1953",
+      "1956",
+      "1959",
+      "1961"
+    ]
+  },
+  "189": {
+    "question_en": "When did the GDR build the Wall in Berlin?",
+    "question_ar": "فاش بنات ألمانيا الشرقية السور فبرلين؟",
+    "answers_en": [
+      "1919",
+      "1933",
+      "1961",
+      "1990"
+    ],
+    "answers_ar": [
+      "1919",
+      "1933",
+      "1961",
+      "1990"
+    ]
+  },
+  "190": {
+    "question_en": "What does the abbreviation GDR mean?",
+    "question_ar": "شنو كتعني اختصار DDR؟",
+    "answers_en": [
+      "Third German Broadcasting",
+      "The German Republic",
+      "Third German Republic",
+      "German Democratic Republic"
+    ],
+    "answers_ar": [
+      "الإذاعة الألمانية الثالثة",
+      "الجمهورية الألمانية",
+      "الجمهورية الألمانية الثالثة",
+      "الجمهورية الألمانية الديموقراطية"
+    ]
+  },
+  "191": {
+    "question_en": "When was the Berlin Wall opened for everyone?",
+    "question_ar": "فاش تحل السور ديال برلين للجميع؟",
+    "answers_en": [
+      "1987",
+      "1989",
+      "1992",
+      "1995"
+    ],
+    "answers_ar": [
+      "1987",
+      "1989",
+      "1992",
+      "1995"
+    ]
+  },
+  "192": {
+    "question_en": "Which current German federal state formerly belonged to the territory of the GDR?",
+    "question_ar": "شنو هي الولاية الألمانية الحالية اللي كانت قبل من أرض ألمانيا الشرقية؟",
+    "answers_en": [
+      "Brandenburg",
+      "Bavaria",
+      "Saarland",
+      "Hesse"
+    ],
+    "answers_ar": [
+      "براندنبورغ",
+      "بافاريا",
+      "زارلاند",
+      "هسن"
+    ]
+  },
+  "193": {
+    "question_en": "From 1961 to 1989, Berlin was …",
+    "question_ar": "من 1961 حتى 1989، برلين كانت …",
+    "answers_en": [
+      "without a mayor.",
+      "its own state.",
+      "divided by a wall.",
+      "only reachable by plane."
+    ],
+    "answers_ar": [
+      "بلا عمدة.",
+      "دولة مستقلة.",
+      "مقسومة بسور.",
+      "غير واصلة غير بالطيارة."
+    ]
+  },
+  "194": {
+    "question_en": "On October 3, Germany celebrates the Day of German …",
+    "question_ar": "نهار 3 أكتوبر، ألمانيا كتحتفل بنهار … الألمانية",
+    "answers_en": [
+      "Unity.",
+      "Nation.",
+      "Federal States.",
+      "Cities."
+    ],
+    "answers_ar": [
+      "الوحدة.",
+      "الأمة.",
+      "الولايات.",
+      "المدن."
+    ]
+  },
+  "195": {
+    "question_en": "Which current German federal state formerly belonged to the territory of the GDR?",
+    "question_ar": "شنو هي الولاية الألمانية الحالية اللي كانت قبل من أرض ألمانيا الشرقية؟",
+    "answers_en": [
+      "Hesse",
+      "Saxony-Anhalt",
+      "North Rhine-Westphalia",
+      "Saarland"
+    ],
+    "answers_ar": [
+      "هسن",
+      "ساكسونيا-أنهالت",
+      "شمال الراين-وستفاليا",
+      "زارلاند"
+    ]
+  },
+  "196": {
+    "question_en": "Why is the autumn of 1989 in the GDR called \"The Turning Point\"? In this period, the GDR changed politically …",
+    "question_ar": "علاش كيسميو فصل الخريف 1989 فألمانيا الشرقية \"التحول\"؟ فهاد الفترة، ألمانيا الشرقية تبدلات سياسيا …",
+    "answers_en": [
+      "from a dictatorship to a democracy.",
+      "from a liberal market economy to socialism.",
+      "from a monarchy to social democracy.",
+      "from a religious state to a communist state."
+    ],
+    "answers_ar": [
+      "من ديكتاتورية للديموقراطية.",
+      "من اقتصاد السوق الليبرالي للاشتراكية.",
+      "من ملكية للديموقراطية الاشتراكية.",
+      "من دولة دينية لدولة شيوعية."
+    ]
+  },
+  "197": {
+    "question_en": "Which current German federal state formerly belonged to the territory of the GDR?",
+    "question_ar": "شنو هي الولاية الألمانية الحالية اللي كانت قبل من أرض ألمانيا الشرقية؟",
+    "answers_en": [
+      "Thuringia",
+      "Hesse",
+      "Bavaria",
+      "Bremen"
+    ],
+    "answers_ar": [
+      "تورينغن",
+      "هسن",
+      "بافاريا",
+      "بريمن"
+    ]
+  },
+  "198": {
+    "question_en": "Which current German federal state formerly belonged to the territory of the GDR?",
+    "question_ar": "شنو هي الولاية الألمانية الحالية اللي كانت قبل من أرض ألمانيا الشرقية؟",
+    "answers_en": [
+      "Bavaria",
+      "Lower Saxony",
+      "Saxony",
+      "Baden-Württemberg"
+    ],
+    "answers_ar": [
+      "بافاريا",
+      "سكسونيا السفلى",
+      "سكسونيا",
+      "بادن-فورتمبيرغ"
+    ]
+  },
+  "199": {
+    "question_en": "With the abbreviation \"Stasi\", people in the GDR meant …",
+    "question_ar": "باختصار \"ستازي\"، الناس فألمانيا الشرقية كانوا كيقصدو بيها …",
+    "answers_en": [
+      "the parliament.",
+      "the Ministry for State Security.",
+      "a ruling party.",
+      "the Ministry for Public Education."
+    ],
+    "answers_ar": [
+      "البرلمان.",
+      "وزارة أمن الدولة.",
+      "حزب حاكم.",
+      "وزارة التربية الوطنية."
+    ]
+  },
+  "200": {
+    "question_en": "Which current German federal state formerly belonged to the territory of the GDR?",
+    "question_ar": "شنو هي الولاية الألمانية الحالية اللي كانت قبل من أرض ألمانيا الشرقية؟",
+    "answers_en": [
+      "Hesse",
+      "Schleswig-Holstein",
+      "Mecklenburg-Western Pomerania",
+      "Saarland"
+    ],
+    "answers_ar": [
+      "هسن",
+      "شليزفيغ-هولشتاين",
+      "مكلنبورغ-فوربومرن",
+      "زارلاند"
+    ]
+  },
+  "201": {
+    "question_en": "Which of the following lists contains only federal states that belonged to the former GDR?",
+    "question_ar": "شنو هي اللائحة التالية اللي فيها غير الولايات اللي كانت تابعة لألمانيا الشرقية سابقا؟",
+    "answers_en": [
+      "Lower Saxony, North Rhine-Westphalia, Hesse, Schleswig-Holstein, Brandenburg",
+      "Mecklenburg-Western Pomerania, Brandenburg, Saxony, Saxony-Anhalt, Thuringia",
+      "Bavaria, Baden-Württemberg, Rhineland-Palatinate, Thuringia, Saxony",
+      "Saxony, Thuringia, Hesse, Lower Saxony, Brandenburg"
+    ],
+    "answers_ar": [
+      "سكسونيا السفلى، شمال الراين-وستفاليا، هسن، شليزفيغ-هولشتاين، براندنبورغ",
+      "مكلنبورغ-فوربومرن، براندنبورغ، سكسونيا، سكسونيا-أنهالت، تورينغن",
+      "بافاريا، بادن-فورتمبيرغ، راينلاند-بالاتينات، تورينغن، سكسونيا",
+      "سكسونيا، تورينغن، هسن، سكسونيا السفلى، براندنبورغ"
+    ]
+  },
+  "202": {
+    "question_en": "To whom did the GDR belong in the \"Cold War\"?",
+    "question_ar": "فاش من阵营 كانت ألمانيا الشرقية ف\"الحرب الباردة\"؟",
+    "answers_en": [
+      "to the Western powers",
+      "to the Warsaw Pact",
+      "to NATO",
+      "to the non-aligned states"
+    ],
+    "answers_ar": [
+      "للقوات الغربية",
+      "لحلف وارسو",
+      "للناتو",
+      "لدول اللي مامنحازاش"
+    ]
+  },
+  "203": {
+    "question_en": "What was the economic system of the GDR called?",
+    "question_ar": "شنو كان سمية النظام الاقتصادي ديال ألمانيا الشرقية؟",
+    "answers_en": [
+      "market economy",
+      "planned economy",
+      "supply and demand",
+      "capitalism"
+    ],
+    "answers_ar": [
+      "اقتصاد السوق",
+      "اقتصاد مخطط",
+      "العرض والطلب",
+      "الرأسمالية"
+    ]
+  },
+  "204": {
+    "question_en": "How did the Federal Republic of Germany and the GDR become one state?",
+    "question_ar": "كيفاش توحدو جمهورية ألمانيا الاتحادية وألمانيا الشرقية فدولة وحدة؟",
+    "answers_en": [
+      "The Federal Republic of Germany occupied the GDR.",
+      "The five eastern federal states joined the Federal Republic of Germany.",
+      "The western federal states joined the GDR.",
+      "The GDR occupied the Federal Republic of Germany."
+    ],
+    "answers_ar": [
+      "جمهورية ألمانيا الاتحادية احتلت ألمانيا الشرقية.",
+      "الخمس ولايات الشرقية دخلو فجمهورية ألمانيا الاتحادية.",
+      "الولايات الغربية دخلو فألمانيا الشرقية.",
+      "ألمانيا الشرقية احتلت جمهورية ألمانيا الاتحادية."
+    ]
+  },
+  "205": {
+    "question_en": "With the accession of the GDR to the Federal Republic of Germany, the new federal states now also belong to …",
+    "question_ar": "من دخول ألمانيا الشرقية لجمهورية ألمانيا الاتحادية، الولايات الجديدة دابا تابعين أيضا لـ …",
+    "answers_en": [
+      "the European Union.",
+      "the Warsaw Pact.",
+      "OPEC.",
+      "the European Defence Community."
+    ],
+    "answers_ar": [
+      "الاتحاد الأوروبي.",
+      "حلف وارسو.",
+      "الأوبك.",
+      "مجموعة الدفاع الأوروبية."
+    ]
+  },
+  "206": {
+    "question_en": "What did the word \"Monday demonstration\" mean in Germany in 1989?",
+    "question_ar": "شنو كتعني كلمة \"مظاهرات الاثنين\" فألمانيا ف1989؟",
+    "answers_en": [
+      "In the Federal Republic, demonstrations were only allowed on Mondays.",
+      "On Mondays there were demonstrations against the GDR regime.",
+      "On the first Monday of the month, demonstrators met in the Federal Republic of Germany.",
+      "On Mondays, people demonstrated in the GDR against the West."
+    ],
+    "answers_ar": [
+      "فجمهورية ألمانيا الاتحادية، المظاهرات كانت مسموح غير نهار الاثنين.",
+      "نهار الاثنين كانو مظاهرات ضد نظام ألمانيا الشرقية.",
+      "فأول اثنين من الشهر، المتظاهرين كانو كيتلاقاو فجمهورية ألمانيا الاتحادية.",
+      "نهار الاثنين، الناس كانو كيظاهرو فألمانيا الشرقية ضد الغرب."
+    ]
+  },
+  "207": {
+    "question_en": "Which military alliance was the GDR a member of?",
+    "question_ar": "فاش من تحالف عسكري كانت ألمانيا الشرقية عضو فيه؟",
+    "answers_en": [
+      "NATO",
+      "the Confederation of the Rhine",
+      "the Warsaw Pact",
+      "the European Alliance"
+    ],
+    "answers_ar": [
+      "الناتو",
+      "كونفدرالية الراين",
+      "حلف وارسو",
+      "التحالف الأوروبي"
+    ]
+  },
+  "208": {
+    "question_en": "What was the \"Stasi\"?",
+    "question_ar": "شنو كانت \"الستازي\"؟",
+    "answers_en": [
+      "the secret service in the \"Third Reich\"",
+      "a famous German memorial",
+      "the secret service of the GDR",
+      "a German sports club during World War II"
+    ],
+    "answers_ar": [
+      "المخابرات ف\"الرايخ الثالث\"",
+      "نصب تذكاري ألماني مشهور",
+      "المخابرات ديال ألمانيا الشرقية",
+      "نادي رياضي ألماني فوقت الحرب العالمية الثانية"
+    ]
+  },
+  "209": {
+    "question_en": "Which was the coat of arms of the German Democratic Republic?",
+    "question_ar": "شنو كان شعار الجمهورية الألمانية الديموقراطية؟",
+    "answers_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answers_ar": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  "210": {
+    "question_en": "What happened on June 17, 1953 in the GDR?",
+    "question_ar": "شنو وقع نهار 17 يونيو 1953 فألمانيا الشرقية؟",
+    "answers_en": [
+      "the ceremonial accession to the Warsaw Pact",
+      "nationwide strikes and an uprising",
+      "the 1st SED party congress",
+      "the first visit of Fidel Castro"
+    ],
+    "answers_ar": [
+      "الانضمام الرسمي لحلف وارسو",
+      "إضرابات فجميع أنحاء البلاد وانتفاضة",
+      "المؤتمر الأول لحزب الوحدة الاشتراكية (SED)",
+      "أول زيارة ديال فيدل كاسترو"
+    ]
+  },
+  "211": {
+    "question_en": "Which politician stands for the \"Eastern Treaties\"?",
+    "question_ar": "شنو هو السياسي اللي معروف بـ \"معاهدات الشرق\"؟",
+    "answers_en": [
+      "Helmut Kohl",
+      "Willy Brandt",
+      "Mikhail Gorbachev",
+      "Ludwig Erhard"
+    ],
+    "answers_ar": [
+      "هيلموت كول",
+      "فيلي برانت",
+      "ميخائيل غورباتشوف",
+      "لودفيغ إيرهارد"
+    ]
+  },
+  "212": {
+    "question_en": "What is the full name of Germany?",
+    "question_ar": "شنو هو السمية الكاملة ديال ألمانيا؟",
+    "answers_en": [
+      "Federal State of Germany",
+      "Federal States of Germany",
+      "Federal Republic of Germany",
+      "Federal District of Germany"
+    ],
+    "answers_ar": [
+      "الدولة الاتحادية ديال ألمانيا",
+      "الولايات الاتحادية ديال ألمانيا",
+      "الجمهورية الاتحادية ديال ألمانيا",
+      "المقاطعة الاتحادية ديال ألمانيا"
+    ]
+  },
+  "213": {
+    "question_en": "How many inhabitants does Germany have?",
+    "question_ar": "شحال عدد السكان ديال ألمانيا؟",
+    "answers_en": [
+      "70 million",
+      "78 million",
+      "83 million",
+      "90 million"
+    ],
+    "answers_ar": [
+      "70 مليون",
+      "78 مليون",
+      "83 مليون",
+      "90 مليون"
+    ]
+  },
+  "214": {
+    "question_en": "What colors does the German flag have?",
+    "question_ar": "شنو هي الألوان ديال العلم الألماني؟",
+    "answers_en": [
+      "black-red-gold",
+      "red-white-black",
+      "black-red-green",
+      "black-yellow-red"
+    ],
+    "answers_ar": [
+      "أسود-أحمر-ذهبي",
+      "أحمر-أبيض-أسود",
+      "أسود-أحمر-أخضر",
+      "أسود-أصفر-أحمر"
+    ]
+  },
+  "215": {
+    "question_en": "Who is called the \"Chancellor of German Unity\"?",
+    "question_ar": "شكون تسما \"مستشار الوحدة الألمانية\"؟",
+    "answers_en": [
+      "Gerhard Schröder",
+      "Helmut Kohl",
+      "Konrad Adenauer",
+      "Helmut Schmidt"
+    ],
+    "answers_ar": [
+      "غيرهارد شرودر",
+      "هيلموت كول",
+      "كونراد أديناور",
+      "هيلموت شميدت"
+    ]
+  },
+  "216": {
+    "question_en": "Which symbol can be seen in the plenary hall of the German Bundestag?",
+    "question_ar": "شنو هو الرمز اللي كيبان فقاعة الجلسات ديال البرلمان الألماني؟",
+    "answers_en": [
+      "the flag of the city of Berlin",
+      "the Federal Eagle",
+      "the Imperial Eagle",
+      "the Imperial Crown"
+    ],
+    "answers_ar": [
+      "علم مدينة برلين",
+      "النسر الفيدرالي",
+      "نسر الرايخ",
+      "تاج الرايخ"
+    ]
+  },
+  "217": {
+    "question_en": "In which period did the German Democratic Republic (GDR) exist?",
+    "question_ar": "فاش كانت كاينة الجمهورية الألمانية الديموقراطية (ألمانيا الشرقية)؟",
+    "answers_en": [
+      "1919 to 1927",
+      "1933 to 1945",
+      "1949 to 1990",
+      "1945 to 1961"
+    ],
+    "answers_ar": [
+      "1919 حتى 1927",
+      "1933 حتى 1945",
+      "1949 حتى 1990",
+      "1945 حتى 1961"
+    ]
+  },
+  "218": {
+    "question_en": "How many federal states were added to the Federal Republic of Germany at reunification in 1990?",
+    "question_ar": "شحال من ولاية ضُمّت لجمهورية ألمانيا الاتحادية فوقت إعادة التوحيد 1990؟",
+    "answers_en": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answers_ar": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ]
+  },
+  "219": {
+    "question_en": "The Federal Republic of Germany has had its present borders since …",
+    "question_ar": "جمهورية ألمانيا الاتحادية عندها الحدود الحالية ديالها منذ …",
+    "answers_en": [
+      "1933.",
+      "1949.",
+      "1971.",
+      "1990."
+    ],
+    "answers_ar": [
+      "1933.",
+      "1949.",
+      "1971.",
+      "1990."
+    ]
+  },
+  "220": {
+    "question_en": "January 27 is an official day of remembrance in Germany. What does this day commemorate?",
+    "question_ar": "27 يناير هو نهار ذكرى رسمي فألمانيا. شنو كيتذكر هاد النهار؟",
+    "answers_en": [
+      "the end of World War II",
+      "the adoption of the Basic Law",
+      "the reunification of Germany",
+      "the victims of Nazism"
+    ],
+    "answers_ar": [
+      "نهاية الحرب العالمية الثانية",
+      "اعتماد القانون الأساسي",
+      "إعادة توحيد ألمانيا",
+      "ضحايا النازية"
+    ]
+  },
+  "221": {
+    "question_en": "Germany is a member of the Schengen Agreement. What does that mean?",
+    "question_ar": "ألمانيا عضو فاتفاقية شينغن. شنو كيعني هادا؟",
+    "answers_en": [
+      "Germans can travel to many European countries without passport control.",
+      "All people can enter Germany without identity checks.",
+      "Germans can travel to any country without passport control.",
+      "Germans can pay with the Euro in every country."
+    ],
+    "answers_ar": [
+      "الألمان يقدرو يسافرو لبزاف ديال الدول الأوروبية بلا مراقبة الجوازات.",
+      "جميع الناس يقدرو يدخلو لألمانيا بلا فحص الهوية.",
+      "الألمان يقدرو يسافرو لأي بلاد بلا مراقبة الجوازات.",
+      "الألمان يقدرو يخلصو باليورو فجميع البلدان."
+    ]
+  },
+  "222": {
+    "question_en": "Which country is a neighboring country of Germany?",
+    "question_ar": "شنو هي دولة مجاورة لألمانيا؟",
+    "answers_en": [
+      "Hungary",
+      "Portugal",
+      "Spain",
+      "Switzerland"
+    ],
+    "answers_ar": [
+      "الهنغار",
+      "البرتغال",
+      "إسبانيا",
+      "سويسرا"
+    ]
+  },
+  "223": {
+    "question_en": "Which country is a neighboring country of Germany?",
+    "question_ar": "شنو هي دولة مجاورة لألمانيا؟",
+    "answers_en": [
+      "Romania",
+      "Bulgaria",
+      "Poland",
+      "Greece"
+    ],
+    "answers_ar": [
+      "رومانيا",
+      "بلغاريا",
+      "بولونيا",
+      "اليونان"
+    ]
+  },
+  "224": {
+    "question_en": "What does the abbreviation EU mean?",
+    "question_ar": "شنو كتعني اختصار EU؟",
+    "answers_en": [
+      "European Companies",
+      "European Union",
+      "Uniform Union",
+      "Euro Union"
+    ],
+    "answers_ar": [
+      "الشركات الأوروبية",
+      "الاتحاد الأوروبي",
+      "الاتحاد الموحد",
+      "اتحاد اليورو"
+    ]
+  },
+  "225": {
+    "question_en": "In which other country is there a large German-speaking population?",
+    "question_ar": "فاش من بلاد كاين سكان كبار كيهضرو بالألمانية؟",
+    "answers_en": [
+      "Czech Republic",
+      "Norway",
+      "Spain",
+      "Austria"
+    ],
+    "answers_ar": [
+      "تشيكيا",
+      "النرويج",
+      "إسبانيا",
+      "النمسا"
+    ]
+  },
+  "226": {
+    "question_en": "Which is the flag of the European Union?",
+    "question_ar": "شنو هو علم الاتحاد الأوروبي؟",
+    "answers_en": [
+      "2",
+      "1",
+      "4",
+      "3"
+    ],
+    "answers_ar": [
+      "2",
+      "1",
+      "4",
+      "3"
+    ]
+  },
+  "227": {
+    "question_en": "Which country is a neighboring country of Germany?",
+    "question_ar": "شنو هي دولة مجاورة لألمانيا؟",
+    "answers_en": [
+      "Finland",
+      "Denmark",
+      "Norway",
+      "Sweden"
+    ],
+    "answers_ar": [
+      "فينلاندا",
+      "الدانمارك",
+      "النرويج",
+      "السويد"
+    ]
+  },
+  "228": {
+    "question_en": "What is the accession of the GDR to the Federal Republic of Germany in 1990 generally called?",
+    "question_ar": "شنو كيسميو الانضمام ديال ألمانيا الشرقية لجمهورية ألمانيا الاتحادية ف1990 بشكل عام؟",
+    "answers_en": [
+      "NATO eastward expansion",
+      "EU eastward expansion",
+      "European Community",
+      "German reunification"
+    ],
+    "answers_ar": [
+      "التوسع الشرقي للناتو",
+      "التوسع الشرقي للاتحاد الأوروبي",
+      "المجموعة الأوروبية",
+      "إعادة توحيد ألمانيا"
+    ]
+  },
+  "229": {
+    "question_en": "Which country is a neighboring country of Germany?",
+    "question_ar": "شنو هي دولة مجاورة لألمانيا؟",
+    "answers_en": [
+      "Spain",
+      "Bulgaria",
+      "Norway",
+      "Luxembourg"
+    ],
+    "answers_ar": [
+      "إسبانيا",
+      "بلغاريا",
+      "النرويج",
+      "لوكسمبورغ"
+    ]
+  },
+  "230": {
+    "question_en": "The European Parliament is elected regularly, namely every …",
+    "question_ar": "البرلمان الأوروبي كيتنتخب بشكل منتظم، يعني كل …",
+    "answers_en": [
+      "5 years.",
+      "6 years.",
+      "7 years.",
+      "8 years."
+    ],
+    "answers_ar": [
+      "5 سنين.",
+      "6 سنين.",
+      "7 سنين.",
+      "8 سنين."
+    ]
+  }
+}
