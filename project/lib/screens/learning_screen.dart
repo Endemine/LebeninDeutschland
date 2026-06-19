@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../models/question.dart';
 import '../providers/learning_provider.dart';
@@ -46,24 +45,13 @@ class _LearningScreenState extends State<LearningScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text('Lernen', style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w700, color: _textPrimary)),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.translate, color: _textSecondary),
-            onPressed: () {
-              if (filtered.isEmpty) return;
-              final q = filtered[learning.currentIndex.clamp(0, filtered.length - 1)];
-              final encoded = Uri.encodeComponent(q.text);
-              final uri = Uri.parse('https://translate.google.com/?sl=de&tl=en&text=$encoded');
-              launchUrl(uri, mode: LaunchMode.externalApplication);
-            },
-          ),
-        ],
       ),
       body: filtered.isEmpty
           ? _buildEmptyState(context, learning)
           : Column(
               children: [
                 _buildProgressBar(learning),
+                _buildLanguageBar(learning),
                 _buildFilterBar(learning),
                 _buildQuestionMeta(context, learning, filtered),
                 Expanded(
@@ -75,6 +63,52 @@ class _LearningScreenState extends State<LearningScreen> {
                 _buildNavigation(context, learning, filtered),
               ],
             ),
+    );
+  }
+
+  /// Sprachumschalter DE / EN / عربي
+  Widget _buildLanguageBar(LearningProvider learning) {
+    final langs = [
+      {'code': 'de', 'label': 'DE'},
+      {'code': 'en', 'label': 'EN'},
+      {'code': 'ar', 'label': 'عربي'},
+    ];
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: _primary.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: langs.map((l) {
+          final active = learning.viewLanguage == l['code'];
+          return Expanded(
+            child: GestureDetector(
+              onTap: () => learning.setViewLanguage(l['code']!),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 180),
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 2),
+                decoration: BoxDecoration(
+                  color: active ? _primary : Colors.transparent,
+                  borderRadius: BorderRadius.circular(9),
+                ),
+                child: Center(
+                  child: Text(
+                    l['label']!,
+                    style: GoogleFonts.roboto(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: active ? Colors.white : _primary,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 
@@ -166,12 +200,17 @@ class _LearningScreenState extends State<LearningScreen> {
 
   Widget _buildQuestionCard(BuildContext context, LearningProvider learning, List<Question> filtered) {
     final q = filtered[learning.currentIndex.clamp(0, filtered.length - 1)];
-    return QuestionCard(
-      questionNumber: learning.currentIndex + 1, totalQuestions: filtered.length,
-      questionText: q.text, answers: q.answers,
-      selectedAnswer: _selectedAnswers[q.id], correctAnswer: q.correctAnswerIndex,
-      showCorrectAnswer: _selectedAnswers.containsKey(q.id), category: q.category.displayName,
-      onAnswerSelected: (index) { setState(() { _selectedAnswers[q.id] = index; }); },
+    final lang = learning.viewLanguage;
+    final isRtl = lang == 'ar';
+    return Directionality(
+      textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
+      child: QuestionCard(
+        questionNumber: learning.currentIndex + 1, totalQuestions: filtered.length,
+        questionText: q.questionFor(lang), answers: q.answersFor(lang),
+        selectedAnswer: _selectedAnswers[q.id], correctAnswer: q.correctAnswerIndex,
+        showCorrectAnswer: _selectedAnswers.containsKey(q.id), category: q.category.displayName,
+        onAnswerSelected: (index) { setState(() { _selectedAnswers[q.id] = index; }); },
+      ),
     );
   }
 

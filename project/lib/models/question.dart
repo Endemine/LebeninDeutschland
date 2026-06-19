@@ -53,6 +53,18 @@ class Question {
   /// Erklärungstext zur richtigen Antwort (für Lernmodus)
   final String? explanation;
 
+  /// Englische Übersetzung des Fragetexts
+  final String? questionEn;
+
+  /// Arabische Übersetzung des Fragetexts
+  final String? questionAr;
+
+  /// Englische Übersetzungen der Antworten
+  final List<String>? answersEn;
+
+  /// Arabische Übersetzungen der Antworten
+  final List<String>? answersAr;
+
   /// Konstruktor
   const Question({
     required this.id,
@@ -62,7 +74,61 @@ class Question {
     required this.category,
     this.state,
     this.explanation,
+    this.questionEn,
+    this.questionAr,
+    this.answersEn,
+    this.answersAr,
   });
+
+  /// Liefert den Fragetext in der gewünschten Sprache ('de', 'en', 'ar')
+  String questionFor(String lang) {
+    switch (lang) {
+      case 'en':
+        return questionEn ?? text;
+      case 'ar':
+        return questionAr ?? text;
+      default:
+        return text;
+    }
+  }
+
+  /// Liefert die Antworten in der gewünschten Sprache ('de', 'en', 'ar')
+  List<String> answersFor(String lang) {
+    switch (lang) {
+      case 'en':
+        return (answersEn != null && answersEn!.length == answers.length)
+            ? answersEn!
+            : answers;
+      case 'ar':
+        return (answersAr != null && answersAr!.length == answers.length)
+            ? answersAr!
+            : answers;
+      default:
+        return answers;
+    }
+  }
+
+  /// Erstellt eine Kopie mit Übersetzungen
+  Question withTranslations({
+    String? questionEn,
+    String? questionAr,
+    List<String>? answersEn,
+    List<String>? answersAr,
+  }) {
+    return Question(
+      id: id,
+      text: text,
+      answers: answers,
+      correctAnswerIndex: correctAnswerIndex,
+      category: category,
+      state: state,
+      explanation: explanation,
+      questionEn: questionEn ?? this.questionEn,
+      questionAr: questionAr ?? this.questionAr,
+      answersEn: answersEn ?? this.answersEn,
+      answersAr: answersAr ?? this.answersAr,
+    );
+  }
 
   /// Factory: Erstellt eine Question aus JSON
   /// Unterstützt sowohl das interne Format (text/correctAnswerIndex/category.name)

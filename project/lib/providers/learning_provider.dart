@@ -7,6 +7,7 @@
 
 import 'dart:convert';
 import 'dart:math';
+import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,6 +65,11 @@ class LearningProvider extends ChangeNotifier {
 
   /// Lade-Status
   bool _isLoading = false;
+
+  /// Anzeige-Sprache für Fragen ('de', 'en', 'ar')
+  String _viewLanguage = 'de';
+
+  static const String _kViewLanguageKey = 'view_language';
 
   /// Fehlermeldung (falls vorhanden)
   String? _error;
@@ -169,9 +175,10 @@ class LearningProvider extends ChangeNotifier {
 
     try {
       // === Fragen aus JSON-Asset laden ===
-      // Hinweis: Im echten Projekt würde rootBundle.loadString() verwendet
-      // Für dieses Beispiel wird eine Hilfsmethode simuliert
       _allQuestions = await _loadQuestionsFromAsset();
+
+      // === Übersetzungen laden und an Fragen anhängen ===
+      await _loadTranslations();
 
       // === Persistierte Lernfortschritte laden ===
       await _loadLearnedIds();
@@ -179,12 +186,74 @@ class LearningProvider extends ChangeNotifier {
       // === Persistierte Bookmarks laden ===
       await _loadBookmarkedIds();
 
+      // === Gespeicherte Anzeige-Sprache laden ===
+      await _loadViewLanguage();
+
       _isLoading = false;
       notifyListeners();
     } catch (e) {
       _isLoading = false;
       _error = 'Fehler beim Laden der Fragen: $e';
       notifyListeners();
+    }
+  }
+
+  /// Lädt die Übersetzungen (EN/AR) und hängt sie an die geladenen Fragen.
+  Future<void> _loadTranslations() async {
+    try {
+      final jsonString =
+          await rootBundle.loadString('assets/translations.json');
+      final Map<String, dynamic> map =
+          jsonDecode(jsonString) as Map<String, dynamic>;
+
+      _allQuestions = _allQuestions.map((q) {
+        final t = map['${q.id}'];
+        if (t == null) return q;
+        final tr = t as Map<String, dynamic>;
+        return q.withTranslations(
+          questionEn: tr['question_en'] as String?,
+          questionAr: tr['question_ar'] as String?,
+          answersEn: tr['answers_en'] != null
+              ? List<String>.from(tr['answers_en'] as List)
+              : null,
+          answersAr: tr['answers_ar'] != null
+              ? List<String>.from(tr['answers_ar'] as List)
+              : null,
+        );
+      }).toList();
+    } catch (e) {
+      debugPrint('Fehler beim Laden der Übersetzungen: $e');
+    }
+  }
+
+  /// Aktuelle Anzeige-Sprache ('de', 'en', 'ar')
+  String get viewLanguage => _viewLanguage;
+
+  /// Setzt die Anzeige-Sprache und persistiert sie.
+  void setViewLanguage(String lang) {
+    if (_viewLanguage == lang) return;
+    _viewLanguage = lang;
+    _persistViewLanguage();
+    notifyListeners();
+  }
+
+  /// Lädt die gespeicherte Anzeige-Sprache.
+  Future<void> _loadViewLanguage() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      _viewLanguage = prefs.getString(_kViewLanguageKey) ?? 'de';
+    } catch (e) {
+      _viewLanguage = 'de';
+    }
+  }
+
+  /// Speichert die Anzeige-Sprache.
+  Future<void> _persistViewLanguage() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_kViewLanguageKey, _viewLanguage);
+    } catch (e) {
+      debugPrint('Fehler beim Speichern der Sprache: $e');
     }
   }
 
@@ -513,7 +582,7 @@ class LearningProvider extends ChangeNotifier {
       text: 'Keine Fragen verfügbar. Bitte laden Sie die Fragen-Daten.',
       answers: const ['A', 'B', 'C', 'D'],
       correctAnswerIndex: 0,
-      category: QuestionCategory.politics,
+      category: QuestionCategory.allgemein,
     );
   }
 
