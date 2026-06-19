@@ -492,11 +492,155 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: GestureDetector(
                           onTap: () async {
                             final uri = Uri.parse(https://tcgrail.org);
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                             if (await canLaunchUrl(uri)) {
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                               await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                             }
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                           },
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                           child: Row(
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
@@ -520,11 +664,155 @@ class _HomeScreenState extends State<HomeScreen> {
                               const SizedBox(width: 8),
                               Text(
                                 tcgrail.org,
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                                 style: GoogleFonts.roboto(
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                                   fontSize: 13,
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                                   fontWeight: FontWeight.w600,
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                                   color: Color(0xFF1A1A1A),
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                                 ),
+                      const SizedBox(height: 10),
+                      // Instagram
+                      GestureDetector(
+                        onTap: () async {
+                          final uri = Uri.parse(https://instagram.com/tommygsx);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(uri, mode: LaunchMode.externalApplication);
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.camera_alt_outlined, size: 14, color: Color(0xFF8E8E93)),
+                            SizedBox(width: 6),
+                            Text(
+                              @tommygsx,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: Color(0xFF8E8E93),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                               ),
                             ],
                           ),

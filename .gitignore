@@ -1,1 +1,10 @@
-.md
+code_review.md
+build/
+build_temp/
+project/
+*.apk
+.pub-cache/
+.android/
+flutter/
+.cocoapods/
+android/app/keystore/release.keystore
