@@ -105,16 +105,39 @@ class Question {
   });
 
   /// Factory: Erstellt eine Question aus JSON
+  /// Unterstützt sowohl das interne Format (text/correctAnswerIndex/category.name)
+  /// als auch das Asset-Format (question/correct/category als String)
   factory Question.fromJson(Map<String, dynamic> json) {
+    // Asset-Format: {question, answers, correct (int), category (String)}
+    final text = json['question'] as String? ?? json['text'] as String;
+    final answers = List<String>.from(json['answers'] as List);
+    final correctIndex = json['correct'] is int
+        ? json['correct'] as int
+        : json['correctAnswerIndex'] as int;
+
+    // Category-Mapping: Asset-String → QuestionCategory
+    final categoryStr = json['category'] as String? ?? '';
+    QuestionCategory category;
+    switch (categoryStr) {
+      case 'Allgemein':
+        category = QuestionCategory.politics;
+        break;
+      case 'Bundesland':
+        category = QuestionCategory.constitution;
+        break;
+      default:
+        category = QuestionCategory.values.firstWhere(
+          (c) => c.name == json['category'],
+          orElse: () => QuestionCategory.politics,
+        );
+    }
+
     return Question(
       id: json['id'] as int,
-      text: json['text'] as String,
-      answers: List<String>.from(json['answers'] as List),
-      correctAnswerIndex: json['correctAnswerIndex'] as int,
-      category: QuestionCategory.values.firstWhere(
-        (c) => c.name == json['category'],
-        orElse: () => QuestionCategory.politics,
-      ),
+      text: text,
+      answers: answers,
+      correctAnswerIndex: correctIndex,
+      category: category,
       state: json['state'] as String?,
       explanation: json['explanation'] as String?,
     );
