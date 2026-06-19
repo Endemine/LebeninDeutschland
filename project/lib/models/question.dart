@@ -10,35 +10,11 @@ import 'dart:convert';
 
 /// Kategorien für Einbürgerungstest-Fragen
 enum QuestionCategory {
-  /// Grundsätze der Verfassung (Demokratie, Rechte, Freiheiten)
-  constitution,
+  /// Allgemeine Fragen (gesamter Fragenpool)
+  allgemein,
 
-  /// Deutsche Geschichte
-  history,
-
-  /// Gesellschaft und Soziales
-  society,
-
-  /// Recht und Rechtssystem
-  law,
-
-  /// Politik und Staatsaufbau
-  politics,
-
-  /// Kultur und Bildung
-  culture,
-
-  /// Religion und Weltanschauung
-  religion,
-
-  /// Europa und die Welt
-  europe,
-
-  /// Natur und Umwelt
-  environment,
-
-  /// Wirtschaft und Arbeit
-  economy,
+  /// Bundeslandspezifische Fragen
+  bundesland,
 }
 
 /// Extension für die Anzeige-Namen der Kategorien
@@ -46,26 +22,10 @@ extension QuestionCategoryExtension on QuestionCategory {
   /// Der deutsche Anzeigename der Kategorie
   String get displayName {
     switch (this) {
-      case QuestionCategory.constitution:
-        return 'Verfassungsprinzipien';
-      case QuestionCategory.history:
-        return 'Geschichte';
-      case QuestionCategory.society:
-        return 'Gesellschaft';
-      case QuestionCategory.law:
-        return 'Recht';
-      case QuestionCategory.politics:
-        return 'Politik';
-      case QuestionCategory.culture:
-        return 'Kultur & Bildung';
-      case QuestionCategory.religion:
-        return 'Religion';
-      case QuestionCategory.europe:
-        return 'Europa & Welt';
-      case QuestionCategory.environment:
-        return 'Natur & Umwelt';
-      case QuestionCategory.economy:
-        return 'Wirtschaft & Arbeit';
+      case QuestionCategory.allgemein:
+        return 'Allgemein';
+      case QuestionCategory.bundesland:
+        return 'Bundesland';
     }
   }
 }
@@ -120,16 +80,13 @@ class Question {
     QuestionCategory category;
     switch (categoryStr) {
       case 'Allgemein':
-        category = QuestionCategory.politics;
+        category = QuestionCategory.allgemein;
         break;
       case 'Bundesland':
-        category = QuestionCategory.constitution;
+        category = QuestionCategory.bundesland;
         break;
       default:
-        category = QuestionCategory.values.firstWhere(
-          (c) => c.name == json['category'],
-          orElse: () => QuestionCategory.politics,
-        );
+        category = QuestionCategory.allgemein;
     }
 
     return Question(
