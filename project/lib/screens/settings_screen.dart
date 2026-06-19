@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/app_card.dart';
 import '../providers/settings_provider.dart';
+import '../models/app_settings.dart';
 
 /// Einstellungs-Screen.
 ///
@@ -23,35 +24,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _error = Color(0xFFFF3B30);
-
-  String _selectedBundesland = 'Baden-Wuerttemberg';
-  String _selectedLanguage = 'Deutsch';
-
-  final List<String> _bundeslaender = const [
-    'Baden-Wuerttemberg',
-    'Bayern',
-    'Berlin',
-    'Brandenburg',
-    'Bremen',
-    'Hamburg',
-    'Hessen',
-    'Mecklenburg-Vorpommern',
-    'Niedersachsen',
-    'Nordrhein-Westfalen',
-    'Rheinland-Pfalz',
-    'Saarland',
-    'Sachsen',
-    'Sachsen-Anhalt',
-    'Schleswig-Holstein',
-    'Thueringen',
-  ];
-
-  final Map<String, String> _languages = const {
-    'Deutsch': 'de',
-    'English': 'en',
-    'Tuerkce': 'tr',
-    'Arabisch': 'ar',
-  };
 
   void _showResetDialog() {
     showDialog(
@@ -88,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
-              // TODO: Fortschritt zuruecksetzen
+              context.read<SettingsProvider>().resetProgress();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Fortschritt wurde zurueckgesetzt'),
@@ -145,12 +117,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Icons.location_on,
               iconColor: _primary,
               title: 'Bundesland',
-              subtitle: _selectedBundesland,
-              value: _selectedBundesland,
-              items: _bundeslaender,
+              subtitle: settings.selectedState,
+              value: settings.selectedState,
+              items: settings.availableStates,
               onChanged: (value) {
                 if (value != null) {
-                  setState(() => _selectedBundesland = value);
+                  settings.setState(value);
                 }
               },
             ),
@@ -176,12 +148,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Icons.language,
               iconColor: _primary,
               title: 'Sprache',
-              subtitle: _selectedLanguage,
-              value: _selectedLanguage,
-              items: _languages.keys.toList(),
+              subtitle: settings.language.displayName,
+              value: settings.language.displayName,
+              items: settings.availableLanguages.map((l) => l.displayName).toList(),
               onChanged: (value) {
                 if (value != null) {
-                  setState(() => _selectedLanguage = value);
+                  final selectedLang = settings.availableLanguages.firstWhere(
+                    (l) => l.displayName == value,
+                    orElse: () => AppLanguage.de,
+                  );
+                  settings.setLanguageEnum(selectedLang);
                 }
               },
             ),
@@ -272,7 +248,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               child: const Center(
                 child: Text(
-                  '🇩🇪',
+                  '\u{1F1E9}\u{1F1EA}',
                   style: TextStyle(fontSize: 40),
                 ),
               ),

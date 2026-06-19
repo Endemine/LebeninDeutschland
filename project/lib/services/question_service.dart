@@ -32,7 +32,6 @@ class QuestionService {
   List<Question> _allQuestions = [];
 
   /// Gibt an, ob die Fragen bereits geladen wurden.
-  bool _isLoaded = false;
 
   /// Zufalls-Generator für die Auswahl zufälliger Fragen.
   final Random _random = Random();
@@ -70,6 +69,8 @@ class QuestionService {
   /// Kann mehrfach aufgerufen werden, lädt die Daten aber nur beim ersten Mal.
   Future<void> loadQuestions() async {
     if (_isLoaded) return;
+    if (_isLoaded) return;
+
 
     try {
       // Allgemeine Fragen laden
@@ -87,6 +88,7 @@ class QuestionService {
 
       _isLoaded = true;
     } catch (e) {
+      _isLoaded = false;
       throw StateError(
         'Fehler beim Laden der Fragen aus $_questionsAssetPath: $e',
       );
@@ -120,6 +122,7 @@ class QuestionService {
   /// Wirft einen [StateError] wenn die Fragen noch nicht geladen wurden.
   void _ensureLoaded() {
     if (!_isLoaded) {
+      _isLoaded = false;
       throw StateError(
         'Fragen wurden noch nicht geladen. '
         'Rufe loadQuestions() auf bevor du auf die Daten zugreifst.',

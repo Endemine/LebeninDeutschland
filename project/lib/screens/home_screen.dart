@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/learning_provider.dart';
+import '../providers/statistics_provider.dart';
+import '../providers/settings_provider.dart';
 import '../widgets/progress_ring.dart';
 import '../widgets/app_card.dart';
 import '../widgets/app_button.dart';
@@ -25,38 +28,30 @@ class _HomeScreenState extends State<HomeScreen> {
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
 
-  // Liste der 16 Bundeslaender
-  final List<String> _bundeslaender = const [
-    'Baden-Wuerttemberg',
-    'Bayern',
-    'Berlin',
-    'Brandenburg',
-    'Bremen',
-    'Hamburg',
-    'Hessen',
-    'Mecklenburg-Vorpommern',
-    'Niedersachsen',
-    'Nordrhein-Westfalen',
-    'Rheinland-Pfalz',
-    'Saarland',
-    'Sachsen',
-    'Sachsen-Anhalt',
-    'Schleswig-Holstein',
-    'Thueringen',
-  ];
-
-  String _selectedBundesland = 'Baden-Wuerttemberg';
-
-  // Demo-Daten
-  final int _learnedQuestions = 225;
-  final int _totalQuestions = 300;
-  final int _lastTestScore = 28;
-  final bool _hasLastTest = true;
-
   @override
   Widget build(BuildContext context) {
+    final learningProvider = context.watch<LearningProvider>();
+    final settingsProvider = context.watch<SettingsProvider>();
+    final statisticsProvider = context.watch<StatisticsProvider>();
+
     final screenSize = MediaQuery.of(context).size;
-    final progressPercent = _learnedQuestions / _totalQuestions;
+
+    final learnedCount = learningProvider.learnedCount;
+    final totalQuestions = learningProvider.totalQuestionCount;
+    final overallProgress = learningProvider.overallProgress;
+
+    // Bundesland
+    final bundeslaender = settingsProvider.availableStates;
+    final selectedBundesland = settingsProvider.selectedState;
+
+    // Letzter Test
+    final lastResult = statisticsProvider.recentResults.isNotEmpty
+        ? statisticsProvider.recentResults.first
+        : null;
+    final hasLastTest = lastResult != null;
+    final lastTestScore = lastResult?.correctAnswers ?? 0;
+
+    final remainingQuestions = totalQuestions - learnedCount;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -113,8 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     children: [
                       ProgressRing(
-                        percent: progressPercent,
-                        centerText: '${(progressPercent * 100).toStringAsFixed(0)}%',
+                        percent: overallProgress,
+                        centerText:
+                            '${(overallProgress * 100).toStringAsFixed(0)}%',
                         subtitle: 'gelernt',
                         radius: screenSize.width * 0.16,
                         lineWidth: 8,
@@ -134,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              '$_learnedQuestions von $_totalQuestions Fragen',
+                              '$learnedCount von $totalQuestions Fragen',
                               style: GoogleFonts.roboto(
                                 fontSize: 14,
                                 color: _textSecondary,
@@ -142,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Noch ${300 - _learnedQuestions} Fragen bis zum Ziel',
+                              'Noch $remainingQuestions Fragen bis zum Ziel',
                               style: GoogleFonts.roboto(
                                 fontSize: 12,
                                 color: _primary,
@@ -194,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(height: 2),
                             DropdownButtonHideUnderline(
                               child: DropdownButton<String>(
-                                value: _selectedBundesland,
+                                value: selectedBundesland,
                                 isExpanded: true,
                                 isDense: true,
                                 icon: const Icon(Icons.keyboard_arrow_down,
@@ -204,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.w600,
                                   color: _textPrimary,
                                 ),
-                                items: _bundeslaender.map((String land) {
+                                items: bundeslaender.map((String land) {
                                   return DropdownMenuItem<String>(
                                     value: land,
                                     child: Text(land),
@@ -212,9 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 }).toList(),
                                 onChanged: (String? value) {
                                   if (value != null) {
-                                    setState(() {
-                                      _selectedBundesland = value;
-                                    });
+                                    settingsProvider.setState(value);
                                   }
                                 },
                               ),
@@ -279,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             // Quick-Stat: Letzter Test
-            if (_hasLastTest)
+            if (hasLastTest)
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -292,16 +286,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 48,
                           height: 48,
                           decoration: BoxDecoration(
-                            color: _lastTestScore >= 17
+                            color: lastTestScore >= 17
                                 ? _success.withOpacity(0.1)
                                 : const Color(0xFFFF3B30).withOpacity(0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
-                            _lastTestScore >= 17
+                            lastTestScore >= 17
                                 ? Icons.check_circle
                                 : Icons.cancel,
-                            color: _lastTestScore >= 17
+                            color: lastTestScore >= 17
                                 ? _success
                                 : const Color(0xFFFF3B30),
                             size: 28,
@@ -321,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const SizedBox(height: 2),
                               Text(
-                                '$_lastTestScore / 33 richtig',
+                                '$lastTestScore / ${lastResult!.totalQuestions} richtig',
                                 style: GoogleFonts.roboto(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
@@ -329,15 +323,81 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Text(
-                                _lastTestScore >= 17
+                                lastTestScore >= 17
                                     ? 'Bestanden!'
                                     : 'Nicht bestanden',
                                 style: GoogleFonts.roboto(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
-                                  color: _lastTestScore >= 17
+                                  color: lastTestScore >= 17
                                       ? _success
                                       : const Color(0xFFFF3B30),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Icon(
+                          Icons.chevron_right,
+                          color: _textTertiary,
+                          size: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+            // Fallback wenn kein Test gemacht wurde
+            if (!hasLastTest)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  child: AppCard(
+                    padding: const EdgeInsets.all(16),
+                    onTap: () => Navigator.pushNamed(context, '/quiz/setup'),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color: _primary.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Icon(
+                            Icons.edit_note,
+                            color: _primary,
+                            size: 28,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Letzter Test',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 13,
+                                  color: _textSecondary,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                'Noch kein Test',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: _textPrimary,
+                                ),
+                              ),
+                              Text(
+                                'Starte deinen ersten Test!',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500,
+                                  color: _primary,
                                 ),
                               ),
                             ],

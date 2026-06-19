@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/learning_provider.dart';
+import '../models/question.dart';
 
 /// Screen fuer gemerkte (bookmarkte) Fragen.
 ///
@@ -20,38 +24,9 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
 
-  // Demo-Daten: Bookmarkte Fragen
-  List<Map<String, dynamic>> _bookmarkedQuestions = [
-    {
-      'id': 1,
-      'question': 'Wie viele Bundeslaender hat die Bundesrepublik Deutschland?',
-      'category': 'Staat',
-      'learned': true,
-    },
-    {
-      'id': 2,
-      'question': 'Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?',
-      'category': 'Geschichte',
-      'learned': false,
-    },
-    {
-      'id': 3,
-      'question': 'Was bedeutet das Grundgesetz der Bundesrepublik Deutschland?',
-      'category': 'Recht',
-      'learned': true,
-    },
-    {
-      'id': 4,
-      'question': 'Welche Farben hat die deutsche Nationalflagge?',
-      'category': 'Kultur',
-      'learned': false,
-    },
-  ];
-
-  void _removeBookmark(int index) {
-    setState(() {
-      _bookmarkedQuestions.removeAt(index);
-    });
+  void _removeBookmark(int questionId) {
+    final learningProvider = context.read<LearningProvider>();
+    learningProvider.toggleBookmark(questionId);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Bookmark entfernt'),
@@ -62,6 +37,9 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final learningProvider = context.watch<LearningProvider>();
+    final bookmarkedQuestions = learningProvider.bookmarkedQuestions;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -81,12 +59,12 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
         ),
         centerTitle: true,
         actions: [
-          if (_bookmarkedQuestions.isNotEmpty)
+          if (bookmarkedQuestions.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: Center(
                 child: Text(
-                  '${_bookmarkedQuestions.length}',
+                  '${bookmarkedQuestions.length}',
                   style: GoogleFonts.roboto(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -98,25 +76,26 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
         ],
       ),
       body: SafeArea(
-        child: _bookmarkedQuestions.isEmpty
+        child: bookmarkedQuestions.isEmpty
             ? _buildEmptyState()
             : ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                itemCount: _bookmarkedQuestions.length,
+                itemCount: bookmarkedQuestions.length,
                 itemBuilder: (context, index) {
-                  final q = _bookmarkedQuestions[index];
+                  final q = bookmarkedQuestions[index];
+                  final learned = learningProvider.isLearned(q.id);
                   return _BookmarkedQuestionTile(
-                    question: q['question'],
-                    category: q['category'],
-                    learned: q['learned'],
+                    question: q.text,
+                    category: q.category.displayName,
+                    learned: learned,
                     onTap: () {
                       Navigator.pushNamed(
                         context,
                         '/learning/detail',
-                        arguments: {'questionId': q['id']},
+                        arguments: {'questionId': q.id},
                       );
                     },
-                    onRemove: () => _removeBookmark(index),
+                    onRemove: () => _removeBookmark(q.id),
                   );
                 },
               ),

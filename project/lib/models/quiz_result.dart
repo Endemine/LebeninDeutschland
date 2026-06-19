@@ -274,7 +274,7 @@ class QuestionAnswer {
   ///
   /// Gibt `false` zurück wenn [userAnswer] null ist (nicht beantwortet)
   /// oder wenn die Antwort falsch ist.
-  bool get isCorrect => userAnswer == question.correctAnswer;
+  bool get isCorrect => userAnswer == question.correctAnswerIndex;
 
   /// Gibt an, ob die Frage beantwortet wurde.
   bool get isAnswered => userAnswer != null;

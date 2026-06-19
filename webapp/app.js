@@ -459,19 +459,28 @@ function showQuizQuestion(index) {
     questionCard.removeAttribute('dir');
   }
 
-  // Antworten (übersetzt)
+  // Antworten (übersetzt) - sicher mit createElement + textContent
   const answersContainer = document.getElementById('quiz-answers');
   answersContainer.innerHTML = '';
 
+  const letters = ['A', 'B', 'C', 'D'];
   question.answers.forEach((_, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     if (app.viewLanguage === 'ar') btn.setAttribute('dir', 'rtl');
-    const letters = ['A', 'B', 'C', 'D'];
-    btn.innerHTML = `
-      <span class="answer-letter">${letters[i]}</span>
-      <span class="answer-text">${window.getAText(question, i)}</span>
-    `;
+
+    // Span für den Buchstaben
+    const letterSpan = document.createElement('span');
+    letterSpan.className = 'answer-letter';
+    letterSpan.textContent = letters[i];
+
+    // Span für den Antworttext (user content — safe via textContent)
+    const textSpan = document.createElement('span');
+    textSpan.className = 'answer-text';
+    textSpan.textContent = window.getAText(question, i);
+
+    btn.appendChild(letterSpan);
+    btn.appendChild(textSpan);
 
     // Bereits ausgewaehlt?
     if (app.quiz.answers[question.id] !== undefined) {
@@ -492,6 +501,7 @@ function showQuizQuestion(index) {
   document.getElementById('btn-quiz-prev').disabled = index === 0;
 
   const nextBtn = document.getElementById('btn-quiz-next');
+  // SVG arrow icon is static — safe to use innerHTML
   if (index === app.quiz.questions.length - 1) {
     nextBtn.innerHTML = `Ergebnis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>`;
   } else {
@@ -679,25 +689,46 @@ function renderResultAnswers() {
   const container = document.getElementById('result-answers-list');
   container.innerHTML = '';
 
+  const letters = ['A', 'B', 'C', 'D'];
+
   app.quiz.questions.forEach((q, i) => {
     const userAnswer = app.quiz.answers[q.id];
     const isCorrect = userAnswer === q.correct;
-    const letters = ['A', 'B', 'C', 'D'];
+    const translatedQuestion = window.getQText(q);
+    const translatedUserAnswer = userAnswer !== undefined ? window.getAText(q, userAnswer) : '-';
+    const translatedCorrectAnswer = window.getAText(q, q.correct);
 
     const item = document.createElement('div');
     item.className = 'result-answer-item ' + (isCorrect ? 'correct' : 'incorrect');
     if (app.viewLanguage === 'ar') item.setAttribute('dir', 'rtl');
-    const translatedQuestion = window.getQText(q);
-    const translatedUserAnswer = userAnswer !== undefined ? window.getAText(q, userAnswer) : '-';
-    const translatedCorrectAnswer = window.getAText(q, q.correct);
-    item.innerHTML = `
-      <span class="result-answer-icon">${isCorrect ? '✅' : '❌'}</span>
-      <span class="result-answer-text">
-        <strong>Frage ${i + 1}:</strong> ${translatedQuestion}<br>
-        <small>Deine Antwort: ${userAnswer !== undefined ? letters[userAnswer] : '-'} (${translatedUserAnswer}) | 
-               Richtig: ${letters[q.correct]} (${translatedCorrectAnswer})</small>
-      </span>
-    `;
+
+    // Icon span
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'result-answer-icon';
+    iconSpan.textContent = isCorrect ? '✅' : '❌';
+
+    // Text span — safe textContent, no innerHTML
+    const textSpan = document.createElement('span');
+    textSpan.className = 'result-answer-text';
+
+    // Bold "Frage X" label
+    const strong = document.createElement('strong');
+    strong.textContent = `Frage ${i + 1}:`;
+
+    const questionText = document.createTextNode(` ${translatedQuestion}`);
+
+    const br1 = document.createElement('br');
+
+    const small = document.createElement('small');
+    small.textContent = `Deine Antwort: ${userAnswer !== undefined ? letters[userAnswer] : '-'} (${translatedUserAnswer}) | Richtig: ${letters[q.correct]} (${translatedCorrectAnswer})`;
+
+    textSpan.appendChild(strong);
+    textSpan.appendChild(questionText);
+    textSpan.appendChild(br1);
+    textSpan.appendChild(small);
+
+    item.appendChild(iconSpan);
+    item.appendChild(textSpan);
     container.appendChild(item);
   });
 }
@@ -847,70 +878,106 @@ function renderLearnQuestions() {
     return;
   }
 
+  const letters = ['A', 'B', 'C', 'D'];
+
   filtered.forEach((q, idx) => {
     const isExpanded = expandedQuestions.has(q.id);
     const isLearned = app.progress.learned.has(q.id);
     const isBookmarked = app.progress.bookmarks.has(q.id);
+    const translatedQuestion = window.getQText(q);
 
     const item = document.createElement('div');
     item.className = 'learn-question-item';
 
-    const letters = ['A', 'B', 'C', 'D'];
+    // --- Header button (collapsed/expanded toggle) ---
+    const headerBtn = document.createElement('button');
+    headerBtn.className = 'learn-question-header';
+    if (app.viewLanguage === 'ar') headerBtn.setAttribute('dir', 'rtl');
+    headerBtn.addEventListener('click', () => toggleLearnQuestion(q.id));
 
-    let answersHtml = '';
+    // Question number / checkmark
+    const numDiv = document.createElement('div');
+    numDiv.className = 'learn-question-num' + (isLearned ? ' learned' : '');
+    numDiv.textContent = isLearned ? '✓' : String(q.id);
+
+    // Content div
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'learn-question-content';
+
+    const questionTextDiv = document.createElement('div');
+    questionTextDiv.className = 'learn-question-text';
+    questionTextDiv.textContent = translatedQuestion;
+
+    const metaDiv = document.createElement('div');
+    metaDiv.className = 'learn-question-meta';
+
+    const catSpan = document.createElement('span');
+    catSpan.className = 'learn-question-category';
+    catSpan.textContent = q.category === 'Allgemein' ? detectSubcategory(q) : (getQuestionState(q) || 'Bundesland');
+
+    metaDiv.appendChild(catSpan);
+    contentDiv.appendChild(questionTextDiv);
+    contentDiv.appendChild(metaDiv);
+
+    // Actions div
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'learn-question-actions';
+    actionsDiv.addEventListener('click', e => e.stopPropagation());
+
+    // Bookmark button
+    const bookmarkBtn = document.createElement('button');
+    bookmarkBtn.className = 'learn-action-btn' + (isBookmarked ? ' bookmarked' : '');
+    bookmarkBtn.setAttribute('aria-label', 'Bookmark');
+    bookmarkBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleBookmark(q.id);
+    });
+    bookmarkBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>`;
+
+    // Learned button
+    const learnedBtn = document.createElement('button');
+    learnedBtn.className = 'learn-action-btn' + (isLearned ? ' learned' : '');
+    learnedBtn.setAttribute('aria-label', 'Gelernt');
+    learnedBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleLearned(q.id);
+    });
+    learnedBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>`;
+
+    actionsDiv.appendChild(bookmarkBtn);
+    actionsDiv.appendChild(learnedBtn);
+
+    headerBtn.appendChild(numDiv);
+    headerBtn.appendChild(contentDiv);
+    headerBtn.appendChild(actionsDiv);
+
+    // --- Expanded body (answers) ---
+    let bodyDiv = null;
     if (isExpanded) {
-      const answered = item.dataset.answered === 'true';
-      const selectedAnswer = parseInt(item.dataset.selectedAnswer || '-1');
+      bodyDiv = document.createElement('div');
+      bodyDiv.className = 'learn-question-body expanded';
+      if (app.viewLanguage === 'ar') bodyDiv.setAttribute('dir', 'rtl');
 
-      answersHtml = `<div class="learn-question-body expanded" ${app.viewLanguage === 'ar' ? 'dir="rtl"' : ''}>
-        <div class="learn-answer-options">
-          ${q.answers.map((_, i) => {
-            let cls = '';
-            if (selectedAnswer === i && i !== q.correct) cls = 'wrong';
-            return `<button class="learn-answer-option ${cls}" data-idx="${i}" ${app.viewLanguage === 'ar' ? 'dir="rtl"' : ''}>
-              <span class="answer-letter">${letters[i]}</span>
-              <span>${window.getAText(q, i)}</span>
-            </button>`;
-          }).join('')}
-        </div>
-        <div class="learn-answer-feedback" id="feedback-${q.id}"></div>
-      </div>`;
-    }
+      const optionsDiv = document.createElement('div');
+      optionsDiv.className = 'learn-answer-options';
 
-    const translatedQuestion = window.getQText(q);
-    item.innerHTML = `
-      <button class="learn-question-header" onclick="toggleLearnQuestion(${q.id})" ${app.viewLanguage === 'ar' ? 'dir="rtl"' : ''}>
-        <div class="learn-question-num ${isLearned ? 'learned' : ''}">${isLearned ? '✓' : q.id}</div>
-        <div class="learn-question-content">
-          <div class="learn-question-text">${translatedQuestion}</div>
-          <div class="learn-question-meta">
-            <span class="learn-question-category">${q.category === 'Allgemein' ? detectSubcategory(q) : (getQuestionState(q) || 'Bundesland')}</span>
-          </div>
-        </div>
-        <div class="learn-question-actions" onclick="event.stopPropagation()">
-          <button class="learn-action-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(${q.id})" aria-label="Bookmark">
-            <svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
-              <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-            </svg>
-          </button>
-          <button class="learn-action-btn ${isLearned ? 'learned' : ''}" onclick="toggleLearned(${q.id})" aria-label="Gelernt">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 11l3 3L22 4"/>
-              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-            </svg>
-          </button>
-        </div>
-      </button>
-      ${answersHtml}
-    `;
+      q.answers.forEach((_, i) => {
+        const optBtn = document.createElement('button');
+        optBtn.className = 'learn-answer-option';
+        optBtn.setAttribute('data-idx', String(i));
+        if (app.viewLanguage === 'ar') optBtn.setAttribute('dir', 'rtl');
 
-    // Antwort-Click-Handler wenn expanded
-    if (isExpanded) {
-      const body = item.querySelector('.learn-question-body');
-      const feedback = item.querySelector(`#feedback-${q.id}`);
+        const letterSpan = document.createElement('span');
+        letterSpan.className = 'answer-letter';
+        letterSpan.textContent = letters[i];
 
-      item.querySelectorAll('.learn-answer-option').forEach((btn, i) => {
-        btn.addEventListener('click', () => {
+        const textSpan = document.createElement('span');
+        textSpan.textContent = window.getAText(q, i);
+
+        optBtn.appendChild(letterSpan);
+        optBtn.appendChild(textSpan);
+
+        optBtn.addEventListener('click', () => {
           // Sofort Feedback
           const buttons = item.querySelectorAll('.learn-answer-option');
           buttons.forEach((b, idx) => {
@@ -919,19 +986,33 @@ function renderLearnQuestions() {
             else if (idx === i && i !== q.correct) b.classList.add('wrong');
           });
 
-          feedback.className = 'learn-answer-feedback show ' + (i === q.correct ? 'correct' : 'wrong');
-          const feedbackCorrect = app.viewLanguage === 'ar' ? 'صحيح! 🎉' : (app.viewLanguage === 'en' ? 'Correct! 🎉' : 'Richtig! 🎉');
-          const feedbackWrong = app.viewLanguage === 'ar' ? `خطأ. الجواب الصحيح هو: ${letters[q.correct]}` : (app.viewLanguage === 'en' ? `Wrong. The correct answer is: ${letters[q.correct]}` : `Falsch. Richtig waere: ${letters[q.correct]}`);
-          feedback.textContent = i === q.correct ? feedbackCorrect : feedbackWrong;
+          const feedbackEl = item.querySelector(`#feedback-${q.id}`);
+          if (feedbackEl) {
+            feedbackEl.className = 'learn-answer-feedback show ' + (i === q.correct ? 'correct' : 'wrong');
+            const feedbackCorrect = app.viewLanguage === 'ar' ? 'صحيح! 🎉' : (app.viewLanguage === 'en' ? 'Correct! 🎉' : 'Richtig! 🎉');
+            const feedbackWrong = app.viewLanguage === 'ar' ? `خطأ. الجواب الصحيح هو: ${letters[q.correct]}` : (app.viewLanguage === 'en' ? `Wrong. The correct answer is: ${letters[q.correct]}` : `Falsch. Richtig waere: ${letters[q.correct]}`);
+            feedbackEl.textContent = i === q.correct ? feedbackCorrect : feedbackWrong;
+          }
 
           // Automatisch als gelernt markieren wenn richtig
           if (i === q.correct && !app.progress.learned.has(q.id)) {
             toggleLearned(q.id);
           }
         });
+
+        optionsDiv.appendChild(optBtn);
       });
+
+      bodyDiv.appendChild(optionsDiv);
+
+      const feedbackDiv = document.createElement('div');
+      feedbackDiv.className = 'learn-answer-feedback';
+      feedbackDiv.id = `feedback-${q.id}`;
+      bodyDiv.appendChild(feedbackDiv);
     }
 
+    item.appendChild(headerBtn);
+    if (bodyDiv) item.appendChild(bodyDiv);
     container.appendChild(item);
   });
 }
@@ -1025,15 +1106,31 @@ function renderCategoryBars() {
 
     const item = document.createElement('div');
     item.className = 'category-bar-item';
-    item.innerHTML = `
-      <div class="category-bar-header">
-        <span class="category-bar-name">${cat}</span>
-        <span class="category-bar-value">${learned}/${total}</span>
-      </div>
-      <div class="category-bar-track">
-        <div class="category-bar-fill" style="width: ${pct}%"></div>
-      </div>
-    `;
+
+    const header = document.createElement('div');
+    header.className = 'category-bar-header';
+
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'category-bar-name';
+    nameSpan.textContent = cat;
+
+    const valueSpan = document.createElement('span');
+    valueSpan.className = 'category-bar-value';
+    valueSpan.textContent = `${learned}/${total}`;
+
+    header.appendChild(nameSpan);
+    header.appendChild(valueSpan);
+
+    const track = document.createElement('div');
+    track.className = 'category-bar-track';
+
+    const fill = document.createElement('div');
+    fill.className = 'category-bar-fill';
+    fill.style.width = pct + '%';
+
+    track.appendChild(fill);
+    item.appendChild(header);
+    item.appendChild(track);
     container.appendChild(item);
   });
 }
@@ -1054,14 +1151,32 @@ function renderQuizHistory() {
 
     const item = document.createElement('div');
     item.className = 'history-item';
-    item.innerHTML = `
-      <div class="history-score ${entry.passed ? 'passed' : 'failed'}">${entry.score}/${entry.total}</div>
-      <div class="history-info">
-        <div class="history-date">${dateStr} - ${timeStr}</div>
-        <div class="history-detail">${entry.passed ? 'Bestanden' : 'Nicht bestanden'}</div>
-      </div>
-      <span class="history-badge ${entry.passed ? 'passed' : 'failed'}">${entry.passed ? '✓' : '✗'}</span>
-    `;
+
+    const scoreDiv = document.createElement('div');
+    scoreDiv.className = 'history-score ' + (entry.passed ? 'passed' : 'failed');
+    scoreDiv.textContent = `${entry.score}/${entry.total}`;
+
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'history-info';
+
+    const dateDiv = document.createElement('div');
+    dateDiv.className = 'history-date';
+    dateDiv.textContent = `${dateStr} - ${timeStr}`;
+
+    const detailDiv = document.createElement('div');
+    detailDiv.className = 'history-detail';
+    detailDiv.textContent = entry.passed ? 'Bestanden' : 'Nicht bestanden';
+
+    infoDiv.appendChild(dateDiv);
+    infoDiv.appendChild(detailDiv);
+
+    const badge = document.createElement('span');
+    badge.className = 'history-badge ' + (entry.passed ? 'passed' : 'failed');
+    badge.textContent = entry.passed ? '✓' : '✗';
+
+    item.appendChild(scoreDiv);
+    item.appendChild(infoDiv);
+    item.appendChild(badge);
     container.appendChild(item);
   });
 }
@@ -1101,30 +1216,65 @@ function initBookmarksScreen() {
 
   emptyEl.classList.remove('show');
 
+  const letters = ['A', 'B', 'C', 'D'];
+
   bookmarkedQuestions.forEach(q => {
     const isLearned = app.progress.learned.has(q.id);
     const translatedQuestion = window.getQText(q);
+
     const item = document.createElement('div');
     item.className = 'learn-question-item';
     if (app.viewLanguage === 'ar') item.setAttribute('dir', 'rtl');
-    item.innerHTML = `
-      <div class="learn-question-header" ${app.viewLanguage === 'ar' ? 'dir="rtl"' : ''}>
-        <div class="learn-question-num ${isLearned ? 'learned' : ''}">${isLearned ? '✓' : q.id}</div>
-        <div class="learn-question-content">
-          <div class="learn-question-text">${translatedQuestion}</div>
-          <div class="learn-question-meta">
-            <span class="learn-question-category">${q.category === 'Allgemein' ? detectSubcategory(q) : (getQuestionState(q) || 'Bundesland')}</span>
-          </div>
-        </div>
-        <div class="learn-question-actions">
-          <button class="learn-action-btn bookmarked" onclick="toggleBookmark(${q.id})" aria-label="Bookmark entfernen">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-              <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    `;
+
+    // Header div (not a button — no toggle in bookmarks)
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'learn-question-header';
+    if (app.viewLanguage === 'ar') headerDiv.setAttribute('dir', 'rtl');
+
+    // Number / checkmark
+    const numDiv = document.createElement('div');
+    numDiv.className = 'learn-question-num' + (isLearned ? ' learned' : '');
+    numDiv.textContent = isLearned ? '✓' : String(q.id);
+
+    // Content
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'learn-question-content';
+
+    const questionTextDiv = document.createElement('div');
+    questionTextDiv.className = 'learn-question-text';
+    questionTextDiv.textContent = translatedQuestion;
+
+    const metaDiv = document.createElement('div');
+    metaDiv.className = 'learn-question-meta';
+
+    const catSpan = document.createElement('span');
+    catSpan.className = 'learn-question-category';
+    catSpan.textContent = q.category === 'Allgemein' ? detectSubcategory(q) : (getQuestionState(q) || 'Bundesland');
+
+    metaDiv.appendChild(catSpan);
+    contentDiv.appendChild(questionTextDiv);
+    contentDiv.appendChild(metaDiv);
+
+    // Actions
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'learn-question-actions';
+
+    const bookmarkBtn = document.createElement('button');
+    bookmarkBtn.className = 'learn-action-btn bookmarked';
+    bookmarkBtn.setAttribute('aria-label', 'Bookmark entfernen');
+    bookmarkBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleBookmark(q.id);
+    });
+    bookmarkBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>`;
+
+    actionsDiv.appendChild(bookmarkBtn);
+
+    headerDiv.appendChild(numDiv);
+    headerDiv.appendChild(contentDiv);
+    headerDiv.appendChild(actionsDiv);
+
+    item.appendChild(headerDiv);
     container.appendChild(item);
   });
 }

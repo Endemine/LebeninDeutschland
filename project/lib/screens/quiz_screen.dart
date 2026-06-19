@@ -1,8 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/quiz_provider.dart';
 import '../widgets/question_card.dart';
 import '../widgets/timer_widget.dart';
 import '../widgets/app_button.dart';
@@ -11,6 +11,8 @@ import '../widgets/app_button.dart';
 ///
 /// Zeigt Fragen mit Timer, Fortschrittsbalken, Navigation
 /// und einem Fragen-Grid fuer schnelles Springen.
+///
+/// Der Quiz-Zustand wird vollständig durch [QuizProvider] verwaltet.
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
 
@@ -19,94 +21,19 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  int _currentIndex = 0;
-  final int _totalQuestions = 33;
-  final int _timeInSeconds = 60 * 60; // 60 Minuten
-  int _remainingSeconds = 60 * 60;
-  Timer? _timer;
-
-  // Demo-Fragen
-  final List<Map<String, dynamic>> _questions = [
-    {
-      'question': 'Was ist die Hauptstadt von Deutschland?',
-      'answers': ['Muenchen', 'Hamburg', 'Berlin', 'Koeln'],
-      'correct': 2,
-      'category': 'Staat',
-    },
-    {
-      'question': 'Wie viele Bundeslaender hat die Bundesrepublik Deutschland?',
-      'answers': ['14', '15', '16', '17'],
-      'correct': 2,
-      'category': 'Staat',
-    },
-    {
-      'question': 'Welches ist das groesste Bundesland Deutschlands?',
-      'answers': ['Bayern', 'Niedersachsen', 'Nordrhein-Westfalen', 'Baden-Wuerttemberg'],
-      'correct': 0,
-      'category': 'Staat',
-    },
-  ];
-
-  // Antworten des Nutzers (null = nicht beantwortet)
-  final List<int?> _userAnswers = List.filled(33, null);
-
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
-  static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
 
   @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_remainingSeconds > 0) {
-          _remainingSeconds--;
-        } else {
-          _timer?.cancel();
-          _finishQuiz();
-        }
-      });
-    });
-  }
-
-  void _finishQuiz() {
-    _timer?.cancel();
-    Navigator.pushReplacementNamed(context, '/quiz/result');
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  void _goToQuestion(int index) {
-    if (index >= 0 && index < _totalQuestions) {
-      setState(() {
-        _currentIndex = index;
-      });
-    }
-  }
-
-  void _selectAnswer(int answerIndex) {
-    setState(() {
-      _userAnswers[_currentIndex] = answerIndex;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final provider = context.watch<QuizProvider>();
     final screenWidth = MediaQuery.of(context).size.width;
 
-    // Aktuelle Frage
-    final currentQ = _questions[_currentIndex % _questions.length];
+    // Aktuelle Frage aus dem Provider
+    final currentQ = provider.currentQuestion;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -120,12 +47,12 @@ class _QuizScreenState extends State<QuizScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TimerWidget(
-                    totalSeconds: _timeInSeconds,
-                    remainingSeconds: _remainingSeconds,
-                    onTimeUp: _finishQuiz,
+                    totalSeconds: 3600,
+                    remainingSeconds: provider.remainingSeconds,
+                    onTimeUp: () => _finishQuiz(provider),
                   ),
                   Text(
-                    'Frage ${_currentIndex + 1} von $_totalQuestions',
+                    'Frage ${provider.currentIndex + 1} von ${provider.totalQuestions}',
                     style: GoogleFonts.roboto(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -142,7 +69,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
                 child: LinearProgressIndicator(
-                  value: (_currentIndex + 1) / _totalQuestions,
+                  value: (provider.currentIndex + 1) / provider.totalQuestions,
                   minHeight: 4,
                   backgroundColor: _surface,
                   valueColor: const AlwaysStoppedAnimation<Color>(_primary),
@@ -157,14 +84,15 @@ class _QuizScreenState extends State<QuizScreen> {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: QuestionCard(
-                  questionNumber: _currentIndex + 1,
-                  totalQuestions: _totalQuestions,
-                  questionText: currentQ['question'],
-                  answers: List<String>.from(currentQ['answers']),
-                  selectedAnswer: _userAnswers[_currentIndex],
-                  correctAnswer: currentQ['correct'],
-                  category: currentQ['category'],
-                  onAnswerSelected: _selectAnswer,
+                  questionNumber: provider.currentIndex + 1,
+                  totalQuestions: provider.totalQuestions,
+                  questionText: currentQ.text,
+                  answers: currentQ.answers,
+                  selectedAnswer: provider.currentAnswer,
+                  correctAnswer: currentQ.correctAnswerIndex,
+                  category: currentQ.category.displayName,
+                  onAnswerSelected: (index) =>
+                      provider.answerQuestion(index),
                 ),
               ),
             ),
@@ -189,18 +117,18 @@ class _QuizScreenState extends State<QuizScreen> {
                           label: 'Zurueck',
                           isOutlined: true,
                           isSmall: true,
-                          onPressed: _currentIndex > 0
-                              ? () => _goToQuestion(_currentIndex - 1)
+                          onPressed: provider.currentIndex > 0
+                              ? () => provider.previousQuestion()
                               : null,
                         ),
                       ),
                       const SizedBox(width: 12),
-                      if (_currentIndex < _totalQuestions - 1)
+                      if (provider.currentIndex < provider.totalQuestions - 1)
                         Expanded(
                           child: AppButton(
                             label: 'Weiter',
                             isSmall: true,
-                            onPressed: () => _goToQuestion(_currentIndex + 1),
+                            onPressed: () => provider.nextQuestion(),
                           ),
                         )
                       else
@@ -209,24 +137,25 @@ class _QuizScreenState extends State<QuizScreen> {
                             label: 'Test beenden',
                             isSmall: true,
                             icon: Icons.check,
-                            onPressed: () => _showFinishDialog(),
+                            onPressed: () => _showFinishDialog(provider),
                           ),
                         ),
                     ],
                   ),
                   const SizedBox(height: 12),
-                  // 33 kleine Kreise
+                  // Fragen-Kreise
                   SizedBox(
                     height: 40,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: _totalQuestions,
+                      itemCount: provider.totalQuestions,
                       itemBuilder: (context, index) {
-                        final isAnswered = _userAnswers[index] != null;
-                        final isCurrent = index == _currentIndex;
+                        final isAnswered =
+                            provider.isQuestionAnswered(index);
+                        final isCurrent = index == provider.currentIndex;
 
                         return GestureDetector(
-                          onTap: () => _goToQuestion(index),
+                          onTap: () => provider.goToQuestion(index),
                           child: Container(
                             width: 32,
                             height: 32,
@@ -268,7 +197,13 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  void _showFinishDialog() {
+  void _finishQuiz(QuizProvider provider) {
+    provider.finishQuiz();
+    Navigator.pushReplacementNamed(context, '/quiz/result');
+  }
+
+  void _showFinishDialog(QuizProvider provider) {
+    final unanswered = provider.unansweredCount;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -282,7 +217,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
         content: Text(
-          'Du hast ${_userAnswers.where((a) => a == null).length} Fragen noch nicht beantwortet. Bist du sicher, dass du den Test beenden moechtest?',
+          '$unanswered Fragen noch nicht beantwortet. Bist du sicher, dass du den Test beenden moechtest?',
           style: GoogleFonts.roboto(
             fontSize: 15,
             color: _textSecondary,
@@ -303,7 +238,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
-              _finishQuiz();
+              _finishQuiz(provider);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: _primary,

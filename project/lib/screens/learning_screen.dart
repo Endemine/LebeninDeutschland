@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../models/question.dart';
+import '../providers/learning_provider.dart';
+import '../providers/settings_provider.dart';
 import '../widgets/app_card.dart';
 
 /// Lernmodus-Screen.
 ///
 /// Zeigt filterbare und durchsuchbare Fragen-Liste mit
 /// Bookmarks und Lernfortschritt.
-class LearningScreen extends StatefulWidget {
+class LearningScreen extends StatelessWidget {
   const LearningScreen({super.key});
 
-  @override
-  State<LearningScreen> createState() => _LearningScreenState();
-}
-
-class _LearningScreenState extends State<LearningScreen> {
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
@@ -22,73 +21,10 @@ class _LearningScreenState extends State<LearningScreen> {
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
 
-  String _searchQuery = '';
-  String _selectedCategory = 'Alle';
-  String _selectedBundesland = 'Alle';
-
-  final List<String> _categories = [
-    'Alle',
-    'Staat',
-    'Recht',
-    'Geschichte',
-    'Kultur',
-    'Wirtschaft',
-  ];
-
-  // Demo-Fragen
-  final List<Map<String, dynamic>> _questions = [
-    {
-      'id': 1,
-      'question': 'Was ist die Hauptstadt von Deutschland?',
-      'category': 'Staat',
-      'learned': true,
-      'bookmarked': false,
-    },
-    {
-      'id': 2,
-      'question': 'Wie viele Bundeslaender hat die Bundesrepublik Deutschland?',
-      'category': 'Staat',
-      'learned': true,
-      'bookmarked': true,
-    },
-    {
-      'id': 3,
-      'question': 'Welches ist das groesste Bundesland Deutschlands?',
-      'category': 'Staat',
-      'learned': false,
-      'bookmarked': false,
-    },
-    {
-      'id': 4,
-      'question': 'Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?',
-      'category': 'Geschichte',
-      'learned': false,
-      'bookmarked': true,
-    },
-    {
-      'id': 5,
-      'question': 'Was bedeutet das Grundgesetz?',
-      'category': 'Recht',
-      'learned': true,
-      'bookmarked': false,
-    },
-  ];
-
-  List<Map<String, dynamic>> get _filteredQuestions {
-    return _questions.where((q) {
-      final matchesSearch = _searchQuery.isEmpty ||
-          q['question'].toLowerCase().contains(_searchQuery.toLowerCase());
-      final matchesCategory =
-          _selectedCategory == 'Alle' || q['category'] == _selectedCategory;
-      return matchesSearch && matchesCategory;
-    }).toList();
-  }
-
-  int get _learnedCount => _questions.where((q) => q['learned'] == true).length;
-  int get _totalCount => _questions.length;
-
   @override
   Widget build(BuildContext context) {
+    final learning = context.watch<LearningProvider>();
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -130,7 +66,7 @@ class _LearningScreenState extends State<LearningScreen> {
                           ),
                         ),
                         Text(
-                          '$_learnedCount / $_totalCount Fragen',
+                          '${learning.learnedCount} / ${learning.totalQuestionCount} Fragen',
                           style: GoogleFonts.roboto(
                             fontSize: 13,
                             color: _textSecondary,
@@ -142,10 +78,13 @@ class _LearningScreenState extends State<LearningScreen> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: LinearProgressIndicator(
-                        value: _totalCount > 0 ? _learnedCount / _totalCount : 0,
+                        value: learning.totalQuestionCount > 0
+                            ? learning.learnedCount / learning.totalQuestionCount
+                            : 0,
                         minHeight: 8,
                         backgroundColor: _surface,
-                        valueColor: const AlwaysStoppedAnimation<Color>(_primary),
+                        valueColor:
+                            const AlwaysStoppedAnimation<Color>(_primary),
                       ),
                     ),
                   ],
@@ -153,7 +92,7 @@ class _LearningScreenState extends State<LearningScreen> {
               ),
             ),
 
-            // Filter-Bar
+            // Filter-Bar: Suchfeld + Kategorie-Dropdown
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               child: Row(
@@ -168,11 +107,8 @@ class _LearningScreenState extends State<LearningScreen> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: TextField(
-                        onChanged: (value) {
-                          setState(() {
-                            _searchQuery = value;
-                          });
-                        },
+                        onChanged: (value) =>
+                            learning.setSearchQuery(value),
                         decoration: InputDecoration(
                           hintText: 'Suchen...',
                           hintStyle: GoogleFonts.roboto(
@@ -182,7 +118,8 @@ class _LearningScreenState extends State<LearningScreen> {
                           prefixIcon: const Icon(Icons.search,
                               color: _textSecondary, size: 20),
                           border: InputBorder.none,
-                          contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 10),
                         ),
                       ),
                     ),
@@ -190,38 +127,7 @@ class _LearningScreenState extends State<LearningScreen> {
                   const SizedBox(width: 8),
                   // Kategorie-Dropdown
                   Expanded(
-                    child: Container(
-                      height: 40,
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        color: _surface,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          value: _selectedCategory,
-                          isDense: true,
-                          isExpanded: true,
-                          icon: const Icon(Icons.keyboard_arrow_down,
-                              color: _textSecondary, size: 18),
-                          style: GoogleFonts.roboto(
-                            fontSize: 13,
-                            color: _textPrimary,
-                          ),
-                          items: _categories.map((cat) {
-                            return DropdownMenuItem(
-                              value: cat,
-                              child: Text(cat, overflow: TextOverflow.ellipsis),
-                            );
-                          }).toList(),
-                          onChanged: (val) {
-                            if (val != null) {
-                              setState(() => _selectedCategory = val);
-                            }
-                          },
-                        ),
-                      ),
-                    ),
+                    child: _CategoryDropdown(learning: learning),
                   ),
                 ],
               ),
@@ -229,30 +135,26 @@ class _LearningScreenState extends State<LearningScreen> {
 
             // Fragen-Liste
             Expanded(
-              child: _filteredQuestions.isEmpty
+              child: learning.filteredQuestions.isEmpty
                   ? _buildEmptyState()
                   : ListView.builder(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      itemCount: _filteredQuestions.length,
+                      itemCount: learning.filteredQuestions.length,
                       itemBuilder: (context, index) {
-                        final q = _filteredQuestions[index];
+                        final q = learning.filteredQuestions[index];
                         return _QuestionTile(
-                          question: q['question'],
-                          category: q['category'],
-                          learned: q['learned'],
-                          bookmarked: q['bookmarked'],
+                          question: q,
+                          isLearned: learning.isLearned(q.id),
+                          isBookmarked: learning.isBookmarked(q.id),
                           onTap: () {
                             Navigator.pushNamed(
                               context,
                               '/learning/detail',
-                              arguments: {'questionId': q['id']},
+                              arguments: {'questionId': q.id},
                             );
                           },
-                          onBookmarkToggle: () {
-                            setState(() {
-                              q['bookmarked'] = !q['bookmarked'];
-                            });
-                          },
+                          onBookmarkToggle: () =>
+                              learning.toggleBookmark(q.id),
                         );
                       },
                     ),
@@ -296,12 +198,77 @@ class _LearningScreenState extends State<LearningScreen> {
   }
 }
 
+/// Kategorie-Dropdown, das alle [QuestionCategory]-Werte + "Alle" anbietet.
+class _CategoryDropdown extends StatelessWidget {
+  final LearningProvider learning;
+
+  const _CategoryDropdown({required this.learning});
+
+  /// Ermittelt den aktuell im Dropdown anzuzeigenden String.
+  String _currentLabel() {
+    if (learning.filterCategory == null) return 'Alle';
+    return learning.filterCategory!.displayName;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Alle Kategorien + "Alle"
+    final items = <_CategoryItem>[
+      const _CategoryItem(label: 'Alle', category: null),
+      for (final cat in QuestionCategory.values)
+        _CategoryItem(label: cat.displayName, category: cat),
+    ];
+
+    return Container(
+      height: 40,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color: _surface,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: _currentLabel(),
+          isDense: true,
+          isExpanded: true,
+          icon: const Icon(Icons.keyboard_arrow_down,
+              color: LearningScreen._textSecondary, size: 18),
+          style: GoogleFonts.roboto(
+            fontSize: 13,
+            color: LearningScreen._textPrimary,
+          ),
+          items: items.map((item) {
+            return DropdownMenuItem(
+              value: item.label,
+              child: Text(item.label, overflow: TextOverflow.ellipsis),
+            );
+          }).toList(),
+          onChanged: (val) {
+            if (val == null) return;
+            final matched = items.firstWhere(
+              (i) => i.label == val,
+              orElse: () => const _CategoryItem(label: 'Alle', category: null),
+            );
+            learning.setCategoryFilter(matched.category);
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/// Hilfsklasse für Dropdown-Einträge.
+class _CategoryItem {
+  final String label;
+  final QuestionCategory? category;
+  const _CategoryItem({required this.label, required this.category});
+}
+
 /// Einzelne Fragen-Kachel in der Lernliste.
 class _QuestionTile extends StatelessWidget {
-  final String question;
-  final String category;
-  final bool learned;
-  final bool bookmarked;
+  final Question question;
+  final bool isLearned;
+  final bool isBookmarked;
   final VoidCallback onTap;
   final VoidCallback onBookmarkToggle;
 
@@ -314,15 +281,16 @@ class _QuestionTile extends StatelessWidget {
 
   const _QuestionTile({
     required this.question,
-    required this.category,
-    required this.learned,
-    required this.bookmarked,
+    required this.isLearned,
+    required this.isBookmarked,
     required this.onTap,
     required this.onBookmarkToggle,
   });
 
   @override
   Widget build(BuildContext context) {
+    final categoryLabel = question.category.displayName;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -335,21 +303,26 @@ class _QuestionTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gelernt-Check
-            Container(
-              width: 28,
-              height: 28,
-              margin: const EdgeInsets.only(top: 2),
-              decoration: BoxDecoration(
-                color: learned ? _success.withOpacity(0.1) : _surface,
-                borderRadius: BorderRadius.circular(8),
-                border: learned
-                    ? null
-                    : Border.all(color: _textTertiary, width: 1.5),
+            // Gelernt-Check (Learned-Toggle on tap)
+            GestureDetector(
+              onTap: () {
+                context.read<LearningProvider>().toggleLearned(question.id);
+              },
+              child: Container(
+                width: 28,
+                height: 28,
+                margin: const EdgeInsets.only(top: 2),
+                decoration: BoxDecoration(
+                  color: isLearned ? _success.withOpacity(0.1) : _surface,
+                  borderRadius: BorderRadius.circular(8),
+                  border: isLearned
+                      ? null
+                      : Border.all(color: _textTertiary, width: 1.5),
+                ),
+                child: isLearned
+                    ? const Icon(Icons.check, color: _success, size: 16)
+                    : null,
               ),
-              child: learned
-                  ? const Icon(Icons.check, color: _success, size: 16)
-                  : null,
             ),
             const SizedBox(width: 12),
             // Fragentext und Kategorie
@@ -358,7 +331,7 @@ class _QuestionTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    question,
+                    question.text,
                     style: GoogleFonts.roboto(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -377,7 +350,7 @@ class _QuestionTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      category,
+                      categoryLabel,
                       style: GoogleFonts.roboto(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
@@ -396,14 +369,14 @@ class _QuestionTile extends StatelessWidget {
                 height: 36,
                 margin: const EdgeInsets.only(left: 8),
                 decoration: BoxDecoration(
-                  color: bookmarked
+                  color: isBookmarked
                       ? _primary.withOpacity(0.1)
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
-                  bookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color: bookmarked ? _primary : _textTertiary,
+                  isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                  color: isBookmarked ? _primary : _textTertiary,
                   size: 20,
                 ),
               ),

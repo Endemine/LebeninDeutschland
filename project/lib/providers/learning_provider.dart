@@ -194,13 +194,11 @@ class LearningProvider extends ChangeNotifier {
   /// Asset-Bundle laden. Für Tests können Fragen auch direkt übergeben werden.
   Future<List<Question>> _loadQuestionsFromAsset() async {
     try {
-      // Im echten Projekt:
-      // final jsonString = await rootBundle.loadString('assets/data/questions.json');
-      // final jsonList = jsonDecode(jsonString) as List<dynamic>;
-
-      // Für diese Implementierung: Leere Liste als Platzhalter
-      // Die Fragen werden später über setQuestions() oder aus Assets geladen
-      return [];
+      final jsonString = await rootBundle.loadString('assets/questions.json');
+      final jsonList = jsonDecode(jsonString) as List<dynamic>;
+      return jsonList
+          .map((j) => Question.fromJson(j as Map<String, dynamic>))
+          .toList();
     } catch (e) {
       debugPrint('Fehler beim Laden der Fragen-Assets: $e');
       return [];

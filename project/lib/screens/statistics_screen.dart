@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/app_card.dart';
+import '../providers/statistics_provider.dart';
+import '../providers/learning_provider.dart';
+import '../models/quiz_result.dart';
 
-/// Statistik-Screen.
-///
-/// Zeigt Lernfortschritt, Quiz-Historie, Kategorie-Statistiken
-/// und Erfolgstrends an.
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});
 
@@ -19,35 +19,58 @@ class StatisticsScreen extends StatelessWidget {
   static const Color _success = Color(0xFF34C759);
   static const Color _error = Color(0xFFFF3B30);
 
-  // Demo-Daten
-  final int _learnedQuestions = 225;
-  final int _totalQuestions = 300;
-  final List<Map<String, dynamic>> _recentTests = const [
-    {'score': 28, 'total': 33, 'date': '15.01.2025', 'passed': true},
-    {'score': 24, 'total': 33, 'date': '12.01.2025', 'passed': true},
-    {'score': 16, 'total': 33, 'date': '08.01.2025', 'passed': false},
-    {'score': 30, 'total': 33, 'date': '05.01.2025', 'passed': true},
-  ];
-  final List<Map<String, dynamic>> _categoryStats = const [
-    {'category': 'Staat', 'learned': 45, 'total': 60},
-    {'category': 'Recht', 'learned': 38, 'total': 50},
-    {'category': 'Geschichte', 'learned': 52, 'total': 70},
-    {'category': 'Kultur', 'learned': 50, 'total': 65},
-    {'category': 'Wirtschaft', 'learned': 40, 'total': 55},
-  ];
-  final List<int> _weeklyScores = const [16, 24, 20, 28, 30, 26, 28];
-
-  String get _weakestCategory {
-    final sorted = [..._categoryStats]
-      ..sort((a, b) =>
-          (a['learned'] / a['total']).compareTo(b['learned'] / b['total']));
-    return sorted.first['category'];
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final overallProgress = _learnedQuestions / _totalQuestions;
+    final statsProvider = context.watch<StatisticsProvider>();
+    final learningProvider = context.watch<LearningProvider>();
+
+    final learnedQuestions = learningProvider.learnedCount;
+    final totalQuestions = learningProvider.totalQuestionCount;
+    final overallProgress = totalQuestions > 0
+        ? learnedQuestions / totalQuestions
+        : 0.0;
+
+    final recentTests = statsProvider.recentResults;
+    final scoreTrend = statsProvider.scoreTrend;
+    final categoryStatsMap = statsProvider.categoryStats;
+
+    final categoryStatsList = categoryStatsMap.entries.map((entry) {
+      final cs = entry.value;
+      return {
+        'category': cs.category,
+        'learned': cs.totalCorrect,
+        'total': cs.totalQuestions,
+      };
+    }).toList();
+
+    final weeklyScores = scoreTrend
+        .map((s) => s.y.round())
+        .toList()
+        .reversed
+        .take(7)
+        .toList()
+        .reversed
+        .toList();
+
+    String weakestCategory = '';
+    double weakestRate = 100.0;
+    for (final entry in categoryStatsMap.entries) {
+      final rate = entry.value.successRate;
+      if (entry.value.totalAsked >= 5 && rate < weakestRate) {
+        weakestRate = rate;
+        weakestCategory = entry.value.category;
+      }
+    }
+    if (weakestCategory.isEmpty && categoryStatsMap.isNotEmpty) {
+      double minRate = 100.0;
+      for (final entry in categoryStatsMap.entries) {
+        if (entry.value.successRate < minRate) {
+          minRate = entry.value.successRate;
+          weakestCategory = entry.value.category;
+        }
+      }
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -71,7 +94,6 @@ class StatisticsScreen extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            // Gesamtfortschritt
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -112,7 +134,7 @@ class StatisticsScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              '$_learnedQuestions von $_totalQuestions Fragen gelernt',
+                              '$learnedQuestions von $totalQuestions Fragen gelernt',
                               style: GoogleFonts.roboto(
                                 fontSize: 14,
                                 color: _textSecondary,
@@ -120,7 +142,7 @@ class StatisticsScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Noch ${300 - _learnedQuestions} Fragen',
+                              'Noch ${totalQuestions - learnedQuestions} Fragen',
                               style: GoogleFonts.roboto(
                                 fontSize: 13,
                                 color: _primary,
@@ -136,7 +158,6 @@ class StatisticsScreen extends StatelessWidget {
               ),
             ),
 
-            // Letzte Tests
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, top: 16, bottom: 8),
@@ -150,22 +171,38 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final test = _recentTests[index];
-                  return _TestHistoryTile(
-                    score: test['score'],
-                    total: test['total'],
-                    date: test['date'],
-                    passed: test['passed'],
-                  );
-                },
-                childCount: _recentTests.length,
+            if (recentTests.isEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  child: Text(
+                    'Noch keine Tests durchgefuehrt.',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14,
+                      color: _textSecondary,
+                    ),
+                  ),
+                ),
+              )
+            else
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final test = recentTests[index];
+                    final dateStr = '${test.completedAt.day.toString().padLeft(2, '0')}.'
+                        '${test.completedAt.month.toString().padLeft(2, '0')}.'
+                        '${test.completedAt.year}';
+                    return _TestHistoryTile(
+                      score: test.correctAnswers,
+                      total: test.totalQuestions,
+                      date: dateStr,
+                      passed: test.isPassed,
+                    );
+                  },
+                  childCount: recentTests.length,
+                ),
               ),
-            ),
 
-            // Kategorie-Stats
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, top: 24, bottom: 8),
@@ -179,26 +216,39 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final cat = _categoryStats[index];
-                  return _CategoryStatBar(
-                    category: cat['category'],
-                    learned: cat['learned'],
-                    total: cat['total'],
-                  );
-                },
-                childCount: _categoryStats.length,
+            if (categoryStatsList.isEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  child: Text(
+                    'Keine Quiz-Daten vorhanden.',
+                    style: GoogleFonts.roboto(
+                      fontSize: 14,
+                      color: _textSecondary,
+                    ),
+                  ),
+                ),
+              )
+            else
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final cat = categoryStatsList[index];
+                    return _CategoryStatBar(
+                      category: cat['category'] as String,
+                      learned: cat['learned'] as int,
+                      total: cat['total'] as int,
+                    );
+                  },
+                  childCount: categoryStatsList.length,
+                ),
               ),
-            ),
 
-            // Erfolgs-Trend (einfache Balken)
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, top: 24, bottom: 8),
                 child: Text(
-                  'Erfolgstrend (letzte 7 Tests)',
+                  'Erfolgstrend (letzte Tests)',
                   style: GoogleFonts.roboto(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -207,109 +257,137 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: AppCard(
-                  padding: const EdgeInsets.all(16),
-                  child: SizedBox(
-                    height: 120,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: _weeklyScores.map((score) {
-                        final percent = score / 33;
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              '$score',
-                              style: GoogleFonts.roboto(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
-                                color: score >= 17 ? _success : _error,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Container(
-                              width: 24,
-                              height: percent * 80,
-                              decoration: BoxDecoration(
-                                color: score >= 17 ? _success : _error,
-                                borderRadius: const BorderRadius.vertical(
-                                  top: Radius.circular(4),
+            if (weeklyScores.isEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: AppCard(
+                    padding: const EdgeInsets.all(16),
+                    child: SizedBox(
+                      height: 120,
+                      child: Center(
+                        child: Text(
+                          'Noch keine Trend-Daten.',
+                          style: GoogleFonts.roboto(
+                            fontSize: 14,
+                            color: _textSecondary,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            else
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: AppCard(
+                    padding: const EdgeInsets.all(16),
+                    child: SizedBox(
+                      height: 120,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: weeklyScores.asMap().entries.map((entry) {
+                          final idx = entry.key;
+                          final score = entry.value;
+                          final maxTotal = recentTests.isNotEmpty
+                              ? recentTests.first.totalQuestions
+                              : 33;
+                          final percent = maxTotal > 0 ? score / maxTotal : 0.0;
+                          final passingThreshold = (maxTotal * 0.515).round();
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '$score',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  color: score >= passingThreshold ? _success : _error,
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              '${_weeklyScores.indexOf(score) + 1}',
-                              style: GoogleFonts.roboto(
-                                fontSize: 10,
-                                color: _textSecondary,
+                              const SizedBox(height: 4),
+                              Container(
+                                width: 24,
+                                height: percent * 80,
+                                decoration: BoxDecoration(
+                                  color: score >= passingThreshold ? _success : _error,
+                                  borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(4),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
-                        );
-                      }).toList(),
+                              const SizedBox(height: 4),
+                              Text(
+                                '${idx + 1}',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 10,
+                                  color: _textSecondary,
+                                ),
+                              ),
+                            ],
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-            // Schwächen
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: AppCard(
-                  padding: const EdgeInsets.all(16),
-                  backgroundColor: _primary.withOpacity(0.05),
-                  borderColor: _primary.withOpacity(0.15),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: _primary.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(10),
+            if (weakestCategory.isNotEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: AppCard(
+                    padding: const EdgeInsets.all(16),
+                    backgroundColor: _primary.withOpacity(0.05),
+                    borderColor: _primary.withOpacity(0.15),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: _primary.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Icon(
+                            Icons.trending_up,
+                            color: _primary,
+                            size: 22,
+                          ),
                         ),
-                        child: const Icon(
-                          Icons.trending_up,
-                          color: _primary,
-                          size: 22,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Tipp',
-                              style: GoogleFonts.roboto(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: _primary,
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Tipp',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: _primary,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              'Du solltest mehr ueben: $_weakestCategory',
-                              style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                color: _textSecondary,
+                              const SizedBox(height: 2),
+                              Text(
+                                'Du solltest mehr ueben: $weakestCategory',
+                                style: GoogleFonts.roboto(
+                                  fontSize: 13,
+                                  color: _textSecondary,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
 
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
           ],
@@ -319,7 +397,6 @@ class StatisticsScreen extends StatelessWidget {
   }
 }
 
-/// Kachel fuer einen vergangenen Test.
 class _TestHistoryTile extends StatelessWidget {
   final int score;
   final int total;
@@ -355,9 +432,7 @@ class _TestHistoryTile extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: passed
-                    ? _success.withOpacity(0.1)
-                    : _error.withOpacity(0.1),
+                color: passed ? _success.withOpacity(0.1) : _error.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(
@@ -392,9 +467,7 @@ class _TestHistoryTile extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: passed
-                    ? _success.withOpacity(0.1)
-                    : _error.withOpacity(0.1),
+                color: passed ? _success.withOpacity(0.1) : _error.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
@@ -413,7 +486,6 @@ class _TestHistoryTile extends StatelessWidget {
   }
 }
 
-/// Horizontale Fortschrittsbalken fuer eine Kategorie.
 class _CategoryStatBar extends StatelessWidget {
   final String category;
   final int learned;
@@ -432,7 +504,7 @@ class _CategoryStatBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final percent = learned / total;
+    final percent = total > 0 ? learned / total : 0.0;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),

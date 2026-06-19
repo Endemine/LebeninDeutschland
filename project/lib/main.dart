@@ -120,6 +120,7 @@ class _AppInitializerState extends State<_AppInitializer> {
         locale: settings.locale,
         supportedLocales: const [Locale('de'), Locale('en'), Locale('tr'), Locale('ar')],
         initialRoute: '/',
+        onGenerateRoute: AppRouter.generateRoute,
         routes: {
           '/': (context) => const HomeScreen(),
           '/quiz': (context) => const QuizScreen(),

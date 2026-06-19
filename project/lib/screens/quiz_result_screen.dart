@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/quiz_provider.dart';
 import '../widgets/result_summary.dart';
 import '../widgets/app_button.dart';
 
@@ -8,6 +10,7 @@ import '../widgets/app_button.dart';
 ///
 /// Zeigt Bestanden/Nicht bestanden Status, Score-Details
 /// und eine Liste aller Fragen mit richtig/falsch Indikatoren.
+/// Bezieht die Daten aus [QuizProvider.lastResult].
 class QuizResultScreen extends StatefulWidget {
   const QuizResultScreen({super.key});
 
@@ -24,26 +27,58 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
   static const Color _success = Color(0xFF34C759);
   static const Color _error = Color(0xFFFF3B30);
 
-  // Demo-Daten
-  final int _correctAnswers = 28;
-  final int _totalQuestions = 33;
-  final int _wrongAnswers = 4;
-  final int _unanswered = 1;
-  final Duration _elapsedTime = const Duration(minutes: 42, seconds: 15);
-
-  // Demo: Ergebnisse pro Frage
-  final List<Map<String, dynamic>> _questionResults = [
-    {'q': 'Was ist die Hauptstadt von Deutschland?', 'status': 'correct', 'correct': 'Berlin'},
-    {'q': 'Wie viele Bundeslaender hat Deutschland?', 'status': 'correct', 'correct': '16'},
-    {'q': 'Welches ist das groesste Bundesland?', 'status': 'correct', 'correct': 'Bayern'},
-    {'q': 'Wer ist der Bundeskanzler?', 'status': 'wrong', 'correct': 'Olaf Scholz'},
-    {'q': 'Was bedeutet Grundgesetz?', 'status': 'correct', 'correct': 'Die Verfassung'},
-    {'q': 'Wann wurde die Bundesrepublik gegruendet?', 'status': 'unanswered', 'correct': '1949'},
-  ];
-
   @override
   Widget build(BuildContext context) {
-    final bool isPassed = _correctAnswers >= 17;
+    final quizProvider = context.watch<QuizProvider>();
+    final result = quizProvider.lastResult;
+
+    // Kein Ergebnis verfuegbar
+    if (result == null) {
+      return Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.info_outline, size: 64, color: _textTertiary),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Kein Ergebnis verfügbar',
+                    style: GoogleFonts.roboto(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: _textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Starte ein Quiz um dein Ergebnis zu sehen.',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.roboto(
+                      fontSize: 15,
+                      color: _textSecondary,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  AppButton(
+                    label: 'Zur Startseite',
+                    isFullWidth: true,
+                    onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/',
+                      (route) => false,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -74,11 +109,11 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ResultSummary(
-                  correctAnswers: _correctAnswers,
-                  totalQuestions: _totalQuestions,
-                  wrongAnswers: _wrongAnswers,
-                  unanswered: _unanswered,
-                  elapsedTime: _elapsedTime,
+                  correctAnswers: result.correctAnswers,
+                  totalQuestions: result.totalQuestions,
+                  wrongAnswers: result.wrongAnswers,
+                  unanswered: result.unanswered,
+                  elapsedTime: Duration(seconds: result.durationSeconds),
                 ),
               ),
             ),
@@ -101,7 +136,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     ),
                     const Spacer(),
                     Text(
-                      '${_questionResults.length} angezeigt',
+                      '${result.questionAnswers.length} angezeigt',
                       style: GoogleFonts.roboto(
                         fontSize: 13,
                         color: _textSecondary,
@@ -118,15 +153,17 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  final result = _questionResults[index];
+                  final qa = result.questionAnswers[index];
                   return _QuestionResultTile(
                     index: index + 1,
-                    question: result['q'],
-                    status: result['status'],
-                    correctAnswer: result['correct'],
+                    question: qa.question.text,
+                    isCorrect: qa.isCorrect,
+                    isAnswered: qa.isAnswered,
+                    userAnswerText: qa.userAnswerText,
+                    correctAnswer: qa.question.correctAnswer,
                   );
-                },
-                childCount: _questionResults.length,
+                ],
+                childCount: result.questionAnswers.length,
               ),
             ),
 
@@ -143,16 +180,17 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                       isFullWidth: true,
                       icon: Icons.refresh,
                       onPressed: () {
+                        quizProvider.reset();
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           '/quiz',
                           (route) => false,
                         );
-                      },
+                      ],
                     ),
                     const SizedBox(height: 10),
                     AppButton(
-                      label: 'Zurueck zur Startseite',
+                      label: 'Zurück zur Startseite',
                       isFullWidth: true,
                       isOutlined: true,
                       onPressed: () {
@@ -161,7 +199,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                           '/',
                           (route) => false,
                         );
-                      },
+                      ],
                     ),
                     const SizedBox(height: 10),
                     AppButton(
@@ -171,7 +209,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                       icon: Icons.share,
                       onPressed: () {
                         // TODO: Share-Funktionalitaet
-                      },
+                      ],
                     ),
                   ],
                 ),
@@ -190,13 +228,17 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
 class _QuestionResultTile extends StatefulWidget {
   final int index;
   final String question;
-  final String status; // correct, wrong, unanswered
+  final bool isCorrect;
+  final bool isAnswered;
+  final String userAnswerText;
   final String correctAnswer;
 
   const _QuestionResultTile({
     required this.index,
     required this.question,
-    required this.status,
+    required this.isCorrect,
+    required this.isAnswered,
+    required this.userAnswerText,
     required this.correctAnswer,
   });
 
@@ -214,8 +256,13 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
   static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
 
+  String get _status {
+    if (!widget.isAnswered) return 'unanswered';
+    return widget.isCorrect ? 'correct' : 'wrong';
+  }
+
   IconData get _statusIcon {
-    switch (widget.status) {
+    switch (_status) {
       case 'correct':
         return Icons.check_circle;
       case 'wrong':
@@ -226,7 +273,7 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
   }
 
   Color get _statusColor {
-    switch (widget.status) {
+    switch (_status) {
       case 'correct':
         return _success;
       case 'wrong':
@@ -234,6 +281,16 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
       default:
         return _textTertiary;
     }
+  }
+
+  String get _answerDetailText {
+    if (!widget.isAnswered) {
+      return 'Richtige Antwort: ${widget.correctAnswer}';
+    }
+    if (widget.isCorrect) {
+      return 'Deine Antwort: ${widget.userAnswerText} ✓';
+    }
+    return 'Deine Antwort: ${widget.userAnswerText} ✗ — Richtig: ${widget.correctAnswer}';
   }
 
   @override
@@ -303,15 +360,15 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
                   ),
                   child: Row(
                     children: [
-                      const Icon(
-                        Icons.check_circle,
-                        color: _success,
+                      Icon(
+                        widget.isCorrect ? Icons.check_circle : Icons.info_outline,
+                        color: widget.isCorrect ? _success : _textSecondary,
                         size: 16,
                       ),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          'Richtige Antwort: ${widget.correctAnswer}',
+                          _answerDetailText,
                           style: GoogleFonts.roboto(
                             fontSize: 13,
                             color: _textSecondary,
