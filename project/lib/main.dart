@@ -12,7 +12,7 @@ import 'screens/home_screen.dart';
 import 'screens/quiz_screen.dart';
 import 'screens/quiz_result_screen.dart';
 import 'screens/learning_screen.dart';
-import 'screens/learning_detail_screen.dart';
+
 import 'screens/statistics_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/bookmarks_screen.dart';
@@ -126,7 +126,6 @@ class _AppInitializerState extends State<_AppInitializer> {
           '/quiz': (context) => const QuizScreen(),
           '/quiz/result': (context) => const QuizResultScreen(),
           '/learning': (context) => const LearningScreen(),
-          '/learning/detail': (context) => const LearningDetailScreen(),
           '/statistics': (context) => const StatisticsScreen(),
           '/settings': (context) => const SettingsScreen(),
           '/bookmarks': (context) => const BookmarksScreen(),
