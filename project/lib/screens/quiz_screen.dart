@@ -88,9 +88,10 @@ class _QuizScreenState extends State<QuizScreen> {
                   totalQuestions: provider.totalQuestions,
                   questionText: currentQ.text,
                   answers: currentQ.answers,
+                  answerImages: currentQ.answerImages,
                   selectedAnswer: provider.currentAnswer,
                   correctAnswer: currentQ.correctAnswerIndex,
-                  category: currentQ.category.displayName,
+                  category: currentQ.category.name,
                   onAnswerSelected: (index) =>
                       provider.answerQuestion(index),
                 ),

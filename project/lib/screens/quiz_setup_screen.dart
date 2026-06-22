@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/app_button.dart';
 import '../widgets/app_card.dart';
+import '../providers/quiz_provider.dart';
+import '../providers/learning_provider.dart';
+import '../providers/settings_provider.dart';
 
 /// Screen zur Auswahl des Quiz-Modus vor dem Start.
 ///
@@ -24,11 +28,10 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
 
-  // Demo-Daten
-  String _selectedBundesland = 'Baden-Wuerttemberg';
-
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<SettingsProvider>();
+    final selectedBundesland = settings.selectedState;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -126,7 +129,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        _selectedBundesland,
+                        selectedBundesland,
                         style: GoogleFonts.roboto(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
@@ -134,18 +137,11 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                         ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        // TODO: Bundesland-Auswahl oeffnen
-                      },
-                      child: Text(
-                        'Aendern',
-                        style: GoogleFonts.roboto(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: _primary,
-                        ),
-                      ),
+                    _BundeslandPicker(
+                      current: selectedBundesland,
+                      states: settings.availableStates,
+                      onSelected: (s) => settings.setState(s),
+                      primary: _primary,
                     ),
                   ],
                 ),
@@ -193,6 +189,14 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                 isFullWidth: true,
                 icon: Icons.play_arrow,
                 onPressed: () {
+                  final learning = context.read<LearningProvider>();
+                  final quiz = context.read<QuizProvider>();
+                  // Echter Test (Modus 0) = mit Bundesland-Fragen,
+                  // Schnelltest (Modus 1) = nur allgemeine Fragen.
+                  quiz.startQuiz(
+                    state: _selectedMode == 0 ? selectedBundesland : null,
+                    allQuestions: learning.allQuestions,
+                  );
                   Navigator.pushReplacementNamed(context, '/quiz');
                 },
               ),
@@ -341,6 +345,57 @@ class _ModeCard extends StatelessWidget {
                   )),
             ],
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Bundesland-Auswahl per Popup-Menü ("Ändern"-Button im Setup).
+class _BundeslandPicker extends StatelessWidget {
+  final String current;
+  final List<String> states;
+  final ValueChanged<String> onSelected;
+  final Color primary;
+  const _BundeslandPicker({
+    required this.current,
+    required this.states,
+    required this.onSelected,
+    required this.primary,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet<void>(
+          context: context,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          builder: (ctx) => SafeArea(
+            child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              children: [
+                for (final s in states)
+                  ListTile(
+                    leading: Icon(s == current ? Icons.check : null, color: primary, size: 20),
+                    title: Text(s),
+                    onTap: () { onSelected(s); Navigator.pop(ctx); },
+                  ),
+              ],
+            ),
+          ),
+        );
+      },
+      child: Text(
+        'Ändern',
+        style: GoogleFonts.roboto(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: primary,
         ),
       ),
     );

@@ -13,17 +13,24 @@ import 'screens/quiz_screen.dart';
 import 'screens/quiz_result_screen.dart';
 import 'screens/learning_screen.dart';
 
+import 'screens/quiz_setup_screen.dart';
 import 'screens/statistics_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/bookmarks_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Edge-to-edge: App läuft unter Status-Bar UND System-Nav-Bar.
+  // SafeArea in den Screens berücksichtigt die System-Bars.
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.light,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarDividerColor: Colors.transparent,
     ),
   );
   final prefs = await SharedPreferences.getInstance();
@@ -116,14 +123,14 @@ class _AppInitializerState extends State<_AppInitializer> {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        themeMode: settings.darkMode ? ThemeMode.dark : ThemeMode.light,
+        themeMode: ThemeMode.light,
         locale: settings.locale,
         supportedLocales: const [Locale('de'), Locale('en'), Locale('tr'), Locale('ar')],
         initialRoute: '/',
-        onGenerateRoute: AppRouter.generateRoute,
         routes: {
           '/': (context) => const HomeScreen(),
           '/quiz': (context) => const QuizScreen(),
+          '/quiz/setup': (context) => const QuizSetupScreen(),
           '/quiz/result': (context) => const QuizResultScreen(),
           '/learning': (context) => const LearningScreen(),
           '/statistics': (context) => const StatisticsScreen(),

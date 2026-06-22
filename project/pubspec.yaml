@@ -33,3 +33,15 @@ flutter:
   assets:
     - assets/questions.json
     - assets/translations.json
+    - assets/wappen/bayern.png
+    - assets/wappen/berlin.png
+    - assets/wappen/bundesrepublik.png
+    - assets/wappen/ddr.png
+    - assets/wappen/hamburg.png
+    - assets/wappen/hessen.png
+    - assets/wappen/niedersachsen.png
+    - assets/wappen/nordrhein_westfalen.png
+    - assets/wappen/sachsen.png
+    - assets/wappen/sachsen_anhalt.png
+    - assets/wappen/schleswig_holstein.png
+    - assets/wappen/thueringen.png

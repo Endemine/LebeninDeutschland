@@ -6,6 +6,7 @@ import '../models/question.dart';
 import '../providers/learning_provider.dart';
 import '../widgets/question_card.dart';
 import '../widgets/app_button.dart';
+import '../widgets/state_dropdown.dart';
 
 class LearningScreen extends StatefulWidget {
   const LearningScreen({super.key});
@@ -46,23 +47,27 @@ class _LearningScreenState extends State<LearningScreen> {
         ),
         title: Text('Lernen', style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w700, color: _textPrimary)),
       ),
-      body: filtered.isEmpty
-          ? _buildEmptyState(context, learning)
-          : Column(
-              children: [
-                _buildProgressBar(learning),
-                _buildLanguageBar(learning),
-                _buildFilterBar(learning),
-                _buildQuestionMeta(context, learning, filtered),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: _buildQuestionCard(context, learning, filtered),
+      body: SafeArea(
+        top: false, // AppBar handled top
+        bottom: true, // Android Nav-Bar berücksichtigen
+        child: filtered.isEmpty
+            ? _buildEmptyState(context, learning)
+            : Column(
+                children: [
+                  _buildProgressBar(learning),
+                  _buildLanguageBar(learning),
+                  _buildFilterBar(learning),
+                  _buildQuestionMeta(context, learning, filtered),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: _buildQuestionCard(context, learning, filtered),
+                    ),
                   ),
-                ),
-                _buildNavigation(context, learning, filtered),
-              ],
-            ),
+                  _buildNavigation(context, learning, filtered),
+                ],
+              ),
+      ),
     );
   }
 
@@ -77,7 +82,7 @@ class _LearningScreenState extends State<LearningScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: _primary.withOpacity(0.08),
+        color: _primary.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -137,35 +142,126 @@ class _LearningScreenState extends State<LearningScreen> {
   }
 
   Widget _buildFilterBar(LearningProvider learning) {
+    final showStatePicker = learning.filterCategory == QuestionCategory.bundesland;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-      child: Row(
+      child: Column(
         children: [
-          Expanded(
-            flex: 3,
-            child: SizedBox(
-              height: 36,
-              child: TextField(
-                controller: _searchController,
-                onChanged: (v) => learning.setSearchQuery(v),
-                decoration: InputDecoration(
-                  hintText: 'Suchen...',
-                  hintStyle: GoogleFonts.roboto(fontSize: 13, color: _textSecondary),
-                  prefixIcon: const Icon(Icons.search, size: 18, color: _textSecondary),
-                  border: InputBorder.none, filled: true, fillColor: _surface,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 8),
-                ),
+          // Suchfeld
+          SizedBox(
+            height: 36,
+            child: TextField(
+              controller: _searchController,
+              onChanged: (v) => learning.setSearchQuery(v),
+              decoration: InputDecoration(
+                hintText: 'Suchen...',
+                hintStyle: GoogleFonts.roboto(fontSize: 13, color: _textSecondary),
+                prefixIcon: const Icon(Icons.search, size: 18, color: _textSecondary),
+                border: InputBorder.none, filled: true, fillColor: _surface,
+                contentPadding: const EdgeInsets.symmetric(vertical: 8),
               ),
             ),
           ),
-          const SizedBox(width: 8),
-          Expanded(
-            flex: 2,
-            child: _CategoryDropdown(learning: learning, primary: _primary, textPrimary: _textPrimary, textSecondary: _textSecondary, surface: _surface),
+          const SizedBox(height: 8),
+          // Kategorie-Chips (tappbar – funktioniert zuverlässig auf Flutter-Web)
+          // Hinweis: kein setState(() {}) nötig, weil learning.setCategoryFilter
+          // notifyListeners() ruft und context.watch<LearningProvider>() den
+          // Rebuild auslöst.
+          Row(
+            children: [
+              _filterChip('Alle', learning.filterCategory == null,
+                  () => learning.setCategoryFilter(null)),
+              const SizedBox(width: 8),
+              _filterChip('Allgemein', learning.filterCategory == QuestionCategory.allgemein,
+                  () => learning.setCategoryFilter(QuestionCategory.allgemein)),
+              const SizedBox(width: 8),
+              _filterChip('Bundesland', learning.filterCategory == QuestionCategory.bundesland,
+                  () => learning.setCategoryFilter(QuestionCategory.bundesland)),
+            ],
           ),
+          // Bundesland-Auswahl (echter Dropdown) nur wenn Kategorie Bundesland
+          if (showStatePicker) ...[
+            const SizedBox(height: 8),
+            StateDropdown(
+              options: learning.availableStates,
+              selected: learning.filterState,
+              placeholder: 'Alle Bundesländer',
+              leadingIcon: Icons.location_on_outlined,
+              onSelected: (s) => learning.setStateFilter(s),
+            ),
+          ],
         ],
       ),
     );
+  }
+
+  /// Tappbarer Filter-Chip (gleiches Muster wie die funktionierende Sprachleiste).
+  Widget _filterChip(String label, bool active, VoidCallback onTap) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          height: 34,
+          decoration: BoxDecoration(
+            color: active ? _primary : _surface,
+            borderRadius: BorderRadius.circular(9),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: GoogleFonts.roboto(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: active ? Colors.white : _textSecondary,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Bottom-Sheet zur Auswahl eines Bundeslands. (Deprecated — verwendet jetzt StateDropdown.)
+  // ignore: unused_element
+  void _showStatePickerLegacy(LearningProvider learning) {
+    final states = learning.availableStates;
+    try {
+      showModalBottomSheet<void>(
+        context: context,
+        backgroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        builder: (ctx) {
+          return SafeArea(
+            child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+                  child: Text('Bundesland wählen',
+                      style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
+                ),
+                ListTile(
+                  leading: Icon(learning.filterState == null ? Icons.check : null, color: _primary, size: 20),
+                  title: Text('Alle Bundesländer', style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                  onTap: () { learning.setStateFilter(null); Navigator.pop(ctx); },
+                ),
+                for (final s in states)
+                  ListTile(
+                    leading: Icon(learning.filterState == s ? Icons.check : null, color: _primary, size: 20),
+                    title: Text(s, style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                    onTap: () { learning.setStateFilter(s); Navigator.pop(ctx); },
+                  ),
+              ],
+            ),
+          );
+        },
+      );
+    } catch (e, st) {
+      debugPrint('LearningScreen: state picker FAILED: $e\n$st');
+    }
   }
 
   Widget _buildQuestionMeta(BuildContext context, LearningProvider learning, List<Question> filtered) {
@@ -182,15 +278,15 @@ class _LearningScreenState extends State<LearningScreen> {
               style: GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w500, color: _textSecondary)),
           ),
           GestureDetector(
-            onTap: () { learning.toggleLearned(q.id); setState(() {}); },
+            onTap: () => learning.toggleLearned(q.id),
             child: Container(width: 32, height: 32, margin: const EdgeInsets.only(right: 4),
-              decoration: BoxDecoration(color: isLearned ? _success.withOpacity(0.1) : Colors.transparent, borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(color: isLearned ? _success.withValues(alpha: 0.1) : Colors.transparent, borderRadius: BorderRadius.circular(8)),
               child: Icon(isLearned ? Icons.check_circle : Icons.check_circle_outline, color: isLearned ? _success : _textTertiary, size: 20)),
           ),
           GestureDetector(
-            onTap: () { learning.toggleBookmark(q.id); setState(() {}); },
+            onTap: () => learning.toggleBookmark(q.id),
             child: Container(width: 32, height: 32,
-              decoration: BoxDecoration(color: isBookmarked ? _primary.withOpacity(0.1) : Colors.transparent, borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(color: isBookmarked ? _primary.withValues(alpha: 0.1) : Colors.transparent, borderRadius: BorderRadius.circular(8)),
               child: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border, color: isBookmarked ? _primary : _textTertiary, size: 20)),
           ),
         ],
@@ -207,6 +303,7 @@ class _LearningScreenState extends State<LearningScreen> {
       child: QuestionCard(
         questionNumber: learning.currentIndex + 1, totalQuestions: filtered.length,
         questionText: q.questionFor(lang), answers: q.answersFor(lang),
+        answerImages: q.answerImages,
         selectedAnswer: _selectedAnswers[q.id], correctAnswer: q.correctAnswerIndex,
         showCorrectAnswer: _selectedAnswers.containsKey(q.id), category: q.category.displayName,
         onAnswerSelected: (index) { setState(() { _selectedAnswers[q.id] = index; }); },
@@ -221,7 +318,7 @@ class _LearningScreenState extends State<LearningScreen> {
       child: Row(
         children: [
           Expanded(child: AppButton(label: 'Zurück', isOutlined: true, isSmall: true,
-            onPressed: learning.currentIndex > 0 ? () { learning.previousQuestion(); setState(() {}); } : null)),
+            onPressed: learning.currentIndex > 0 ? learning.previousQuestion : null)),
           const SizedBox(width: 12),
           Expanded(child: AppButton(label: learning.currentIndex < filtered.length - 1 ? 'Weiter' : '🔁 Zufall', isSmall: true,
             onPressed: () {
@@ -230,7 +327,6 @@ class _LearningScreenState extends State<LearningScreen> {
               } else {
                 learning.goToRandomQuestion();
               }
-              setState(() {});
             },
           )),
         ],
@@ -255,42 +351,4 @@ class _LearningScreenState extends State<LearningScreen> {
       ),
     );
   }
-}
-
-class _CategoryDropdown extends StatelessWidget {
-  final LearningProvider learning;
-  final Color primary, textPrimary, textSecondary, surface;
-  const _CategoryDropdown({required this.learning, required this.primary, required this.textPrimary, required this.textSecondary, required this.surface});
-
-  String _currentLabel() => learning.filterCategory == null ? 'Alle' : learning.filterCategory!.displayName;
-
-  @override
-  Widget build(BuildContext context) {
-    final items = [
-      const _CategoryItem(label: 'Alle', category: null),
-      for (final cat in QuestionCategory.values) _CategoryItem(label: cat.displayName, category: cat),
-    ];
-    return Container(height: 36, padding: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(color: surface, borderRadius: BorderRadius.circular(10)),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: _currentLabel(), isDense: true, isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down, color: Color(0xFF8E8E93), size: 18),
-          style: GoogleFonts.roboto(fontSize: 12, color: const Color(0xFF1A1A1A)),
-          items: items.map((item) => DropdownMenuItem(value: item.label, child: Text(item.label, overflow: TextOverflow.ellipsis))).toList(),
-          onChanged: (val) {
-            if (val == null) return;
-            final matched = items.firstWhere((i) => i.label == val, orElse: () => const _CategoryItem(label: 'Alle', category: null));
-            learning.setCategoryFilter(matched.category);
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class _CategoryItem {
-  final String label;
-  final QuestionCategory? category;
-  const _CategoryItem({required this.label, this.category});
 }

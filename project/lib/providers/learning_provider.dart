@@ -290,6 +290,10 @@ class LearningProvider extends ChangeNotifier {
   /// [category] Die zu filternde Kategorie, oder null um den Filter zu entfernen
   void setCategoryFilter(QuestionCategory? category) {
     _filterCategory = category;
+    // Bundesland-Filter nur sinnvoll bei Kategorie "Bundesland" – sonst zurücksetzen
+    if (category != QuestionCategory.bundesland) {
+      _filterState = null;
+    }
     _currentQuestionIndex = 0; // Index zurücksetzen
     notifyListeners();
   }
@@ -603,13 +607,15 @@ class LearningProvider extends ChangeNotifier {
     return _allQuestions.map((q) => q.category).toSet().toList();
   }
 
-  /// Gibt alle verfügbaren Bundesländer zurück die Fragen enthalten.
+  /// Gibt alle verfügbaren Bundesländer zurück die Fragen enthalten (alphabetisch sortiert).
   List<String> get availableStates {
-    return _allQuestions
+    final list = _allQuestions
         .where((q) => q.state != null)
         .map((q) => q.state!)
         .toSet()
         .toList();
+    list.sort();
+    return list;
   }
 
   @override

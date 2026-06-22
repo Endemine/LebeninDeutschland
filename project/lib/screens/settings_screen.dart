@@ -129,19 +129,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             const SizedBox(height: 8),
 
-            // Erscheinungsbild
-            _SettingsSectionTitle(title: 'Erscheinungsbild'),
-            _SettingsToggleCard(
-              icon: Icons.dark_mode,
-              iconColor: _textSecondary,
-              title: 'Dark Mode',
-              subtitle: 'Dunkles Design verwenden',
-              value: settings.darkMode,
-              onChanged: (_) => settings.toggleDarkMode(),
-            ),
-
-            const SizedBox(height: 8),
-
             // Sprache
             _SettingsSectionTitle(title: 'Sprache'),
             _SettingsDropdownCard(
@@ -351,61 +338,74 @@ class _SettingsDropdownCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppCard(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: iconColor, size: 20),
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet<void>(
+          context: context,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          builder: (ctx) => SafeArea(
+            child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(vertical: 8),
               children: [
-                Text(
-                  title,
-                  style: GoogleFonts.roboto(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: _textPrimary,
-                  ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
+                  child: Text(title,
+                      style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
                 ),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.roboto(
-                    fontSize: 13,
-                    color: _textSecondary,
+                for (final item in items)
+                  ListTile(
+                    leading: Icon(item == value ? Icons.check : null, color: iconColor, size: 20),
+                    title: Text(item, style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                    onTap: () { onChanged(item); Navigator.pop(ctx); },
                   ),
-                ),
               ],
             ),
           ),
-          DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              value: value,
-              icon: const Icon(Icons.keyboard_arrow_right,
-                  color: _textSecondary, size: 20),
-              style: GoogleFonts.roboto(
-                fontSize: 14,
-                color: _textPrimary,
+        );
+      },
+      child: AppCard(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: iconColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(10),
               ),
-              items: items.map((item) {
-                return DropdownMenuItem(
-                  value: item,
-                  child: Text(item),
-                );
-              }).toList(),
-              onChanged: onChanged,
+              child: Icon(icon, color: iconColor, size: 20),
             ),
-          ),
-        ],
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.roboto(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: _textPrimary,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.roboto(
+                      fontSize: 13,
+                      color: _textSecondary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.keyboard_arrow_right, color: _textSecondary, size: 20),
+          ],
+        ),
       ),
     );
   }

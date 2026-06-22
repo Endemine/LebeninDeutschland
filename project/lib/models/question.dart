@@ -78,7 +78,13 @@ class Question {
     this.questionAr,
     this.answersEn,
     this.answersAr,
+    this.answerImages,
   });
+
+  /// Liste von Asset-Pfaden zu Antwort-Bildern (4 Einträge, einer pro Antwort).
+  /// null an einem Index = diese Antwort als Text anzeigen.
+  /// Beispiel: ['assets/wappen/bayern.png', null, null, null] → erstes Bild = Bayern-Wappen
+  final List<String?>? answerImages;
 
   /// Liefert den Fragetext in der gewünschten Sprache ('de', 'en', 'ar')
   String questionFor(String lang) {
@@ -127,6 +133,7 @@ class Question {
       questionAr: questionAr ?? this.questionAr,
       answersEn: answersEn ?? this.answersEn,
       answersAr: answersAr ?? this.answersAr,
+      answerImages: answerImages,
     );
   }
 
@@ -155,6 +162,13 @@ class Question {
         category = QuestionCategory.allgemein;
     }
 
+    // answerImages: optional, 4 Einträge (einer pro Antwort), null = Text
+    List<String?>? answerImages;
+    final raw = json['answerImages'];
+    if (raw is List && raw.length == 4) {
+      answerImages = raw.map<String?>((e) => e is String ? e : null).toList();
+    }
+
     return Question(
       id: json['id'] as int,
       text: text,
@@ -163,6 +177,7 @@ class Question {
       category: category,
       state: json['state'] as String?,
       explanation: json['explanation'] as String?,
+      answerImages: answerImages,
     );
   }
 

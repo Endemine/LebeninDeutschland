@@ -12,6 +12,7 @@ class QuestionCard extends StatelessWidget {
   final int totalQuestions;
   final String questionText;
   final List<String> answers;
+  final List<String?>? answerImages; // Optional: 4 Einträge, null = Text anzeigen
   final int? selectedAnswer;
   final int? correctAnswer;
   final bool showCorrectAnswer;
@@ -25,6 +26,7 @@ class QuestionCard extends StatelessWidget {
     required this.totalQuestions,
     required this.questionText,
     required this.answers,
+    this.answerImages,
     this.selectedAnswer,
     this.correctAnswer,
     this.showCorrectAnswer = false,
@@ -44,6 +46,7 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imgs = answerImages;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -107,6 +110,7 @@ class QuestionCard extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 10),
             child: _AnswerButton(
               label: answers[index],
+              imagePath: (imgs != null && imgs.length > index) ? imgs[index] : null,
               index: index,
               isSelected: selectedAnswer == index,
               isCorrect: showCorrectAnswer && correctAnswer == index,
@@ -125,6 +129,7 @@ class QuestionCard extends StatelessWidget {
 
 class _AnswerButton extends StatelessWidget {
   final String label;
+  final String? imagePath; // Optional: zeige Bild statt Text
   final int index;
   final bool isSelected;
   final bool isCorrect;
@@ -143,6 +148,7 @@ class _AnswerButton extends StatelessWidget {
   const _AnswerButton({
     required this.label,
     required this.index,
+    this.imagePath,
     this.isSelected = false,
     this.isCorrect = false,
     this.isWrong = false,
@@ -229,17 +235,32 @@ class _AnswerButton extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            // Antworttext
+            // Antwort-Bild (falls vorhanden) ODER Text
             Expanded(
-              child: Text(
-                label,
-                style: GoogleFonts.roboto(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: textColor,
-                  height: 1.3,
-                ),
-              ),
+              child: imagePath != null
+                  ? Image.asset(
+                      imagePath!,
+                      height: 80,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) => Text(
+                        label,
+                        style: GoogleFonts.roboto(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: textColor,
+                          height: 1.3,
+                        ),
+                      ),
+                    )
+                  : Text(
+                      label,
+                      style: GoogleFonts.roboto(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: textColor,
+                        height: 1.3,
+                      ),
+                    ),
             ),
             // Trailing Icon
             if (trailing != null) trailing,

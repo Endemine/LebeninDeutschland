@@ -186,6 +186,10 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
+      pageTransitionsTheme: const PageTransitionsTheme(builders: {
+        TargetPlatform.android: ZoomPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      }),
 
       // === Farbschema ===
       colorScheme: const ColorScheme.light(
@@ -223,7 +227,7 @@ class AppTheme {
       ),
 
       // === Card Theme ===
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLight,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -347,7 +351,7 @@ class AppTheme {
       ),
 
       // === Tab Bar Theme ===
-      tabBarTheme: const TabBarTheme(
+      tabBarTheme: const TabBarThemeData(
         labelColor: primary,
         unselectedLabelColor: textSecondary,
         indicatorColor: primary,
@@ -383,7 +387,7 @@ class AppTheme {
       ),
 
       // === Dialog Theme ===
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: backgroundLight,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(dialogRadius),
@@ -491,6 +495,10 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
+      pageTransitionsTheme: const PageTransitionsTheme(builders: {
+        TargetPlatform.android: ZoomPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      }),
 
       // === Farbschema ===
       colorScheme: const ColorScheme.dark(
@@ -528,7 +536,7 @@ class AppTheme {
       ),
 
       // === Card Theme ===
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDark,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -627,7 +635,7 @@ class AppTheme {
       ),
 
       // === Tab Bar Theme ===
-      tabBarTheme: const TabBarTheme(
+      tabBarTheme: const TabBarThemeData(
         labelColor: primary,
         unselectedLabelColor: textSecondaryDark,
         indicatorColor: primary,
@@ -655,7 +663,7 @@ class AppTheme {
       ),
 
       // === Dialog Theme ===
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: surfaceDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(dialogRadius),

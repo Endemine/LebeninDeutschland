@@ -1,10 +1,77 @@
+# ====================================================================
+# LebeninDeutschland – Root .gitignore
+# Schützt vor versehentlichem Commit von Secrets, Build-Artefakten
+# und IDE-/OS-Müll. Härtet gegen Leakage von Keystore + Signing-Keys.
+# ====================================================================
+
+# --- Projekt-interne Notizen (nicht versionieren) ---
 code_review.md
+
+# --- Build-Artefakte (gilt für Root UND project/ rekursiv) ---
 build/
 build_temp/
-project/
-*.apk
+.dart_tool/
+.gradle/
 .pub-cache/
-.android/
+.pub/
+.packages
+pubspec.lock
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# --- Android: Signing + Local-Config (HÖCHSTE PRIORITÄT) ---
+# Verhindert Leakage des Release-Keystores auf public repo
+*.jks
+*.keystore
+key.properties
+local.properties
+**/key.properties
+**/keystore/
+**/*.jks
+**/*.keystore
+android/app/keystore/
+
+# --- Android Build-Outputs (auch in Subprojekten) ---
+android/build/
+android/app/build/
+android/.gradle/
+**/build/
+**/.gradle/
+
+# --- iOS / macOS ---
+Pods/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+
+# --- Generierte APKs (immer aus Repo raus) ---
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+output-metadata.json
+
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.iml
+*.iws
+.DS_Store
+Thumbs.db
+
+# --- Flutter Cache (eigene SDK-Installation) ---
 flutter/
+.flutter/
+.android/
 .cocoapods/
-android/app/keystore/release.keystore
+
+# --- Backup-Dateien ---
+*.bak
+*.bak.json
+*.backup
+*~
