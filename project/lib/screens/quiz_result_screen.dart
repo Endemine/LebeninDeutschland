@@ -13,13 +13,9 @@ class QuizResultScreen extends StatefulWidget {
 }
 
 class _QuizResultScreenState extends State<QuizResultScreen> {
-  static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
   static const Color _textTertiary = Color(0xFFC7C7CC);
-  static const Color _surface = Color(0xFFF5F5F5);
-  static const Color _success = Color(0xFF34C759);
-  static const Color _error = Color(0xFFFF3B30);
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +29,27 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.info_outline, size: 48, color: _textTertiary),
+              const Icon(Icons.info_outline, size: 48, color: _textTertiary),
               const SizedBox(height: 16),
               Text('Kein Ergebnis verfügbar', style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
               const SizedBox(height: 24),
-              AppButton(label: 'Zur Startseite', onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)),
+              AppButton(
+                label: 'Zur Startseite',
+                onPressed: _navigateHome,
+              ),
             ],
           ),
         ),
       );
     }
 
-    return Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) return;
+        _navigateHome();
+      },
+      child: Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: CustomScrollView(
@@ -55,7 +60,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
+                      onPressed: _navigateHome,
                       icon: const Icon(Icons.close, color: _textPrimary),
                     ),
                   ],
@@ -118,7 +123,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     const SizedBox(height: 10),
                     AppButton(
                       label: 'Zurück zur Startseite', isFullWidth: true, isOutlined: true,
-                      onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
+                      onPressed: _navigateHome,
                     ),
                     const SizedBox(height: 10),
                     AppButton(
@@ -133,8 +138,15 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
           ],
         ),
       ),
+    ),
     );
   }
+
+  void _navigateHome() {
+    if (!mounted) return;
+    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+  }
+
 }
 
 class _QuestionResultTile extends StatefulWidget {
@@ -228,4 +240,5 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
       ),
     );
   }
+
 }

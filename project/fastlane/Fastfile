@@ -1,0 +1,646 @@
+require "fileutils"
+
+default_platform(:ios)
+
+IOS_APP_IDENTIFIER = "de.lebenindeutschland.einbuergerungstest"
+
+def app_store_connect_api_token
+  key_id = ENV["APP_STORE_CONNECT_KEY_ID"]
+  issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"]
+  key_file = ENV["APP_STORE_CONNECT_KEY_FILE"]
+
+  UI.user_error!("Set APP_STORE_CONNECT_KEY_ID") if key_id.to_s.empty?
+  UI.user_error!("Set APP_STORE_CONNECT_ISSUER_ID") if issuer_id.to_s.empty?
+  UI.user_error!("Set APP_STORE_CONNECT_KEY_FILE (path to AuthKey_*.p8)") if key_file.to_s.empty?
+
+  app_store_connect_api_key(
+    key_id: key_id,
+    issuer_id: issuer_id,
+    key_filepath: key_file
+  )
+end
+
+def app_metadata_path
+  File.expand_path("metadata", __dir__)
+end
+
+def app_screenshot_path
+  File.expand_path("screenshots", __dir__)
+end
+
+def app_review_contact_details
+  {
+    first_name: File.read(File.join(app_metadata_path, "review_information", "first_name.txt")).strip,
+    last_name: File.read(File.join(app_metadata_path, "review_information", "last_name.txt")).strip,
+    phone_number: File.read(File.join(app_metadata_path, "review_information", "phone_number.txt")).strip,
+    email_address: File.read(File.join(app_metadata_path, "review_information", "email_address.txt")).strip,
+    notes: File.read(File.join(app_metadata_path, "review_information", "notes.txt")).strip,
+    demo_user: "",
+    demo_password: ""
+  }
+end
+
+def app_rating_config_path
+  File.join(app_metadata_path, "app_rating_config.json")
+end
+
+def ensure_app_store_review_detail
+  app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+  UI.user_error!("App #{IOS_APP_IDENTIFIER} not found in App Store Connect") unless app
+
+  version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS, includes: "appStoreReviewDetail")
+  if version.nil?
+    version = app.get_latest_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    UI.user_error!("No edit or latest App Store version found for app review detail setup.") unless version
+  end
+
+  review = version.app_store_review_detail
+  review ||= begin
+    version.fetch_app_store_review_detail
+  rescue StandardError
+    nil
+  end
+  detail = {
+    contact_first_name: app_review_contact_details[:first_name],
+    contact_last_name: app_review_contact_details[:last_name],
+    contact_phone: app_review_contact_details[:phone_number],
+    contact_email: app_review_contact_details[:email_address],
+    demo_account_required: false,
+    notes: app_review_contact_details[:notes],
+    demo_account_name: app_review_contact_details[:demo_user],
+    demo_account_password: app_review_contact_details[:demo_password]
+  }
+
+  if review
+    review.update(attributes: detail)
+    UI.message("Updated existing appStoreReviewDetail for #{IOS_APP_IDENTIFIER}")
+  else
+    version.create_app_store_review_detail(attributes: detail)
+    UI.message("Created appStoreReviewDetail for #{IOS_APP_IDENTIFIER}")
+  end
+end
+
+def ensure_app_data_privacy_not_collected
+  # Keep this as fallback if no Apple ID login is configured.
+  privacy_json_path = File.join(__dir__, "app_privacy_details.json")
+  unless File.exist?(privacy_json_path)
+    File.write(privacy_json_path, "[\n  {\n    \"data_protections\": [\n      \"DATA_NOT_COLLECTED\"\n    ]\n  }\n]\n")
+    UI.message("Created #{privacy_json_path} with DATA_NOT_COLLECTED defaults.")
+  end
+
+  app_store_id = ENV["APPLE_ID"] || ENV["FASTLANE_USER"]
+  team_name = ENV["APPLE_TEAM_NAME"]
+  team_id = ENV["APPLE_TEAM_ID"]
+
+  # Prefer Apple ID flow; API-key privacy endpoints changed and are not stable in the
+  # current fastlane + ConnectAPI combination.
+
+  if app_store_id.to_s.empty?
+    UI.important("Skipping automatic privacy details upload; set APPLE_ID/FASTLANE_USER before running.")
+    return
+  end
+
+  if team_name.to_s.empty? && team_id.to_s.empty?
+    UI.important("Skipping automatic privacy details upload; set APPLE_TEAM_NAME or APPLE_TEAM_ID before running.")
+    return
+  end
+
+  begin
+    opts = {
+      username: app_store_id,
+      app_identifier: IOS_APP_IDENTIFIER,
+      json_path: privacy_json_path
+    }
+    opts[:team_name] = team_name unless team_name.to_s.empty?
+    opts[:team_id] = team_id unless team_id.to_s.empty?
+
+    upload_app_privacy_details_to_app_store(
+      username: opts[:username],
+      app_identifier: opts[:app_identifier],
+      json_path: opts[:json_path],
+      team_name: opts[:team_name],
+      team_id: opts[:team_id]
+    )
+    UI.message("Uploaded data privacy declaration as DATA_NOT_COLLECTED.")
+  rescue => e
+    UI.important("Skipping automatic app privacy upload for now.")
+    UI.important("Reason: #{e.message}")
+  end
+end
+
+def set_app_price_tier(price_tier)
+  raw_tier = price_tier.to_s.strip
+  UI.user_error!("APP_STORE_PRICE_TIER is empty; set it in .env.release (e.g. APP_STORE_PRICE_TIER=1 or 0)") if raw_tier.empty?
+
+  normalized_tier = raw_tier.downcase
+  normalized_tier = "0" if normalized_tier == "free" || normalized_tier == "freeapp"
+  requested_tier = normalized_tier
+  requested_tier = "1" if requested_tier == "one" || requested_tier == "one_euro" || requested_tier == "1eur" || requested_tier == "1€"
+
+  UI.message("Setting app price tier to #{requested_tier} (raw input #{raw_tier.inspect})")
+
+  UI.message("Skipping direct ConnectAPI price update (current fastlane version has unstable app price endpoints).")
+
+  apple_id = ENV["APPLE_ID"] || ENV["FASTLANE_USER"]
+  apple_password = ENV["APPLE_PASSWORD"] || ENV["FASTLANE_PASSWORD"]
+  if apple_id.to_s.empty? || apple_password.to_s.empty?
+    UI.important("No Apple-ID credentials found for legacy pricing fallback.")
+    UI.important("Set APPLE_ID/FASTLANE_USER and APPLE_PASSWORD/FASTLANE_PASSWORD if you want automatic pricing setup.")
+    return false
+  end
+
+  begin
+    Spaceship::Tunes.login(apple_id, apple_password)
+    app = Spaceship::Tunes::Application.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App #{IOS_APP_IDENTIFIER} not found via Tunes login fallback.") unless app
+
+    app.update_price_tier!(requested_tier)
+    UI.success("Updated app price tier via Tunes fallback to #{requested_tier}.")
+    true
+  rescue => e
+    UI.important("Could not set app price tier via Tunes fallback: #{e.message}")
+    UI.important("Set the price once manually in App Store Connect and rerun submit.")
+    false
+  end
+end
+
+def ensure_required_screenshot_names
+  locale_dir = File.join(app_screenshot_path, "en-US")
+  return unless Dir.exist?(locale_dir)
+
+  replacements = {
+    "APP_IPHONE_65.png" => ["iphone65.png", "APP_IPHONE_65.png"],
+    "APP_IPAD_PRO_3GEN_129.png" => ["ipad129.png", "APP_IPAD_PRO_129.png", "APP_IPAD_PRO_3GEN_129.png"]
+  }
+  replacements.each do |target_name, source_names|
+    target = File.join(locale_dir, target_name)
+    next if File.exist?(target)
+
+    found_source = source_names.find { |name| File.exist?(File.join(locale_dir, name)) }
+    next unless found_source
+
+    source = File.join(locale_dir, found_source)
+    FileUtils.cp(source, target)
+    UI.message("Created required screenshot alias #{target_name} from #{found_source}.")
+  end
+
+  extras = {
+    "iphone65.png" => true,
+    "ipad129.png" => true,
+    "APP_IPAD_PRO_129.png" => true
+  }
+  extras.each do |filename, _|
+    source = File.join(locale_dir, filename)
+    if File.exist?(source)
+      FileUtils.rm_f(source)
+      UI.message("Removed non-canonical screenshot alias #{filename} to keep single required version.")
+    end
+  end
+end
+
+def wait_for_uploaded_build(version:, build_number:, timeout_seconds: (ENV["BUILD_WAIT_TIMEOUT_SECONDS"] || 3600).to_i, interval_seconds: 20)
+  return if version.to_s.empty? || build_number.to_s.empty?
+
+  app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+  UI.user_error!("App #{IOS_APP_IDENTIFIER} not found in App Store Connect") unless app
+
+  start_time = Time.now
+  loop do
+    builds = app.get_builds(
+      filter: { "preReleaseVersion.version" => version },
+      includes: "preReleaseVersion,app",
+      limit: 100,
+      sort: "-uploadedDate"
+    )
+
+    uploaded_build = builds.find { |b| b.version.to_s == build_number.to_s }
+    return uploaded_build unless uploaded_build.nil?
+
+    elapsed = Time.now - start_time
+    UI.message("Waiting for build #{version}+#{build_number} to be available in App Store Connect (#{elapsed.round(0)}s)")
+    UI.user_error!("Timeout while waiting for build #{version}+#{build_number} in App Store Connect") if elapsed > timeout_seconds
+
+    sleep(interval_seconds)
+  end
+end
+
+platform :ios do
+  desc("Set the app price tier in App Store Connect using direct Connect API model update.")
+  lane :set_price_direct do |options|
+    app_store_connect_api_token
+
+    price_tier = options[:price_tier] || ENV["APP_STORE_PRICE_TIER"] || "1"
+    UI.message("Setting price tier #{price_tier} for #{IOS_APP_IDENTIFIER}")
+    set_app_price_tier(price_tier)
+
+    UI.success("Price tier request sent for #{IOS_APP_IDENTIFIER}: tier #{price_tier}.")
+  end
+
+  desc("Set the app price tier in App Store Connect with API key workflow.")
+  lane :set_price do |options|
+    set_price_direct(
+      app_version: options[:app_version] || ENV["RELEASE_VERSION"],
+      price_tier: options[:price_tier] || ENV["APP_STORE_PRICE_TIER"]
+    )
+  end
+
+  desc("Check App Store Connect build processing status without changing anything.")
+  lane :check_release_state do |options|
+    app_store_connect_api_token
+
+    app_version = options[:app_version] || ENV["RELEASE_VERSION"]
+
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    if app.nil?
+      UI.user_error!("App #{IOS_APP_IDENTIFIER} not found in App Store Connect")
+    end
+
+    filter = {}
+    filter["preReleaseVersion.version"] = app_version if app_version
+    filter["processingState"] = options[:processing_state] if options[:processing_state]
+
+    builds = app.get_builds(
+      filter: filter,
+      includes: "preReleaseVersion,app",
+      limit: 10,
+      sort: "-uploadedDate"
+    )
+
+    UI.message("Latest ASC builds for #{IOS_APP_IDENTIFIER} (version=#{app_version || "all"})")
+    if builds.empty?
+      UI.important("No builds found.")
+    else
+      builds.each do |build|
+        version = build.pre_release_version&.version || "n/a"
+        UI.message("- Build #{build.version} | app version #{version} | state #{build.processing_state} | uploaded #{build.uploaded_date}")
+      end
+    end
+
+    app_store_versions = app.get_app_store_versions(
+      filter: { platform: Spaceship::ConnectAPI::Platform::IOS },
+      includes: "appStoreVersionSubmission,build",
+      limit: 20
+    )
+
+    UI.message("App Store versions for #{IOS_APP_IDENTIFIER}")
+    if app_store_versions.empty?
+      UI.important("No App Store versions found.")
+    else
+      app_store_versions.first(8).each do |version|
+        UI.message("- v#{version.version_string} | appStoreState=#{version.app_store_state} | appVersionState=#{version.app_version_state}")
+      end
+    end
+
+    begin
+      prices = app.fetch_app_prices(includes: "priceTier")
+      if prices&.empty?
+        UI.important("No app prices found yet.")
+      else
+        prices.each do |app_price|
+          UI.message("- App price id=#{app_price.id} tier=#{app_price.price_tier&.id}")
+        end
+      end
+    rescue => e
+      UI.message("Price endpoint unavailable in this ConnectAPI runtime: #{e.message}")
+    end
+
+    edit_version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    if edit_version
+      localizations = edit_version.get_app_store_version_localizations
+      if localizations.empty?
+        UI.important("No localization found for version #{edit_version.version_string}.")
+      else
+        localizations.each do |loc|
+          UI.message("Localization #{loc.locale} for v#{edit_version.version_string}")
+          begin
+            screenshot_sets = loc.get_app_screenshot_sets
+            if screenshot_sets.empty?
+              UI.message("  (no screenshot sets)")
+            else
+              screenshot_sets.each do |set|
+                screenshot_list = set.app_screenshots || []
+                if screenshot_list.empty?
+                  UI.message("  - #{set.screenshot_display_type}: (empty)")
+                  next
+                end
+
+                UI.message("  - #{set.screenshot_display_type}")
+                screenshot_list.each do |shot|
+                  state = shot.asset_delivery_state&.[]("state")
+                  errors = shot.respond_to?(:error_messages) ? (shot.error_messages || []) : []
+                  UI.message("      #{shot.file_name} | state=#{state} | errors=#{errors.join(', ')}")
+                end
+              end
+            end
+          rescue => e
+            UI.important("Could not inspect screenshot sets for locale #{loc.locale}: #{e.message}")
+          end
+        end
+      end
+    else
+      UI.important("No edit App Store version found for iOS.")
+    end
+  end
+
+  desc("Dump app store version media and submission details for debugging.")
+  lane :debug_submission do
+    app_store_connect_api_key = app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App #{IOS_APP_IDENTIFIER} not found in App Store Connect") unless app
+
+    version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    UI.user_error!("No editable App Store version found for iOS") unless version
+
+    UI.message("Debug version #{version.version_string} | appStoreState=#{version.app_store_state} | appVersionState=#{version.app_version_state}")
+    methods = version.methods.grep(/submission|screenshot|price|relationship|app_store|appVersion|error|pricing/)
+    UI.message("Version method sample: #{methods.sort.join(', ')}")
+    if version.respond_to?(:raw_data)
+      attrs = version.raw_data&.[]("attributes")
+      rels = version.raw_data&.[]("relationships")&.keys
+      UI.message("Raw version attributes keys: #{attrs&.keys&.join(', ') || 'unknown'}")
+      UI.message("Raw version relationship keys: #{rels&.join(', ') || 'unknown'}")
+    end
+
+    submission = nil
+    if version.respond_to?(:app_store_version_submission)
+      submission = version.app_store_version_submission
+    end
+    if submission.nil? && version.respond_to?(:get_app_store_version_submission)
+      submission = version.get_app_store_version_submission rescue nil
+    end
+    if submission.nil? && version.respond_to?(:fetch_app_store_version_submission)
+      submission = version.fetch_app_store_version_submission rescue nil
+    end
+    if submission
+      UI.message("Submission object id=#{submission.id || 'n/a'} state=#{submission.app_store_state || submission.state || 'n/a'}")
+      if submission.respond_to?(:raw_data)
+        app_state = submission.raw_data&.[]("attributes")&.[]("appStoreState")
+        errors = submission.raw_data&.[]("attributes")&.[]("appStoreStateErrors")
+        app_store_version = submission.raw_data&.[]("relationships")&.[]("appStoreVersion")
+        UI.message("Submission raw appStoreState=#{app_state || 'n/a'}")
+        if errors
+          errors.each do |error|
+            if error.is_a?(Hash)
+              UI.error("Submission error: #{error['code']} - #{error['title']} - #{error['detail']}")
+            else
+              UI.error("Submission error: #{error}")
+            end
+          end
+        else
+          UI.message("Submission errors not present in raw payload.")
+        end
+        UI.message("Submission appStoreVersion relationship: #{app_store_version ? app_store_version['data'] : 'n/a'}")
+      end
+      if submission.respond_to?(:state)
+        UI.message("Submission state method: #{submission.state}")
+      end
+    else
+      UI.important("No appStoreVersionSubmission available on version object.")
+    end
+
+    localizations = version.get_app_store_version_localizations
+    localizations.each do |loc|
+      UI.message("Locale #{loc.locale}")
+      begin
+        loc.get_app_screenshot_sets.each do |set|
+          UI.message("  Set #{set.screenshot_display_type} (#{set.id})")
+          (set.app_screenshots || []).each do |shot|
+            UI.message("    #{shot.file_name} | state=#{shot.asset_delivery_state['state']} | checksum=#{shot.source_file_checksum}")
+            if shot.respond_to?(:error_messages) && shot.error_messages && !shot.error_messages.empty?
+              shot.error_messages.each do |message|
+                UI.error("      screenshot error: #{message}")
+              end
+            end
+          end
+        end
+      rescue => e
+        UI.error("  Could not load screenshot sets: #{e.message}")
+      end
+    end
+  end
+
+  desc("Create or refresh distribution certificate + provisioning profile via API key.")
+  lane :prepare_signing do
+    api_key = app_store_connect_api_token
+
+    cert(
+      api_key: api_key,
+      development: false,
+      force: false,
+      platform: "ios",
+      generate_apple_certs: true,
+      skip_set_partition_list: true
+    )
+
+    profile_cert_id = ENV["CER_CERTIFICATE_ID"]
+
+    sigh(
+      api_key: api_key,
+      app_identifier: IOS_APP_IDENTIFIER,
+      development: false,
+      force: true,
+      skip_install: false,
+      platform: "ios",
+      cert_id: profile_cert_id,
+      include_all_certificates: true
+    )
+  end
+
+  desc("Build and upload iOS release to App Store Connect via API key.")
+  lane :release do |options|
+    version = options[:version] || ENV["RELEASE_VERSION"] || "1.0.1"
+    build_number = options[:build_number] || ENV["RELEASE_BUILD_NUMBER"] || "3"
+
+    project_root = File.expand_path("..", __dir__)
+    pubspec_path = File.join(project_root, "pubspec.yaml")
+    ipa_path = File.join(project_root, "build", "ios", "ipa", "Runner.ipa")
+
+    app_store_connect_api_token
+
+    UI.message("Syncing signing assets for #{IOS_APP_IDENTIFIER}...")
+    prepare_signing
+
+    UI.message("Set pubspec version to #{version}+#{build_number}")
+    sh("perl -0pi -e 's/^version: .*\\n/version: #{version}+#{build_number}\\n/m' \"#{pubspec_path}\"")
+
+    profile_name = lane_context[SharedValues::SIGH_NAME]
+    profile_uuid = lane_context[SharedValues::SIGH_UUID]
+    profile_path = lane_context[SharedValues::SIGH_PROFILE_PATH]
+    if profile_name.to_s.empty?
+      UI.user_error!("sigh did not return a profile name; aborting for safe manual signing.")
+    end
+
+    if profile_uuid.to_s.empty? || profile_path.to_s.empty?
+      UI.user_error!("sigh did not return profile uuid or profile path; aborting for safe manual signing.")
+    end
+
+    cert_file_path = lane_context[SharedValues::CERT_FILE_PATH]
+    sign_identity = if cert_file_path && File.exist?(cert_file_path)
+      sh("openssl x509 -inform der -in \"#{cert_file_path}\" -noout -fingerprint -sha1 | sed -E 's/.*=([0-9A-F:]+)/\\1/' | tr -d ':'", log: false).strip
+    else
+      "Apple Distribution"
+    end
+
+    update_project_provisioning(
+      xcodeproj: File.join(project_root, "ios/Runner.xcodeproj"),
+      profile: profile_path,
+      target_filter: "Runner",
+      build_configuration: "Release",
+      code_signing_identity: "Apple Distribution"
+    )
+
+    update_code_signing_settings(
+      path: File.join(project_root, "ios/Runner.xcodeproj"),
+      use_automatic_signing: false,
+      code_sign_identity: sign_identity,
+      team_id: "DKBT7PJUNG",
+      profile_name: profile_name,
+      build_configurations: ["Release"],
+      targets: ["Runner"]
+    )
+
+    sh("cd \"#{project_root}\" && flutter clean")
+    sh("cd \"#{project_root}\" && flutter pub get")
+    sh("cd \"#{project_root}\" && if [ -f ios/Podfile.lock ]; then cp ios/Podfile.lock ios/Pods/Manifest.lock; fi")
+
+    build_ios_app(
+      workspace: File.join(project_root, "ios/Runner.xcworkspace"),
+      scheme: "Runner",
+      configuration: "Release",
+      clean: false,
+      buildlog_path: File.join(project_root, "fastlane", "buildlog"),
+      output_directory: File.join(project_root, "build", "ios", "ipa"),
+      output_name: "Runner",
+      codesigning_identity: sign_identity,
+      export_method: "app-store",
+      export_options: {
+        "method" => "app-store",
+        "signingCertificate" => sign_identity,
+        "teamID" => "DKBT7PJUNG",
+        "signingStyle" => "manual",
+        "provisioningProfiles" => { IOS_APP_IDENTIFIER => profile_name },
+        "uploadBitcode" => false,
+        "uploadSymbols" => true,
+        "thinning" => "&lt;none&gt;"
+      },
+      skip_profile_detection: true
+    )
+    UI.user_error!("IPA not found at #{ipa_path}. Check signing and provisioning in Xcode.") unless File.exist?(ipa_path)
+
+    upload_to_app_store(
+      api_key: app_store_connect_api_token,
+      ipa: ipa_path,
+      skip_binary_upload: false,
+      skip_screenshots: true,
+      skip_metadata: true,
+      force: true,
+      run_precheck_before_submit: false
+    )
+
+    UI.success("Upload gestartet für #{version}+#{build_number}")
+  end
+
+  desc("Submit an existing uploaded build for App Store review via API key.")
+  lane :submit_for_review do |options|
+    api_key = app_store_connect_api_token
+    app_version = options[:app_version] || options[:version] || ENV["RELEASE_VERSION"]
+    build_number = options[:build_number] || ENV["RELEASE_BUILD_NUMBER"]
+    price_tier = options[:price_tier] || ENV["APP_STORE_PRICE_TIER"] || "1"
+    pricing_ready = set_app_price_tier(price_tier)
+
+    ensure_app_store_review_detail
+    ensure_app_data_privacy_not_collected
+    wait_for_uploaded_build(version: app_version, build_number: build_number) if app_version && build_number
+    ensure_required_screenshot_names
+
+    UI.message("Submitting for review (version=#{app_version || "latest"}, build=#{build_number || "latest"})")
+
+    deliver(
+      api_key: api_key,
+      platform: "ios",
+      app_version: app_version,
+      build_number: build_number,
+      submission_information: {
+        export_compliance_uses_encryption: false
+      },
+      price_tier: pricing_ready ? price_tier : nil,
+      force: true,
+      app_review_information: app_review_contact_details,
+      metadata_path: app_metadata_path,
+      screenshots_path: app_screenshot_path,
+      app_rating_config_path: app_rating_config_path,
+      skip_binary_upload: true,
+      skip_metadata: false,
+      skip_screenshots: options[:skip_screenshots] || false,
+      overwrite_screenshots: true,
+      submit_for_review: true,
+      skip_app_version_update: false,
+      run_precheck_before_submit: false
+    )
+
+    UI.success("Submit request sent.")
+  end
+
+  desc("Build, upload, and submit iOS release in one run.")
+  lane :release_and_submit do |options|
+    version = options[:version] || ENV["RELEASE_VERSION"] || "1.0.1"
+    build_number = options[:build_number] || ENV["RELEASE_BUILD_NUMBER"] || "3"
+
+    UI.important("Syncing screenshots and submitting #{version} now that App Store Connect is editable again.")
+    release(version: version, build_number: build_number)
+    submit_for_review(app_version: version, build_number: build_number, skip_screenshots: false)
+
+    UI.success("Release + submit finished for #{version}+#{build_number}")
+  end
+
+  desc("Upload App Store screenshots only, without touching the binary.")
+  lane :update_screenshots do |options|
+    api_key = app_store_connect_api_token
+    app_version = options[:app_version] || options[:version] || ENV["RELEASE_VERSION"] || "1.0.1"
+
+    ensure_required_screenshot_names
+
+    deliver(
+      api_key: api_key,
+      platform: "ios",
+      app_identifier: IOS_APP_IDENTIFIER,
+      app_version: app_version,
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_screenshots: false,
+      overwrite_screenshots: false,
+      force: true,
+      screenshots_path: app_screenshot_path,
+      run_precheck_before_submit: false
+    )
+
+    UI.success("Screenshots updated for #{app_version}.")
+  end
+
+  desc("Reject the current App Store review submission for the editable iOS version.")
+  lane :reject_current_review do
+    api_key = app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App #{IOS_APP_IDENTIFIER} not found in App Store Connect") unless app
+
+    version = app.get_edit_app_store_version(
+      platform: Spaceship::ConnectAPI::Platform::IOS,
+      includes: "appStoreVersionSubmission"
+    )
+    UI.user_error!("No editable App Store version found for iOS") unless version
+
+    submission = version.app_store_version_submission
+    unless submission
+      UI.message("No active appStoreVersionSubmission found for #{version.version_string}; nothing to reject.")
+      return
+    end
+
+    if version.can_reject?
+      UI.message("Rejecting review submission for #{version.version_string}...")
+      version.reject!
+      UI.success("Review submission rejected for #{version.version_string}.")
+    else
+      UI.message("Submission for #{version.version_string} cannot be rejected right now.")
+    end
+  end
+end

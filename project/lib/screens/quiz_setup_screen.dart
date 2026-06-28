@@ -12,7 +12,9 @@ import '../providers/settings_provider.dart';
 ///
 /// Bietet die Wahl zwischen "Echter Test" und "Schnelltest".
 class QuizSetupScreen extends StatefulWidget {
-  const QuizSetupScreen({super.key});
+  final bool screenshotMode;
+
+  const QuizSetupScreen({super.key, this.screenshotMode = false});
 
   @override
   State<QuizSetupScreen> createState() => _QuizSetupScreenState();
@@ -20,13 +22,20 @@ class QuizSetupScreen extends StatefulWidget {
 
 class _QuizSetupScreenState extends State<QuizSetupScreen> {
   int _selectedMode = 0; // 0 = Echter Test, 1 = Schnelltest
+  bool _hasResetProvider = false;
 
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
-  static const Color _textTertiary = Color(0xFFC7C7CC);
-  static const Color _surface = Color(0xFFF5F5F5);
-  static const Color _success = Color(0xFF34C759);
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_hasResetProvider && !widget.screenshotMode) {
+      context.read<QuizProvider>().reset();
+      _hasResetProvider = true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -191,6 +200,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                 onPressed: () {
                   final learning = context.read<LearningProvider>();
                   final quiz = context.read<QuizProvider>();
+                  quiz.reset();
                   // Echter Test (Modus 0) = mit Bundesland-Fragen,
                   // Schnelltest (Modus 1) = nur allgemeine Fragen.
                   quiz.startQuiz(

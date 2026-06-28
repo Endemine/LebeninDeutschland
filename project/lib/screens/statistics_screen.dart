@@ -295,7 +295,9 @@ class StatisticsScreen extends StatelessWidget {
                           final maxTotal = recentTests.isNotEmpty
                               ? recentTests.first.totalQuestions
                               : 33;
-                          final percent = maxTotal > 0 ? score / maxTotal : 0.0;
+                          final percent = maxTotal > 0
+                              ? (score / maxTotal).clamp(0.0, 1.0)
+                              : 0.0;
                           final passingThreshold = (maxTotal * 0.515).round();
                           return Column(
                             mainAxisAlignment: MainAxisAlignment.end,
