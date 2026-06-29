@@ -572,7 +572,7 @@ platform :ios do
       skip_binary_upload: true,
       skip_metadata: false,
       skip_screenshots: options[:skip_screenshots] || false,
-      overwrite_screenshots: true,
+      overwrite_screenshots: false,
       submit_for_review: true,
       skip_app_version_update: false,
       run_precheck_before_submit: false

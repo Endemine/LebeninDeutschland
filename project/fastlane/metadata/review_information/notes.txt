@@ -1,1 +1,9 @@
-No login is required for this app. It is a quiz and information app.
+No login is required for this app. It is a free quiz and information app.
+
+Business model / paid content response for App Review:
+1. The app is used by everyone who wants to prepare for the German citizenship test. There are no paid user tiers or paid subscriptions in the app.
+2. Users do not purchase anything inside the app, and there are no external purchase flows for content or subscriptions used by the app.
+3. There is no previously purchased digital content or subscription content to restore or unlock. All learning content, quizzes, statistics, and bookmarks are available to all users.
+4. The app does not unlock any paid content, subscriptions, or features without In-App Purchase. There are no In-App Purchases and no subscription-based features.
+
+If you need anything else, we are happy to provide it.
