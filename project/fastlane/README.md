@@ -87,6 +87,22 @@ Build, upload, and submit iOS release in one run.
 
 Upload App Store screenshots only, without touching the binary.
 
+### ios inspect_review_submissions
+
+```sh
+[bundle exec] fastlane ios inspect_review_submissions
+```
+
+Offene reviewSubmissions auflisten - liest nur, aendert nichts.
+
+### ios cancel_review_submission
+
+```sh
+[bundle exec] fastlane ios cancel_review_submission
+```
+
+Haengende reviewSubmission abbrechen, damit eine neue eingereicht werden kann.
+
 ### ios reject_current_review
 
 ```sh
