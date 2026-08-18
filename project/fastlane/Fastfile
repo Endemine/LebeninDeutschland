@@ -617,6 +617,48 @@ platform :ios do
     UI.success("Screenshots updated for #{app_version}.")
   end
 
+  desc("Offene reviewSubmissions auflisten - liest nur, aendert nichts.")
+  lane :inspect_review_submissions do
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App #{IOS_APP_IDENTIFIER} not found") unless app
+
+    submissions = app.get_review_submissions(
+      filter: { platform: Spaceship::ConnectAPI::Platform::IOS },
+      includes: "items,appStoreVersionForReview",
+      limit: 20
+    )
+
+    if submissions.empty?
+      UI.important("REVSUB: keine reviewSubmissions vorhanden")
+      next
+    end
+
+    submissions.each do |sub|
+      version = sub.app_store_version_for_review&.version_string || "n/a"
+      items = (sub.items || []).size
+      UI.message("REVSUB: id=#{sub.id} state=#{sub.state} version=#{version} items=#{items} submitted=#{sub.submitted_date || 'nein'}")
+    end
+  end
+
+  desc("Haengende reviewSubmission abbrechen, damit eine neue eingereicht werden kann.")
+  lane :cancel_review_submission do |options|
+    app_store_connect_api_token
+    submission_id = options[:submission_id]
+    UI.user_error!("submission_id: fehlt") if submission_id.to_s.empty?
+
+    submission = Spaceship::ConnectAPI::ReviewSubmission.get(review_submission_id: submission_id)
+    UI.message("Submission #{submission_id} hat state=#{submission.state}")
+
+    if submission.state == Spaceship::ConnectAPI::ReviewSubmission::ReviewSubmissionState::COMPLETE
+      UI.important("Bereits COMPLETE - nichts abzubrechen.")
+      next
+    end
+
+    submission.cancel_submission
+    UI.success("Submission #{submission_id} abgebrochen.")
+  end
+
   desc("Reject the current App Store review submission for the editable iOS version.")
   lane :reject_current_review do
     api_key = app_store_connect_api_token
