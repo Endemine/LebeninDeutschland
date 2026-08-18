@@ -97,6 +97,35 @@ Reject the current App Store review submission for the editable iOS version.
 
 ----
 
+
+## Android
+
+### android check_signing
+
+```sh
+[bundle exec] fastlane android check_signing
+```
+
+Pruefen, ob der Release-Build signiert werden kann - baut nichts.
+
+### android build_aab
+
+```sh
+[bundle exec] fastlane android build_aab
+```
+
+Signiertes Android App Bundle (AAB) fuer den Play Store bauen.
+
+### android deploy_play
+
+```sh
+[bundle exec] fastlane android deploy_play
+```
+
+AAB bauen und in den Play-Store-Track hochladen.
+
+----
+
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 
 More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).

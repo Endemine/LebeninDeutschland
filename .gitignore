@@ -58,6 +58,9 @@ AuthKey_*.p8
 # Achtung: fastlane liest ausschliesslich project/fastlane/metadata (siehe
 # app_metadata_path im Fastfile). project/metadata ist ein ungenutztes Duplikat
 # und bleibt draussen, damit keine zweite, veraltende Quelle entsteht.
+# Dort liegt auch name.txt -- die Datei darf NICHT nach fastlane/metadata
+# kopiert werden: deliver versucht dann den App-Namen zu setzen, und
+# "Einbuergerungstest" ist im App Store bereits von einer anderen App belegt.
 project/metadata/
 # Enthaelt private Kontaktdaten (Mobilnummer) fuer den App-Review.
 review_information_backup/
