@@ -631,8 +631,10 @@ platform :ios do
 
     submission = version.app_store_version_submission
     unless submission
+      # `return` wirft in einem Lane-Block einen LocalJumpError und verdeckt
+      # damit diese Meldung -- in fastlane ist `next` der Weg raus.
       UI.message("No active appStoreVersionSubmission found for #{version.version_string}; nothing to reject.")
-      return
+      next
     end
 
     if version.can_reject?
