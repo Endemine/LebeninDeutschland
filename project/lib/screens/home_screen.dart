@@ -165,7 +165,7 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       width: 44, height: 44,
                       decoration: BoxDecoration(
-                        color: (hasLastTest && lastTestScore >= 17 ? _success : _primary).withOpacity(0.15),
+                        color: (hasLastTest && lastTestScore >= 17 ? _success : _primary).withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -181,7 +181,7 @@ class HomeScreen extends StatelessWidget {
                           Text('Letzter Test',
                             style: GoogleFonts.roboto(fontSize: 11, color: _textSecondary)),
                           Text(
-                            hasLastTest ? '$lastTestScore / ${lastResult!.totalQuestions} richtig' : 'Noch kein Test',
+                            hasLastTest ? '$lastTestScore / ${lastResult.totalQuestions} richtig' : 'Noch kein Test',
                             style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w700, color: _textPrimary)),
                           Text(
                             !hasLastTest ? 'Starte deinen ersten Test!' : (lastTestScore >= 17 ? 'Bestanden! 🎉' : 'Nicht bestanden'),
@@ -190,7 +190,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Icon(Icons.chevron_right, color: _textSecondary.withOpacity(0.5), size: 20),
+                    Icon(Icons.chevron_right, color: _textSecondary.withValues(alpha: 0.5), size: 20),
                   ],
                 ),
               ),
@@ -211,12 +211,12 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Text('UNSERE APPS', style: GoogleFonts.roboto(fontSize: 10, letterSpacing: 1.5, fontWeight: FontWeight.w700, color: _textSecondary)),
                     const SizedBox(height: 10),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _PromoChip(label: 'endenews.de', tag: 'EN', color: const Color(0xFFFF6B00), url: 'https://endenews.de'),
-                        _PromoChip(label: 'tcgrail.org', tag: 'TCG', color: const Color(0xFF7C3AED), url: 'https://tcgrail.org'),
-                        _PromoChip(label: '@tommygsx', tag: 'IG', color: const Color(0xFFEC4899), url: 'https://instagram.com/tommygsx'),
+                        _PromoChip(label: 'endenews.de', tag: 'EN', color: Color(0xFFFF6B00), url: 'https://endenews.de'),
+                        _PromoChip(label: 'tcgrail.org', tag: 'TCG', color: Color(0xFF7C3AED), url: 'https://tcgrail.org'),
+                        _PromoChip(label: '@tommygsx', tag: 'IG', color: Color(0xFFEC4899), url: 'https://instagram.com/tommygsx'),
                       ],
                     ),
                   ],
@@ -288,7 +288,7 @@ class _ProgressRing extends StatelessWidget {
             child: CircularProgressIndicator(
               value: progress,
               strokeWidth: 7,
-              backgroundColor: const Color(0xFFFF6B00).withOpacity(0.12),
+              backgroundColor: const Color(0xFFFF6B00).withValues(alpha: 0.12),
               valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFFF6B00)),
               strokeCap: StrokeCap.round,
             ),
@@ -320,7 +320,7 @@ class _ActionTile extends StatelessWidget {
     // Primäre Kachel: oranger Hintergrund, weißer Text.
     // Sekundäre Kachel: weißer Hintergrund, dunkler Text.
     final Color titleColor = isPrimary ? Colors.white : const Color(0xFF1A1A1A);
-    final Color subColor = isPrimary ? Colors.white.withOpacity(0.85) : const Color(0xFF6B6B6B);
+    final Color subColor = isPrimary ? Colors.white.withValues(alpha: 0.85) : const Color(0xFF6B6B6B);
 
     return GlassCard(
       onTap: onTap,
@@ -369,7 +369,7 @@ class _PromoChip extends StatelessWidget {
         children: [
           Container(
             width: 38, height: 38,
-            decoration: BoxDecoration(color: color.withOpacity(0.18), borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(color: color.withValues(alpha: 0.18), borderRadius: BorderRadius.circular(10)),
             child: Center(child: Text(tag, style: GoogleFonts.roboto(fontSize: 11, fontWeight: FontWeight.w800, color: color))),
           ),
           const SizedBox(height: 5),

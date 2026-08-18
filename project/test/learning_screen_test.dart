@@ -13,7 +13,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  Future<Widget> buildApp(LearningProvider lp, SettingsProvider sp) async {
+  Widget buildApp(LearningProvider lp, SettingsProvider sp) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<LearningProvider>.value(value: lp),
@@ -23,14 +23,31 @@ void main() {
     );
   }
 
+  /// Lädt Fragen und Einstellungen über echte Async-I/O.
+  ///
+  /// Wichtig: `loadQuestions()` liest `assets/questions.json` via rootBundle und
+  /// `loadSettings()` greift auf SharedPreferences zu. Beides sind echte
+  /// asynchrone Operationen, die in der FakeAsync-Zone von `testWidgets` nie
+  /// abgeschlossen werden — ein direktes `await` blockiert den Test-Isolate
+  /// dauerhaft (auch `--timeout` greift dann nicht mehr). Deshalb `runAsync`.
+  Future<void> loadProviders(
+    WidgetTester tester,
+    LearningProvider lp,
+    SettingsProvider sp,
+  ) async {
+    await tester.runAsync(() async {
+      await lp.loadQuestions();
+      await sp.loadSettings();
+    });
+  }
+
   testWidgets('Kategorie-Chips filtern Fragen', (tester) async {
     final lp = LearningProvider();
     final sp = SettingsProvider();
-    await lp.loadQuestions();
-    await sp.loadSettings();
+    await loadProviders(tester, lp, sp);
     expect(lp.filteredQuestions.length, 460);
 
-    await tester.pumpWidget(await buildApp(lp, sp));
+    await tester.pumpWidget(buildApp(lp, sp));
     await tester.pumpAndSettle();
 
     // Chip "Bundesland" tippen
@@ -52,25 +69,23 @@ void main() {
     expect(lp.filteredQuestions.length, 460);
   });
 
-  testWidgets('Bundesland-Picker (Bottom-Sheet) filtert auf ein Land', (tester) async {
+  testWidgets('Bundesland-Picker (Dropdown) filtert auf ein Land', (tester) async {
     final lp = LearningProvider();
     final sp = SettingsProvider();
-    await lp.loadQuestions();
-    await sp.loadSettings();
+    await loadProviders(tester, lp, sp);
 
-    await tester.pumpWidget(await buildApp(lp, sp));
+    await tester.pumpWidget(buildApp(lp, sp));
     await tester.pumpAndSettle();
 
     // Erst Kategorie Bundesland aktivieren (zeigt die State-Leiste)
     await tester.tap(find.text('Bundesland').first);
     await tester.pumpAndSettle();
 
-    // State-Leiste "Alle Bundesländer" tippen -> Bottom-Sheet öffnet
+    // Dropdown-Trigger "Alle Bundesländer" tippen -> MenuAnchor klappt auf
     await tester.tap(find.text('Alle Bundesländer').first);
     await tester.pumpAndSettle();
 
-    // Bottom-Sheet zeigt Überschrift + Länder
-    expect(find.text('Bundesland wählen'), findsOneWidget);
+    // Das Menü listet die Bundesländer
     expect(find.text('Bayern'), findsWidgets);
 
     // Bayern auswählen
@@ -84,10 +99,9 @@ void main() {
   testWidgets('Sprachleiste schaltet Anzeige-Sprache', (tester) async {
     final lp = LearningProvider();
     final sp = SettingsProvider();
-    await lp.loadQuestions();
-    await sp.loadSettings();
+    await loadProviders(tester, lp, sp);
 
-    await tester.pumpWidget(await buildApp(lp, sp));
+    await tester.pumpWidget(buildApp(lp, sp));
     await tester.pumpAndSettle();
 
     expect(lp.viewLanguage, 'de');

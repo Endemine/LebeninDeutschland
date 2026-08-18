@@ -196,7 +196,7 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
           decoration: BoxDecoration(
             color: _surface,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: _statusColor.withOpacity(0.2), width: 1),
+            border: Border.all(color: _statusColor.withValues(alpha: 0.2), width: 1),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +205,7 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
                 children: [
                   Container(
                     width: 32, height: 32,
-                    decoration: BoxDecoration(color: _statusColor.withOpacity(0.1), borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(color: _statusColor.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8)),
                     child: Center(child: Icon(_statusIcon, color: _statusColor, size: 18)),
                   ),
                   const SizedBox(width: 12),

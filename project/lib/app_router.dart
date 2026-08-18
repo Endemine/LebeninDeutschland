@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'screens/splash_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/quiz_setup_screen.dart';
 import 'screens/quiz_screen.dart';
@@ -61,7 +60,6 @@ class AppRouter {
         );
 
       case '/learning/detail':
-        final args = settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
           builder: (_) => const LearningDetailScreen(),
           settings: settings,
@@ -87,7 +85,7 @@ class AppRouter {
 
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
+          builder: (context) => Scaffold(
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -100,19 +98,19 @@ class AppRouter {
                   const SizedBox(height: 16),
                   Text(
                     'Seite nicht gefunden',
-                    style: Theme.of(_).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'Route: ${settings.name}',
-                    style: Theme.of(_).textTheme.bodyMedium?.copyWith(
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: const Color(0xFF8E8E93),
                         ),
                   ),
                   const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(_).pushReplacementNamed('/');
+                      Navigator.of(context).pushReplacementNamed('/');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFF6B00),

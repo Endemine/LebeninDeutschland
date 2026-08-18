@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../widgets/app_card.dart';
 import '../providers/statistics_provider.dart';
 import '../providers/learning_provider.dart';
-import '../models/quiz_result.dart';
 
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});
@@ -14,7 +13,6 @@ class StatisticsScreen extends StatelessWidget {
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
-  static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
   static const Color _error = Color(0xFFFF3B30);
@@ -344,15 +342,15 @@ class StatisticsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: AppCard(
                     padding: const EdgeInsets.all(16),
-                    backgroundColor: _primary.withOpacity(0.05),
-                    borderColor: _primary.withOpacity(0.15),
+                    backgroundColor: _primary.withValues(alpha: 0.05),
+                    borderColor: _primary.withValues(alpha: 0.15),
                     child: Row(
                       children: [
                         Container(
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: _primary.withOpacity(0.15),
+                            color: _primary.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Icon(
@@ -434,7 +432,7 @@ class _TestHistoryTile extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: passed ? _success.withOpacity(0.1) : _error.withOpacity(0.1),
+                color: passed ? _success.withValues(alpha: 0.1) : _error.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(
@@ -469,7 +467,7 @@ class _TestHistoryTile extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: passed ? _success.withOpacity(0.1) : _error.withOpacity(0.1),
+                color: passed ? _success.withValues(alpha: 0.1) : _error.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(

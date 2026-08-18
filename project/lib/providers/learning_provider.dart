@@ -460,14 +460,9 @@ class LearningProvider extends ChangeNotifier {
     final result = <QuestionCategory, int>{};
 
     for (final category in QuestionCategory.values) {
-      final categoryQuestions = _allQuestions
-          .where((q) => q.category == category)
-          .length;
-      final learnedInCategory = _allQuestions
+      result[category] = _allQuestions
           .where((q) => q.category == category && _learnedIds.contains(q.id))
           .length;
-
-      result[category] = learnedInCategory;
     }
 
     return result;
@@ -581,10 +576,10 @@ class LearningProvider extends ChangeNotifier {
 
   /// Erstellt eine Platzhalter-Frage für den Fall dass keine Fragen geladen sind.
   Question _placeholderQuestion() {
-    return Question(
+    return const Question(
       id: -1,
       text: 'Keine Fragen verfügbar. Bitte laden Sie die Fragen-Daten.',
-      answers: const ['A', 'B', 'C', 'D'],
+      answers: ['A', 'B', 'C', 'D'],
       correctAnswerIndex: 0,
       category: QuestionCategory.allgemein,
     );

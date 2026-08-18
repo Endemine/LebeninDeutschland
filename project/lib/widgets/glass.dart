@@ -30,13 +30,13 @@ class AuroraBackground extends StatelessWidget {
           Positioned(
             top: -120,
             left: -100,
-            child: _glow(Aurora.primary.withOpacity(0.10), 360),
+            child: _glow(Aurora.primary.withValues(alpha: 0.10), 360),
           ),
           // Dezenter violetter Glow oben-rechts
           Positioned(
             top: -60,
             right: -120,
-            child: _glow(Aurora.violet.withOpacity(0.06), 320),
+            child: _glow(Aurora.violet.withValues(alpha: 0.06), 320),
           ),
           child,
         ],
@@ -51,7 +51,7 @@ class AuroraBackground extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: RadialGradient(
-          colors: [color, color.withOpacity(0)],
+          colors: [color, color.withValues(alpha: 0)],
         ),
       ),
     );
@@ -85,12 +85,12 @@ class GlassCard extends StatelessWidget {
         color: tint ?? Colors.white,
         borderRadius: BorderRadius.circular(radius),
         border: Border.all(
-          color: Colors.black.withOpacity(0.05),
+          color: Colors.black.withValues(alpha: 0.05),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// Card-Container im Xiaomi-Stil.
 ///
@@ -32,7 +31,6 @@ class AppCard extends StatelessWidget {
   });
 
   static const Color _surface = Color(0xFFF5F5F5);
-  static const Color _border = Color(0xFFE5E5EA);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,7 @@ class AppCard extends StatelessWidget {
         boxShadow: boxShadow ??
             [
               BoxShadow(
-                color: Colors.black.withOpacity(0.04),
+                color: Colors.black.withValues(alpha: 0.04),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),

@@ -91,10 +91,10 @@ class _TimerWidgetState extends State<TimerWidget>
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
-              color: _timerColor.withOpacity(0.08),
+              color: _timerColor.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                color: _timerColor.withOpacity(0.2),
+                color: _timerColor.withValues(alpha: 0.2),
                 width: 1,
               ),
             ),

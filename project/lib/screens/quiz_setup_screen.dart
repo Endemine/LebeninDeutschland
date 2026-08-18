@@ -162,10 +162,10 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: _primary.withOpacity(0.05),
+                  color: _primary.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: _primary.withOpacity(0.15),
+                    color: _primary.withValues(alpha: 0.15),
                     width: 1,
                   ),
                 ),
@@ -173,7 +173,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                   children: [
                     Icon(
                       Icons.info_outline,
-                      color: _primary.withOpacity(0.7),
+                      color: _primary.withValues(alpha: 0.7),
                       size: 18,
                     ),
                     const SizedBox(width: 10),
@@ -251,7 +251,7 @@ class _ModeCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isSelected ? _primary.withOpacity(0.05) : _surface,
+          color: isSelected ? _primary.withValues(alpha: 0.05) : _surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? _primary : _border,
@@ -268,8 +268,8 @@ class _ModeCard extends StatelessWidget {
                   height: 40,
                   decoration: BoxDecoration(
                     color: isSelected
-                        ? _primary.withOpacity(0.15)
-                        : _primary.withOpacity(0.08),
+                        ? _primary.withValues(alpha: 0.15)
+                        : _primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(

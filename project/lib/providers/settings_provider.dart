@@ -1,7 +1,7 @@
 // =============================================================================
 // SETTINGS PROVIDER
 // =============================================================================
-// Verwaltet alle App-Einstellungen: Bundesland, Dark Mode, Sprache,
+// Verwaltet alle App-Einstellungen: Bundesland, Sprache,
 // Benachrichtigungen und Lern-Einstellungen.
 // =============================================================================
 
@@ -16,7 +16,6 @@ import '../models/app_settings.dart';
 ///
 /// Funktionsumfang:
 /// - Bundesland-Auswahl für bundeslandspezifische Fragen
-/// - Dark Mode / Light Mode Toggle
 /// - Sprachauswahl
 /// - Benachrichtigungs-Einstellungen
 /// - Lern-Einstellungen (tägliches Ziel, Sound, Timer)
@@ -26,7 +25,7 @@ import '../models/app_settings.dart';
 /// ```dart
 /// final settingsProvider = context.read<SettingsProvider>();
 /// await settingsProvider.loadSettings();
-/// settingsProvider.toggleDarkMode();
+/// settingsProvider.setState('Bayern');
 /// ```
 class SettingsProvider extends ChangeNotifier {
   // ===========================================================================
@@ -34,9 +33,6 @@ class SettingsProvider extends ChangeNotifier {
   // ===========================================================================
 
   static const String _kSettingsKey = 'app_settings';
-  static const String _kLearnedIdsKey = 'learned_question_ids';
-  static const String _kBookmarkedIdsKey = 'bookmarked_question_ids';
-  static const String _kQuizHistoryKey = 'quiz_history';
 
   // ===========================================================================
   // INTERNER ZUSTAND
@@ -64,9 +60,6 @@ class SettingsProvider extends ChangeNotifier {
   /// Das ausgewählte Bundesland
   String get selectedState => _settings.selectedState;
 
-  /// Dark Mode aktiviert
-  bool get darkMode => _settings.darkMode;
-
   /// Aktuelle Sprache
   AppLanguage get language => _settings.language;
 
@@ -84,17 +77,6 @@ class SettingsProvider extends ChangeNotifier {
 
   /// Timer-Warnsound
   bool get timerWarningSound => _settings.timerWarningSound;
-
-  /// Locale für die App
-  Locale get locale => Locale(_settings.language.localeCode);
-
-  /// ThemeMode basierend auf Dark Mode Einstellung
-  ThemeMode get themeMode {
-    if (_settings.darkMode) {
-      return ThemeMode.dark;
-    }
-    return ThemeMode.light;
-  }
 
   /// Liste aller verfügbaren Bundesländer
   List<String> get availableStates => GermanStates.all;
@@ -180,25 +162,9 @@ class SettingsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ===========================================================================
-  // DARK MODE
-  // ===========================================================================
-
-  /// Toggelt zwischen Dark Mode und Light Mode.
-  void toggleDarkMode() {
-    _settings = _settings.copyWith(darkMode: !_settings.darkMode);
-    saveSettings();
-    notifyListeners();
-  }
-
-  /// Setzt den Dark Mode explizit.
-  ///
-  /// [enabled] true = Dark Mode, false = Light Mode
-  void setDarkMode(bool enabled) {
-    _settings = _settings.copyWith(darkMode: enabled);
-    saveSettings();
-    notifyListeners();
-  }
+  // Kein Dark Mode: die Screens verwenden hart kodierte Light-Farben statt
+  // Theme.of(context).colorScheme. Solange das so ist, waere ein umschaltbarer
+  // Dark Mode nicht lesbar — siehe Kommentar in main.dart.
 
   // ===========================================================================
   // SPRACHE
@@ -302,23 +268,19 @@ class SettingsProvider extends ChangeNotifier {
   // PROGRESS RESET
   // ===========================================================================
 
-  /// Löscht ALLE App-Daten (Einstellungen, Lernfortschritt, Statistiken).
+  /// Setzt die Einstellungen auf die Standardwerte zurück und persistiert sie.
   ///
   /// Achtung: Diese Aktion kann nicht rückgängig gemacht werden!
-  /// Nach dem Aufruf sind alle Daten unwiderruflich gelöscht.
+  ///
+  /// Lernfortschritt, Bookmarks und Statistiken gehören dem [LearningProvider]
+  /// bzw. dem [StatisticsProvider] — diese müssen ihre eigenen `clear*`-Methoden
+  /// aufrufen. Würden die Schlüssel hier direkt aus den SharedPreferences
+  /// gelöscht, blieben die Daten im Speicher der anderen Provider stehen und die
+  /// App zeigte den alten Stand bis zum Neustart.
   Future<void> resetProgress() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-
-      // Lösche alle relevanten Schlüssel
-      await prefs.remove(_kSettingsKey);
-      await prefs.remove(_kLearnedIdsKey);
-      await prefs.remove(_kBookmarkedIdsKey);
-      await prefs.remove(_kQuizHistoryKey);
-
-      // Zustand zurücksetzen
       _settings = AppSettings.defaults();
-
+      await saveSettings();
       notifyListeners();
     } catch (e) {
       _error = 'Fehler beim Zurücksetzen der Daten: $e';

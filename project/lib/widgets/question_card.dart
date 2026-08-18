@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'app_card.dart';
-
 /// Darstellung einer Frage mit 4 Antwort-Buttons.
 ///
 /// Unterstuetzt Auswahl-Feedback im Quiz-Modus und
@@ -36,13 +34,8 @@ class QuestionCard extends StatelessWidget {
   });
 
   static const Color _primary = Color(0xFFFF6B00);
-  static const Color _success = Color(0xFF34C759);
-  static const Color _error = Color(0xFFFF3B30);
   static const Color _textPrimary = Color(0xFF1A1A1A);
-  static const Color _textSecondary = Color(0xFF8E8E93);
   static const Color _textTertiary = Color(0xFFC7C7CC);
-  static const Color _surface = Color(0xFFF5F5F5);
-  static const Color _border = Color(0xFFE5E5EA);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +59,7 @@ class QuestionCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: _primary.withOpacity(0.1),
+                  color: _primary.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -166,21 +159,21 @@ class _AnswerButton extends StatelessWidget {
 
     if (showResult) {
       if (isCorrect) {
-        backgroundColor = _success.withOpacity(0.1);
+        backgroundColor = _success.withValues(alpha: 0.1);
         borderColor = _success;
         textColor = _success;
         trailing = const Icon(Icons.check_circle, color: _success, size: 22);
       } else if (isWrong) {
-        backgroundColor = _error.withOpacity(0.1);
+        backgroundColor = _error.withValues(alpha: 0.1);
         borderColor = _error;
         textColor = _error;
         trailing = const Icon(Icons.cancel, color: _error, size: 22);
       } else if (isSelected) {
-        backgroundColor = _primary.withOpacity(0.05);
+        backgroundColor = _primary.withValues(alpha: 0.05);
         borderColor = _primary;
       }
     } else if (isSelected) {
-      backgroundColor = _primary.withOpacity(0.08);
+      backgroundColor = _primary.withValues(alpha: 0.08);
       borderColor = _primary;
       textColor = _primary;
       trailing = Container(
@@ -219,7 +212,7 @@ class _AnswerButton extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 color: isSelected || isCorrect || isWrong
-                    ? borderColor.withOpacity(0.15)
+                    ? borderColor.withValues(alpha: 0.15)
                     : _surface,
                 borderRadius: BorderRadius.circular(8),
               ),

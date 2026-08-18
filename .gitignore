@@ -39,6 +39,37 @@ android/.gradle/
 **/build/
 **/.gradle/
 
+# --- Apple Signing: Zertifikate + Private Keys (HÖCHSTE PRIORITÄT) ---
+# Diese Dateien liegen unversioniert in project/ und dürfen NIEMALS in ein
+# public Repo. *.p12 enthält den privaten Schlüssel des Signing-Zertifikats.
+*.p12
+*.cer
+*.certSigningRequest
+*.mobileprovision
+*.provisionprofile
+*.p8
+AuthKey_*.p8
+**/*.p12
+**/*.cer
+**/*.certSigningRequest
+**/*.mobileprovision
+
+# --- Fastlane / Bundler lokale Artefakte ---
+# Achtung: fastlane liest ausschliesslich project/fastlane/metadata (siehe
+# app_metadata_path im Fastfile). project/metadata ist ein ungenutztes Duplikat
+# und bleibt draussen, damit keine zweite, veraltende Quelle entsteht.
+project/metadata/
+# Enthaelt private Kontaktdaten (Mobilnummer) fuer den App-Review.
+review_information_backup/
+**/review_information_backup/
+.bundle/
+vendor/
+**/vendor/bundle/
+**/fastlane/report.xml
+**/fastlane/buildlog/
+**/fastlane/build/
+artifacts/
+
 # --- iOS / macOS ---
 Pods/
 *.xcworkspace/xcuserdata/

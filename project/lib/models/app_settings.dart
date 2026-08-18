@@ -80,7 +80,6 @@ class GermanStates {
 ///
 /// Speichert alle benutzerdefinierbaren Einstellungen der App:
 /// - Ausgewähltes Bundesland für bundeslandspezifische Fragen
-/// - Darstellungsmodus (hell/dunkel)
 /// - Sprache der App-Oberfläche
 /// - Sound-Einstellungen
 /// - Benachrichtigungseinstellungen

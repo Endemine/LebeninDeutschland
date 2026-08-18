@@ -55,14 +55,14 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
   Color _getAnswerBgColor(int index) {
     if (!_showResult) {
       return _selectedAnswer == index
-          ? _primary.withOpacity(0.08)
+          ? _primary.withValues(alpha: 0.08)
           : _surface;
     }
     if (index == _correctAnswer) {
-      return _success.withOpacity(0.1);
+      return _success.withValues(alpha: 0.1);
     }
     if (index == _selectedAnswer && index != _correctAnswer) {
-      return _error.withOpacity(0.1);
+      return _error.withValues(alpha: 0.1);
     }
     return _surface;
   }
@@ -154,7 +154,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: _primary.withOpacity(0.1),
+                        color: _primary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -208,7 +208,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                                   height: 32,
                                   decoration: BoxDecoration(
                                     color: _getAnswerIconColor(index)
-                                            ?.withOpacity(0.15) ??
+                                            ?.withValues(alpha: 0.15) ??
                                         _surface,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -259,13 +259,13 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                       AppCard(
                         padding: const EdgeInsets.all(16),
                         backgroundColor: const Color(0xFFFFF8F0),
-                        borderColor: _primary.withOpacity(0.2),
+                        borderColor: _primary.withValues(alpha: 0.2),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.lightbulb,
                                   color: _primary,
                                   size: 18,
@@ -302,7 +302,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
             // Bottom Navigation Bar
             Container(
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 border: Border(
                   top: BorderSide(color: _surface, width: 1),
@@ -364,7 +364,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
                           color: _learned
-                              ? _success.withOpacity(0.1)
+                              ? _success.withValues(alpha: 0.1)
                               : _surface,
                           borderRadius: BorderRadius.circular(10),
                         ),

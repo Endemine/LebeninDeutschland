@@ -82,8 +82,6 @@ class _ResultSummaryState extends State<ResultSummary>
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -97,8 +95,8 @@ class _ResultSummaryState extends State<ResultSummary>
                 height: 100,
                 decoration: BoxDecoration(
                   color: widget.isPassed
-                      ? _success.withOpacity(0.1)
-                      : _error.withOpacity(0.1),
+                      ? _success.withValues(alpha: 0.1)
+                      : _error.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(

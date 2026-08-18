@@ -22,7 +22,6 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
   static const Color _textSecondary = Color(0xFF8E8E93);
   static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
-  static const Color _success = Color(0xFF34C759);
 
   void _removeBookmark(int questionId) {
     final learningProvider = context.read<LearningProvider>();
@@ -175,7 +174,6 @@ class _BookmarkedQuestionTile extends StatelessWidget {
 
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
-  static const Color _textSecondary = Color(0xFF8E8E93);
   static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
@@ -198,7 +196,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
       background: Container(
         margin: const EdgeInsets.only(bottom: 8),
         decoration: BoxDecoration(
-          color: _error.withOpacity(0.1),
+          color: _error.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         alignment: Alignment.centerRight,
@@ -227,7 +225,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
                 height: 28,
                 margin: const EdgeInsets.only(top: 2),
                 decoration: BoxDecoration(
-                  color: learned ? _success.withOpacity(0.1) : _surface,
+                  color: learned ? _success.withValues(alpha: 0.1) : _surface,
                   borderRadius: BorderRadius.circular(8),
                   border: learned
                       ? null
@@ -259,7 +257,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
-                        color: _primary.withOpacity(0.08),
+                        color: _primary.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -282,7 +280,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
                   height: 36,
                   margin: const EdgeInsets.only(left: 8),
                   decoration: BoxDecoration(
-                    color: _primary.withOpacity(0.1),
+                    color: _primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Icon(

@@ -1,30 +1,28 @@
-// This is a basic Flutter widget test.
+// Smoke-Test: Die App baut ohne Exception auf und zeigt den Ladebildschirm.
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+// Hinweis: Die eigentliche Initialisierung (_AppInitializer) lädt Assets und
+// SharedPreferences über echte Async-I/O. In der FakeAsync-Zone von
+// `testWidgets` werden diese Futures nie abgeschlossen, deshalb testet dieser
+// Smoke-Test bewusst nur den Start bis zum Ladebildschirm. Die Screens dahinter
+// sind in learning_screen_test.dart mit `tester.runAsync` abgedeckt.
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:einbuergerungstest/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('App startet ohne Exception und zeigt den Ladebildschirm',
+      (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await tester.runAsync(SharedPreferences.getInstance);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.pumpWidget(EinbuergerungApp(sharedPreferences: prefs!));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    expect(find.text('Einbuergerungstest'), findsOneWidget);
+    expect(find.text('Deutschland'), findsOneWidget);
   });
 }

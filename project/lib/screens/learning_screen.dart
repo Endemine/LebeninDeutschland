@@ -314,7 +314,7 @@ class _LearningScreenState extends State<LearningScreen> {
   Widget _buildNavigation(BuildContext context, LearningProvider learning, List<Question> filtered) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      decoration: BoxDecoration(color: Colors.white, border: Border(top: BorderSide(color: _surface, width: 1))),
+      decoration: const BoxDecoration(color: Colors.white, border: Border(top: BorderSide(color: _surface, width: 1))),
       child: Row(
         children: [
           Expanded(child: AppButton(label: 'Zurück', isOutlined: true, isSmall: true,
@@ -339,7 +339,7 @@ class _LearningScreenState extends State<LearningScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.search_off, size: 56, color: _textTertiary),
+          const Icon(Icons.search_off, size: 56, color: _textTertiary),
           const SizedBox(height: 16),
           Text('Keine Fragen gefunden', style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
           const SizedBox(height: 4),

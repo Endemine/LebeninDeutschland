@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../app_info.dart';
 import '../widgets/app_card.dart';
+import '../providers/learning_provider.dart';
 import '../providers/settings_provider.dart';
-import '../models/app_settings.dart';
+import '../providers/statistics_provider.dart';
 
 /// Einstellungs-Screen.
 ///
-/// Bietet Optionen fuer Bundesland, Dark Mode, Sprache,
+/// Bietet Optionen fuer Bundesland, Sprache der Fragen,
 /// Datenverwaltung und App-Informationen.
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -22,7 +25,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
   static const Color _textTertiary = Color(0xFFC7C7CC);
-  static const Color _surface = Color(0xFFF5F5F5);
   static const Color _error = Color(0xFFFF3B30);
 
   void _showResetDialog() {
@@ -60,13 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
-              context.read<SettingsProvider>().resetProgress();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Fortschritt wurde zurueckgesetzt'),
-                  backgroundColor: _error,
-                ),
-              );
+              _resetEverything();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: _error,
@@ -85,9 +81,57 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  /// Setzt Einstellungen, Lernfortschritt, Bookmarks und Statistiken zurueck.
+  ///
+  /// Wichtig: Alle drei Provider muessen zurueckgesetzt werden. Wuerden nur die
+  /// SharedPreferences geleert, blieben die geladenen Daten im Speicher stehen
+  /// und die App zeigte den alten Fortschritt bis zum naechsten Neustart.
+  Future<void> _resetEverything() async {
+    final messenger = ScaffoldMessenger.of(context);
+    final learning = context.read<LearningProvider>();
+    final statistics = context.read<StatisticsProvider>();
+    final settings = context.read<SettingsProvider>();
+
+    await learning.clearLearnedProgress();
+    await learning.clearBookmarks();
+    await statistics.clearAll();
+    await settings.resetProgress();
+
+    messenger.showSnackBar(
+      const SnackBar(
+        content: Text('Fortschritt wurde zurueckgesetzt'),
+        backgroundColor: _error,
+      ),
+    );
+  }
+
+  /// Oeffnet eine externe URL im Browser.
+  Future<void> _openUrl(String url) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final uri = Uri.parse(url);
+    final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!opened) {
+      messenger.showSnackBar(
+        SnackBar(content: Text('Konnte $url nicht oeffnen')),
+      );
+    }
+  }
+
+  /// Sprachen, fuer die in `assets/translations.json` Uebersetzungen vorliegen.
+  ///
+  /// Bewusst nur DE/EN/AR: fuer Tuerkisch existieren keine Uebersetzungsdaten.
+  /// Die Auswahl steuert nur die Anzeige der Fragen, nicht die App-Oberflaeche —
+  /// die ist durchgehend deutsch (siehe Kommentar in main.dart).
+  static const Map<String, String> _questionLanguageNames = {
+    'de': 'Deutsch',
+    'en': 'English',
+    'ar': 'العربية',
+  };
+
   @override
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsProvider>();
+    final learning = context.watch<LearningProvider>();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -112,7 +156,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
             // Bundesland
-            _SettingsSectionTitle(title: 'Allgemein'),
+            const _SettingsSectionTitle(title: 'Allgemein'),
             _SettingsDropdownCard(
               icon: Icons.location_on,
               iconColor: _primary,
@@ -129,30 +173,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             const SizedBox(height: 8),
 
-            // Sprache
-            _SettingsSectionTitle(title: 'Sprache'),
+            // Sprache der Fragen
+            const _SettingsSectionTitle(title: 'Sprache'),
             _SettingsDropdownCard(
-              icon: Icons.language,
+              icon: Icons.translate,
               iconColor: _primary,
-              title: 'Sprache',
-              subtitle: settings.language.displayName,
-              value: settings.language.displayName,
-              items: settings.availableLanguages.map((l) => l.displayName).toList(),
+              title: 'Sprache der Fragen',
+              subtitle: _questionLanguageNames[learning.viewLanguage] ??
+                  _questionLanguageNames['de']!,
+              value: _questionLanguageNames[learning.viewLanguage] ??
+                  _questionLanguageNames['de']!,
+              items: _questionLanguageNames.values.toList(),
               onChanged: (value) {
-                if (value != null) {
-                  final selectedLang = settings.availableLanguages.firstWhere(
-                    (l) => l.displayName == value,
-                    orElse: () => AppLanguage.de,
-                  );
-                  settings.setLanguageEnum(selectedLang);
-                }
+                if (value == null) return;
+                final code = _questionLanguageNames.entries
+                    .firstWhere((e) => e.value == value,
+                        orElse: () => const MapEntry('de', 'Deutsch'))
+                    .key;
+                learning.setViewLanguage(code);
               },
             ),
 
             const SizedBox(height: 8),
 
             // Daten
-            _SettingsSectionTitle(title: 'Daten'),
+            const _SettingsSectionTitle(title: 'Daten'),
             _SettingsActionCard(
               icon: Icons.delete_forever,
               iconColor: _error,
@@ -165,7 +210,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 8),
 
             // Info
-            _SettingsSectionTitle(title: 'Info'),
+            const _SettingsSectionTitle(title: 'Info'),
             _SettingsActionCard(
               icon: Icons.info,
               iconColor: _primary,
@@ -178,25 +223,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
               iconColor: _primary,
               title: 'Datenschutz',
               subtitle: 'Datenschutzerklaerung',
-              onTap: () {
-                // TODO: Datenschutz oeffnen
-              },
+              onTap: () => _openUrl(kPrivacyUrl),
             ),
             _SettingsActionCard(
               icon: Icons.description,
               iconColor: _primary,
               title: 'Impressum',
               subtitle: 'Rechtliche Hinweise',
-              onTap: () {
-                // TODO: Impressum oeffnen
-              },
+              onTap: () => _openUrl(kImprintUrl),
             ),
 
             // App-Version
             const SizedBox(height: 24),
             Center(
               child: Text(
-                'Einbuergerungstest Pro v1.0.0',
+                'Einbuergerungstest Pro v$kAppVersion',
                 style: GoogleFonts.roboto(
                   fontSize: 13,
                   color: _textTertiary,
@@ -230,7 +271,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               width: 72,
               height: 72,
               decoration: BoxDecoration(
-                color: _primary.withOpacity(0.1),
+                color: _primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Center(
@@ -251,7 +292,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 4),
             Text(
-              'Version 1.0.0',
+              'Version $kAppVersion',
               style: GoogleFonts.roboto(
                 fontSize: 14,
                 color: _textSecondary,
@@ -322,7 +363,6 @@ class _SettingsDropdownCard extends StatelessWidget {
   final List<String> items;
   final ValueChanged<String?> onChanged;
 
-  static const Color _surface = Color(0xFFF5F5F5);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
 
@@ -375,7 +415,7 @@ class _SettingsDropdownCard extends StatelessWidget {
               width: 36,
               height: 36,
               decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.1),
+                color: iconColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon, color: iconColor, size: 20),
@@ -411,79 +451,6 @@ class _SettingsDropdownCard extends StatelessWidget {
   }
 }
 
-/// Einstellungs-Karte mit Toggle.
-class _SettingsToggleCard extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String title;
-  final String subtitle;
-  final bool value;
-  final ValueChanged<bool> onChanged;
-
-  static const Color _surface = Color(0xFFF5F5F5);
-  static const Color _textPrimary = Color(0xFF1A1A1A);
-  static const Color _textSecondary = Color(0xFF8E8E93);
-  static const Color _primary = Color(0xFFFF6B00);
-
-  const _SettingsToggleCard({
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.subtitle,
-    required this.value,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AppCard(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: iconColor, size: 20),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.roboto(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: _textPrimary,
-                  ),
-                ),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.roboto(
-                    fontSize: 13,
-                    color: _textSecondary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Switch.adaptive(
-            value: value,
-            onChanged: onChanged,
-            activeColor: _primary,
-            activeTrackColor: _primary.withOpacity(0.3),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 /// Einstellungs-Karte mit Tap-Action.
 class _SettingsActionCard extends StatelessWidget {
   final IconData icon;
@@ -493,7 +460,6 @@ class _SettingsActionCard extends StatelessWidget {
   final VoidCallback onTap;
   final bool isDestructive;
 
-  static const Color _surface = Color(0xFFF5F5F5);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textSecondary = Color(0xFF8E8E93);
   static const Color _error = Color(0xFFFF3B30);
@@ -518,7 +484,7 @@ class _SettingsActionCard extends StatelessWidget {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
+              color: iconColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(icon, color: iconColor, size: 20),

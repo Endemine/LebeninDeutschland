@@ -1,1 +1,10 @@
-App version 1.0.1 with improved icon and UI.
+Version 1.0.9
+
+• Fragen auf Deutsch, Englisch und Arabisch — direkt im Lernmodus umschaltbar
+• Bundesland-Auswahl als Dropdown, mit Wappen der Bundesländer
+• Sprache der Fragen jetzt auch in den Einstellungen wählbar
+• Datenschutz und Impressum sind aus den Einstellungen erreichbar
+• "Fortschritt zurücksetzen" löscht Lernfortschritt, Lesezeichen und Statistiken jetzt zuverlässig
+• Links öffnen sich wieder korrekt unter aktuellen Android-Versionen
+• Korrekte Anzeige der App-Version
+• Darstellung über die volle Bildschirmhöhe (Edge-to-Edge) und diverse Fehlerbehebungen

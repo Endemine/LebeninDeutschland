@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen>
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: _primary.withOpacity(0.1),
+                  color: _primary.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: const Center(
@@ -97,10 +97,10 @@ class _SplashScreenState extends State<SplashScreen>
               const SizedBox(height: 48),
               // Lade-Animation mit Shimmer
               Shimmer.fromColors(
-                baseColor: _primary.withOpacity(0.3),
+                baseColor: _primary.withValues(alpha: 0.3),
                 highlightColor: _primary,
                 period: const Duration(milliseconds: 1500),
-                child: SizedBox(
+                child: const SizedBox(
                   width: 40,
                   height: 40,
                   child: CircularProgressIndicator(

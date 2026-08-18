@@ -5,7 +5,6 @@
 // Enthält alle Fragen, gegebene Antworten, aktuellen Index und Zeit.
 // =============================================================================
 
-import 'dart:convert';
 
 import 'question.dart';
 
@@ -183,6 +182,6 @@ class QuizState {
     return 'QuizState(questions: ${questions.length}, '
         'currentIndex: $currentQuestionIndex, '
         'answered: $answeredCount/${questions.length}, '
-        'time: ${formattedTime}, finished: $isFinished)';
+        'time: $formattedTime, finished: $isFinished)';
   }
 }

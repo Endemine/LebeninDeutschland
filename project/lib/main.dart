@@ -9,7 +9,6 @@ import 'providers/quiz_provider.dart';
 import 'providers/learning_provider.dart';
 import 'providers/statistics_provider.dart';
 import 'providers/settings_provider.dart';
-import 'models/quiz_result.dart';
 import 'screens/home_screen.dart';
 import 'screens/quiz_screen.dart';
 import 'screens/quiz_result_screen.dart';
@@ -78,14 +77,61 @@ class _AppInitializerState extends State<_AppInitializer> {
   }
 
   Future<void> _initializeApp() async {
+    final settings = context.read<SettingsProvider>();
+    final learning = context.read<LearningProvider>();
+    final statistics = context.read<StatisticsProvider>();
     try {
-      await context.read<SettingsProvider>().loadSettings();
-      await context.read<LearningProvider>().loadQuestions();
-      await context.read<StatisticsProvider>().loadStatistics();
+      await settings.loadSettings();
+      await learning.loadQuestions();
+      await statistics.loadStatistics();
       if (mounted) setState(() => _isReady = true);
     } catch (e) {
       if (mounted) setState(() { _error = e.toString(); _isReady = true; });
     }
+  }
+
+  /// Fehlerbildschirm, falls die Initialisierung fehlschlaegt.
+  ///
+  /// Ohne diesen Screen startet die App bei einem Ladefehler in einen leeren
+  /// Zustand, ohne dem Nutzer zu sagen was passiert ist.
+  Widget _buildErrorApp(String message) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: AppTheme.backgroundLight,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 48, color: Color(0xFFFF3B30)),
+                const SizedBox(height: 16),
+                const Text(
+                  'Die App konnte nicht geladen werden',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 13, color: Color(0xFF8E8E93)),
+                ),
+                const SizedBox(height: 24),
+                FilledButton(
+                  onPressed: () {
+                    setState(() { _error = null; _isReady = false; });
+                    _initializeApp();
+                  },
+                  child: const Text('Erneut versuchen'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -102,7 +148,7 @@ class _AppInitializerState extends State<_AppInitializer> {
                 Container(
                   width: 80, height: 80,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFF6B00).withOpacity(0.1),
+                    color: const Color(0xFFFF6B00).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Icon(Icons.school_outlined, size: 48, color: Color(0xFFFF6B00)),
@@ -123,24 +169,33 @@ class _AppInitializerState extends State<_AppInitializer> {
       );
     }
 
-    return Consumer<SettingsProvider>(
-      builder: (context, settings, _) => MaterialApp(
-        title: 'Einbuergerungstest Pro',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.light,
-        locale: settings.locale,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        supportedLocales: const [Locale('de'), Locale('en'), Locale('tr'), Locale('ar')],
-        home: _screenshotScene.isEmpty
-            ? const _AppShell()
-            : ScreenshotSceneHost(scene: _screenshotScene),
-      ),
+    final error = _error;
+    if (error != null) return _buildErrorApp(error);
+
+    // Die Oberflaeche ist durchgehend deutsch (keine AppLocalizations), deshalb
+    // ist die Locale fest auf 'de' gesetzt. Wuerde hier eine RTL-Locale wie 'ar'
+    // durchgereicht, spiegelte Flutter das gesamte Layout, waehrend die Texte
+    // deutsch blieben. Die Uebersetzungen der Fragen (DE/EN/AR) laufen ueber
+    // LearningProvider.viewLanguage, nicht ueber die App-Locale.
+    //
+    // themeMode ist bewusst fest auf light: die Screens verwenden hart kodierte
+    // Light-Farben statt Theme.of(context).colorScheme, ein Umschalten auf
+    // AppTheme.darkTheme ergaebe eine unlesbare UI.
+    return MaterialApp(
+      title: 'Einbuergerungstest Pro',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      themeMode: ThemeMode.light,
+      locale: const Locale('de'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('de')],
+      home: _screenshotScene.isEmpty
+          ? const _AppShell()
+          : const ScreenshotSceneHost(scene: _screenshotScene),
     );
   }
 }
