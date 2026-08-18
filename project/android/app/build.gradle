@@ -7,8 +7,17 @@ plugins {
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
 }
+
+// Nur wenn alle vier Werte gesetzt sind UND der Keystore existiert, laesst sich
+// ein Release signieren. Sonst faellt der Build unten auf die Debug-Signatur
+// zurueck, statt in :app:signReleaseBundle mit einer nackten
+// NullPointerException abzubrechen, die die Ursache nicht erkennen laesst.
+def releaseSigningReady = ['storeFile', 'storePassword', 'keyAlias', 'keyPassword'].every {
+    def value = keystoreProperties[it]
+    value != null && !value.toString().trim().isEmpty() && !value.toString().startsWith('PLATZHALTER')
+} && file(keystoreProperties['storeFile'] ?: '/nonexistent').exists()
 
 android {
     namespace = "de.lebenindeutschland.einbuergerungstest"
@@ -28,22 +37,33 @@ android {
         applicationId = "de.lebenindeutschland.einbuergerungstest"
         minSdkVersion = flutter.minSdkVersion
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0"
+        // Aus pubspec.yaml (version: x.y.z+build) statt fest verdrahtet -- sonst
+        // traegt jeder Android-Build unabhaengig von der pubspec-Version 1.0.0 (1).
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
     }
 
     signingConfigs {
-        release {
-            keyAlias = keystoreProperties['keyAlias']
-            keyPassword = keystoreProperties['keyPassword']
-            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword = keystoreProperties['storePassword']
+        if (releaseSigningReady) {
+            release {
+                keyAlias = keystoreProperties['keyAlias']
+                keyPassword = keystoreProperties['keyPassword']
+                storeFile = file(keystoreProperties['storeFile'])
+                storePassword = keystoreProperties['storePassword']
+            }
         }
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.release
+            if (releaseSigningReady) {
+                signingConfig = signingConfigs.release
+            } else {
+                logger.warn("WARNUNG: android/key.properties fehlt oder ist unvollstaendig. " +
+                        "Der Release-Build wird mit dem Debug-Schluessel signiert und ist " +
+                        "NICHT zur Veroeffentlichung geeignet.")
+                signingConfig = signingConfigs.debug
+            }
             minifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile('proguard-android-optimize.txt'),
