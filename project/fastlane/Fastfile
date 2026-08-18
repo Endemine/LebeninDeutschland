@@ -644,3 +644,90 @@ platform :ios do
     end
   end
 end
+
+platform :android do
+  ANDROID_PROJECT_ROOT = File.expand_path("..", __dir__)
+
+  # Bricht mit einer verstaendlichen Meldung ab, wenn die Signing-Konfiguration
+  # fehlt oder noch auf den Platzhaltern steht. Ohne diese Pruefung scheitert
+  # Gradle erst spaet in :app:signReleaseBundle mit einer nackten
+  # NullPointerException, die nichts ueber die Ursache verraet.
+  def verify_android_signing
+    properties_path = File.join(ANDROID_PROJECT_ROOT, "android", "key.properties")
+    unless File.exist?(properties_path)
+      UI.user_error!("#{properties_path} fehlt. Ohne diese Datei ist signingConfigs.release leer.")
+    end
+
+    properties = {}
+    File.readlines(properties_path).each do |line|
+      next if line.strip.empty? || line.strip.start_with?("#")
+      key, value = line.split("=", 2)
+      properties[key.to_s.strip] = value.to_s.strip
+    end
+
+    missing = %w[storeFile storePassword keyAlias keyPassword].reject do |key|
+      !properties[key].to_s.empty?
+    end
+    UI.user_error!("In key.properties fehlen: #{missing.join(', ')}") unless missing.empty?
+
+    placeholders = properties.select { |_, value| value.start_with?("PLATZHALTER") }.keys
+    unless placeholders.empty?
+      UI.user_error!(
+        "In key.properties stehen noch Platzhalter: #{placeholders.join(', ')}. " \
+        "Alias ermitteln mit: keytool -list -v -keystore #{properties['storeFile']}"
+      )
+    end
+
+    keystore = properties["storeFile"]
+    UI.user_error!("Keystore nicht gefunden: #{keystore}") unless File.exist?(keystore)
+
+    UI.success("Signing-Konfiguration vollstaendig (Keystore: #{File.basename(keystore)})")
+    properties
+  end
+
+  desc("Pruefen, ob der Release-Build signiert werden kann - baut nichts.")
+  lane :check_signing do
+    verify_android_signing
+  end
+
+  desc("Signiertes Android App Bundle (AAB) fuer den Play Store bauen.")
+  lane :build_aab do
+    verify_android_signing
+
+    sh("cd \"#{ANDROID_PROJECT_ROOT}\" && flutter pub get")
+    sh("cd \"#{ANDROID_PROJECT_ROOT}\" && flutter build appbundle --release")
+
+    aab = File.join(ANDROID_PROJECT_ROOT, "build", "app", "outputs", "bundle", "release", "app-release.aab")
+    UI.user_error!("AAB nicht gefunden unter #{aab}") unless File.exist?(aab)
+
+    UI.success("AAB gebaut: #{aab} (#{(File.size(aab) / 1024.0 / 1024.0).round(1)} MB)")
+    aab
+  end
+
+  desc("AAB bauen und in den Play-Store-Track hochladen.")
+  lane :deploy_play do |options|
+    json_key = ENV["PLAY_STORE_JSON_KEY"]
+    if json_key.to_s.empty? || !File.exist?(json_key.to_s)
+      UI.user_error!(
+        "Fuer den Play-Upload fehlt der Service-Account-Schluessel. " \
+        "In der Google Play Console unter Setup > API-Zugriff erzeugen und " \
+        "PLAY_STORE_JSON_KEY auf den Pfad der JSON-Datei setzen."
+      )
+    end
+
+    aab = build_aab
+
+    upload_to_play_store(
+      package_name: "de.lebenindeutschland.einbuergerungstest",
+      json_key: json_key,
+      aab: aab,
+      track: options[:track] || "internal",
+      release_status: options[:release_status] || "draft",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+
+    UI.success("AAB in den Track '#{options[:track] || 'internal'}' hochgeladen.")
+  end
+end
