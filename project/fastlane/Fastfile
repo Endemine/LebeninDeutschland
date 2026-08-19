@@ -695,6 +695,7 @@ end
 
 platform :android do
   ANDROID_PROJECT_ROOT = File.expand_path("..", __dir__)
+  ANDROID_PACKAGE_NAME = "de.lebenindeutschland.einbuergerungstest"
 
   # Bricht mit einer verstaendlichen Meldung ab, wenn die Signing-Konfiguration
   # fehlt oder noch auf den Platzhaltern steht. Ohne diese Pruefung scheitert
@@ -736,6 +737,47 @@ platform :android do
   desc("Pruefen, ob der Release-Build signiert werden kann - baut nichts.")
   lane :check_signing do
     verify_android_signing
+  end
+
+  desc("Play-Console-Zustand auslesen: Tracks, Releases, hochgeladene Builds. Aendert nichts.")
+  lane :inspect_play_state do
+    json_key = ENV["PLAY_STORE_JSON_KEY"]
+    if json_key.to_s.empty? || !File.exist?(json_key.to_s)
+      UI.user_error!("PLAY_STORE_JSON_KEY fehlt oder zeigt ins Leere.")
+    end
+
+    require "supply"
+    require "supply/client"
+
+    Supply.config = FastlaneCore::Configuration.create(
+      Supply::Options.available_options,
+      { json_key: json_key, package_name: ANDROID_PACKAGE_NAME, track: "internal" }
+    )
+    client = Supply::Client.make_from_config
+    client.begin_edit(package_name: ANDROID_PACKAGE_NAME)
+
+    begin
+      codes = client.aab_version_codes
+      UI.message("PLAY: hochgeladene AAB-versionCodes = #{codes.to_a.empty? ? 'keine' : codes.to_a.join(', ')}")
+
+      tracks = client.tracks
+      if tracks.empty?
+        UI.important("PLAY: keine Tracks vorhanden")
+      else
+        tracks.each do |track|
+          releases = track.releases || []
+          if releases.empty?
+            UI.message("PLAY: track=#{track.track} -> keine Releases")
+          else
+            releases.each do |rel|
+              UI.message("PLAY: track=#{track.track} status=#{rel.status} name=#{rel.name || 'n/a'} versionCodes=#{(rel.version_codes || []).join(',')}")
+            end
+          end
+        end
+      end
+    ensure
+      client.abort_current_edit
+    end
   end
 
   desc("Signiertes Android App Bundle (AAB) fuer den Play Store bauen.")
