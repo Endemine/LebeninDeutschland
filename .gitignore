@@ -109,3 +109,6 @@ flutter/
 *.bak.json
 *.backup
 *~
+
+# Local Netlify folder
+.netlify

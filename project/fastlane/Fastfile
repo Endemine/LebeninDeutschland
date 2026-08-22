@@ -621,6 +621,22 @@ platform :ios do
     UI.success("Screenshots updated for #{app_version}.")
   end
 
+  desc("App-Namen und Untertitel aus App Store Connect lesen. Aendert nichts.")
+  lane :show_app_name do
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App nicht gefunden") unless app
+    UI.message("ASC-NAME: #{app.name}")
+
+    version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS) ||
+              app.get_latest_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    next unless version
+
+    version.get_app_store_version_localizations.each do |loc|
+      UI.message("ASC-LOC: #{loc.locale} keywords=#{(loc.keywords || '').slice(0, 60)}")
+    end
+  end
+
   desc("Offene reviewSubmissions auflisten - liest nur, aendert nichts.")
   lane :inspect_review_submissions do
     app_store_connect_api_token

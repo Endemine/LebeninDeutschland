@@ -87,6 +87,14 @@ Build, upload, and submit iOS release in one run.
 
 Upload App Store screenshots only, without touching the binary.
 
+### ios show_app_name
+
+```sh
+[bundle exec] fastlane ios show_app_name
+```
+
+App-Namen und Untertitel aus App Store Connect lesen. Aendert nichts.
+
 ### ios inspect_review_submissions
 
 ```sh
@@ -123,6 +131,14 @@ Reject the current App Store review submission for the editable iOS version.
 ```
 
 Pruefen, ob der Release-Build signiert werden kann - baut nichts.
+
+### android inspect_play_state
+
+```sh
+[bundle exec] fastlane android inspect_play_state
+```
+
+Play-Console-Zustand auslesen: Tracks, Releases, hochgeladene Builds. Aendert nichts.
 
 ### android build_aab
 
