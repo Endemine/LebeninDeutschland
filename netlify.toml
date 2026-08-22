@@ -1,0 +1,28 @@
+# Netlify veroeffentlicht ausschliesslich die Rechtstexte aus docs/.
+# Es gibt keinen Build-Schritt -- das sind statische HTML-Dateien.
+[build]
+  publish = "docs"
+  command = ""
+
+# Saubere URLs ohne .html: /datenschutz statt /datenschutz.html
+[[redirects]]
+  from = "/datenschutz"
+  to = "/datenschutz.html"
+  status = 200
+
+[[redirects]]
+  from = "/impressum"
+  to = "/impressum.html"
+  status = 200
+
+# Die App verlinkte historisch auf /privacy -- weiterleiten statt 404.
+[[redirects]]
+  from = "/privacy"
+  to = "/datenschutz.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
