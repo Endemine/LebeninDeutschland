@@ -33,7 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
-          'Fortschritt zuruecksetzen?',
+          'Fortschritt zurücksetzen?',
           style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w700,
@@ -41,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         content: Text(
-          'Bist du sicher, dass du deinen gesamten Lernfortschritt und alle Statistiken zuruecksetzen moechtest? Diese Aktion kann nicht rueckgaengig gemacht werden.',
+          'Bist du sicher, dass du deinen gesamten Lernfortschritt und alle Statistiken zurücksetzen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.',
           style: roboto(
             fontSize: 15,
             color: _textSecondary,
@@ -72,7 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
             child: Text(
-              'Zuruecksetzen',
+              'Zurücksetzen',
               style: roboto(fontWeight: FontWeight.w600),
             ),
           ),
@@ -99,7 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     messenger.showSnackBar(
       const SnackBar(
-        content: Text('Fortschritt wurde zurueckgesetzt'),
+        content: Text('Fortschritt wurde zurückgesetzt'),
         backgroundColor: _error,
       ),
     );
@@ -112,7 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
     if (!opened) {
       messenger.showSnackBar(
-        SnackBar(content: Text('Konnte $url nicht oeffnen')),
+        SnackBar(content: Text('Konnte $url nicht öffnen')),
       );
     }
   }
@@ -201,8 +201,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _SettingsActionCard(
               icon: Icons.delete_forever,
               iconColor: _error,
-              title: 'Fortschritt zuruecksetzen',
-              subtitle: 'Alle Lernfortschritte loeschen',
+              title: 'Fortschritt zurücksetzen',
+              subtitle: 'Alle Lernfortschritte löschen',
               onTap: _showResetDialog,
               isDestructive: true,
             ),
@@ -214,7 +214,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _SettingsActionCard(
               icon: Icons.info,
               iconColor: _primary,
-              title: 'Ueber die App',
+              title: 'Über die App',
               subtitle: 'Version und Credits',
               onTap: () => _showAboutDialog(),
             ),
@@ -222,7 +222,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Icons.privacy_tip,
               iconColor: _primary,
               title: 'Datenschutz',
-              subtitle: 'Datenschutzerklaerung',
+              subtitle: 'Datenschutzerklärung',
               onTap: () => _openUrl(kPrivacyUrl),
             ),
             _SettingsActionCard(
@@ -237,7 +237,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 24),
             Center(
               child: Text(
-                'Einbuergerungstest Pro v$kAppVersion',
+                'Einbürgerungstest Pro v$kAppVersion',
                 style: roboto(
                   fontSize: 13,
                   color: _textTertiary,
@@ -257,7 +257,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
-          'Ueber die App',
+          'Über die App',
           style: roboto(
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -283,7 +283,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Einbuergerungstest Pro',
+              'Einbürgerungstest Pro',
               style: roboto(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -300,7 +300,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              'Diese App hilft dir bei der Vorbereitung auf den Einbuergerungstest in Deutschland. '
+              'Diese App hilft dir bei der Vorbereitung auf den Einbürgerungstest in Deutschland. '
               'Alle Fragen basieren auf dem offiziellen Fragenkatalog des BAMF.',
               textAlign: TextAlign.center,
               style: roboto(
@@ -315,7 +315,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Schliessen',
+              'Schließen',
               style: roboto(
                 color: _primary,
                 fontWeight: FontWeight.w600,

@@ -22,7 +22,7 @@ void main() {
     await tester.pump();
 
     expect(tester.takeException(), isNull);
-    expect(find.text('Einbuergerungstest'), findsOneWidget);
+    expect(find.text('Einbürgerungstest'), findsOneWidget);
     expect(find.text('Deutschland'), findsOneWidget);
   });
 }

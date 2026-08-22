@@ -76,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen>
               const SizedBox(height: 24),
               // App-Name
               Text(
-                'Einbuergerungstest Pro',
+                'Einbürgerungstest Pro',
                 style: roboto(
                   fontSize: 26,
                   fontWeight: FontWeight.w800,

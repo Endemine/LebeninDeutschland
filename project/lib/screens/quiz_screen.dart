@@ -129,7 +129,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     children: [
                       Expanded(
                         child: AppButton(
-                          label: 'Zurueck',
+                          label: 'Zurück',
                           isOutlined: true,
                           isSmall: true,
                           onPressed: provider.currentIndex > 0
@@ -382,7 +382,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
         content: Text(
-          '$unanswered Fragen noch nicht beantwortet. Bist du sicher, dass du den Test beenden moechtest?',
+          '$unanswered Fragen noch nicht beantwortet. Bist du sicher, dass du den Test beenden möchtest?',
           style: roboto(
             fontSize: 15,
             color: _textSecondary,

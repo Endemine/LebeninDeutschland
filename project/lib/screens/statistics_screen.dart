@@ -174,7 +174,7 @@ class StatisticsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   child: Text(
-                    'Noch keine Tests durchgefuehrt.',
+                    'Noch keine Tests durchgeführt.',
                     style: roboto(
                       fontSize: 14,
                       color: _textSecondary,
@@ -374,7 +374,7 @@ class StatisticsScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 2),
                               Text(
-                                'Du solltest mehr ueben: $weakestCategory',
+                                'Du solltest mehr üben: $weakestCategory',
                                 style: roboto(
                                   fontSize: 13,
                                   color: _textSecondary,

@@ -23,6 +23,25 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
   static const Color _textTertiary = Color(0xFFC7C7CC);
   static const Color _surface = Color(0xFFF5F5F5);
 
+  /// Oeffnet die gemerkte Frage im Lernmodus.
+  ///
+  /// Frueher zeigte der Tap auf die Route '/learning/detail'. Die kennt der
+  /// Navigator in main.dart aber nicht, sodass der Nutzer kommentarlos auf der
+  /// Startseite landete. Der zugehoerige LearningDetailScreen enthielt zudem
+  /// nur fest verdrahtete Demo-Daten und haette ohnehin nicht die gemerkte
+  /// Frage angezeigt.
+  void _openInLearningMode(int questionId) {
+    final learning = context.read<LearningProvider>();
+    // Filter loeschen, damit die Frage in der gefilterten Liste sicher vorkommt.
+    learning.clearAllFilters();
+    final index =
+        learning.filteredQuestions.indexWhere((q) => q.id == questionId);
+    if (index >= 0) {
+      learning.goToQuestion(index);
+    }
+    Navigator.pushNamed(context, '/learning');
+  }
+
   void _removeBookmark(int questionId) {
     final learningProvider = context.read<LearningProvider>();
     learningProvider.toggleBookmark(questionId);
@@ -87,13 +106,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                     question: q.text,
                     category: q.category.displayName,
                     learned: learned,
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/learning/detail',
-                        arguments: {'questionId': q.id},
-                      );
-                    },
+                    onTap: () => _openInLearningMode(q.id),
                     onRemove: () => _removeBookmark(q.id),
                   );
                 },

@@ -154,7 +154,7 @@ class _AppInitializerState extends State<_AppInitializer> {
                   child: const Icon(Icons.school_outlined, size: 48, color: Color(0xFFFF6B00)),
                 ),
                 const SizedBox(height: 24),
-                const Text('Einbuergerungstest', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700)),
+                const Text('Einbürgerungstest', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 8),
                 const Text('Deutschland', style: TextStyle(fontSize: 16, color: Color(0xFF8E8E93))),
                 const SizedBox(height: 32),
@@ -182,7 +182,7 @@ class _AppInitializerState extends State<_AppInitializer> {
     // Light-Farben statt Theme.of(context).colorScheme, ein Umschalten auf
     // AppTheme.darkTheme ergaebe eine unlesbare UI.
     return MaterialApp(
-      title: 'Einbuergerungstest Pro',
+      title: 'Einbürgerungstest Pro',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,

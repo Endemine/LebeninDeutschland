@@ -119,8 +119,8 @@ class _ResultSummaryState extends State<ResultSummary>
             const SizedBox(height: 8),
             Text(
               widget.isPassed
-                  ? 'Herzlichen Glueckwunsch!'
-                  : 'Nicht aufgeben, ueben macht den Meister!',
+                  ? 'Herzlichen Glückwunsch!'
+                  : 'Nicht aufgeben, üben macht den Meister!',
               textAlign: TextAlign.center,
               style: roboto(
                 fontSize: 15,
@@ -204,7 +204,7 @@ class _ResultSummaryState extends State<ResultSummary>
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Benotigt: 17 / ${widget.totalQuestions} zum Bestehen',
+                    'Benötigt: 17 / ${widget.totalQuestions} zum Bestehen',
                     style: roboto(
                       fontSize: 12,
                       color: _textSecondary,

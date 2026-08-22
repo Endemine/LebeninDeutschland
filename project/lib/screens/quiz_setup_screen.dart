@@ -68,7 +68,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
             children: [
               // Modus-Auswahl
               Text(
-                'Waehle deinen Modus',
+                'Wähle deinen Modus',
                 style: roboto(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
@@ -77,7 +77,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
               ),
               const SizedBox(height: 4),
               Text(
-                'Wie moechtest du heute ueben?',
+                'Wie möchtest du heute üben?',
                 style: roboto(
                   fontSize: 14,
                   color: _textSecondary,
@@ -91,7 +91,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                 subtitle: '33 Fragen in 60 Minuten',
                 icon: Icons.fact_check,
                 details: const [
-                  'Wie im echten Einbuergerungstest',
+                  'Wie im echten Einbürgerungstest',
                   '30 allgemeine Fragen + 3 Bundesland-Fragen',
                   '60 Minuten Zeit',
                 ],
@@ -106,8 +106,8 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                 subtitle: '10 Fragen in 15 Minuten',
                 icon: Icons.bolt,
                 details: const [
-                  'Schnelle Uebung zwischendurch',
-                  'Zufaellige Fragen aus allen Kategorien',
+                  'Schnelle Übung zwischendurch',
+                  'Zufällige Fragen aus allen Kategorien',
                   '15 Minuten Zeit',
                 ],
                 isSelected: _selectedMode == 1,
@@ -179,7 +179,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        'Im echten Test benoetigst du 17 von 33 richtige Antworten.',
+                        'Im echten Test benötigst du 17 von 33 richtige Antworten.',
                         style: roboto(
                           fontSize: 13,
                           color: _textSecondary,
