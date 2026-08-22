@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/learning_provider.dart';
@@ -50,7 +50,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
         ),
         title: Text(
           'Gemerkte Fragen',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -64,7 +64,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
               child: Center(
                 child: Text(
                   '${bookmarkedQuestions.length}',
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                     color: _primary,
@@ -123,7 +123,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
           const SizedBox(height: 20),
           Text(
             'Noch keine Fragen gemerkt',
-            style: GoogleFonts.roboto(
+            style: roboto(
               fontSize: 18,
               fontWeight: FontWeight.w700,
               color: _textPrimary,
@@ -135,7 +135,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
             child: Text(
               'Tippe auf das Lesezeichen-Icon beim Lernen, um Fragen hier zu speichern.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 14,
                 color: _textSecondary,
                 height: 1.5,
@@ -243,7 +243,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
                   children: [
                     Text(
                       question,
-                      style: GoogleFonts.roboto(
+                      style: roboto(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: _textPrimary,
@@ -262,7 +262,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
                       ),
                       child: Text(
                         category,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                           color: _primary,

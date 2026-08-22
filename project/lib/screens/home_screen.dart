@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../providers/learning_provider.dart';
@@ -53,12 +53,12 @@ class HomeScreen extends StatelessWidget {
                       GradientText(
                         'Einbürgerungstest',
                         gradient: _brandGradient,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.5,
                         ),
                       ),
                       Text('Leben in Deutschland',
-                        style: GoogleFonts.roboto(fontSize: 12, color: _textSecondary)),
+                        style: roboto(fontSize: 12, color: _textSecondary)),
                     ],
                   ),
                   GlassCard(
@@ -84,13 +84,13 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Lernfortschritt',
-                            style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
+                            style: roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
                           const SizedBox(height: 4),
                           Text('$learnedCount von $totalQuestions Fragen',
-                            style: GoogleFonts.roboto(fontSize: 13, color: _textSecondary)),
+                            style: roboto(fontSize: 13, color: _textSecondary)),
                           const SizedBox(height: 4),
                           Text('Noch $remaining bis zum Ziel',
-                            style: GoogleFonts.roboto(fontSize: 12, color: _primary, fontWeight: FontWeight.w600)),
+                            style: roboto(fontSize: 12, color: _primary, fontWeight: FontWeight.w600)),
                         ],
                       ),
                     ),
@@ -118,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Dein Bundesland',
-                            style: GoogleFonts.roboto(fontSize: 11, color: _textSecondary)),
+                            style: roboto(fontSize: 11, color: _textSecondary)),
                           const SizedBox(height: 4),
                           StateDropdown(
                             options: bundeslaender,
@@ -179,13 +179,13 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Letzter Test',
-                            style: GoogleFonts.roboto(fontSize: 11, color: _textSecondary)),
+                            style: roboto(fontSize: 11, color: _textSecondary)),
                           Text(
                             hasLastTest ? '$lastTestScore / ${lastResult.totalQuestions} richtig' : 'Noch kein Test',
-                            style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w700, color: _textPrimary)),
+                            style: roboto(fontSize: 15, fontWeight: FontWeight.w700, color: _textPrimary)),
                           Text(
                             !hasLastTest ? 'Starte deinen ersten Test!' : (lastTestScore >= 17 ? 'Bestanden! 🎉' : 'Nicht bestanden'),
-                            style: GoogleFonts.roboto(fontSize: 12, fontWeight: FontWeight.w500,
+                            style: roboto(fontSize: 12, fontWeight: FontWeight.w500,
                               color: hasLastTest && lastTestScore >= 17 ? _success : _primary)),
                         ],
                       ),
@@ -200,7 +200,7 @@ class HomeScreen extends StatelessWidget {
               Center(
                 child: GradientText('Du schaffst das! 🇩🇪',
                   gradient: _brandGradient,
-                  style: GoogleFonts.roboto(fontSize: 17, fontWeight: FontWeight.w700)),
+                  style: roboto(fontSize: 17, fontWeight: FontWeight.w700)),
               ),
               const SizedBox(height: 16),
 
@@ -209,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(14),
                 child: Column(
                   children: [
-                    Text('UNSERE APPS', style: GoogleFonts.roboto(fontSize: 10, letterSpacing: 1.5, fontWeight: FontWeight.w700, color: _textSecondary)),
+                    Text('UNSERE APPS', style: roboto(fontSize: 10, letterSpacing: 1.5, fontWeight: FontWeight.w700, color: _textSecondary)),
                     const SizedBox(height: 10),
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -252,12 +252,12 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
                 child: Text('Bundesland wählen',
-                    style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
+                    style: roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
               ),
               for (final s in bundeslaender)
                 ListTile(
                   leading: Icon(selectedBundesland == s ? Icons.check : null, color: _primary, size: 20),
-                  title: Text(s, style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                  title: Text(s, style: roboto(fontSize: 14, color: _textPrimary)),
                   onTap: () {
                     settings.setState(s);
                     Navigator.pop(ctx);
@@ -297,8 +297,8 @@ class _ProgressRing extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text('${(progress * 100).toStringAsFixed(0)}%',
-                style: GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w800, color: const Color(0xFF1A1A1A))),
-              Text('gelernt', style: GoogleFonts.roboto(fontSize: 9, color: const Color(0xFF6B6B6B))),
+                style: roboto(fontSize: 18, fontWeight: FontWeight.w800, color: const Color(0xFF1A1A1A))),
+              Text('gelernt', style: roboto(fontSize: 9, color: const Color(0xFF6B6B6B))),
             ],
           ),
         ],
@@ -342,9 +342,9 @@ class _ActionTile extends StatelessWidget {
             child: Icon(icon, color: Colors.white, size: 22),
           ),
           const Spacer(),
-          Text(title, style: GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w700, color: titleColor)),
+          Text(title, style: roboto(fontSize: 15, fontWeight: FontWeight.w700, color: titleColor)),
           const SizedBox(height: 2),
-          Text(subtitle, style: GoogleFonts.roboto(fontSize: 11, color: subColor)),
+          Text(subtitle, style: roboto(fontSize: 11, color: subColor)),
         ],
       ),
     );
@@ -370,10 +370,10 @@ class _PromoChip extends StatelessWidget {
           Container(
             width: 38, height: 38,
             decoration: BoxDecoration(color: color.withValues(alpha: 0.18), borderRadius: BorderRadius.circular(10)),
-            child: Center(child: Text(tag, style: GoogleFonts.roboto(fontSize: 11, fontWeight: FontWeight.w800, color: color))),
+            child: Center(child: Text(tag, style: roboto(fontSize: 11, fontWeight: FontWeight.w800, color: color))),
           ),
           const SizedBox(height: 5),
-          Text(label, style: GoogleFonts.roboto(fontSize: 11, fontWeight: FontWeight.w600, color: const Color(0xFF6B6B6B))),
+          Text(label, style: roboto(fontSize: 11, fontWeight: FontWeight.w600, color: const Color(0xFF6B6B6B))),
         ],
       ),
     );

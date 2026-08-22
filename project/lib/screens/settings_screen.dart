@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           'Fortschritt zuruecksetzen?',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -42,7 +42,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         content: Text(
           'Bist du sicher, dass du deinen gesamten Lernfortschritt und alle Statistiken zuruecksetzen moechtest? Diese Aktion kann nicht rueckgaengig gemacht werden.',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 15,
             color: _textSecondary,
             height: 1.4,
@@ -53,7 +53,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onPressed: () => Navigator.pop(context),
             child: Text(
               'Abbrechen',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 color: _textSecondary,
                 fontWeight: FontWeight.w600,
               ),
@@ -73,7 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             child: Text(
               'Zuruecksetzen',
-              style: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+              style: roboto(fontWeight: FontWeight.w600),
             ),
           ),
         ],
@@ -143,7 +143,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         title: Text(
           'Einstellungen',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -238,7 +238,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Center(
               child: Text(
                 'Einbuergerungstest Pro v$kAppVersion',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 13,
                   color: _textTertiary,
                 ),
@@ -258,7 +258,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           'Ueber die App',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 20,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -284,7 +284,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 16),
             Text(
               'Einbuergerungstest Pro',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: _textPrimary,
@@ -293,7 +293,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 4),
             Text(
               'Version $kAppVersion',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 14,
                 color: _textSecondary,
               ),
@@ -303,7 +303,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               'Diese App hilft dir bei der Vorbereitung auf den Einbuergerungstest in Deutschland. '
               'Alle Fragen basieren auf dem offiziellen Fragenkatalog des BAMF.',
               textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 14,
                 color: _textSecondary,
                 height: 1.5,
@@ -316,7 +316,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onPressed: () => Navigator.pop(context),
             child: Text(
               'Schliessen',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 color: _primary,
                 fontWeight: FontWeight.w600,
               ),
@@ -342,7 +342,7 @@ class _SettingsSectionTitle extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16, bottom: 8),
       child: Text(
         title,
-        style: GoogleFonts.roboto(
+        style: roboto(
           fontSize: 13,
           fontWeight: FontWeight.w600,
           color: _textSecondary,
@@ -394,12 +394,12 @@ class _SettingsDropdownCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
                   child: Text(title,
-                      style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
+                      style: roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
                 ),
                 for (final item in items)
                   ListTile(
                     leading: Icon(item == value ? Icons.check : null, color: iconColor, size: 20),
-                    title: Text(item, style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                    title: Text(item, style: roboto(fontSize: 14, color: _textPrimary)),
                     onTap: () { onChanged(item); Navigator.pop(ctx); },
                   ),
               ],
@@ -427,7 +427,7 @@ class _SettingsDropdownCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                       color: _textPrimary,
@@ -435,7 +435,7 @@ class _SettingsDropdownCard extends StatelessWidget {
                   ),
                   Text(
                     subtitle,
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 13,
                       color: _textSecondary,
                     ),
@@ -496,7 +496,7 @@ class _SettingsActionCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                     color: isDestructive ? _error : _textPrimary,
@@ -504,7 +504,7 @@ class _SettingsActionCard extends StatelessWidget {
                 ),
                 Text(
                   subtitle,
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 13,
                     color: _textSecondary,
                   ),

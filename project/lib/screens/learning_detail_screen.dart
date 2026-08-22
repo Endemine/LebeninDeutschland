@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 
 import '../widgets/app_card.dart';
 
@@ -109,7 +109,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
         ),
         title: Text(
           'Frage $_currentIndex / $_totalQuestions',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: _textPrimary,
@@ -159,7 +159,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                       ),
                       child: Text(
                         _category,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: _primary,
@@ -170,7 +170,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                     // Fragetext
                     Text(
                       _question,
-                      style: GoogleFonts.roboto(
+                      style: roboto(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: _textPrimary,
@@ -221,7 +221,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                                           )
                                         : Text(
                                             String.fromCharCode(65 + index),
-                                            style: GoogleFonts.roboto(
+                                            style: roboto(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w700,
                                               color: _textSecondary,
@@ -233,7 +233,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                                 Expanded(
                                   child: Text(
                                     _answers[index],
-                                    style: GoogleFonts.roboto(
+                                    style: roboto(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,
                                       color: _showResult &&
@@ -273,7 +273,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                                 const SizedBox(width: 8),
                                 Text(
                                   'Erklaerung',
-                                  style: GoogleFonts.roboto(
+                                  style: roboto(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w700,
                                     color: _primary,
@@ -284,7 +284,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                             const SizedBox(height: 8),
                             Text(
                               _explanation,
-                              style: GoogleFonts.roboto(
+                              style: roboto(
                                 fontSize: 14,
                                 color: _textSecondary,
                                 height: 1.5,
@@ -381,7 +381,7 @@ class _LearningDetailScreenState extends State<LearningDetailScreen> {
                               _learned
                                   ? 'Als gelernt markiert'
                                   : 'Als gelernt markieren',
-                              style: GoogleFonts.roboto(
+                              style: roboto(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600,
                                 color: _learned ? _success : _textSecondary,

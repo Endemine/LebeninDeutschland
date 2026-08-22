@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 
 /// Darstellung einer Frage mit 4 Antwort-Buttons.
 ///
@@ -49,7 +49,7 @@ class QuestionCard extends StatelessWidget {
           children: [
             Text(
               'Frage $questionNumber von $totalQuestions',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
                 color: _textTertiary,
@@ -64,7 +64,7 @@ class QuestionCard extends StatelessWidget {
                 ),
                 child: Text(
                   category!,
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 11,
                     fontWeight: FontWeight.w500,
                     color: _primary,
@@ -77,7 +77,7 @@ class QuestionCard extends StatelessWidget {
         // Fragetext
         Text(
           questionText,
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w600,
             color: _textPrimary,
@@ -219,7 +219,7 @@ class _AnswerButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   String.fromCharCode(65 + index),
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                     color: isSelected || isCorrect || isWrong ? borderColor : _textSecondary,
@@ -237,7 +237,7 @@ class _AnswerButton extends StatelessWidget {
                       fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) => Text(
                         label,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                           color: textColor,
@@ -247,7 +247,7 @@ class _AnswerButton extends StatelessWidget {
                     )
                   : Text(
                       label,
-                      style: GoogleFonts.roboto(
+                      style: roboto(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: textColor,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 
 /// Wiederverwendbarer Primary Button im Xiaomi-Stil.
 ///
@@ -60,7 +60,7 @@ class AppButton extends StatelessWidget {
               ],
               Text(
                 label,
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: fontSize,
                   fontWeight: FontWeight.w600,
                   color: isOutlined ? _primary : _white,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/app_button.dart';
@@ -52,7 +52,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
         ),
         title: Text(
           'Test starten',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -69,7 +69,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
               // Modus-Auswahl
               Text(
                 'Waehle deinen Modus',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
                   color: _textPrimary,
@@ -78,7 +78,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
               const SizedBox(height: 4),
               Text(
                 'Wie moechtest du heute ueben?',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 14,
                   color: _textSecondary,
                 ),
@@ -119,7 +119,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
               // Bundesland-Bestaetigung
               Text(
                 'Dein Bundesland',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: _textPrimary,
@@ -139,7 +139,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                     Expanded(
                       child: Text(
                         selectedBundesland,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                           color: _textPrimary,
@@ -180,7 +180,7 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                     Expanded(
                       child: Text(
                         'Im echten Test benoetigst du 17 von 33 richtige Antworten.',
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 13,
                           color: _textSecondary,
                           height: 1.4,
@@ -285,7 +285,7 @@ class _ModeCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                           color: _textPrimary,
@@ -293,7 +293,7 @@ class _ModeCard extends StatelessWidget {
                       ),
                       Text(
                         subtitle,
-                        style: GoogleFonts.roboto(
+                        style: roboto(
                           fontSize: 13,
                           color: _textSecondary,
                         ),
@@ -343,7 +343,7 @@ class _ModeCard extends StatelessWidget {
                         Expanded(
                           child: Text(
                             detail,
-                            style: GoogleFonts.roboto(
+                            style: roboto(
                               fontSize: 13,
                               color: _textSecondary,
                               height: 1.4,
@@ -402,7 +402,7 @@ class _BundeslandPicker extends StatelessWidget {
       },
       child: Text(
         'Ändern',
-        style: GoogleFonts.roboto(
+        style: roboto(
           fontSize: 13,
           fontWeight: FontWeight.w600,
           color: primary,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:confetti/confetti.dart';
 
 /// Ergebnis-Zusammenfassung nach einem Quiz.
@@ -110,7 +110,7 @@ class _ResultSummaryState extends State<ResultSummary>
             // Status Text
             Text(
               widget.isPassed ? 'Bestanden!' : 'Nicht bestanden',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 28,
                 fontWeight: FontWeight.w800,
                 color: widget.isPassed ? _success : _error,
@@ -122,7 +122,7 @@ class _ResultSummaryState extends State<ResultSummary>
                   ? 'Herzlichen Glueckwunsch!'
                   : 'Nicht aufgeben, ueben macht den Meister!',
               textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 15,
                 color: _textSecondary,
               ),
@@ -144,7 +144,7 @@ class _ResultSummaryState extends State<ResultSummary>
                       children: [
                         TextSpan(
                           text: '${widget.correctAnswers}',
-                          style: GoogleFonts.roboto(
+                          style: roboto(
                             fontSize: 48,
                             fontWeight: FontWeight.w800,
                             color: widget.isPassed ? _success : _error,
@@ -152,7 +152,7 @@ class _ResultSummaryState extends State<ResultSummary>
                         ),
                         TextSpan(
                           text: ' / ${widget.totalQuestions}',
-                          style: GoogleFonts.roboto(
+                          style: roboto(
                             fontSize: 24,
                             fontWeight: FontWeight.w500,
                             color: _textSecondary,
@@ -165,7 +165,7 @@ class _ResultSummaryState extends State<ResultSummary>
                   // Prozent
                   Text(
                     '${(widget.percent * 100).toStringAsFixed(0)}% richtig',
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: _textPrimary,
@@ -181,7 +181,7 @@ class _ResultSummaryState extends State<ResultSummary>
                         const SizedBox(width: 4),
                         Text(
                           _timeText,
-                          style: GoogleFonts.roboto(
+                          style: roboto(
                             fontSize: 14,
                             color: _textSecondary,
                           ),
@@ -205,7 +205,7 @@ class _ResultSummaryState extends State<ResultSummary>
                   const SizedBox(height: 8),
                   Text(
                     'Benotigt: 17 / ${widget.totalQuestions} zum Bestehen',
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 12,
                       color: _textSecondary,
                     ),
@@ -294,7 +294,7 @@ class _DetailItem extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               value,
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: const Color(0xFF1A1A1A),
@@ -302,7 +302,7 @@ class _DetailItem extends StatelessWidget {
             ),
             Text(
               label,
-              style: GoogleFonts.roboto(
+              style: roboto(
                 fontSize: 12,
                 color: const Color(0xFF8E8E93),
               ),

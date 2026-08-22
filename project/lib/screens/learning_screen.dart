@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../models/question.dart';
@@ -45,7 +45,7 @@ class _LearningScreenState extends State<LearningScreen> {
           icon: const Icon(Icons.arrow_back, color: _textPrimary),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('Lernen', style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w700, color: _textPrimary)),
+        title: Text('Lernen', style: roboto(fontSize: 20, fontWeight: FontWeight.w700, color: _textPrimary)),
       ),
       body: SafeArea(
         top: false, // AppBar handled top
@@ -102,7 +102,7 @@ class _LearningScreenState extends State<LearningScreen> {
                 child: Center(
                   child: Text(
                     l['label']!,
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                       color: active ? Colors.white : _primary,
@@ -135,7 +135,7 @@ class _LearningScreenState extends State<LearningScreen> {
             ),
           ),
           const SizedBox(width: 12),
-          Text('$learned / $total', style: GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w600, color: _textSecondary)),
+          Text('$learned / $total', style: roboto(fontSize: 13, fontWeight: FontWeight.w600, color: _textSecondary)),
         ],
       ),
     );
@@ -155,7 +155,7 @@ class _LearningScreenState extends State<LearningScreen> {
               onChanged: (v) => learning.setSearchQuery(v),
               decoration: InputDecoration(
                 hintText: 'Suchen...',
-                hintStyle: GoogleFonts.roboto(fontSize: 13, color: _textSecondary),
+                hintStyle: roboto(fontSize: 13, color: _textSecondary),
                 prefixIcon: const Icon(Icons.search, size: 18, color: _textSecondary),
                 border: InputBorder.none, filled: true, fillColor: _surface,
                 contentPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -210,7 +210,7 @@ class _LearningScreenState extends State<LearningScreen> {
           alignment: Alignment.center,
           child: Text(
             label,
-            style: GoogleFonts.roboto(
+            style: roboto(
               fontSize: 12,
               fontWeight: FontWeight.w700,
               color: active ? Colors.white : _textSecondary,
@@ -241,17 +241,17 @@ class _LearningScreenState extends State<LearningScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
                   child: Text('Bundesland wählen',
-                      style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
+                      style: roboto(fontSize: 16, fontWeight: FontWeight.w700, color: _textPrimary)),
                 ),
                 ListTile(
                   leading: Icon(learning.filterState == null ? Icons.check : null, color: _primary, size: 20),
-                  title: Text('Alle Bundesländer', style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                  title: Text('Alle Bundesländer', style: roboto(fontSize: 14, color: _textPrimary)),
                   onTap: () { learning.setStateFilter(null); Navigator.pop(ctx); },
                 ),
                 for (final s in states)
                   ListTile(
                     leading: Icon(learning.filterState == s ? Icons.check : null, color: _primary, size: 20),
-                    title: Text(s, style: GoogleFonts.roboto(fontSize: 14, color: _textPrimary)),
+                    title: Text(s, style: roboto(fontSize: 14, color: _textPrimary)),
                     onTap: () { learning.setStateFilter(s); Navigator.pop(ctx); },
                   ),
               ],
@@ -275,7 +275,7 @@ class _LearningScreenState extends State<LearningScreen> {
         children: [
           Expanded(
             child: Text('${learning.currentIndex + 1} / ${filtered.length} · ${q.category.displayName}',
-              style: GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w500, color: _textSecondary)),
+              style: roboto(fontSize: 13, fontWeight: FontWeight.w500, color: _textSecondary)),
           ),
           GestureDetector(
             onTap: () => learning.toggleLearned(q.id),
@@ -341,9 +341,9 @@ class _LearningScreenState extends State<LearningScreen> {
         children: [
           const Icon(Icons.search_off, size: 56, color: _textTertiary),
           const SizedBox(height: 16),
-          Text('Keine Fragen gefunden', style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
+          Text('Keine Fragen gefunden', style: roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
           const SizedBox(height: 4),
-          Text('Versuche es mit einer anderen Suche', style: GoogleFonts.roboto(fontSize: 13, color: _textTertiary)),
+          Text('Versuche es mit einer anderen Suche', style: roboto(fontSize: 13, color: _textTertiary)),
           const SizedBox(height: 24),
           AppButton(label: 'Filter zurücksetzen', isOutlined: true, isSmall: true,
             onPressed: () { learning.clearAllFilters(); _searchController.clear(); setState(() {}); }),

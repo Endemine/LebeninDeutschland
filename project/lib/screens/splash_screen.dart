@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 /// Splash-Screen mit App-Logo, Name und Lade-Animation.
@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen>
               // App-Name
               Text(
                 'Einbuergerungstest Pro',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 26,
                   fontWeight: FontWeight.w800,
                   color: const Color(0xFF1A1A1A),
@@ -88,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen>
               // Subtitle
               Text(
                 'Leben in Deutschland',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF8E8E93),

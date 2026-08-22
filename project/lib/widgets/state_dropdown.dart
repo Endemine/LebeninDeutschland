@@ -7,7 +7,7 @@
 // =============================================================================
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 
 /// Ein Dropdown-Widget für die Bundesland-Auswahl.
 ///
@@ -113,7 +113,7 @@ class _StateDropdownState extends State<StateDropdown> {
                 Expanded(
                   child: Text(
                     opt,
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 14,
                       fontWeight: widget.selected == opt ? FontWeight.w600 : FontWeight.w500,
                       color: _textPrimary,
@@ -144,7 +144,7 @@ class _StateDropdownState extends State<StateDropdown> {
               Expanded(
                 child: Text(
                   widget.selected ?? widget.placeholder,
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: widget.selected == null ? _textSecondary : _textPrimary,

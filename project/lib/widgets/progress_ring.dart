@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 /// Animierte Kreis-Fortschrittsanzeige fuer den Home-Screen.
@@ -45,7 +45,7 @@ class ProgressRing extends StatelessWidget {
             children: [
               Text(
                 centerText,
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: radius * 0.35,
                   fontWeight: FontWeight.w700,
                   color: _textPrimary,
@@ -54,7 +54,7 @@ class ProgressRing extends StatelessWidget {
               if (subtitle != null)
                 Text(
                   subtitle!,
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: radius * 0.15,
                     fontWeight: FontWeight.w400,
                     color: _textSecondary,

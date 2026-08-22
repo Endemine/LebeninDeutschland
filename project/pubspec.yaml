@@ -16,7 +16,6 @@ dependencies:
   flutter_timer_countdown: ^1.0.7
   confetti: ^0.8.0
   fl_chart: ^0.69.0
-  google_fonts: ^6.2.0
   shimmer: ^3.0.0
   percent_indicator: ^4.2.4
   flutter_svg: ^2.0.10+1
@@ -31,8 +30,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  # Roboto liegt als Variable Font im Bundle. Vorher wurde die Schrift ueber
+  # google_fonts zur Laufzeit von Googles Servern geladen, was die IP-Adresse
+  # des Nutzers uebertragen hat -- siehe Kommentar in lib/app_fonts.dart.
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto.ttf
   assets:
     - assets/questions.json
+    - assets/fonts/OFL.txt
     - assets/translations.json
     - assets/wappen/bayern.png
     - assets/wappen/berlin.png

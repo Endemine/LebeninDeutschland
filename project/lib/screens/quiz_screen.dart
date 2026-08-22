@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/quiz_provider.dart';
@@ -67,7 +67,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
                     Text(
                       'Frage ${provider.currentIndex + 1} von ${provider.totalQuestions}',
-                      style: GoogleFonts.roboto(
+                      style: roboto(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: _textSecondary,
@@ -195,7 +195,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             child: Center(
                               child: Text(
                                 '${index + 1}',
-                                style: GoogleFonts.roboto(
+                                style: roboto(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w600,
                                   color: isCurrent || isAnswered
@@ -319,7 +319,7 @@ class _QuizScreenState extends State<QuizScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           'Test beenden?',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 20,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -327,7 +327,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         content: Text(
           'Wenn du den Test jetzt beendest, wird der aktuelle Stand als Ergebnis gespeichert.',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 15,
             color: _textSecondary,
             height: 1.4,
@@ -338,7 +338,7 @@ class _QuizScreenState extends State<QuizScreen> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Weiter machen',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 color: _textSecondary,
                 fontWeight: FontWeight.w600,
               ),
@@ -357,7 +357,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             child: Text(
               'Beenden',
-              style: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+              style: roboto(fontWeight: FontWeight.w600),
             ),
           ),
         ],
@@ -375,7 +375,7 @@ class _QuizScreenState extends State<QuizScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           'Test beenden?',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 20,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -383,7 +383,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         content: Text(
           '$unanswered Fragen noch nicht beantwortet. Bist du sicher, dass du den Test beenden moechtest?',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 15,
             color: _textSecondary,
             height: 1.4,
@@ -394,7 +394,7 @@ class _QuizScreenState extends State<QuizScreen> {
             onPressed: () => Navigator.pop(context),
             child: Text(
               'Weiter machen',
-              style: GoogleFonts.roboto(
+              style: roboto(
                 color: _textSecondary,
                 fontWeight: FontWeight.w600,
               ),
@@ -414,7 +414,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             child: Text(
               'Beenden',
-              style: GoogleFonts.roboto(fontWeight: FontWeight.w600),
+              style: roboto(fontWeight: FontWeight.w600),
             ),
           ),
         ],

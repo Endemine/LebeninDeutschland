@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -81,7 +81,7 @@ class StatisticsScreen extends StatelessWidget {
         ),
         title: Text(
           'Statistiken',
-          style: GoogleFonts.roboto(
+          style: roboto(
             fontSize: 18,
             fontWeight: FontWeight.w700,
             color: _textPrimary,
@@ -105,7 +105,7 @@ class StatisticsScreen extends StatelessWidget {
                         percent: overallProgress.clamp(0.0, 1.0),
                         center: Text(
                           '${(overallProgress * 100).toStringAsFixed(0)}%',
-                          style: GoogleFonts.roboto(
+                          style: roboto(
                             fontSize: 22,
                             fontWeight: FontWeight.w800,
                             color: _textPrimary,
@@ -124,7 +124,7 @@ class StatisticsScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Gesamtfortschritt',
-                              style: GoogleFonts.roboto(
+                              style: roboto(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 color: _textPrimary,
@@ -133,7 +133,7 @@ class StatisticsScreen extends StatelessWidget {
                             const SizedBox(height: 4),
                             Text(
                               '$learnedQuestions von $totalQuestions Fragen gelernt',
-                              style: GoogleFonts.roboto(
+                              style: roboto(
                                 fontSize: 14,
                                 color: _textSecondary,
                               ),
@@ -141,7 +141,7 @@ class StatisticsScreen extends StatelessWidget {
                             const SizedBox(height: 4),
                             Text(
                               'Noch ${totalQuestions - learnedQuestions} Fragen',
-                              style: GoogleFonts.roboto(
+                              style: roboto(
                                 fontSize: 13,
                                 color: _primary,
                                 fontWeight: FontWeight.w500,
@@ -161,7 +161,7 @@ class StatisticsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, top: 16, bottom: 8),
                 child: Text(
                   'Letzte Tests',
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     color: _textPrimary,
@@ -175,7 +175,7 @@ class StatisticsScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   child: Text(
                     'Noch keine Tests durchgefuehrt.',
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 14,
                       color: _textSecondary,
                     ),
@@ -206,7 +206,7 @@ class StatisticsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, top: 24, bottom: 8),
                 child: Text(
                   'Kategorien',
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     color: _textPrimary,
@@ -220,7 +220,7 @@ class StatisticsScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   child: Text(
                     'Keine Quiz-Daten vorhanden.',
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 14,
                       color: _textSecondary,
                     ),
@@ -247,7 +247,7 @@ class StatisticsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, top: 24, bottom: 8),
                 child: Text(
                   'Erfolgstrend (letzte Tests)',
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     color: _textPrimary,
@@ -266,7 +266,7 @@ class StatisticsScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Noch keine Trend-Daten.',
-                          style: GoogleFonts.roboto(
+                          style: roboto(
                             fontSize: 14,
                             color: _textSecondary,
                           ),
@@ -302,7 +302,7 @@ class StatisticsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 '$score',
-                                style: GoogleFonts.roboto(
+                                style: roboto(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w600,
                                   color: score >= passingThreshold ? _success : _error,
@@ -322,7 +322,7 @@ class StatisticsScreen extends StatelessWidget {
                               const SizedBox(height: 4),
                               Text(
                                 '${idx + 1}',
-                                style: GoogleFonts.roboto(
+                                style: roboto(
                                   fontSize: 10,
                                   color: _textSecondary,
                                 ),
@@ -366,7 +366,7 @@ class StatisticsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 'Tipp',
-                                style: GoogleFonts.roboto(
+                                style: roboto(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: _primary,
@@ -375,7 +375,7 @@ class StatisticsScreen extends StatelessWidget {
                               const SizedBox(height: 2),
                               Text(
                                 'Du solltest mehr ueben: $weakestCategory',
-                                style: GoogleFonts.roboto(
+                                style: roboto(
                                   fontSize: 13,
                                   color: _textSecondary,
                                 ),
@@ -448,7 +448,7 @@ class _TestHistoryTile extends StatelessWidget {
                 children: [
                   Text(
                     '$score / $total richtig',
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                       color: _textPrimary,
@@ -456,7 +456,7 @@ class _TestHistoryTile extends StatelessWidget {
                   ),
                   Text(
                     date,
-                    style: GoogleFonts.roboto(
+                    style: roboto(
                       fontSize: 13,
                       color: _textSecondary,
                     ),
@@ -472,7 +472,7 @@ class _TestHistoryTile extends StatelessWidget {
               ),
               child: Text(
                 passed ? 'Bestanden' : 'Nicht bestanden',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                   color: passed ? _success : _error,
@@ -516,7 +516,7 @@ class _CategoryStatBar extends StatelessWidget {
             children: [
               Text(
                 category,
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: _textPrimary,
@@ -524,7 +524,7 @@ class _CategoryStatBar extends StatelessWidget {
               ),
               Text(
                 '$learned / $total',
-                style: GoogleFonts.roboto(
+                style: roboto(
                   fontSize: 13,
                   color: _textSecondary,
                 ),

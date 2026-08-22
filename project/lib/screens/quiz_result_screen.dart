@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/quiz_provider.dart';
@@ -31,7 +31,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
             children: [
               const Icon(Icons.info_outline, size: 48, color: _textTertiary),
               const SizedBox(height: 16),
-              Text('Kein Ergebnis verfügbar', style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
+              Text('Kein Ergebnis verfügbar', style: roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
               const SizedBox(height: 24),
               AppButton(
                 label: 'Zur Startseite',
@@ -85,9 +85,9 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
-                    Text('Fragen im Detail', style: GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w700, color: _textPrimary)),
+                    Text('Fragen im Detail', style: roboto(fontSize: 18, fontWeight: FontWeight.w700, color: _textPrimary)),
                     const Spacer(),
-                    Text('${result.questionAnswers.length} angezeigt', style: GoogleFonts.roboto(fontSize: 13, color: _textSecondary)),
+                    Text('${result.questionAnswers.length} angezeigt', style: roboto(fontSize: 13, color: _textSecondary)),
                   ],
                 ),
               ),
@@ -211,7 +211,7 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text('${widget.index}. ${widget.question}',
-                      style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w500, color: _textPrimary),
+                      style: roboto(fontSize: 14, fontWeight: FontWeight.w500, color: _textPrimary),
                       maxLines: _expanded ? null : 1, overflow: _expanded ? null : TextOverflow.ellipsis,
                     ),
                   ),
@@ -228,7 +228,7 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
                       const Icon(Icons.check_circle, color: _success, size: 16),
                       const SizedBox(width: 8),
                       Expanded(child: Text('Richtige Antwort: ${widget.correctAnswer}',
-                        style: GoogleFonts.roboto(fontSize: 13, color: _textSecondary),
+                        style: roboto(fontSize: 13, color: _textSecondary),
                       )),
                     ],
                   ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../app_fonts.dart';
 
 /// Countdown-Timer fuer das Quiz.
 ///
@@ -109,7 +109,7 @@ class _TimerWidgetState extends State<TimerWidget>
                 const SizedBox(width: 6),
                 Text(
                   _formattedTime,
-                  style: GoogleFonts.roboto(
+                  style: roboto(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: _timerColor,
