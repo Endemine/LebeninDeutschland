@@ -5,7 +5,7 @@
 const String kAppVersion = '1.0.9';
 
 /// Datenschutzerklärung (identisch mit der URL in den App-Store-Metadaten).
-const String kPrivacyUrl = 'https://lebenindeutschland.de/privacy';
+const String kPrivacyUrl = 'https://einbuergerungstest-legal.netlify.app/datenschutz';
 
 /// Impressum / rechtliche Hinweise.
-const String kImprintUrl = 'https://lebenindeutschland.de/impressum';
+const String kImprintUrl = 'https://einbuergerungstest-legal.netlify.app/impressum';
