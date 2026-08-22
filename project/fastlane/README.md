@@ -95,6 +95,22 @@ Upload App Store screenshots only, without touching the binary.
 
 App-Namen und Untertitel aus App Store Connect lesen. Aendert nichts.
 
+### ios set_privacy_url
+
+```sh
+[bundle exec] fastlane ios set_privacy_url
+```
+
+Datenschutz-URL in App Store Connect fuer alle Sprachen setzen.
+
+### ios show_privacy_url
+
+```sh
+[bundle exec] fastlane ios show_privacy_url
+```
+
+Datenschutz-URL in App Store Connect anzeigen. Aendert nichts.
+
 ### ios inspect_review_submissions
 
 ```sh

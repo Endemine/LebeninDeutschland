@@ -637,6 +637,40 @@ platform :ios do
     end
   end
 
+  desc("Datenschutz-URL in App Store Connect fuer alle Sprachen setzen.")
+  lane :set_privacy_url do |options|
+    url = options[:url]
+    UI.user_error!("url: fehlt") if url.to_s.empty?
+
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App nicht gefunden") unless app
+
+    info = app.fetch_edit_app_info || app.fetch_live_app_info
+    UI.user_error!("Kein bearbeitbares AppInfo gefunden") unless info
+
+    info.get_app_info_localizations.each do |loc|
+      alt = loc.privacy_policy_url
+      next if alt == url
+      loc.update(attributes: { privacyPolicyUrl: url })
+      UI.success("PRIV-SET: #{loc.locale}: #{alt.inspect} -> #{url}")
+    end
+  end
+
+  desc("Datenschutz-URL in App Store Connect anzeigen. Aendert nichts.")
+  lane :show_privacy_url do
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App nicht gefunden") unless app
+
+    info = app.fetch_edit_app_info || app.fetch_live_app_info
+    UI.user_error!("Kein bearbeitbares AppInfo gefunden") unless info
+
+    info.get_app_info_localizations.each do |loc|
+      UI.message("PRIV: locale=#{loc.locale} name=#{loc.name.inspect} url=#{loc.privacy_policy_url.inspect}")
+    end
+  end
+
   desc("Offene reviewSubmissions auflisten - liest nur, aendert nichts.")
   lane :inspect_review_submissions do
     app_store_connect_api_token
