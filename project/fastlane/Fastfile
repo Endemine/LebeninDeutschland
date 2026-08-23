@@ -657,6 +657,78 @@ platform :ios do
     end
   end
 
+  desc("Kandidatenliste durchprobieren und den ersten freien Namen setzen.")
+  lane :find_free_app_name do |options|
+    candidates = (options[:names] || "").split("|").map(&:strip).reject(&:empty?)
+    UI.user_error!("names: fehlt (mit | getrennt)") if candidates.empty?
+
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    info = app.fetch_edit_app_info
+    UI.user_error!("Keine bearbeitbare App-Info") unless info
+    locs = info.get_app_info_localizations
+
+    candidates.each do |name|
+      if name.length > 30
+        UI.important("NAME-SKIP: #{name} (#{name.length} Zeichen > 30)")
+        next
+      end
+      begin
+        locs.each { |loc| loc.update(attributes: { name: name }) }
+        UI.success("NAME-OK: \"#{name}\" gesetzt fuer #{locs.map(&:locale).join(', ')}")
+        break
+      rescue => e
+        msg = e.message.include?("already being used") ? "belegt" : e.message.split("\n").first
+        UI.important("NAME-BELEGT: #{name} -- #{msg}")
+      end
+    end
+  end
+
+  desc("App-Namen in App Store Connect setzen (alle Sprachen).")
+  lane :set_app_name do |options|
+    name = options[:name]
+    UI.user_error!("name: fehlt") if name.to_s.empty?
+    UI.user_error!("Name laenger als 30 Zeichen") if name.length > 30
+
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    info = app.fetch_edit_app_info
+    UI.user_error!("Keine bearbeitbare App-Info -- vorher create_version aufrufen") unless info
+
+    info.get_app_info_localizations.each do |loc|
+      next if loc.name == name
+      loc.update(attributes: { name: name })
+      UI.success("NAME-SET: #{loc.locale}: #{loc.name.inspect} -> #{name}")
+    end
+  end
+
+  desc("Neue App-Store-Version anlegen. Entsperrt die App-Informationen.")
+  lane :create_version do |options|
+    version = options[:version]
+    UI.user_error!("version: fehlt") if version.to_s.empty?
+
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    UI.user_error!("App nicht gefunden") unless app
+
+    existing = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    if existing
+      UI.important("VERSION: es existiert bereits eine bearbeitbare Version #{existing.version_string}")
+      next
+    end
+
+    body = {
+      data: {
+        type: "appStoreVersions",
+        attributes: { platform: "IOS", versionString: version },
+        relationships: { app: { data: { type: "apps", id: app.id } } }
+      }
+    }
+    resp = Spaceship::ConnectAPI.client.tunes_request_client.post("v1/appStoreVersions", body)
+    created = resp.to_models.first
+    UI.success("VERSION: #{created.version_string} angelegt, state=#{created.app_store_state}")
+  end
+
   desc("Datenschutz-URL in App Store Connect anzeigen. Aendert nichts.")
   lane :show_privacy_url do
     app_store_connect_api_token
@@ -842,6 +914,102 @@ platform :android do
 
     UI.success("AAB gebaut: #{aab} (#{(File.size(aab) / 1024.0 / 1024.0).round(1)} MB)")
     aab
+  end
+
+  desc("Play-Eintrag auslesen und pruefen. Aendert nichts.")
+  lane :verify_play_listing do
+    json_key = ENV["PLAY_STORE_JSON_KEY"]
+    UI.user_error!("PLAY_STORE_JSON_KEY fehlt") if json_key.to_s.empty?
+
+    require "supply"
+    require "supply/client"
+    Supply.config = FastlaneCore::Configuration.create(
+      Supply::Options.available_options,
+      { json_key: json_key, package_name: ANDROID_PACKAGE_NAME, track: "internal" }
+    )
+    client = Supply::Client.make_from_config
+    client.begin_edit(package_name: ANDROID_PACKAGE_NAME)
+    begin
+      client.listings.each do |l|
+        UI.message("CHECK: #{l.language} title=#{l.title.inspect}")
+        UI.message("CHECK: #{l.language} short=#{l.short_description.to_s[0, 60].inspect}")
+        UI.message("CHECK: #{l.language} fullLen=#{l.full_description.to_s.length}")
+        %w[icon featureGraphic phoneScreenshots].each do |kind|
+          imgs = client.fetch_images(image_type: kind, language: l.language) || []
+          UI.message("CHECK: #{l.language} #{kind}=#{imgs.size}")
+        end
+      end
+    ensure
+      client.abort_current_edit rescue nil
+    end
+  end
+
+  desc("Nur den Play-Store-Eintrag hochladen: Texte, Icon, Feature-Grafik, Screenshots.")
+  lane :upload_play_listing do
+    json_key = ENV["PLAY_STORE_JSON_KEY"]
+    if json_key.to_s.empty? || !File.exist?(json_key.to_s)
+      UI.user_error!("PLAY_STORE_JSON_KEY fehlt oder zeigt ins Leere.")
+    end
+
+    require "supply"
+    require "supply/client"
+
+    # Bewusst nicht upload_to_play_store: dessen Uploader verlangt auch fuer
+    # reine Listing-Updates ein Release. Schuld ist ein Tippfehler in
+    # supply/uploader.rb ("version_codes.to_s" statt "version_code.to_s"),
+    # wodurch ein leerer Versionscode nicht herausgefiltert wird.
+    meta_root = File.join(ANDROID_PROJECT_ROOT, "fastlane", "android_metadata")
+    UI.user_error!("#{meta_root} fehlt") unless File.directory?(meta_root)
+
+    Supply.config = FastlaneCore::Configuration.create(
+      Supply::Options.available_options,
+      { json_key: json_key, package_name: ANDROID_PACKAGE_NAME, track: "internal" }
+    )
+    client = Supply::Client.make_from_config
+    client.begin_edit(package_name: ANDROID_PACKAGE_NAME)
+
+    begin
+      Dir.entries(meta_root).sort.each do |locale|
+        dir = File.join(meta_root, locale)
+        next if locale.start_with?(".") || !File.directory?(dir)
+
+        read = ->(name) do
+          f = File.join(dir, name)
+          File.exist?(f) ? File.read(f).strip : nil
+        end
+
+        client.update_listing_for_language(
+          language: locale,
+          title: read.call("title.txt"),
+          short_description: read.call("short_description.txt"),
+          full_description: read.call("full_description.txt"),
+          video: nil
+        )
+        UI.success("LISTING: #{locale} Texte gesetzt")
+
+        %w[icon featureGraphic].each do |kind|
+          img = File.join(dir, "images", "#{kind}.png")
+          next unless File.exist?(img)
+          client.upload_image(image_path: img, image_type: kind, language: locale)
+          UI.success("LISTING: #{locale} #{kind} hochgeladen")
+        end
+
+        shots_dir = File.join(dir, "images", "phoneScreenshots")
+        shots = Dir.glob(File.join(shots_dir, "*.png")).sort
+        next if shots.empty?
+        client.clear_screenshots(image_type: "phoneScreenshots", language: locale)
+        shots.each do |shot|
+          client.upload_image(image_path: shot, image_type: "phoneScreenshots", language: locale)
+        end
+        UI.success("LISTING: #{locale} #{shots.size} Screenshots hochgeladen")
+      end
+
+      client.commit_current_edit!
+      UI.success("Play-Eintrag aktualisiert.")
+    rescue => e
+      client.abort_current_edit rescue nil
+      raise e
+    end
   end
 
   desc("AAB bauen und in den Play-Store-Track hochladen.")

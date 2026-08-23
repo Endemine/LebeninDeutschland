@@ -103,6 +103,30 @@ App-Namen und Untertitel aus App Store Connect lesen. Aendert nichts.
 
 Datenschutz-URL in App Store Connect fuer alle Sprachen setzen.
 
+### ios find_free_app_name
+
+```sh
+[bundle exec] fastlane ios find_free_app_name
+```
+
+Kandidatenliste durchprobieren und den ersten freien Namen setzen.
+
+### ios set_app_name
+
+```sh
+[bundle exec] fastlane ios set_app_name
+```
+
+App-Namen in App Store Connect setzen (alle Sprachen).
+
+### ios create_version
+
+```sh
+[bundle exec] fastlane ios create_version
+```
+
+Neue App-Store-Version anlegen. Entsperrt die App-Informationen.
+
 ### ios show_privacy_url
 
 ```sh
@@ -163,6 +187,22 @@ Play-Console-Zustand auslesen: Tracks, Releases, hochgeladene Builds. Aendert ni
 ```
 
 Signiertes Android App Bundle (AAB) fuer den Play Store bauen.
+
+### android verify_play_listing
+
+```sh
+[bundle exec] fastlane android verify_play_listing
+```
+
+Play-Eintrag auslesen und pruefen. Aendert nichts.
+
+### android upload_play_listing
+
+```sh
+[bundle exec] fastlane android upload_play_listing
+```
+
+Nur den Play-Store-Eintrag hochladen: Texte, Icon, Feature-Grafik, Screenshots.
 
 ### android deploy_play
 
