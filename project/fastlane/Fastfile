@@ -702,6 +702,56 @@ platform :ios do
     end
   end
 
+  desc("Release-Notes und Support-/Marketing-URL der Edit-Version setzen.")
+  lane :set_version_localizations do |options|
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    v = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    UI.user_error!("keine bearbeitbare Version") unless v
+
+    support = options[:support_url]
+    marketing = options[:marketing_url]
+    notes = {
+      "de-DE" => options[:notes_de],
+      "en-US" => options[:notes_en]
+    }
+
+    v.get_app_store_version_localizations.each do |loc|
+      attrs = {}
+      text = notes[loc.locale] || notes["en-US"]
+      attrs[:whatsNew] = text if text && !text.empty?
+      attrs[:supportUrl] = support if support && !support.empty?
+      attrs[:marketingUrl] = marketing if marketing && !marketing.empty?
+      next if attrs.empty?
+      loc.update(attributes: attrs)
+      UI.success("LOC-SET: #{loc.locale} #{attrs.keys.join(', ')}")
+    end
+  end
+
+  desc("Pruefen, was einer Version zur Einreichung fehlt. Aendert nichts.")
+  lane :diagnose_version do |options|
+    want = options[:version]
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+
+    v = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    UI.user_error!("keine bearbeitbare Version") unless v
+    UI.message("DIAG: version=#{v.version_string} state=#{v.app_store_state} appVersionState=#{v.app_version_state}")
+    UI.important("DIAG: erwartet #{want}, gefunden #{v.version_string}") if want && want != v.version_string
+
+    build = v.build rescue nil
+    UI.message("DIAG: build=#{build ? build.version : 'KEIN BUILD ZUGEORDNET'}")
+
+    app.get_builds(filter: { "preReleaseVersion.version" => v.version_string },
+                   includes: "preReleaseVersion", limit: 5).each do |b|
+      UI.message("DIAG: vorhandener Build #{b.version} state=#{b.processing_state}")
+    end
+
+    v.get_app_store_version_localizations.each do |loc|
+      UI.message("DIAG: #{loc.locale} whatsNew=#{loc.whats_new.to_s.length} desc=#{loc.description.to_s.length} keywords=#{loc.keywords.to_s.length} support=#{loc.support_url.inspect}")
+    end
+  end
+
   desc("Neue App-Store-Version anlegen. Entsperrt die App-Informationen.")
   lane :create_version do |options|
     version = options[:version]

@@ -119,6 +119,22 @@ Kandidatenliste durchprobieren und den ersten freien Namen setzen.
 
 App-Namen in App Store Connect setzen (alle Sprachen).
 
+### ios set_version_localizations
+
+```sh
+[bundle exec] fastlane ios set_version_localizations
+```
+
+Release-Notes und Support-/Marketing-URL der Edit-Version setzen.
+
+### ios diagnose_version
+
+```sh
+[bundle exec] fastlane ios diagnose_version
+```
+
+Pruefen, was einer Version zur Einreichung fehlt. Aendert nichts.
+
 ### ios create_version
 
 ```sh

@@ -17,6 +17,11 @@
 
 # Die App verlinkte historisch auf /privacy -- weiterleiten statt 404.
 [[redirects]]
+  from = "/support"
+  to = "/support.html"
+  status = 200
+
+[[redirects]]
   from = "/privacy"
   to = "/datenschutz.html"
   status = 200
