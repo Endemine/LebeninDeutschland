@@ -127,6 +127,14 @@ App-Namen in App Store Connect setzen (alle Sprachen).
 
 Release-Notes und Support-/Marketing-URL der Edit-Version setzen.
 
+### ios fetch_rejection
+
+```sh
+[bundle exec] fastlane ios fetch_rejection
+```
+
+Ablehnungsgrund suchen: mehrere Endpunkte durchprobieren. Liest nur.
+
 ### ios diagnose_version
 
 ```sh

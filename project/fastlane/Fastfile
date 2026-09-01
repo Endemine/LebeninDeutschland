@@ -728,6 +728,34 @@ platform :ios do
     end
   end
 
+  desc("Ablehnungsgrund suchen: mehrere Endpunkte durchprobieren. Liest nur.")
+  lane :fetch_rejection do |options|
+    sub_id = options[:submission_id]
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    v = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    UI.message("REJ: version=#{v&.version_string} state=#{v&.app_store_state}")
+
+    c = Spaceship::ConnectAPI.client.tunes_request_client
+    paths = [
+      ["resolutionCenterThreads", "v1/resolutionCenterThreads?filter[reviewSubmission]=#{sub_id}"],
+      ["reviewSubmissionItems",   "v1/reviewSubmissions/#{sub_id}/items"],
+      ["reviewSubmission",        "v1/reviewSubmissions/#{sub_id}?include=items,appStoreVersionForReview"],
+      ["reviewDetail",            "v1/appStoreVersions/#{v&.id}/appStoreReviewDetail"],
+      ["versionSubmission",       "v1/appStoreVersions/#{v&.id}?include=appStoreVersionSubmission"]
+    ]
+    paths.each do |label, path|
+      begin
+        resp = c.get(path)
+        body = resp.body
+        json = body.is_a?(String) ? body : body.to_json
+        UI.success("REJ-OK #{label}: #{json.to_s[0, 900]}")
+      rescue => e
+        UI.important("REJ-FEHLER #{label}: #{e.message.to_s.split("\n").first}")
+      end
+    end
+  end
+
   desc("Pruefen, was einer Version zur Einreichung fehlt. Aendert nichts.")
   lane :diagnose_version do |options|
     want = options[:version]
