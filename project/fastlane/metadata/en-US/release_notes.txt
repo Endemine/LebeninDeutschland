@@ -1,10 +1,6 @@
-Version 1.0.9
-
-• Fragen auf Deutsch, Englisch und Arabisch — direkt im Lernmodus umschaltbar
-• Bundesland-Auswahl als Dropdown, mit Wappen der Bundesländer
-• Sprache der Fragen jetzt auch in den Einstellungen wählbar
-• Datenschutz und Impressum sind aus den Einstellungen erreichbar
-• "Fortschritt zurücksetzen" löscht Lernfortschritt, Lesezeichen und Statistiken jetzt zuverlässig
-• Links öffnen sich wieder korrekt unter aktuellen Android-Versionen
-• Korrekte Anzeige der App-Version
-• Darstellung über die volle Bildschirmhöhe (Edge-to-Edge) und diverse Fehlerbehebungen
+Privacy policy and imprint are now reachable directly from the app.
+Question language (German, English, Arabic) can also be set in Settings.
+Bookmarked questions now open correctly in learning mode.
+Resetting progress now reliably clears learned questions, bookmarks and statistics.
+The font is bundled with the app – nothing is downloaded, everything works offline.
+Numerous text and layout fixes.

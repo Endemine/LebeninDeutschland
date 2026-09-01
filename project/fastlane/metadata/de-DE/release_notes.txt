@@ -1,0 +1,6 @@
+Datenschutzerklärung und Impressum sind jetzt direkt aus der App erreichbar.
+Sprache der Fragen (Deutsch, Englisch, Arabisch) auch in den Einstellungen wählbar.
+Gemerkte Fragen öffnen sich wieder korrekt im Lernmodus.
+Fortschritt zurücksetzen löscht Lernstand, Lesezeichen und Statistiken nun zuverlässig.
+Schriftart in die App integriert – sie lädt nichts mehr nach und funktioniert vollständig offline.
+Zahlreiche Korrekturen an Texten und Darstellung.
