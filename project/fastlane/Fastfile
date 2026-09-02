@@ -994,6 +994,51 @@ platform :android do
     aab
   end
 
+  desc("App-Details in der Play Console lesen bzw. setzen (Kontakt, Standardsprache).")
+  lane :play_app_details do |options|
+    json_key = ENV["PLAY_STORE_JSON_KEY"]
+    UI.user_error!("PLAY_STORE_JSON_KEY fehlt") if json_key.to_s.empty?
+
+    require "supply"
+    require "supply/client"
+    Supply.config = FastlaneCore::Configuration.create(
+      Supply::Options.available_options,
+      { json_key: json_key, package_name: ANDROID_PACKAGE_NAME, track: "internal" }
+    )
+    client = Supply::Client.make_from_config
+    client.begin_edit(package_name: ANDROID_PACKAGE_NAME)
+    changed = false
+    begin
+      svc = client.instance_variable_get(:@client)
+      pkg = ANDROID_PACKAGE_NAME
+      eid = client.current_edit.id
+      d = svc.get_edit_detail(pkg, eid)
+      UI.message("DETAIL: defaultLanguage=#{d.default_language.inspect}")
+      UI.message("DETAIL: contactEmail=#{d.contact_email.inspect}")
+      UI.message("DETAIL: contactPhone=#{d.contact_phone.inspect}")
+      UI.message("DETAIL: contactWebsite=#{d.contact_website.inspect}")
+
+      if options[:apply].to_s == "true"
+        d.default_language = options[:language] if options[:language]
+        d.contact_email    = options[:email]    if options[:email]
+        d.contact_phone    = options[:phone]    if options[:phone]
+        d.contact_website  = options[:website]  if options[:website]
+        svc.update_edit_detail(pkg, eid, d)
+        changed = true
+        UI.success("DETAIL: aktualisiert")
+      end
+    rescue => e
+      client.abort_current_edit rescue nil
+      raise e
+    end
+    if changed
+      client.commit_current_edit!
+      UI.success("DETAIL: uebernommen")
+    else
+      client.abort_current_edit rescue nil
+    end
+  end
+
   desc("Play-Eintrag auslesen und pruefen. Aendert nichts.")
   lane :verify_play_listing do
     json_key = ENV["PLAY_STORE_JSON_KEY"]

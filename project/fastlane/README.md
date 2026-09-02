@@ -212,6 +212,14 @@ Play-Console-Zustand auslesen: Tracks, Releases, hochgeladene Builds. Aendert ni
 
 Signiertes Android App Bundle (AAB) fuer den Play Store bauen.
 
+### android play_app_details
+
+```sh
+[bundle exec] fastlane android play_app_details
+```
+
+App-Details in der Play Console lesen bzw. setzen (Kontakt, Standardsprache).
+
 ### android verify_play_listing
 
 ```sh
