@@ -515,8 +515,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.lebenindeutschland.einbuergerungstest.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c2e8b44-0d01-4ed9-8586-93a3e094e77b";
-				PROVISIONING_PROFILE_SPECIFIER = "de.lebenindeutschland.einbuergerungstest AppStore 1787517543";
+				PROVISIONING_PROFILE = "9ff5cd3c-e3cb-4a2e-8871-f26e521f9b80";
+				PROVISIONING_PROFILE_SPECIFIER = "de.lebenindeutschland.einbuergerungstest AppStore 1788467393";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
@@ -689,8 +689,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.lebenindeutschland.einbuergerungstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c2e8b44-0d01-4ed9-8586-93a3e094e77b";
-				PROVISIONING_PROFILE_SPECIFIER = "de.lebenindeutschland.einbuergerungstest AppStore 1787517543";
+				PROVISIONING_PROFILE = "9ff5cd3c-e3cb-4a2e-8871-f26e521f9b80";
+				PROVISIONING_PROFILE_SPECIFIER = "de.lebenindeutschland.einbuergerungstest AppStore 1788467393";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
