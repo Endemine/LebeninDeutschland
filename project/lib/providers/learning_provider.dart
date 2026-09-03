@@ -9,7 +9,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/services.dart';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/question.dart';
@@ -30,6 +30,46 @@ import '../models/question.dart';
 /// await learningProvider.loadQuestions();
 /// learningProvider.setCategoryFilter(QuestionCategory.history);
 /// ```
+/// Eingabe fuer [parseQuestionsWithTranslations]. Enthaelt nur Strings, damit
+/// sie sich gefahrlos an ein anderes Isolate uebergeben laesst.
+class QuestionParseInput {
+  final String questionsJson;
+  final String translationsJson;
+  const QuestionParseInput(this.questionsJson, this.translationsJson);
+}
+
+/// Parst Fragen und Uebersetzungen und fuegt sie zusammen.
+///
+/// Laeuft ueber [compute] in einem eigenen Isolate. Zuvor geschah das auf dem
+/// UI-Thread: rund 410 KB JSON und 920 Objektkonstruktionen blockierten den
+/// Start, der Kaltstart lag im Release-Build bei ueber acht Sekunden und
+/// Android zeigte teils den ANR-Dialog.
+List<Question> parseQuestionsWithTranslations(QuestionParseInput input) {
+  final list = jsonDecode(input.questionsJson) as List<dynamic>;
+  final questions = list
+      .map((j) => Question.fromJson(j as Map<String, dynamic>))
+      .toList();
+
+  if (input.translationsJson.isEmpty) return questions;
+
+  final map = jsonDecode(input.translationsJson) as Map<String, dynamic>;
+  return questions.map((q) {
+    final t = map['${q.id}'];
+    if (t == null) return q;
+    final tr = t as Map<String, dynamic>;
+    return q.withTranslations(
+      questionEn: tr['question_en'] as String?,
+      questionAr: tr['question_ar'] as String?,
+      answersEn: tr['answers_en'] != null
+          ? List<String>.from(tr['answers_en'] as List)
+          : null,
+      answersAr: tr['answers_ar'] != null
+          ? List<String>.from(tr['answers_ar'] as List)
+          : null,
+    );
+  }).toList();
+}
+
 class LearningProvider extends ChangeNotifier {
   // ===========================================================================
   // PERSISTENZ-SCHLÜSSEL
@@ -177,9 +217,6 @@ class LearningProvider extends ChangeNotifier {
       // === Fragen aus JSON-Asset laden ===
       _allQuestions = await _loadQuestionsFromAsset();
 
-      // === Übersetzungen laden und an Fragen anhängen ===
-      await _loadTranslations();
-
       // === Persistierte Lernfortschritte laden ===
       await _loadLearnedIds();
 
@@ -195,34 +232,6 @@ class LearningProvider extends ChangeNotifier {
       _isLoading = false;
       _error = 'Fehler beim Laden der Fragen: $e';
       notifyListeners();
-    }
-  }
-
-  /// Lädt die Übersetzungen (EN/AR) und hängt sie an die geladenen Fragen.
-  Future<void> _loadTranslations() async {
-    try {
-      final jsonString =
-          await rootBundle.loadString('assets/translations.json');
-      final Map<String, dynamic> map =
-          jsonDecode(jsonString) as Map<String, dynamic>;
-
-      _allQuestions = _allQuestions.map((q) {
-        final t = map['${q.id}'];
-        if (t == null) return q;
-        final tr = t as Map<String, dynamic>;
-        return q.withTranslations(
-          questionEn: tr['question_en'] as String?,
-          questionAr: tr['question_ar'] as String?,
-          answersEn: tr['answers_en'] != null
-              ? List<String>.from(tr['answers_en'] as List)
-              : null,
-          answersAr: tr['answers_ar'] != null
-              ? List<String>.from(tr['answers_ar'] as List)
-              : null,
-        );
-      }).toList();
-    } catch (e) {
-      debugPrint('Fehler beim Laden der Übersetzungen: $e');
     }
   }
 
@@ -263,11 +272,21 @@ class LearningProvider extends ChangeNotifier {
   /// Asset-Bundle laden. Für Tests können Fragen auch direkt übergeben werden.
   Future<List<Question>> _loadQuestionsFromAsset() async {
     try {
-      final jsonString = await rootBundle.loadString('assets/questions.json');
-      final jsonList = jsonDecode(jsonString) as List<dynamic>;
-      return jsonList
-          .map((j) => Question.fromJson(j as Map<String, dynamic>))
-          .toList();
+      // Die Assets muessen auf dem Haupt-Isolate gelesen werden (rootBundle),
+      // das Parsen laeuft danach im Hintergrund.
+      final questionsJson =
+          await rootBundle.loadString('assets/questions.json');
+      String translationsJson = '';
+      try {
+        translationsJson =
+            await rootBundle.loadString('assets/translations.json');
+      } catch (e) {
+        debugPrint('Uebersetzungen nicht ladbar: $e');
+      }
+      return await compute(
+        parseQuestionsWithTranslations,
+        QuestionParseInput(questionsJson, translationsJson),
+      );
     } catch (e) {
       debugPrint('Fehler beim Laden der Fragen-Assets: $e');
       return [];
