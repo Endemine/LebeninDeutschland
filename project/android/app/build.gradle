@@ -21,7 +21,7 @@ def releaseSigningReady = ['storeFile', 'storePassword', 'keyAlias', 'keyPasswor
 
 android {
     namespace = "de.lebenindeutschland.einbuergerungstest"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -36,7 +36,7 @@ android {
     defaultConfig {
         applicationId = "de.lebenindeutschland.einbuergerungstest"
         minSdkVersion = flutter.minSdkVersion
-        targetSdk = 35
+        targetSdk = 36
         // Aus pubspec.yaml (version: x.y.z+build) statt fest verdrahtet -- sonst
         // traegt jeder Android-Build unabhaengig von der pubspec-Version 1.0.0 (1).
         versionCode = flutter.versionCode
