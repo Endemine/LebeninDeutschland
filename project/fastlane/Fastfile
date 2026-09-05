@@ -728,6 +728,78 @@ platform :ios do
     end
   end
 
+  desc("App in allen Territorien verfuegbar machen.")
+  lane :set_availability do
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    c = Spaceship::ConnectAPI.client.tunes_request_client
+
+    terrs = []
+    cursor = nil
+    loop do
+      path = "v1/territories?limit=200" + (cursor ? "&cursor=#{cursor}" : "")
+      r = c.get(path)
+      b = r.body.is_a?(String) ? JSON.parse(r.body) : r.body
+      b = b.transform_keys(&:to_s) if b.is_a?(Hash)
+      data = b["data"] || []
+      terrs += data.map { |d| d["id"] }
+      cursor = b.dig("links", "next") ? (b.dig("meta", "paging", "nextCursor") rescue nil) : nil
+      break if cursor.nil? || data.empty?
+    end
+    UI.message("AVAIL: #{terrs.size} Territorien gefunden")
+
+    # JSON:API verlangt die territoryAvailabilities als included-Ressourcen,
+    # nicht nur als Referenz -- genau das meldete die API beim ersten Versuch.
+    body = {
+      data: {
+        type: "appAvailabilities",
+        attributes: { availableInNewTerritories: true },
+        relationships: {
+          app: { data: { type: "apps", id: app.id } },
+          territoryAvailabilities: {
+            data: terrs.map { |t| { type: "territoryAvailabilities", id: "${#{t}}" } }
+          }
+        }
+      },
+      included: terrs.map do |t|
+        {
+          type: "territoryAvailabilities",
+          id: "${#{t}}",
+          attributes: { available: true },
+          relationships: { territory: { data: { type: "territories", id: t } } }
+        }
+      end
+    }
+    begin
+      c.post("v2/appAvailabilities", body)
+      UI.success("AVAIL: Verfuegbarkeit fuer #{terrs.size} Territorien gesetzt")
+    rescue => e
+      UI.important("AVAIL-FEHLER: #{e.message.to_s.split("\n").first(2).join(' ')}")
+    end
+  end
+
+  desc("Verfuegbarkeit und Preis der App pruefen. Aendert nichts.")
+  lane :check_availability do
+    app_store_connect_api_token
+    app = Spaceship::ConnectAPI::App.find(IOS_APP_IDENTIFIER)
+    c = Spaceship::ConnectAPI.client.tunes_request_client
+    [
+      ["appAvailabilityV2", "v1/apps/#{app.id}/appAvailabilityV2"],
+      ["availableTerritories", "v1/apps/#{app.id}/availableTerritories?limit=5"],
+      ["appStoreVersionTerr", "v1/apps/#{app.id}/appStoreVersions?limit=3&fields[appStoreVersions]=versionString,appStoreState"],
+      ["appPriceSchedule",  "v1/apps/#{app.id}/appPriceSchedule?include=baseTerritory"],
+      ["app",               "v1/apps/#{app.id}"]
+    ].each do |label, path|
+      begin
+        r = c.get(path)
+        body = r.body.is_a?(String) ? r.body : r.body.to_json
+        UI.success("AVAIL #{label}: #{body.to_s[0, 700]}")
+      rescue => e
+        UI.important("AVAIL-FEHLER #{label}: #{e.message.to_s.split("\n").first}")
+      end
+    end
+  end
+
   desc("Ablehnungsgrund suchen: mehrere Endpunkte durchprobieren. Liest nur.")
   lane :fetch_rejection do |options|
     sub_id = options[:submission_id]
@@ -1036,6 +1108,44 @@ platform :android do
       UI.success("DETAIL: uebernommen")
     else
       client.abort_current_edit rescue nil
+    end
+  end
+
+  desc("Vorhandenen Build in einen anderen Track heben, ohne erneuten Upload.")
+  lane :promote_play do |options|
+    json_key = ENV["PLAY_STORE_JSON_KEY"]
+    UI.user_error!("PLAY_STORE_JSON_KEY fehlt") if json_key.to_s.empty?
+    track_name = options[:track] || "alpha"
+    code = (options[:version_code] || "").to_i
+    UI.user_error!("version_code: fehlt") if code <= 0
+    status = options[:status] || "draft"
+
+    require "supply"
+    require "supply/client"
+    Supply.config = FastlaneCore::Configuration.create(
+      Supply::Options.available_options,
+      { json_key: json_key, package_name: ANDROID_PACKAGE_NAME, track: track_name }
+    )
+    client = Supply::Client.make_from_config
+    client.begin_edit(package_name: ANDROID_PACKAGE_NAME)
+    begin
+      # Der Build ist bereits hochgeladen; ein zweiter Upload derselben
+      # versionCode wird von Play abgelehnt. Deshalb nur den Track auf den
+      # vorhandenen Code zeigen lassen.
+      release = Google::Apis::AndroidpublisherV3::TrackRelease.new(
+        name: options[:name] || "1.1.1",
+        version_codes: [code],
+        status: status
+      )
+      track = Google::Apis::AndroidpublisherV3::Track.new(
+        track: track_name, releases: [release]
+      )
+      client.update_track(track_name, track)
+      client.commit_current_edit!
+      UI.success("PROMOTE: versionCode #{code} in Track '#{track_name}' (#{status})")
+    rescue => e
+      client.abort_current_edit rescue nil
+      raise e
     end
   end
 

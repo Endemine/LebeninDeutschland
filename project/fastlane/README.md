@@ -127,6 +127,22 @@ App-Namen in App Store Connect setzen (alle Sprachen).
 
 Release-Notes und Support-/Marketing-URL der Edit-Version setzen.
 
+### ios set_availability
+
+```sh
+[bundle exec] fastlane ios set_availability
+```
+
+App in allen Territorien verfuegbar machen.
+
+### ios check_availability
+
+```sh
+[bundle exec] fastlane ios check_availability
+```
+
+Verfuegbarkeit und Preis der App pruefen. Aendert nichts.
+
 ### ios fetch_rejection
 
 ```sh
@@ -219,6 +235,14 @@ Signiertes Android App Bundle (AAB) fuer den Play Store bauen.
 ```
 
 App-Details in der Play Console lesen bzw. setzen (Kontakt, Standardsprache).
+
+### android promote_play
+
+```sh
+[bundle exec] fastlane android promote_play
+```
+
+Vorhandenen Build in einen anderen Track heben, ohne erneuten Upload.
 
 ### android verify_play_listing
 
