@@ -23,6 +23,7 @@ class QuizSetupScreen extends StatefulWidget {
 class _QuizSetupScreenState extends State<QuizSetupScreen> {
   int _selectedMode = 0; // 0 = Echter Test, 1 = Schnelltest
   bool _hasResetProvider = false;
+  String? _selectedTopic;
 
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
@@ -35,6 +36,33 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
       context.read<QuizProvider>().reset();
       _hasResetProvider = true;
     }
+  }
+
+  Widget _topicChip(String label, String? value) {
+    final active = _selectedTopic == value;
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: GestureDetector(
+        onTap: () => setState(() => _selectedTopic = value),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: active ? _primary : const Color(0xFFF5F5F5),
+            borderRadius: BorderRadius.circular(17),
+          ),
+          child: Text(
+            label,
+            style: roboto(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: active ? Colors.white : _textSecondary,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -66,6 +94,11 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
               // Modus-Auswahl
               Text(
                 'Wähle deinen Modus',
@@ -113,6 +146,24 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                 isSelected: _selectedMode == 1,
                 onTap: () => setState(() => _selectedMode = 1),
               ),
+              if (_selectedMode == 1) ...[
+                const SizedBox(height: 14),
+                Text(
+                  'Thema (optional)',
+                  style: roboto(fontSize: 13, fontWeight: FontWeight.w600, color: _textSecondary),
+                ),
+                const SizedBox(height: 6),
+                SizedBox(
+                  height: 34,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      _topicChip('Alle Themen', null),
+                      for (final t in LearningProvider.topics) _topicChip(t, t),
+                    ],
+                  ),
+                ),
+              ],
 
               const SizedBox(height: 24),
 
@@ -156,7 +207,11 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                 ),
               ),
 
-              const Spacer(),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
 
               // Hinweis
               Container(
@@ -201,11 +256,15 @@ class _QuizSetupScreenState extends State<QuizSetupScreen> {
                   final learning = context.read<LearningProvider>();
                   final quiz = context.read<QuizProvider>();
                   quiz.reset();
-                  // Echter Test (Modus 0) = mit Bundesland-Fragen,
-                  // Schnelltest (Modus 1) = nur allgemeine Fragen.
+                  // Echter Test (Modus 0) = 30 allgemeine + 3 Bundesland-Fragen, 60 Min.
+                  // Schnelltest (Modus 1) = 10 allgemeine Fragen, 15 Min.
                   quiz.startQuiz(
                     state: _selectedMode == 0 ? selectedBundesland : null,
                     allQuestions: learning.allQuestions,
+                    generalQuestionCount: _selectedMode == 0 ? 30 : 10,
+                    stateQuestionCount: _selectedMode == 0 ? 3 : 0,
+                    timeLimitSeconds: _selectedMode == 0 ? 3600 : 900,
+                    topic: _selectedMode == 1 ? _selectedTopic : null,
                   );
                   Navigator.pushReplacementNamed(context, '/quiz');
                 },

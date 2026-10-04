@@ -62,6 +62,7 @@ class QuizState {
   factory QuizState.start({
     required List<Question> questions,
     required String? selectedState,
+    int totalSeconds = 3600,
   }) {
     // Initialisiere alle Antworten als unbeantwortet (null)
     final answers = <int, int?>{
@@ -72,7 +73,7 @@ class QuizState {
       questions: questions,
       answers: answers,
       currentQuestionIndex: 0,
-      remainingSeconds: 3600,
+      remainingSeconds: totalSeconds,
       isFinished: false,
       selectedState: selectedState,
       startTime: DateTime.now(),

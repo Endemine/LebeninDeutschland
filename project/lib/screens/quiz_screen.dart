@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/learning_provider.dart';
+import '../utils/question_text.dart';
+import '../widgets/speak_button.dart';
 import '../providers/quiz_provider.dart';
 import '../providers/statistics_provider.dart';
 import '../widgets/question_card.dart';
@@ -56,7 +59,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TimerWidget(
-                      totalSeconds: 3600,
+                      totalSeconds: provider.totalSeconds,
                       remainingSeconds: provider.remainingSeconds,
                       onTimeUp: () => _finishQuiz(
                         provider,
@@ -65,13 +68,32 @@ class _QuizScreenState extends State<QuizScreen> {
                         isCriticalMessage: true,
                       ),
                     ),
-                    Text(
-                      'Frage ${provider.currentIndex + 1} von ${provider.totalQuestions}',
-                      style: roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: _textSecondary,
-                      ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SpeakButton(
+                          key: ValueKey('speak_${currentQ.id}'),
+                          text: formatQuestionForSpeech(currentQ),
+                        ),
+                        GestureDetector(
+                          onTap: () => copyQuestion(context, currentQ),
+                          child: Container(
+                            width: 32,
+                            height: 32,
+                            margin: const EdgeInsets.only(right: 6),
+                            child: const Icon(Icons.copy_rounded,
+                                color: Color(0xFFC7C7CC), size: 19),
+                          ),
+                        ),
+                        Text(
+                          'Frage ${provider.currentIndex + 1} von ${provider.totalQuestions}',
+                          style: roboto(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: _textSecondary,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -103,6 +125,8 @@ class _QuizScreenState extends State<QuizScreen> {
                   questionText: currentQ.text,
                   answers: currentQ.answers,
                   answerImages: currentQ.answerImages,
+                  imageAsset: currentQ.image,
+                  imageCredit: currentQ.imageCredit,
                   selectedAnswer: provider.currentAnswer,
                   correctAnswer: currentQ.correctAnswerIndex,
                   category: currentQ.category.name,
@@ -251,6 +275,10 @@ class _QuizScreenState extends State<QuizScreen> {
     final result = provider.lastResult ?? existingResult;
     if (result != null) {
       context.read<StatisticsProvider>().addQuizResult(result);
+      context.read<LearningProvider>().recordQuizAnswers([
+        for (final qa in result.questionAnswers)
+          if (qa.isAnswered) MapEntry(qa.question.id, qa.isCorrect),
+      ]);
     }
 
     if (autoMessage == null) {

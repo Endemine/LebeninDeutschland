@@ -119,7 +119,10 @@ class StatisticsProvider extends ChangeNotifier {
   /// Lädt die gespeicherten Statistiken aus SharedPreferences.
   ///
   /// Sollte beim App-Start aufgerufen werden.
-  Future<void> loadStatistics() async {
+  ///
+  /// Mit [questionsById] werden auch die Einzelantworten jedes Tests wiederhergestellt
+  /// (nötig für die Kategorie-Auswertung nach einem App-Neustart).
+  Future<void> loadStatistics({Map<int, Question>? questionsById}) async {
     _isLoading = true;
     _error = null;
     notifyListeners();
@@ -130,9 +133,17 @@ class StatisticsProvider extends ChangeNotifier {
 
       if (jsonString != null && jsonString.isNotEmpty) {
         final jsonList = jsonDecode(jsonString) as List<dynamic>;
-        _quizHistory = jsonList
-            .map((json) => QuizResult.fromJsonSimple(json as Map<String, dynamic>))
-            .toList();
+        _quizHistory = jsonList.map((json) {
+          final map = json as Map<String, dynamic>;
+          if (questionsById != null) {
+            try {
+              return QuizResult.fromJson(map, questionsById);
+            } catch (_) {
+              // Frage nicht mehr vorhanden: nur die Zusammenfassung laden
+            }
+          }
+          return QuizResult.fromJsonSimple(map);
+        }).toList();
 
         // Nach Abschlussdatum sortieren (neueste zuerst)
         _quizHistory.sort((a, b) => b.completedAt.compareTo(a.completedAt));

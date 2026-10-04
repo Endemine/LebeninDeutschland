@@ -9,6 +9,7 @@ import 'providers/quiz_provider.dart';
 import 'providers/learning_provider.dart';
 import 'providers/statistics_provider.dart';
 import 'providers/settings_provider.dart';
+import 'services/reminder_service.dart';
 import 'screens/home_screen.dart';
 import 'screens/quiz_screen.dart';
 import 'screens/quiz_result_screen.dart';
@@ -52,6 +53,7 @@ class EinbuergerungApp extends StatelessWidget {
         ChangeNotifierProvider<LearningProvider>(create: (_) => LearningProvider()),
         ChangeNotifierProvider<QuizProvider>(create: (_) => QuizProvider()),
         ChangeNotifierProvider<StatisticsProvider>(create: (_) => StatisticsProvider()),
+        ChangeNotifierProvider<ReminderService>(create: (_) => ReminderService()),
       ],
       child: const _AppInitializer(),
     );
@@ -80,10 +82,16 @@ class _AppInitializerState extends State<_AppInitializer> {
     final settings = context.read<SettingsProvider>();
     final learning = context.read<LearningProvider>();
     final statistics = context.read<StatisticsProvider>();
+    final quiz = context.read<QuizProvider>();
+    final reminder = context.read<ReminderService>();
     try {
       await settings.loadSettings();
       await learning.loadQuestions();
-      await statistics.loadStatistics();
+      await statistics.loadStatistics(
+        questionsById: {for (final q in learning.allQuestions) q.id: q},
+      );
+      await quiz.loadSavedQuiz();
+      await reminder.load();
       if (mounted) setState(() => _isReady = true);
     } catch (e) {
       if (mounted) setState(() { _error = e.toString(); _isReady = true; });

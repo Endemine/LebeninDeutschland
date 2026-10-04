@@ -19,4 +19,4 @@ OHNE INTERNET, OHNE KONTO, OHNE WERBUNG
 Die App funktioniert vollständig offline. Es gibt keine Registrierung, keine Werbung, keine In-App-Käufe und kein Tracking. Dein Lernfortschritt bleibt ausschließlich auf deinem Gerät.
 
 HINWEIS
-Diese App ist ein privates Lernangebot und steht in keiner Verbindung zum Bundesamt für Migration und Flüchtlinge oder einer anderen Behörde. Die Fragen stammen aus dem öffentlich zugänglichen amtlichen Fragenkatalog.
+Diese App ist ein privates Lernangebot und steht in keiner Verbindung zum Bundesamt für Migration und Flüchtlinge (BAMF) oder einer anderen Behörde. Sie wird nicht von einer Behörde betrieben, autorisiert oder unterstützt. Die Fragen stammen aus dem öffentlich zugänglichen amtlichen Gesamtfragenkatalog des BAMF, den du hier findest: https://www.bamf.de/SharedDocs/Anlagen/DE/Integration/Einbuergerung/gesamtfragenkatalog-lebenindeutschland.pdf

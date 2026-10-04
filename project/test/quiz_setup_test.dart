@@ -56,4 +56,17 @@ void main() {
       throwsA(isA<StateError>()),
     );
   });
+
+  test('Schnelltest: 10 Fragen und 15 Minuten (900s) statt 33/60min', () async {
+    final s = await setup();
+    s.qp.startQuiz(
+      state: null,
+      allQuestions: s.lp.allQuestions,
+      generalQuestionCount: 10,
+      stateQuestionCount: 0,
+      timeLimitSeconds: 900,
+    );
+    expect(s.qp.totalQuestions, 10);
+    expect(s.qp.remainingSeconds, 900);
+  });
 }

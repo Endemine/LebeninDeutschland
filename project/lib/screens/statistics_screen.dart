@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/app_card.dart';
 import '../providers/statistics_provider.dart';
+import '../models/question.dart';
 import '../providers/learning_provider.dart';
 
 class StatisticsScreen extends StatelessWidget {
@@ -16,6 +17,13 @@ class StatisticsScreen extends StatelessWidget {
   static const Color _surface = Color(0xFFF5F5F5);
   static const Color _success = Color(0xFF34C759);
   static const Color _error = Color(0xFFFF3B30);
+
+  static String _prettyCategory(String name) {
+    for (final c in QuestionCategory.values) {
+      if (c.name == name) return c.displayName;
+    }
+    return name;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +38,20 @@ class StatisticsScreen extends StatelessWidget {
         : 0.0;
 
     final recentTests = statsProvider.recentResults;
-    final scoreTrend = statsProvider.scoreTrend;
     final categoryStatsMap = statsProvider.categoryStats;
 
-    final categoryStatsList = categoryStatsMap.entries.map((entry) {
-      final cs = entry.value;
+    // Gelernt pro Kategorie (bleibt auch nach einem Neustart korrekt)
+    final categoryStatsList = QuestionCategory.values.map((c) {
+      final inCategory = learningProvider.allQuestions.where((q) => q.category == c);
       return {
-        'category': cs.category,
-        'learned': cs.totalCorrect,
-        'total': cs.totalQuestions,
+        'category': c.displayName,
+        'learned': inCategory.where((q) => learningProvider.isLearned(q.id)).length,
+        'total': inCategory.length,
       };
     }).toList();
 
-    final weeklyScores = scoreTrend
-        .map((s) => s.y.round())
-        .toList()
-        .reversed
-        .take(7)
-        .toList()
-        .reversed
-        .toList();
+    // Erfolgstrend: die letzten 7 Tests, älteste links
+    final trendResults = statsProvider.recentResults.take(7).toList().reversed.toList();
 
     String weakestCategory = '';
     double weakestRate = 100.0;
@@ -255,7 +257,7 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            if (weeklyScores.isEmpty)
+            if (trendResults.isEmpty)
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -287,33 +289,28 @@ class StatisticsScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: weeklyScores.asMap().entries.map((entry) {
+                        children: trendResults.asMap().entries.map((entry) {
                           final idx = entry.key;
-                          final score = entry.value;
-                          final maxTotal = recentTests.isNotEmpty
-                              ? recentTests.first.totalQuestions
-                              : 33;
-                          final percent = maxTotal > 0
-                              ? (score / maxTotal).clamp(0.0, 1.0)
-                              : 0.0;
-                          final passingThreshold = (maxTotal * 0.515).round();
+                          final r = entry.value;
+                          final percent = (r.scorePercent / 100).clamp(0.0, 1.0);
+                          final color = r.isPassed ? _success : _error;
                           return Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                '$score',
+                                '${r.scorePercent.round()}%',
                                 style: roboto(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w600,
-                                  color: score >= passingThreshold ? _success : _error,
+                                  color: color,
                                 ),
                               ),
                               const SizedBox(height: 4),
                               Container(
                                 width: 24,
-                                height: percent * 80,
+                                height: (percent * 80).clamp(3.0, 80.0),
                                 decoration: BoxDecoration(
-                                  color: score >= passingThreshold ? _success : _error,
+                                  color: color,
                                   borderRadius: const BorderRadius.vertical(
                                     top: Radius.circular(4),
                                   ),
@@ -374,7 +371,7 @@ class StatisticsScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 2),
                               Text(
-                                'Du solltest mehr üben: $weakestCategory',
+                                'Du solltest mehr üben: ${_prettyCategory(weakestCategory)}',
                                 style: roboto(
                                   fontSize: 13,
                                   color: _textSecondary,

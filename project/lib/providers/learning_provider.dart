@@ -77,6 +77,8 @@ class LearningProvider extends ChangeNotifier {
 
   static const String _kLearnedKey = 'learned_question_ids';
   static const String _kBookmarkedKey = 'bookmarked_question_ids';
+  static const String _kLastQuestionKey = 'last_question_id';
+  static const String _kWrongKey = 'wrong_question_ids';
 
   // ===========================================================================
   // INTERNER ZUSTAND
@@ -96,6 +98,19 @@ class LearningProvider extends ChangeNotifier {
 
   /// Aktueller Bundesland-Filter
   String? _filterState;
+
+  /// Aktueller Themen-Filter (nur allgemeine Fragen)
+  String? _filterTopic;
+
+  /// Nur die zuletzt falsch beantworteten Fragen zeigen
+  bool _filterWrongOnly = false;
+
+  /// IDs der zuletzt falsch beantworteten Fragen (Test oder Lernmodus)
+  Set<int> _wrongIds = {};
+
+  /// Momentaufnahme der falschen Fragen, solange der Filter aktiv ist --
+  /// damit eine richtig beantwortete Frage nicht sofort aus der Liste springt.
+  Set<int> _wrongSnapshot = {};
 
   /// Aktueller Suchbegriff
   String _searchQuery = '';
@@ -134,6 +149,16 @@ class LearningProvider extends ChangeNotifier {
 
       // === Bundesland-Filter ===
       if (_filterState != null && question.state != _filterState) {
+        return false;
+      }
+
+      // === Themen-Filter ===
+      if (_filterTopic != null && question.topic != _filterTopic) {
+        return false;
+      }
+
+      // === Falsche Fragen ===
+      if (_filterWrongOnly && !_wrongSnapshot.contains(question.id)) {
         return false;
       }
 
@@ -222,9 +247,13 @@ class LearningProvider extends ChangeNotifier {
 
       // === Persistierte Bookmarks laden ===
       await _loadBookmarkedIds();
+      await _loadWrongIds();
 
       // === Gespeicherte Anzeige-Sprache laden ===
       await _loadViewLanguage();
+
+      // === Zuletzt angesehene Frage wiederherstellen ===
+      await _restoreLastPosition();
 
       _isLoading = false;
       notifyListeners();
@@ -313,6 +342,9 @@ class LearningProvider extends ChangeNotifier {
     if (category != QuestionCategory.bundesland) {
       _filterState = null;
     }
+    if (category != QuestionCategory.allgemein) {
+      _filterTopic = null;
+    }
     _currentQuestionIndex = 0; // Index zurücksetzen
     notifyListeners();
   }
@@ -339,6 +371,8 @@ class LearningProvider extends ChangeNotifier {
   void clearAllFilters() {
     _filterCategory = null;
     _filterState = null;
+    _filterTopic = null;
+    _filterWrongOnly = false;
     _searchQuery = '';
     _currentQuestionIndex = 0;
     notifyListeners();
@@ -355,7 +389,90 @@ class LearningProvider extends ChangeNotifier {
 
   /// Gibt an ob aktive Filter gesetzt sind
   bool get hasActiveFilters =>
-      _filterCategory != null || _filterState != null || _searchQuery.isNotEmpty;
+      _filterCategory != null ||
+      _filterState != null ||
+      _filterTopic != null ||
+      _filterWrongOnly ||
+      _searchQuery.isNotEmpty;
+
+  /// Die Themenblöcke der allgemeinen Fragen
+  static const List<String> topics = [
+    'Staat & Demokratie',
+    'Geschichte',
+    'Europa',
+    'Alltag & Gesellschaft',
+  ];
+
+  /// Aktueller Themen-Filter
+  String? get filterTopic => _filterTopic;
+
+  /// Ob nur falsche Fragen angezeigt werden
+  bool get filterWrongOnly => _filterWrongOnly;
+
+  /// Anzahl der falsch beantworteten Fragen
+  int get wrongCount => _wrongIds.length;
+
+  /// Setzt den Themen-Filter (null = alle Themen). Nur bei allgemeinen Fragen sinnvoll.
+  void setTopicFilter(String? topic) {
+    _filterTopic = topic;
+    if (topic != null) {
+      _filterCategory = QuestionCategory.allgemein;
+      _filterState = null;
+    }
+    _currentQuestionIndex = 0;
+    notifyListeners();
+  }
+
+  /// Schaltet den Filter "nur falsche Fragen" ein oder aus.
+  void setWrongOnly(bool value) {
+    _filterWrongOnly = value;
+    _wrongSnapshot = value ? Set<int>.from(_wrongIds) : {};
+    _currentQuestionIndex = 0;
+    notifyListeners();
+  }
+
+  /// Merkt sich das Ergebnis einer beantworteten Frage: falsch -> in die Liste,
+  /// richtig -> raus aus der Liste.
+  void recordAnswer(int questionId, bool correct) {
+    final changed = correct ? _wrongIds.remove(questionId) : _wrongIds.add(questionId);
+    if (changed) {
+      _persistWrongIds();
+      notifyListeners();
+    }
+  }
+
+  /// Übernimmt alle Antworten eines abgeschlossenen Tests in die Liste der falschen Fragen.
+  void recordQuizAnswers(Iterable<MapEntry<int, bool>> results) {
+    var changed = false;
+    for (final r in results) {
+      changed |= r.value ? _wrongIds.remove(r.key) : _wrongIds.add(r.key);
+    }
+    if (changed) {
+      _persistWrongIds();
+      notifyListeners();
+    }
+  }
+
+  Future<void> _loadWrongIds() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_kWrongKey);
+      if (raw != null) {
+        _wrongIds = (jsonDecode(raw) as List).cast<int>().toSet();
+      }
+    } catch (e) {
+      debugPrint('Fehler beim Laden der falschen Fragen: $e');
+    }
+  }
+
+  Future<void> _persistWrongIds() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_kWrongKey, jsonEncode(_wrongIds.toList()));
+    } catch (e) {
+      debugPrint('Fehler beim Speichern der falschen Fragen: $e');
+    }
+  }
 
   // ===========================================================================
   // LERNFORTSCHRITT
@@ -423,6 +540,7 @@ class LearningProvider extends ChangeNotifier {
 
     if (_currentQuestionIndex < filtered.length - 1) {
       _currentQuestionIndex++;
+      _persistPosition();
       notifyListeners();
     }
   }
@@ -431,6 +549,7 @@ class LearningProvider extends ChangeNotifier {
   void previousQuestion() {
     if (_currentQuestionIndex > 0) {
       _currentQuestionIndex--;
+      _persistPosition();
       notifyListeners();
     }
   }
@@ -442,6 +561,7 @@ class LearningProvider extends ChangeNotifier {
     final filtered = filteredQuestions;
     if (index >= 0 && index < filtered.length) {
       _currentQuestionIndex = index;
+      _persistPosition();
       notifyListeners();
     }
   }
@@ -457,6 +577,7 @@ class LearningProvider extends ChangeNotifier {
     } while (newIndex == _currentQuestionIndex && filtered.length > 1);
 
     _currentQuestionIndex = newIndex;
+    _persistPosition();
     notifyListeners();
   }
 
@@ -534,6 +655,32 @@ class LearningProvider extends ChangeNotifier {
     }
   }
 
+  /// Merkt sich die aktuell angezeigte Frage (per ID, unabhängig vom Filter).
+  Future<void> _persistPosition() async {
+    try {
+      final filtered = filteredQuestions;
+      if (filtered.isEmpty) return;
+      final idx = _currentQuestionIndex.clamp(0, filtered.length - 1);
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt(_kLastQuestionKey, filtered[idx].id);
+    } catch (e) {
+      debugPrint('Fehler beim Speichern der Position: $e');
+    }
+  }
+
+  /// Springt beim Start zur zuletzt angesehenen Frage.
+  Future<void> _restoreLastPosition() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final lastId = prefs.getInt(_kLastQuestionKey);
+      if (lastId == null) return;
+      final idx = filteredQuestions.indexWhere((q) => q.id == lastId);
+      if (idx >= 0) _currentQuestionIndex = idx;
+    } catch (e) {
+      debugPrint('Fehler beim Laden der Position: $e');
+    }
+  }
+
   /// Speichert die IDs gelernter Fragen in SharedPreferences.
   Future<void> _persistLearnedIds() async {
     try {
@@ -578,7 +725,18 @@ class LearningProvider extends ChangeNotifier {
   /// Löscht alle Lernfortschritte ("gelernt"-Markierungen).
   Future<void> clearLearnedProgress() async {
     _learnedIds.clear();
+    _wrongIds.clear();
+    _wrongSnapshot = {};
+    _filterWrongOnly = false;
+    _currentQuestionIndex = 0;
     await _persistLearnedIds();
+    await _persistWrongIds();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_kLastQuestionKey);
+    } catch (e) {
+      debugPrint('Fehler beim Löschen der Position: $e');
+    }
     notifyListeners();
   }
 

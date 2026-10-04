@@ -26,3 +26,6 @@
 
 # R8 allgemein: keine Missing-Class-Warnings zu Fehlern machen
 -dontwarn **
+
+# flutter_local_notifications (geplante Erinnerungen)
+-keep class com.dexterous.** { *; }

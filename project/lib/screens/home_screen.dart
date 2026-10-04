@@ -3,6 +3,7 @@ import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../providers/learning_provider.dart';
+import '../providers/quiz_provider.dart';
 import '../providers/statistics_provider.dart';
 import '../providers/settings_provider.dart';
 import '../widgets/glass.dart';
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
     final learning = context.watch<LearningProvider>();
     final settings = context.watch<SettingsProvider>();
     final stats = context.watch<StatisticsProvider>();
+    final quiz = context.watch<QuizProvider>();
 
     final learnedCount = learning.learnedCount;
     final totalQuestions = learning.totalQuestionCount;
@@ -35,6 +37,7 @@ class HomeScreen extends StatelessWidget {
     final lastResult = stats.recentResults.isNotEmpty ? stats.recentResults.first : null;
     final hasLastTest = lastResult != null;
     final lastTestScore = lastResult?.correctAnswers ?? 0;
+    final lastTestPassed = lastResult?.isPassed ?? false;
     final remaining = totalQuestions - learnedCount;
 
     return Scaffold(
@@ -135,6 +138,45 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
+              // === Unterbrochenen Test fortsetzen ===
+              if (quiz.hasResumableQuiz) ...[
+                GlassCard(
+                  padding: const EdgeInsets.all(14),
+                  onTap: () {
+                    if (quiz.resumeSavedQuiz(learning.allQuestions)) {
+                      Navigator.pushNamed(context, '/quiz');
+                    }
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 44, height: 44,
+                        decoration: BoxDecoration(
+                          gradient: _brandGradient,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 26),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Test fortsetzen',
+                              style: roboto(fontSize: 15, fontWeight: FontWeight.w700, color: _textPrimary)),
+                            const SizedBox(height: 2),
+                            Text(quiz.resumableSummary,
+                              style: roboto(fontSize: 12, color: _textSecondary)),
+                          ],
+                        ),
+                      ),
+                      const Icon(Icons.chevron_right, color: _textSecondary),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
+
               // === Aktionen Grid ===
               GridView.count(
                 shrinkWrap: true,
@@ -165,12 +207,12 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       width: 44, height: 44,
                       decoration: BoxDecoration(
-                        color: (hasLastTest && lastTestScore >= 17 ? _success : _primary).withValues(alpha: 0.15),
+                        color: (hasLastTest && lastTestPassed ? _success : _primary).withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
-                        !hasLastTest ? Icons.rocket_launch : (lastTestScore >= 17 ? Icons.verified : Icons.replay),
-                        color: hasLastTest && lastTestScore >= 17 ? _success : _primary, size: 22,
+                        !hasLastTest ? Icons.rocket_launch : (lastTestPassed ? Icons.verified : Icons.replay),
+                        color: hasLastTest && lastTestPassed ? _success : _primary, size: 22,
                       ),
                     ),
                     const SizedBox(width: 14),
@@ -184,9 +226,9 @@ class HomeScreen extends StatelessWidget {
                             hasLastTest ? '$lastTestScore / ${lastResult.totalQuestions} richtig' : 'Noch kein Test',
                             style: roboto(fontSize: 15, fontWeight: FontWeight.w700, color: _textPrimary)),
                           Text(
-                            !hasLastTest ? 'Starte deinen ersten Test!' : (lastTestScore >= 17 ? 'Bestanden! 🎉' : 'Nicht bestanden'),
+                            !hasLastTest ? 'Starte deinen ersten Test!' : (lastTestPassed ? 'Bestanden! 🎉' : 'Nicht bestanden'),
                             style: roboto(fontSize: 12, fontWeight: FontWeight.w500,
-                              color: hasLastTest && lastTestScore >= 17 ? _success : _primary)),
+                              color: hasLastTest && lastTestPassed ? _success : _primary)),
                         ],
                       ),
                     ),

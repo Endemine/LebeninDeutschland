@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/learning_provider.dart';
 import '../models/question.dart';
+import '../utils/question_text.dart';
 
 /// Screen fuer gemerkte (bookmarkte) Fragen.
 ///
@@ -108,6 +109,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                     learned: learned,
                     onTap: () => _openInLearningMode(q.id),
                     onRemove: () => _removeBookmark(q.id),
+                    onCopy: () => copyQuestion(context, q, lang: learningProvider.viewLanguage),
                   );
                 },
               ),
@@ -184,6 +186,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
   final bool learned;
   final VoidCallback onTap;
   final VoidCallback onRemove;
+  final VoidCallback onCopy;
 
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
@@ -198,6 +201,7 @@ class _BookmarkedQuestionTile extends StatelessWidget {
     required this.learned,
     required this.onTap,
     required this.onRemove,
+    required this.onCopy,
   });
 
   @override
@@ -283,6 +287,15 @@ class _BookmarkedQuestionTile extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+              ),
+              GestureDetector(
+                onTap: onCopy,
+                child: Container(
+                  width: 36,
+                  height: 36,
+                  margin: const EdgeInsets.only(left: 8),
+                  child: const Icon(Icons.copy_rounded, color: _textTertiary, size: 20),
                 ),
               ),
               // Remove Bookmark Button

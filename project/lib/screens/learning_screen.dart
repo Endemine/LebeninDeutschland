@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../utils/question_text.dart';
+import '../widgets/speak_button.dart';
 import '../app_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -179,6 +181,30 @@ class _LearningScreenState extends State<LearningScreen> {
                   () => learning.setCategoryFilter(QuestionCategory.bundesland)),
             ],
           ),
+          // Themen + "Falsche" (horizontal scrollbar, spart Platz)
+          if (!showStatePicker) ...[
+            const SizedBox(height: 8),
+            SizedBox(
+              height: 32,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  _smallChip(
+                    'Falsche (${learning.wrongCount})',
+                    learning.filterWrongOnly,
+                    () => learning.setWrongOnly(!learning.filterWrongOnly),
+                    icon: Icons.replay,
+                  ),
+                  for (final t in LearningProvider.topics)
+                    _smallChip(
+                      t,
+                      learning.filterTopic == t,
+                      () => learning.setTopicFilter(learning.filterTopic == t ? null : t),
+                    ),
+                ],
+              ),
+            ),
+          ],
           // Bundesland-Auswahl (echter Dropdown) nur wenn Kategorie Bundesland
           if (showStatePicker) ...[
             const SizedBox(height: 8),
@@ -191,6 +217,42 @@ class _LearningScreenState extends State<LearningScreen> {
             ),
           ],
         ],
+      ),
+    );
+  }
+
+  /// Kleiner Chip mit eigener Breite (für die scrollbare Themen-Zeile).
+  Widget _smallChip(String label, bool active, VoidCallback onTap, {IconData? icon}) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          decoration: BoxDecoration(
+            color: active ? _primary : _surface,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          alignment: Alignment.center,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (icon != null) ...[
+                Icon(icon, size: 13, color: active ? Colors.white : _textSecondary),
+                const SizedBox(width: 4),
+              ],
+              Text(
+                label,
+                style: roboto(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: active ? Colors.white : _textSecondary,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -274,8 +336,32 @@ class _LearningScreenState extends State<LearningScreen> {
       child: Row(
         children: [
           Expanded(
-            child: Text('${learning.currentIndex + 1} / ${filtered.length} · ${q.category.displayName}',
-              style: roboto(fontSize: 13, fontWeight: FontWeight.w500, color: _textSecondary)),
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => _showJumpDialog(context, learning, filtered.length),
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Text('${learning.currentIndex + 1} / ${filtered.length} · ${q.category.displayName}',
+                      overflow: TextOverflow.ellipsis,
+                      style: roboto(fontSize: 13, fontWeight: FontWeight.w500, color: _textSecondary)),
+                  ),
+                  const SizedBox(width: 6),
+                  const Icon(Icons.swap_vert, size: 16, color: _primary),
+                  Text(' Springen', style: roboto(fontSize: 12, fontWeight: FontWeight.w600, color: _primary)),
+                ],
+              ),
+            ),
+          ),
+          SpeakButton(
+            key: ValueKey('speak_${q.id}_${learning.viewLanguage}'),
+            text: formatQuestionForSpeech(q, lang: learning.viewLanguage),
+            lang: learning.viewLanguage,
+          ),
+          GestureDetector(
+            onTap: () => copyQuestion(context, q, lang: learning.viewLanguage),
+            child: Container(width: 32, height: 32, margin: const EdgeInsets.only(right: 4),
+              child: const Icon(Icons.copy_rounded, color: _textTertiary, size: 19)),
           ),
           GestureDetector(
             onTap: () => learning.toggleLearned(q.id),
@@ -294,6 +380,14 @@ class _LearningScreenState extends State<LearningScreen> {
     );
   }
 
+  Future<void> _showJumpDialog(BuildContext context, LearningProvider learning, int total) async {
+    final target = await showDialog<int>(
+      context: context,
+      builder: (ctx) => _JumpDialog(total: total),
+    );
+    if (target != null) learning.goToQuestion(target);
+  }
+
   Widget _buildQuestionCard(BuildContext context, LearningProvider learning, List<Question> filtered) {
     final q = filtered[learning.currentIndex.clamp(0, filtered.length - 1)];
     final lang = learning.viewLanguage;
@@ -304,9 +398,13 @@ class _LearningScreenState extends State<LearningScreen> {
         questionNumber: learning.currentIndex + 1, totalQuestions: filtered.length,
         questionText: q.questionFor(lang), answers: q.answersFor(lang),
         answerImages: q.answerImages,
+        imageAsset: q.image, imageCredit: q.imageCredit,
         selectedAnswer: _selectedAnswers[q.id], correctAnswer: q.correctAnswerIndex,
         showCorrectAnswer: _selectedAnswers.containsKey(q.id), category: q.category.displayName,
-        onAnswerSelected: (index) { setState(() { _selectedAnswers[q.id] = index; }); },
+        onAnswerSelected: (index) {
+          setState(() { _selectedAnswers[q.id] = index; });
+          learning.recordAnswer(q.id, index == q.correctAnswerIndex);
+        },
       ),
     );
   }
@@ -339,16 +437,65 @@ class _LearningScreenState extends State<LearningScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.search_off, size: 56, color: _textTertiary),
+          Icon(learning.filterWrongOnly ? Icons.celebration_outlined : Icons.search_off, size: 56, color: _textTertiary),
           const SizedBox(height: 16),
-          Text('Keine Fragen gefunden', style: roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
+          Text(learning.filterWrongOnly ? 'Keine falschen Fragen' : 'Keine Fragen gefunden',
+              style: roboto(fontSize: 16, fontWeight: FontWeight.w600, color: _textSecondary)),
           const SizedBox(height: 4),
-          Text('Versuche es mit einer anderen Suche', style: roboto(fontSize: 13, color: _textTertiary)),
+          Text(learning.filterWrongOnly
+                  ? 'Falsch beantwortete Fragen aus Tests und Lernmodus landen hier.'
+                  : 'Versuche es mit einer anderen Suche',
+              textAlign: TextAlign.center,
+              style: roboto(fontSize: 13, color: _textTertiary)),
           const SizedBox(height: 24),
           AppButton(label: 'Filter zurücksetzen', isOutlined: true, isSmall: true,
             onPressed: () { learning.clearAllFilters(); _searchController.clear(); setState(() {}); }),
         ],
       ),
+    );
+  }
+}
+
+/// Dialog "Zu Frage springen" -- verwaltet seinen Eingabe-Controller selbst,
+/// damit er erst nach dem Ausblenden des Dialogs freigegeben wird.
+class _JumpDialog extends StatefulWidget {
+  final int total;
+  const _JumpDialog({required this.total});
+
+  @override
+  State<_JumpDialog> createState() => _JumpDialogState();
+}
+
+class _JumpDialogState extends State<_JumpDialog> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    final n = int.tryParse(_controller.text.trim());
+    if (n != null && n >= 1 && n <= widget.total) Navigator.pop(context, n - 1);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Zu Frage springen',
+          style: roboto(fontSize: 18, fontWeight: FontWeight.w700, color: const Color(0xFF1A1A1A))),
+      content: TextField(
+        controller: _controller,
+        autofocus: true,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(hintText: 'Nummer (1 – ${widget.total})'),
+        onSubmitted: (_) => _submit(),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: const Text('Abbrechen')),
+        TextButton(onPressed: _submit, child: const Text('Springen')),
+      ],
     );
   }
 }

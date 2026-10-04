@@ -1,7 +1,7 @@
 name: einbuergerungstest
 description: "Einbuergerungstest Pro - Leben in Deutschland"
 publish_to: 'none'
-version: 1.1.1+28
+version: 1.1.3+32
 environment:
   sdk: ^3.5.0
 
@@ -20,6 +20,11 @@ dependencies:
   percent_indicator: ^4.2.4
   flutter_svg: ^2.0.10+1
   url_launcher: ^6.3.1
+  share_plus: ^10.1.2
+  flutter_tts: ^4.2.5
+  flutter_local_notifications: ^22.3.1
+  timezone: ^0.11.1
+  flutter_timezone: ^5.1.1
 
 
 dev_dependencies:
@@ -40,15 +45,5 @@ flutter:
     - assets/questions.json
     - assets/fonts/OFL.txt
     - assets/translations.json
-    - assets/wappen/bayern.png
-    - assets/wappen/berlin.png
-    - assets/wappen/bundesrepublik.png
-    - assets/wappen/ddr.png
-    - assets/wappen/hamburg.png
-    - assets/wappen/hessen.png
-    - assets/wappen/niedersachsen.png
-    - assets/wappen/nordrhein_westfalen.png
-    - assets/wappen/sachsen.png
-    - assets/wappen/sachsen_anhalt.png
-    - assets/wappen/schleswig_holstein.png
-    - assets/wappen/thueringen.png
+    - assets/wappen/
+    - assets/questions/

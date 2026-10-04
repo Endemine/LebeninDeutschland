@@ -22,7 +22,9 @@ class ResultSummary extends StatefulWidget {
     this.elapsedTime,
   });
 
-  bool get isPassed => correctAnswers >= 17;
+  /// Bestehensgrenze proportional zur Fragenzahl (echter Test: 17 von 33).
+  int get requiredCorrect => (totalQuestions * 17 / 33).round();
+  bool get isPassed => correctAnswers >= requiredCorrect;
   double get percent => (correctAnswers / totalQuestions);
 
   @override
@@ -204,7 +206,7 @@ class _ResultSummaryState extends State<ResultSummary>
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Benötigt: 17 / ${widget.totalQuestions} zum Bestehen',
+                    'Benötigt: ${widget.requiredCorrect} / ${widget.totalQuestions} zum Bestehen',
                     style: roboto(
                       fontSize: 12,
                       color: _textSecondary,

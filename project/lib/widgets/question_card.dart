@@ -16,7 +16,8 @@ class QuestionCard extends StatelessWidget {
   final bool showCorrectAnswer;
   final Function(int)? onAnswerSelected;
   final String? category;
-  final String? imageUrl;
+  final String? imageAsset;
+  final String? imageCredit;
 
   const QuestionCard({
     super.key,
@@ -30,12 +31,28 @@ class QuestionCard extends StatelessWidget {
     this.showCorrectAnswer = false,
     this.onAnswerSelected,
     this.category,
-    this.imageUrl,
+    this.imageAsset,
+    this.imageCredit,
   });
 
   static const Color _primary = Color(0xFFFF6B00);
   static const Color _textPrimary = Color(0xFF1A1A1A);
   static const Color _textTertiary = Color(0xFFC7C7CC);
+
+  void _showImageFullscreen(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => Dialog(
+        insetPadding: const EdgeInsets.all(8),
+        backgroundColor: Colors.white,
+        child: InteractiveViewer(
+          minScale: 1,
+          maxScale: 5,
+          child: Image.asset(imageAsset!, fit: BoxFit.contain),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +103,26 @@ class QuestionCard extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         // Bild (falls vorhanden)
-        if (imageUrl != null) ...[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              imageUrl!,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
+        if (imageAsset != null) ...[
+          GestureDetector(
+            onTap: () => _showImageFullscreen(context),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                imageAsset!,
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
+                errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
+              ),
             ),
           ),
+          if (imageCredit != null) ...[
+            const SizedBox(height: 4),
+            Text(
+              imageCredit!,
+              style: roboto(fontSize: 11, color: _textTertiary),
+            ),
+          ],
           const SizedBox(height: 20),
         ],
         // Antwort-Buttons

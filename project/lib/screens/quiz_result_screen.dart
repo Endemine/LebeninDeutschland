@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import '../app_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
+import '../providers/learning_provider.dart';
+import '../utils/question_text.dart';
 import '../providers/quiz_provider.dart';
+import '../models/quiz_result.dart';
 import '../widgets/result_summary.dart';
 import '../widgets/app_button.dart';
 
@@ -102,6 +106,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     question: qa.question.text,
                     status: qa.isCorrect ? 'correct' : (qa.isAnswered ? 'wrong' : 'unanswered'),
                     correctAnswer: qa.question.correctAnswer,
+                    onCopy: () => copyQuestion(context, qa.question),
                   );
                 },
                 childCount: result.questionAnswers.length,
@@ -113,11 +118,22 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
+                    if (result.wrongAnswers > 0) ...[
+                      AppButton(
+                        label: 'Falsche Fragen üben', isFullWidth: true, icon: Icons.replay,
+                        onPressed: () {
+                          context.read<LearningProvider>().setWrongOnly(true);
+                          Navigator.pushNamed(context, '/learning');
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                    ],
                     AppButton(
                       label: 'Nochmal versuchen', isFullWidth: true, icon: Icons.refresh,
                       onPressed: () {
                         quizProvider.reset();
-                        Navigator.pushNamedAndRemoveUntil(context, '/quiz', (route) => false);
+                        Navigator.pushNamedAndRemoveUntil(
+                          context, '/quiz/setup', ModalRoute.withName('/'));
                       },
                     ),
                     const SizedBox(height: 10),
@@ -128,7 +144,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     const SizedBox(height: 10),
                     AppButton(
                       label: 'Ergebnis teilen', isFullWidth: true, isOutlined: true, icon: Icons.share,
-                      onPressed: () {},
+                      onPressed: () => _shareResult(result),
                     ),
                   ],
                 ),
@@ -147,6 +163,14 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
+  void _shareResult(QuizResult result) {
+    final status = result.isPassed ? 'Bestanden' : 'Nicht bestanden';
+    Share.share(
+      'Mein Ergebnis im Einbürgerungstest: ${result.scoreText} '
+      '(${result.scorePercentText}) – $status',
+    );
+  }
+
 }
 
 class _QuestionResultTile extends StatefulWidget {
@@ -154,7 +178,8 @@ class _QuestionResultTile extends StatefulWidget {
   final String question;
   final String status;
   final String correctAnswer;
-  const _QuestionResultTile({required this.index, required this.question, required this.status, required this.correctAnswer});
+  final VoidCallback onCopy;
+  const _QuestionResultTile({required this.index, required this.question, required this.status, required this.correctAnswer, required this.onCopy});
   @override
   State<_QuestionResultTile> createState() => _QuestionResultTileState();
 }
@@ -213,6 +238,13 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
                     child: Text('${widget.index}. ${widget.question}',
                       style: roboto(fontSize: 14, fontWeight: FontWeight.w500, color: _textPrimary),
                       maxLines: _expanded ? null : 1, overflow: _expanded ? null : TextOverflow.ellipsis,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: widget.onCopy,
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 6),
+                      child: Icon(Icons.copy_rounded, color: _textTertiary, size: 18),
                     ),
                   ),
                   Icon(_expanded ? Icons.expand_less : Icons.expand_more, color: _textTertiary, size: 20),

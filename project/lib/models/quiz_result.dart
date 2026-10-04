@@ -97,6 +97,11 @@ class QuizResult {
       }
     }
 
+    // Bestehensgrenze proportional zur Fragenanzahl (echter Test: 17/33 ≈ 51,5 %),
+    // damit auch der Schnelltest (10 Fragen) eine erreichbare Grenze hat.
+    final passingThreshold =
+        (questions.length * QuizState.passingThreshold / 33).round();
+
     return QuizResult(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       date: DateTime.now(),
@@ -104,7 +109,7 @@ class QuizResult {
       correctAnswers: correct,
       wrongAnswers: wrong,
       unanswered: unanswered,
-      passed: correct >= QuizState.passingThreshold,
+      passed: correct >= passingThreshold,
       durationSeconds: timeTakenSeconds,
       questionAnswers: questionAnswers,
       state: selectedState,

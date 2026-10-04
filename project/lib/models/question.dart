@@ -79,12 +79,24 @@ class Question {
     this.answersEn,
     this.answersAr,
     this.answerImages,
+    this.image,
+    this.imageCredit,
+    this.topic,
   });
 
   /// Liste von Asset-Pfaden zu Antwort-Bildern (4 Einträge, einer pro Antwort).
   /// null an einem Index = diese Antwort als Text anzeigen.
   /// Beispiel: ['assets/wappen/bayern.png', null, null, null] → erstes Bild = Bayern-Wappen
   final List<String?>? answerImages;
+
+  /// Asset-Pfad eines Bildes zur Frage selbst (z. B. Foto, Stimmzettel, Karte).
+  final String? image;
+
+  /// Bildnachweis zu [image] (falls vorgeschrieben).
+  final String? imageCredit;
+
+  /// Themenblock der allgemeinen Fragen (z. B. 'Geschichte'); bei Bundesland-Fragen null.
+  final String? topic;
 
   /// Liefert den Fragetext in der gewünschten Sprache ('de', 'en', 'ar')
   String questionFor(String lang) {
@@ -134,6 +146,9 @@ class Question {
       answersEn: answersEn ?? this.answersEn,
       answersAr: answersAr ?? this.answersAr,
       answerImages: answerImages,
+      image: image,
+      imageCredit: imageCredit,
+      topic: topic,
     );
   }
 
@@ -178,6 +193,9 @@ class Question {
       state: json['state'] as String?,
       explanation: json['explanation'] as String?,
       answerImages: answerImages,
+      image: json['image'] as String?,
+      imageCredit: json['imageCredit'] as String?,
+      topic: json['topic'] as String?,
     );
   }
 

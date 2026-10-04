@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../app_info.dart';
 import '../widgets/app_card.dart';
 import '../providers/learning_provider.dart';
+import '../providers/quiz_provider.dart';
+import '../services/reminder_service.dart';
 import '../providers/settings_provider.dart';
 import '../providers/statistics_provider.dart';
 
@@ -91,7 +93,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final learning = context.read<LearningProvider>();
     final statistics = context.read<StatisticsProvider>();
     final settings = context.read<SettingsProvider>();
+    final quiz = context.read<QuizProvider>();
 
+    await quiz.discardSavedQuiz();
     await learning.clearLearnedProgress();
     await learning.clearBookmarks();
     await statistics.clearAll();
@@ -193,6 +197,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 learning.setViewLanguage(code);
               },
             ),
+
+            const SizedBox(height: 8),
+
+            // Lern-Erinnerung
+            const _SettingsSectionTitle(title: 'Erinnerung'),
+            const _ReminderCard(),
 
             const SizedBox(height: 8),
 
@@ -522,3 +532,86 @@ class _SettingsActionCard extends StatelessWidget {
     );
   }
 }
+
+/// Tägliche Lern-Erinnerung: Schalter plus Uhrzeit (alles lokal auf dem Gerät).
+class _ReminderCard extends StatelessWidget {
+  const _ReminderCard();
+
+  static const Color _primary = Color(0xFFFF6B00);
+  static const Color _textPrimary = Color(0xFF1A1A1A);
+  static const Color _textSecondary = Color(0xFF8E8E93);
+
+  Future<void> _toggle(BuildContext context, ReminderService reminder, bool value) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final ok = await reminder.setEnabled(value);
+    if (!ok && value) {
+      messenger.showSnackBar(const SnackBar(
+        content: Text('Benachrichtigungen sind nicht erlaubt. Bitte in den Systemeinstellungen aktivieren.'),
+      ));
+    }
+  }
+
+  Future<void> _pickTime(BuildContext context, ReminderService reminder) async {
+    final picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: reminder.hour, minute: reminder.minute),
+    );
+    if (picked != null) await reminder.setTime(picked.hour, picked.minute);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ReminderService>(
+      builder: (context, reminder, _) => Column(
+        children: [
+          AppCard(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              children: [
+                Container(
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    color: _primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(Icons.notifications_active, color: _primary, size: 20),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Tägliche Erinnerung',
+                          style: roboto(fontSize: 15, fontWeight: FontWeight.w600, color: _textPrimary)),
+                      Text(
+                        reminder.enabled ? 'Jeden Tag um ${reminder.timeLabel} Uhr' : 'Aus',
+                        style: roboto(fontSize: 13, color: _textSecondary),
+                      ),
+                    ],
+                  ),
+                ),
+                Switch(
+                  value: reminder.enabled,
+                  activeTrackColor: _primary,
+                  onChanged: (v) => _toggle(context, reminder, v),
+                ),
+              ],
+            ),
+          ),
+          if (reminder.enabled) ...[
+            const SizedBox(height: 8),
+            _SettingsActionCard(
+              icon: Icons.schedule,
+              iconColor: _primary,
+              title: 'Uhrzeit ändern',
+              subtitle: '${reminder.timeLabel} Uhr',
+              onTap: () => _pickTime(context, reminder),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
