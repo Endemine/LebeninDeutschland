@@ -1,2 +1,5 @@
-New app icon.
-Noticeably faster startup: questions are now loaded in the background, making the app ready about twice as quickly.
+New in 1.1.3:
+• Missing pictures added: questions with photos, ballots, flags, coats of arms and maps are now complete.
+• State questions corrected (Mecklenburg-Vorpommern, Lower Saxony, North Rhine-Westphalia, Rhineland-Palatinate, Saarland).
+• New: repeat wrong questions, practice by topic, resume a test, jump to a question, copy a question, read-aloud and an optional daily study reminder.
+• The quick test now really has 10 questions and 15 minutes. Improved statistics and result sharing.

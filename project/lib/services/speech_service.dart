@@ -24,6 +24,19 @@ class SpeechService {
     _tts.setCancelHandler(() => speaking.value = false);
     _tts.setErrorHandler((_) => speaking.value = false);
     await _tts.setSpeechRate(0.45);
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      // Sonst bleibt die Sprachausgabe bei aktivem Stumm-Schalter lautlos.
+      await _tts.setSharedInstance(true);
+      await _tts.setIosAudioCategory(
+        IosTextToSpeechAudioCategory.playback,
+        [
+          IosTextToSpeechAudioCategoryOptions.allowBluetooth,
+          IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP,
+          IosTextToSpeechAudioCategoryOptions.mixWithOthers,
+        ],
+        IosTextToSpeechAudioMode.voicePrompt,
+      );
+    }
   }
 
   /// Startet das Vorlesen. Gibt false zurück, wenn die Sprache auf dem Gerät

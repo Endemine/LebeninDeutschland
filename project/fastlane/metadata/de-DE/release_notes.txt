@@ -1,2 +1,5 @@
-Neues App-Icon.
-Deutlich schnellerer Start: Die Fragen werden jetzt im Hintergrund geladen, die App ist rund doppelt so schnell einsatzbereit.
+Neu in 1.1.3:
+• Fehlende Bilder ergänzt: Fragen mit Foto, Stimmzetteln, Flaggen, Wappen und Landkarten sind jetzt vollständig.
+• Bundesland-Fragen korrigiert (Mecklenburg-Vorpommern, Niedersachsen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland).
+• Neu: Falsche Fragen wiederholen, Üben nach Thema, Test fortsetzen, Springen zu einer Frage, Frage kopieren, Vorlesen und eine tägliche Lern-Erinnerung (optional).
+• Der Schnelltest hat jetzt wirklich 10 Fragen und 15 Minuten. Statistik und Ergebnis-Teilen verbessert.
