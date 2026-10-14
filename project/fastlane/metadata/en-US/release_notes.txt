@@ -1,5 +1,3 @@
-New in 1.1.3:
-• Missing pictures added: questions with photos, ballots, flags, coats of arms and maps are now complete.
-• State questions corrected (Mecklenburg-Vorpommern, Lower Saxony, North Rhine-Westphalia, Rhineland-Palatinate, Saarland).
-• New: repeat wrong questions, practice by topic, resume a test, jump to a question, copy a question, read-aloud and an optional daily study reminder.
-• The quick test now really has 10 questions and 15 minutes. Improved statistics and result sharing.
+New in 1.1.4:
+• Question catalog updated to the current BAMF version (May 2025): ten questions replaced, several answers corrected.
+• Added the missing map for the question about the occupation zones.

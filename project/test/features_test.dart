@@ -20,7 +20,7 @@ void main() {
 
   test('Themen-Filter: 4 Themen, Zahlen stimmen, Bundesland löscht das Thema', () async {
     final lp = await load();
-    final counts = {'Staat & Demokratie': 150, 'Geschichte': 70, 'Europa': 20, 'Alltag & Gesellschaft': 60};
+    final counts = {'Staat & Demokratie': 146, 'Geschichte': 71, 'Europa': 20, 'Alltag & Gesellschaft': 63};
     for (final t in LearningProvider.topics) {
       lp.setTopicFilter(t);
       expect(lp.filteredQuestions.length, counts[t], reason: t);

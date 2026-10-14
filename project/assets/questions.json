@@ -186,9 +186,9 @@
     "question": "Meinungsfreiheit in Deutschland heißt, dass ich …",
     "answers": [
       "Passanten auf der Straße beschimpfen darf.",
-      "meine Meinung in Leserbriefen äußern kann.",
-      "Nazi-Symbole tragen darf.",
-      "meine Meinung sagen darf, solange ich der Regierung nicht widerspreche."
+      "meine Meinung im Internet äußern kann.",
+      "Nazi-, Hamas- oder Islamischer Staat-Symbole öffentlich tragen darf.",
+      "meine Meinung nur dann äußern darf, solange ich der Regierung nicht widerspreche."
     ],
     "correct": 1,
     "category": "Allgemein",
@@ -827,17 +827,17 @@
   },
   {
     "id": 59,
-    "question": "Welche Parteien wurden in Deutschland 2007 zur Partei „Die Linke“?",
+    "question": "Vor wie vielen Jahren gab es erstmals eine jüdische Gemeinde auf dem Gebiet des heutigen Deutschlands?",
     "answers": [
-      "CDU und SSW",
-      "PDS und WASG",
-      "CSU und FDP",
-      "Bündnis 90/Die Grünen und SPD"
+      "vor etwa 300 Jahren",
+      "vor etwa 700 Jahren",
+      "vor etwa 1150 Jahren",
+      "vor etwa 1700 Jahren"
     ],
-    "correct": 1,
+    "correct": 3,
     "category": "Allgemein",
     "state": null,
-    "topic": "Staat & Demokratie"
+    "topic": "Geschichte"
   },
   {
     "id": 60,
@@ -925,17 +925,17 @@
   },
   {
     "id": 66,
-    "question": "Wer schrieb den Text zur deutschen Nationalhymne?",
+    "question": "Welche Städte haben die größten jüdischen Gemeinden in Deutschland?",
     "answers": [
-      "Friedrich von Schiller",
-      "Clemens Brentano",
-      "Johann Wolfgang von Goethe",
-      "Heinrich Hoffmann von Fallersleben"
+      "Berlin und München",
+      "Hamburg und Essen",
+      "Nürnberg und Stuttgart",
+      "Worms und Speyer"
     ],
-    "correct": 3,
+    "correct": 0,
     "category": "Allgemein",
     "state": null,
-    "topic": "Staat & Demokratie"
+    "topic": "Alltag & Gesellschaft"
   },
   {
     "id": 67,
@@ -1013,8 +1013,8 @@
     "answers": [
       "Gerhard Schröder",
       "Angela Merkel",
-      "Franziska Giffey",
-      "Olaf Scholz"
+      "Ursula von der Leyen",
+      "Friedrich Merz"
     ],
     "correct": 3,
     "category": "Allgemein",
@@ -1025,10 +1025,10 @@
     "id": 73,
     "question": "Die beiden größten Fraktionen im Deutschen Bundestag heißen zurzeit …",
     "answers": [
-      "CDU/CSU und SPD.",
+      "CDU/CSU und AfD.",
       "Die Linke und Bündnis 90/Die Grünen.",
-      "FDP und SPD.",
-      "Die Linke und FDP."
+      "Bündnis 90/Die Grünen und SPD.",
+      "Die Linke und CDU/CSU."
     ],
     "correct": 0,
     "category": "Allgemein",
@@ -1345,14 +1345,14 @@
   },
   {
     "id": 96,
-    "question": "Was muss jeder deutsche Staatsbürger / jede deutsche Staatsbürgerin ab dem 16. Lebensjahr besitzen?",
+    "question": "Wie kann jemand, der den Holocaust leugnet, bestraft werden?",
     "answers": [
-      "einen Reisepass",
-      "einen Personalausweis",
-      "einen Sozialversicherungsausweis",
-      "einen Führerschein"
+      "Kürzung sozialer Leistungen",
+      "bis zu 100 Sozialstunden",
+      "gar nicht, Holocaustleugnung ist erlaubt",
+      "mit Freiheitsstrafe bis zu fünf Jahren oder mit Geldstrafe"
     ],
-    "correct": 1,
+    "correct": 3,
     "category": "Allgemein",
     "state": null,
     "topic": "Staat & Demokratie"
@@ -1555,14 +1555,14 @@
   },
   {
     "id": 111,
-    "question": "In Deutschland darf man wählen. Was bedeutet das?",
+    "question": "Welche Handlungen mit Bezug auf den Staat Israel sind in Deutschland verboten?",
     "answers": [
-      "Alle deutschen Staatsangehörigen dürfen wählen, wenn sie das Mindestalter erreicht haben.",
-      "Nur verheiratete Personen dürfen wählen.",
-      "Nur Personen mit einem festen Arbeitsplatz dürfen wählen.",
-      "Alle Einwohner und Einwohnerinnen in Deutschland müssen wählen."
+      "die Politik Israels öffentlich kritisieren",
+      "das Aufhängen einer israelischen Flagge auf dem Privatgrundstück",
+      "eine Diskussion über die Politik Israels",
+      "der öffentliche Aufruf zur Vernichtung Israels"
     ],
-    "correct": 0,
+    "correct": 3,
     "category": "Allgemein",
     "state": null,
     "topic": "Staat & Demokratie"
@@ -1653,17 +1653,17 @@
   },
   {
     "id": 118,
-    "question": "Was regelt das Wahlrecht in Deutschland?",
+    "question": "Wer darf bei den rund 40 jüdischen Makkabi-Sportvereinen Mitglied werden?",
     "answers": [
-      "Wer wählen darf, muss wählen.",
-      "Alle die wollen, können wählen.",
-      "Wer nicht wählt, verliert das Recht zu wählen.",
-      "Wer wählen darf, kann wählen."
+      "nur Deutsche",
+      "nur Israelis",
+      "nur religiöse Menschen",
+      "alle Menschen"
     ],
     "correct": 3,
     "category": "Allgemein",
     "state": null,
-    "topic": "Staat & Demokratie"
+    "topic": "Alltag & Gesellschaft"
   },
   {
     "id": 119,
@@ -2088,17 +2088,17 @@
   },
   {
     "id": 149,
-    "question": "Wer kann Gerichtsschöffe / Gerichtsschöffin in Deutschland werden?",
+    "question": "Was ist ein Beispiel für antisemitisches Verhalten?",
     "answers": [
-      "alle in Deutschland geborenen Einwohner / Einwohnerinnen über 18 Jahre",
-      "alle deutschen Staatsangehörigen älter als 24 und jünger als 70 Jahre",
-      "alle Personen, die seit mindestens 5 Jahren in Deutschland leben",
-      "nur Personen mit einem abgeschlossenen Jurastudium"
+      "ein jüdisches Fest besuchen",
+      "die israelische Regierung kritisieren",
+      "den Holocaust leugnen",
+      "gegen Juden Fußball spielen."
     ],
-    "correct": 1,
+    "correct": 2,
     "category": "Allgemein",
     "state": null,
-    "topic": "Staat & Demokratie"
+    "topic": "Alltag & Gesellschaft"
   },
   {
     "id": 150,
@@ -2476,7 +2476,8 @@
     "correct": 2,
     "category": "Allgemein",
     "state": null,
-    "topic": "Geschichte"
+    "topic": "Geschichte",
+    "image": "assets/questions/q176_besatzungszonen.jpg"
   },
   {
     "id": 177,
@@ -2550,17 +2551,17 @@
   },
   {
     "id": 182,
-    "question": "Welche Parteien wurden 1946 zwangsweise zur SED vereint, der Einheitspartei der späteren DDR?",
+    "question": "Wie heißt das jüdische Gebetshaus?",
     "answers": [
-      "KPD und SPD",
-      "SPD und CDU",
-      "CDU und FDP",
-      "KPD und CSU"
+      "Basilika",
+      "Moschee",
+      "Synagoge",
+      "Kirche"
     ],
-    "correct": 0,
+    "correct": 2,
     "category": "Allgemein",
     "state": null,
-    "topic": "Geschichte"
+    "topic": "Alltag & Gesellschaft"
   },
   {
     "id": 183,
@@ -2578,14 +2579,14 @@
   },
   {
     "id": 184,
-    "question": "Was nannten die Menschen in Deutschland sehr lange „Die Stunde Null“?",
+    "question": "Auf welcher rechtlichen Grundlage wurde der Staat Israel gegründet?",
     "answers": [
-      "Damit wird die Zeit nach der Wende im Jahr 1989 bezeichnet.",
-      "Damit wurde der Beginn des Zweiten Weltkrieges bezeichnet.",
-      "Darunter verstand man das Ende des Zweiten Weltkrieges und den Beginn des Wiederaufbaus.",
-      "Damit ist die Stunde gemeint, in der die Uhr von der Sommerzeit auf die Winterzeit umgestellt wird."
+      "eine Resolution der Vereinten Nationen",
+      "ein Beschluss des Zionistenkongresses",
+      "ein Vorschlag der Bundesregierung",
+      "ein Vorschlag der UdSSR"
     ],
-    "correct": 2,
+    "correct": 0,
     "category": "Allgemein",
     "state": null,
     "topic": "Geschichte"
@@ -2886,12 +2887,12 @@
   },
   {
     "id": 206,
-    "question": "Was bedeutete im Jahr 1989 in Deutschland das Wort „Montagsdemonstration“?",
+    "question": "Woran erinnern die sogenannten „Stolpersteine“ in Deutschland?",
     "answers": [
-      "In der Bundesrepublik waren Demonstrationen nur am Montag erlaubt.",
-      "Montags waren Demonstrationen gegen das DDR-Regime.",
-      "Am ersten Montag im Monat trafen sich in der Bundesrepublik Deutschland Demonstranten.",
-      "Montags demonstrierte man in der DDR gegen den Westen."
+      "an berühmte deutsche Politikerinnen und Politiker",
+      "an die Opfer des Nationalsozialismus",
+      "an Verkehrstote",
+      "an bekannte jüdische Musiker"
     ],
     "correct": 1,
     "category": "Allgemein",
@@ -2994,7 +2995,7 @@
     "answers": [
       "70 Millionen",
       "78 Millionen",
-      "83 Millionen",
+      "84 Millionen",
       "90 Millionen"
     ],
     "correct": 2,
@@ -3093,7 +3094,7 @@
       "an das Ende des Zweiten Weltkrieges",
       "an die Verabschiedung des Grundgesetzes",
       "an die Wiedervereinigung Deutschlands",
-      "an die Opfer des Nationalsozialismus"
+      "an die Opfer des Nationalsozialismus (Tag der Befreiung des Vernichtungslagers Auschwitz)"
     ],
     "correct": 3,
     "category": "Allgemein",
@@ -3290,7 +3291,7 @@
   },
   {
     "id": 234,
-    "question": "Wo ist der Sitz des Europäischen Parlaments?",
+    "question": "Wo ist ein Sitz des Europäischen Parlaments?",
     "answers": [
       "London",
       "Paris",
@@ -4046,17 +4047,17 @@
   },
   {
     "id": 288,
-    "question": "Bei welchem Amt muss man in Deutschland in der Regel seinen Hund anmelden?",
+    "question": "Woraus begründet sich Deutschlands besondere Verantwortung für Israel?",
     "answers": [
-      "beim Finanzamt",
-      "beim Einwohnermeldeamt",
-      "bei der Kommune (Stadt oder Gemeinde)",
-      "beim Gesundheitsamt"
+      "aus der Mitgliedschaft in der Europäischen Union (EU)",
+      "aus den nationalsozialistischen Verbrechen gegen Juden",
+      "aus dem Grundgesetz der Bundesrepublik Deutschland",
+      "aus der christlichen Tradition"
     ],
-    "correct": 2,
+    "correct": 1,
     "category": "Allgemein",
     "state": null,
-    "topic": "Alltag & Gesellschaft"
+    "topic": "Geschichte"
   },
   {
     "id": 289,

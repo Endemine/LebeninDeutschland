@@ -212,15 +212,15 @@
     "question_ar": "تعني حرية الرأي في ألمانيا أنّني أستطيع ...",
     "answers_en": [
       "may insult passers-by on the street.",
-      "can express my opinion in letters to the editor.",
-      "may wear Nazi symbols.",
-      "may express my opinion as long as I do not disagree with the government."
+      "can express my opinion on the internet.",
+      "may publicly wear Nazi, Hamas or Islamic State symbols.",
+      "may only express my opinion as long as I do not disagree with the government."
     ],
     "answers_ar": [
       "أن أشتم المارّة في الشارع.",
-      "أن أبدي رأيي في رسائل القراء.",
-      "أن أرتدي رموزاً نازية.",
-      "أن أقول رأيي بشرط ألاّ أخالف الحكومة."
+      "أن أبدي رأيي على الإنترنت.",
+      "أن أرتدي علناً رموزاً نازية أو رموز حماس أو تنظيم الدولة الإسلامية.",
+      "أن أقول رأيي فقط بشرط ألاّ أخالف الحكومة."
     ]
   },
   "15": {
@@ -928,19 +928,19 @@
     ]
   },
   "59": {
-    "question_en": "Which parties merged in Germany in 2007 to form the party 'Die Linke'?",
-    "question_ar": "أيّ حزبين اتّحدا في ألمانيا عام 2007 لتكوين حزب «اليسار»؟",
+    "question_en": "How many years ago was there first a Jewish community in the area of present-day Germany?",
+    "question_ar": "منذ كم سنة وُجدت لأول مرة جالية يهودية على أراضي ألمانيا الحالية؟",
     "answers_en": [
-      "CDU and SSW",
-      "PDS and WASG",
-      "CSU and FDP",
-      "Bündnis 90/The Greens and SPD"
+      "about 300 years ago",
+      "about 700 years ago",
+      "about 1150 years ago",
+      "about 1700 years ago"
     ],
     "answers_ar": [
-      "CDU وSSW",
-      "PDS وWASG",
-      "CSU وFDP",
-      "تحالف 90/الخضر وSPD"
+      "قبل نحو 300 عام",
+      "قبل نحو 700 عام",
+      "قبل نحو 1150 عاماً",
+      "قبل نحو 1700 عام"
     ]
   },
   "60": {
@@ -1040,19 +1040,19 @@
     ]
   },
   "66": {
-    "question_en": "Who wrote the text for the German national anthem?",
-    "question_ar": "من كتب كلمات النشيد الوطني الألماني؟",
+    "question_en": "Which cities have the largest Jewish communities in Germany?",
+    "question_ar": "ما هي المدن التي توجد فيها أكبر الجاليات اليهودية في ألمانيا؟",
     "answers_en": [
-      "Friedrich von Schiller",
-      "Clemens Brentano",
-      "Johann Wolfgang von Goethe",
-      "Heinrich Hoffmann von Fallersleben"
+      "Berlin and Munich",
+      "Hamburg and Essen",
+      "Nuremberg and Stuttgart",
+      "Worms and Speyer"
     ],
     "answers_ar": [
-      "فريدريش فون شيلر",
-      "كليمنس برنتانو",
-      "يوهان فولفغانغ فون غوته",
-      "هاينريش هوفمان فون فالرسليبن"
+      "برلين وميونخ",
+      "هامبورغ وإيسن",
+      "نورنبرغ وشتوتغارت",
+      "فورمس وشباير"
     ]
   },
   "67": {
@@ -1141,30 +1141,30 @@
     "answers_en": [
       "Gerhard Schröder",
       "Angela Merkel",
-      "Franziska Giffey",
-      "Olaf Scholz"
+      "Ursula von der Leyen",
+      "Friedrich Merz"
     ],
     "answers_ar": [
       "غيرهارد شرودر",
       "أنغيلا ميركل",
-      "فرانزيسكا جيفي",
-      "أولاف شولتس"
+      "أورسولا فون دير لاين",
+      "فريدريش ميرتس"
     ]
   },
   "73": {
     "question_en": "The two largest parliamentary groups in the German Bundestag are currently called …",
     "question_ar": "تسمّى الكتلتان الأكبر في البوندستاغ الألماني حالياً ...",
     "answers_en": [
-      "CDU/CSU and SPD.",
+      "CDU/CSU and AfD.",
       "The Left and Bündnis 90/The Greens.",
-      "FDP and SPD.",
-      "The Left and FDP."
+      "Bündnis 90/The Greens and SPD.",
+      "The Left and CDU/CSU."
     ],
     "answers_ar": [
-      "CDU/CSU وSPD.",
+      "CDU/CSU وAfD.",
       "اليسار وتحالف 90/الخضر.",
-      "FDP وSPD.",
-      "اليسار وFDP."
+      "تحالف 90/الخضر وSPD.",
+      "اليسار وCDU/CSU."
     ]
   },
   "74": {
@@ -1520,19 +1520,19 @@
     ]
   },
   "96": {
-    "question_en": "What must every German citizen have from the age of 16?",
-    "question_ar": "ما الذي يجب أن يمتلكه كلّ مواطن ألماني ابتداءً من سنّ السادسة عشرة؟",
+    "question_en": "How can someone who denies the Holocaust be punished?",
+    "question_ar": "كيف يمكن معاقبة من ينكر المحرقة (الهولوكوست)؟",
     "answers_en": [
-      "a passport",
-      "an identity card",
-      "a social security card",
-      "a driver's license"
+      "reduction of social benefits",
+      "up to 100 hours of community service",
+      "not at all, Holocaust denial is allowed",
+      "with imprisonment of up to five years or with a fine"
     ],
     "answers_ar": [
-      "جواز سفر",
-      "بطاقة هويّة شخصيّة",
-      "بطاقة ضمان اجتماعي",
-      "رخصة قيادة"
+      "تخفيض المساعدات الاجتماعية",
+      "حتى 100 ساعة خدمة اجتماعية",
+      "لا يُعاقب إطلاقاً، فإنكار المحرقة مسموح",
+      "بالسجن حتى خمس سنوات أو بغرامة مالية"
     ]
   },
   "97": {
@@ -1760,19 +1760,19 @@
     ]
   },
   "111": {
-    "question_en": "In Germany, one is allowed to vote. What does that mean?",
-    "question_ar": "في ألمانيا يحقّ لك التصويت. ماذا يعني ذلك؟",
+    "question_en": "Which actions relating to the State of Israel are prohibited in Germany?",
+    "question_ar": "ما هي الأفعال المتعلقة بدولة إسرائيل المحظورة في ألمانيا؟",
     "answers_en": [
-      "All German citizens may vote if they have reached the minimum age.",
-      "Only married people may vote.",
-      "Only people with a permanent job may vote.",
-      "All residents in Germany must vote."
+      "publicly criticising Israel's policy",
+      "hanging an Israeli flag on private property",
+      "a discussion about Israel's policy",
+      "the public call for the destruction of Israel"
     ],
     "answers_ar": [
-      "يحقّ لجميع المواطنين الألمان التصويت عند بلوغهم السنّ الأدنى.",
-      "لا يحقّ التصويت إلاّ للمتزوّجين.",
-      "لا يحقّ التصويت إلاّ للأشخاص الذين لديهم وظيفة ثابتة.",
-      "يجب على جميع السكّان في ألمانيا التصويت."
+      "انتقاد سياسة إسرائيل علناً",
+      "رفع علم إسرائيلي في ملكية خاصة",
+      "إجراء نقاش حول سياسة إسرائيل",
+      "الدعوة العلنية إلى تدمير إسرائيل"
     ]
   },
   "112": {
@@ -1872,19 +1872,19 @@
     ]
   },
   "118": {
-    "question_en": "What does the electoral law regulate in Germany?",
-    "question_ar": "ما الذي ينظّمه قانون الانتخابات في ألمانيا؟",
+    "question_en": "Who may become a member of the roughly 40 Jewish Maccabi sports clubs?",
+    "question_ar": "من يحق له أن يصبح عضواً في نحو 40 نادياً رياضياً يهودياً من نوادي مكابي؟",
     "answers_en": [
-      "Who is allowed to vote must vote.",
-      "Everyone who wants to can vote.",
-      "Who does not vote loses the right to vote.",
-      "Who is allowed to vote may vote."
+      "only Germans",
+      "only Israelis",
+      "only religious people",
+      "all people"
     ],
     "answers_ar": [
-      "من يحقّ له التصويت يجب أن يصوّت.",
-      "يستطيع كلّ من يرغب في التصويت أن يصوّت.",
-      "من لا يصوّت يفقد حقّه في التصويت.",
-      "من يحقّ له التصويت يستطيع التصويت."
+      "الألمان فقط",
+      "الإسرائيليون فقط",
+      "المتديّنون فقط",
+      "جميع الناس"
     ]
   },
   "119": {
@@ -2368,19 +2368,19 @@
     ]
   },
   "149": {
-    "question_en": "Who can become a lay judge in Germany?",
-    "question_ar": "من يستطيع أن يصبح قاضياً مُعيَّناً (شَافِن) في ألمانيا؟",
+    "question_en": "What is an example of antisemitic behaviour?",
+    "question_ar": "ما هو مثال على سلوك معادٍ للسامية؟",
     "answers_en": [
-      "all residents of Germany born there over 18 years",
-      "all German nationals older than 24 and younger than 70 years",
-      "all persons who have lived in Germany for at least 5 years",
-      "only persons with a completed law degree"
+      "visiting a Jewish festival",
+      "criticising the Israeli government",
+      "denying the Holocaust",
+      "playing football against Jews"
     ],
     "answers_ar": [
-      "جميع السكّان المولودين في ألمانيا الذين تزيد أعمارهم عن 18 سنة",
-      "جميع المواطنين الألمان الذين تتجاوز أعمارهم 24 سنة وأقلّ من 70 سنة",
-      "جميع الأشخاص الذين يعيشون في ألمانيا منذ 5 سنوات على الأقلّ",
-      "فقط الأشخاص الذين أنهوا دراسة القانون"
+      "زيارة عيد يهودي",
+      "انتقاد الحكومة الإسرائيلية",
+      "إنكار المحرقة (الهولوكوست)",
+      "لعب كرة القدم ضد اليهود"
     ]
   },
   "150": {
@@ -2896,19 +2896,19 @@
     ]
   },
   "182": {
-    "question_en": "Which parties were forcibly united in 1946 to form the SED, the single party of the later GDR?",
-    "question_ar": "أيّ الأحزاب أُجبرت عام 1946 على الاندماج لتشكيل حزب الوحدة الاشتراكية (SED)، الحزب الواحد لألمانيا الديمقراطية لاحقًا؟",
+    "question_en": "What is the Jewish house of worship called?",
+    "question_ar": "ماذا يُسمّى بيت العبادة اليهودي؟",
     "answers_en": [
-      "KPD and SPD",
-      "SPD and CDU",
-      "CDU and FDP",
-      "KPD and CSU"
+      "Basilica",
+      "Mosque",
+      "Synagogue",
+      "Church"
     ],
     "answers_ar": [
-      "الحزب الشيوعي الألماني والحزب الاشتراكي الديمقراطي",
-      "الحزب الاشتراكي الديمقراطي والاتحاد الديمقراطي المسيحي",
-      "الاتحاد الديمقراطي المسيحي والحزب الديمقراطي الحر",
-      "الحزب الشيوعي الألماني والاتحاد الاجتماعي المسيحي"
+      "البازيليكا",
+      "المسجد",
+      "الكنيس",
+      "الكنيسة"
     ]
   },
   "183": {
@@ -2928,19 +2928,19 @@
     ]
   },
   "184": {
-    "question_en": "What did people in Germany long call \"Zero Hour\"?",
-    "question_ar": "ماذا سمّى الناس في ألمانيا لفترة طويلة «الساعة صفر»؟",
+    "question_en": "On what legal basis was the State of Israel founded?",
+    "question_ar": "على أيّ أساس قانوني تأسّست دولة إسرائيل؟",
     "answers_en": [
-      "It refers to the time after the turning point in 1989.",
-      "It referred to the beginning of World War II.",
-      "It meant the end of World War II and the beginning of reconstruction.",
-      "It means the hour when the clock is changed from summer time to winter time."
+      "a resolution of the United Nations",
+      "a decision of the Zionist Congress",
+      "a proposal of the Federal Government",
+      "a proposal of the USSR"
     ],
     "answers_ar": [
-      "يُقصد بها الفترة بعد التحوّل في عام 1989",
-      "كانت تُشير إلى بداية الحرب العالمية الثانية",
-      "كان يُقصد بها نهاية الحرب العالمية الثانية وبداية إعادة الإعمار",
-      "تُشير إلى الساعة التي يُضبط فيها التوقيت من التوقيت الصيفي إلى الشتوي"
+      "قرار صادر عن الأمم المتحدة",
+      "قرار صادر عن المؤتمر الصهيوني",
+      "اقتراح من الحكومة الاتحادية",
+      "اقتراح من الاتحاد السوفييتي"
     ]
   },
   "185": {
@@ -3280,19 +3280,19 @@
     ]
   },
   "206": {
-    "question_en": "What did the word \"Monday demonstration\" mean in Germany in 1989?",
-    "question_ar": "ماذا كانت تعني كلمة «مظاهرات الإثنين» في ألمانيا عام 1989؟",
+    "question_en": "What do the so-called \"Stolpersteine\" (stumbling stones) in Germany commemorate?",
+    "question_ar": "ماذا تُخلّد ما تُسمّى «حجارة العثرة» (شتولبرشتاين) في ألمانيا؟",
     "answers_en": [
-      "In the Federal Republic, demonstrations were only allowed on Mondays.",
-      "On Mondays there were demonstrations against the GDR regime.",
-      "On the first Monday of the month, demonstrators met in the Federal Republic of Germany.",
-      "On Mondays, people demonstrated in the GDR against the West."
+      "famous German politicians",
+      "the victims of National Socialism",
+      "road traffic victims",
+      "well-known Jewish musicians"
     ],
     "answers_ar": [
-      "في جمهوريّة ألمانيا الاتّحاديّة، لم يكن يُسمح بالمظاهرات إلّا يوم الإثنين",
-      "كانت تُقام مظاهرات يوم الإثنين ضدّ نظام ألمانيا الديمقراطيّة",
-      "في أوّل إثنين من كلّ شهر، كان المتظاهرون يجتمعون في جمهوريّة ألمانيا الاتّحاديّة",
-      "كان الناس يتظاهرون يوم الإثنين في ألمانيا الديمقراطيّة ضدّ الغرب"
+      "سياسيون ألمان مشهورون",
+      "ضحايا الاشتراكية القومية (النازية)",
+      "ضحايا حوادث السير",
+      "موسيقيون يهود مشهورون"
     ]
   },
   "207": {
@@ -3397,13 +3397,13 @@
     "answers_en": [
       "70 million",
       "78 million",
-      "83 million",
+      "84 million",
       "90 million"
     ],
     "answers_ar": [
       "70 مليون نسمة",
       "78 مليون نسمة",
-      "83 مليون نسمة",
+      "84 مليون نسمة",
       "90 مليون نسمة"
     ]
   },
@@ -3510,13 +3510,13 @@
       "the end of World War II",
       "the adoption of the Basic Law",
       "the reunification of Germany",
-      "the victims of Nazism"
+      "the victims of Nazism (day of the liberation of the Auschwitz extermination camp)"
     ],
     "answers_ar": [
       "بنهاية الحرب العالميّة الثانية",
       "بإقرار القانون الأساسيّ",
       "بإعادة توحيد ألمانيا",
-      "بضحايا النازيّة"
+      "بضحايا النازيّة (يوم تحرير معسكر الإبادة أوشفيتس)"
     ]
   },
   "221": {
@@ -3728,8 +3728,8 @@
     ]
   },
   "234": {
-    "question_en": "Where is the seat of the European Parliament?",
-    "question_ar": "أين يقع مقرّ البرلمان الأوروبيّ؟",
+    "question_en": "Where is a seat of the European Parliament?",
+    "question_ar": "أين يقع أحد مقرّات البرلمان الأوروبيّ؟",
     "answers_en": [
       "London",
       "Paris",
@@ -4592,19 +4592,19 @@
     ]
   },
   "288": {
-    "question_en": "At which authority do you normally have to register your dog in Germany?",
-    "question_ar": "لدى أيِّ دائرةٍ يجب على المرء تسجيل كلبه في ألمانيا عادةً؟",
+    "question_en": "What is Germany's special responsibility for Israel based on?",
+    "question_ar": "على ماذا تقوم مسؤولية ألمانيا الخاصة تجاه إسرائيل؟",
     "answers_en": [
-      "at the tax office",
-      "at the residents' registration office",
-      "at the municipality (city or town)",
-      "at the health authority"
+      "membership in the European Union (EU)",
+      "the National Socialist crimes against Jews",
+      "the Basic Law of the Federal Republic of Germany",
+      "Christian tradition"
     ],
     "answers_ar": [
-      "لدى مكتب الضَّرائب.",
-      "لدى مكتب تسجيل السكّان.",
-      "لدى البلدية (المدينة أو القرية).",
-      "لدى مكتب الصِّحّة."
+      "العضوية في الاتحاد الأوروبي",
+      "الجرائم النازية بحق اليهود",
+      "القانون الأساسي لجمهورية ألمانيا الاتحادية",
+      "التقاليد المسيحية"
     ]
   },
   "289": {
