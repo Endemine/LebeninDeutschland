@@ -27,6 +27,11 @@
   status = 200
 
 [[redirects]]
+  from = "/muslimnotes-support"
+  to = "/muslimnotes-support.html"
+  status = 200
+
+[[redirects]]
   from = "/privacy"
   to = "/datenschutz.html"
   status = 200
