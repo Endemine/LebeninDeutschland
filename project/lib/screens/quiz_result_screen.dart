@@ -106,6 +106,7 @@ class _QuizResultScreenState extends State<QuizResultScreen> {
                     question: qa.question.text,
                     status: qa.isCorrect ? 'correct' : (qa.isAnswered ? 'wrong' : 'unanswered'),
                     correctAnswer: qa.question.correctAnswer,
+                    userAnswer: qa.isAnswered ? qa.userAnswerText : null,
                     onCopy: () => copyQuestion(context, qa.question),
                   );
                 },
@@ -178,8 +179,10 @@ class _QuestionResultTile extends StatefulWidget {
   final String question;
   final String status;
   final String correctAnswer;
+  /// Text der vom Nutzer gewählten Antwort, `null` wenn nicht beantwortet.
+  final String? userAnswer;
   final VoidCallback onCopy;
-  const _QuestionResultTile({required this.index, required this.question, required this.status, required this.correctAnswer, required this.onCopy});
+  const _QuestionResultTile({required this.index, required this.question, required this.status, required this.correctAnswer, required this.onCopy, this.userAnswer});
   @override
   State<_QuestionResultTile> createState() => _QuestionResultTileState();
 }
@@ -255,13 +258,41 @@ class _QuestionResultTileState extends State<_QuestionResultTile> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.check_circle, color: _success, size: 16),
-                      const SizedBox(width: 8),
-                      Expanded(child: Text('Richtige Antwort: ${widget.correctAnswer}',
-                        style: roboto(fontSize: 13, color: _textSecondary),
-                      )),
+                      if (widget.status == 'wrong') ...[
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.cancel, color: _error, size: 16),
+                            const SizedBox(width: 8),
+                            Expanded(child: Text('Deine Antwort: ${widget.userAnswer ?? ''}',
+                              style: roboto(fontSize: 13, color: _error),
+                            )),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                      ] else if (widget.status == 'unanswered') ...[
+                        Row(
+                          children: [
+                            const Icon(Icons.remove_circle_outline, color: _textSecondary, size: 16),
+                            const SizedBox(width: 8),
+                            Text('Nicht beantwortet', style: roboto(fontSize: 13, color: _textSecondary)),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.check_circle, color: _success, size: 16),
+                          const SizedBox(width: 8),
+                          Expanded(child: Text('Richtige Antwort: ${widget.correctAnswer}',
+                            style: roboto(fontSize: 13, color: _textSecondary),
+                          )),
+                        ],
+                      ),
                     ],
                   ),
                 ),

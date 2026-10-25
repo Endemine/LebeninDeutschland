@@ -1,3 +1,2 @@
-New in 1.1.4:
-• Question catalog updated to the current BAMF version (May 2025): ten questions replaced, several answers corrected.
-• Added the missing map for the question about the occupation zones.
+New in 1.1.5:
+• Test result: for questions you got wrong you now see the answer you picked next to the correct one, so you can compare them directly.

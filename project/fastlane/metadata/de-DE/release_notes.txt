@@ -1,3 +1,2 @@
-Neu in 1.1.4:
-• Fragenkatalog auf den aktuellen Stand des BAMF (Mai 2025) gebracht: zehn Fragen ersetzt, mehrere Antworten korrigiert.
-• Fehlende Karte zur Frage über die Besatzungszonen ergänzt.
+Neu in 1.1.5:
+• Prüfungsergebnis: Bei falsch beantworteten Fragen siehst du jetzt neben der richtigen Antwort auch die Antwort, die du gewählt hast – zum direkten Vergleichen.
